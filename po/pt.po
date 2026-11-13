@@ -1,0 +1,3250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the runexe package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: runexe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-27 13:50+0530\n"
+"PO-Revision-Date: 2025-10-30 11:23+0000\n"
+"Last-Translator: StoneMoe <lakechan96@gmail.com>\n"
+"Language-Team: Portuguese\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.14.1-dev\n"
+
+#: runexe/backend/managers/backup.py:48 runexe/backend/managers/backup.py:95
+msgid "No path specified"
+msgstr "Nenhum caminho especificado"
+
+#: runexe/backend/managers/backup.py:56
+#, python-brace-format
+msgid "Backup {0}"
+msgstr "Cópia de segurança {0}"
+
+#: runexe/backend/managers/backup.py:101
+#, python-brace-format
+msgid "Importing backup: {0}"
+msgstr "A importar a cópia de segurança: {0}"
+
+#: runexe/backend/managers/manager.py:1057
+msgid "Fail to install components, tried 3 times."
+msgstr "Falha ao instalar componentes, tentei 3 vezes."
+
+#: runexe/backend/managers/manager.py:1068
+msgid "Missing essential components. Installing…"
+msgstr "Componentes essenciais em falta. Instalando…"
+
+#: runexe/backend/managers/manager.py:1145
+msgid "Failed to create capsule directory."
+msgstr "Falha ao criar pasta do capsule."
+
+#: runexe/backend/managers/manager.py:1157
+msgid "Failed to create placeholder directory/file."
+msgstr "Falha ao criar diretório/ficheiro de espaço reservado."
+
+#: runexe/backend/managers/manager.py:1162
+msgid "Generating capsule configuration…"
+msgstr "A gerar configuração da Capsule…"
+
+#: runexe/backend/managers/manager.py:1185
+msgid "Template found, applying…"
+msgstr "modelo encontrado, aplicando…"
+
+#. execute wineboot on the capsule path
+#: runexe/backend/managers/manager.py:1197
+msgid "The Wine config is being updated…"
+msgstr "A configuração do Wine está a ser atualizada…"
+
+#: runexe/backend/managers/manager.py:1199
+msgid "Wine config updated!"
+msgstr "Configuração do Wine atualizada!"
+
+#: runexe/backend/managers/manager.py:1207
+msgid "Running as Flatpak, sandboxing userdir…"
+msgstr "Executando como Flatpak, isolando o diretório do usuário (sandbox)…"
+
+#: runexe/backend/managers/manager.py:1209
+msgid "Sandboxing userdir…"
+msgstr "A fazer \"sandboxing\" do diretório de utilizador…"
+
+#: runexe/backend/managers/manager.py:1250
+msgid "Setting Windows version…"
+msgstr "Configurando versão do Windows…"
+
+#: runexe/backend/managers/manager.py:1260
+msgid "Apply CMD default settings…"
+msgstr "Aplicar definições iniciais do CMD…"
+
+#: runexe/backend/managers/manager.py:1268
+msgid "Optimizing environment…"
+msgstr "Otimizando o ambiente…"
+
+#: runexe/backend/managers/manager.py:1279
+#, python-brace-format
+msgid "Applying environment: {0}…"
+msgstr "A aplicar o ambiente: {0} …"
+
+#: runexe/backend/managers/manager.py:1289
+msgid "(!) Using a custom environment recipe…"
+msgstr "(!) Usando uma receita personalizada de ambiente…"
+
+#: runexe/backend/managers/manager.py:1292
+msgid "(!) Recipe not not found or not valid…"
+msgstr "(!) Receita não encontrada ou inválida…"
+
+#: runexe/backend/managers/manager.py:1309
+msgid "Installing DXVK…"
+msgstr "A instalar DXVK…"
+
+#: runexe/backend/managers/manager.py:1317
+msgid "Installing VKD3D…"
+msgstr "A instalar VKD3D…"
+
+#: runexe/backend/managers/manager.py:1326
+msgid "Installing DXVK-NVAPI…"
+msgstr "A instalar DXVK-NVAPI …"
+
+#: runexe/backend/managers/manager.py:1335
+#, python-format
+msgid "Installing dependency: %s …"
+msgstr "Instalando dependência: %s …"
+
+#: runexe/backend/managers/manager.py:1345
+msgid "Creating versioning state 0…"
+msgstr "A criar o estado de versão 0…"
+
+#: runexe/backend/managers/manager.py:1353
+msgid "Finalizing…"
+msgstr "Finalizando…"
+
+#: runexe/backend/managers/manager.py:1364
+msgid "Caching template…"
+msgstr "Criando cache do modelo…"
+
+#: runexe/backend/managers/versioning.py:83
+msgid "Committing state …"
+msgstr "Atualizando estados …"
+
+#: runexe/backend/managers/versioning.py:90
+msgid "Nothing to commit"
+msgstr "Nada para enviar"
+
+#: runexe/backend/managers/versioning.py:96
+#, python-brace-format
+msgid "New state [{0}] created successfully!"
+msgstr "Novo estado [{0}] criado com sucesso!"
+
+#: runexe/backend/managers/versioning.py:123
+msgid "States list retrieved successfully!"
+msgstr "Lista de estados recuperada com sucesso!"
+
+#: runexe/backend/managers/versioning.py:153
+#, python-brace-format
+msgid "State {0} restored successfully!"
+msgstr "Estado {0} restaurado com sucesso!"
+
+#: runexe/backend/managers/versioning.py:155
+msgid "Restoring state {} …"
+msgstr "Restaurando estado {} …"
+
+#: runexe/backend/managers/versioning.py:162
+msgid "State not found"
+msgstr "Estado não encontrado"
+
+#: runexe/backend/managers/versioning.py:168
+msgid "State {} is already the active state"
+msgstr "Estado {} já está ativo"
+
+#: runexe/frontend/main.py:112
+msgid "Show version"
+msgstr "Mostrar versão"
+
+#: runexe/frontend/main.py:120
+msgid "Executable path"
+msgstr "Correr o executável"
+
+#: runexe/frontend/main.py:128
+msgid "lnk path"
+msgstr "Caminho lnk"
+
+#: runexe/frontend/main.py:136 runexe/frontend/ui/library-entry.blp:118
+#: runexe/frontend/ui/list-entry.blp:5
+msgid "Capsule name"
+msgstr "Nome do Capsule"
+
+#: runexe/frontend/main.py:144
+msgid "Pass arguments"
+msgstr "Adicionar parâmetros"
+
+#: runexe/frontend/main.py:203
+msgid "Invalid URI (syntax: capsules:run/<capsule>/<program>)"
+msgstr "URI invalida (sintaxe: capsules:run/<garrafa>/<programa>)"
+
+#: runexe/frontend/main.py:244
+msgid "[Quit] request received."
+msgstr "Solicitação [Sair] recebida."
+
+#: runexe/frontend/main.py:253
+msgid "[Help] request received."
+msgstr "Solicitação [Ajuda] recebida."
+
+#: runexe/frontend/main.py:261
+msgid "[Refresh] request received."
+msgstr "Solicitação [Atualizar] recebida."
+
+#: runexe/frontend/main.py:294
+msgid "Donate"
+msgstr "Doar"
+
+#: runexe/frontend/main.py:299
+msgid "Third-Party Libraries and Special Thanks"
+msgstr "Bibliotecas de Terceiros e Agradecimentos Especiais"
+
+#: runexe/frontend/main.py:325
+msgid "Sponsored and Funded by"
+msgstr "Patrocinado e Financiado por"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/about.blp:10
+msgid "RunExe Developers"
+msgstr "Programadores do RunExe"
+
+#: runexe/frontend/ui/about.blp:12
+msgid "translator_credits"
+msgstr "Kazevic https://github.com/Kazevic"
+
+#: runexe/frontend/ui/component-entry.blp:4
+msgid "Component version"
+msgstr "Versão de componente"
+
+#: runexe/frontend/ui/component-entry.blp:12
+#: runexe/frontend/ui/dependency-entry.blp:29
+#: runexe/frontend/ui/program-entry.blp:77
+msgid "Uninstall"
+msgstr "Desinstalar"
+
+#: runexe/frontend/ui/component-entry.blp:23
+msgid "Browse Files"
+msgstr "Procurar ficheiros"
+
+#: runexe/frontend/ui/component-entry.blp:34
+msgid ""
+"The installation failed. This may be due to a repository error, partial "
+"download or checksum mismatch. Press to try again."
+msgstr ""
+"A instalação falhou. Isso pode ser devido a um erro de repositório, download "
+"parcial ou incompatibilidade de soma de verificação. Pressione para tentar "
+"novamente."
+
+#: runexe/frontend/ui/component-entry.blp:45
+msgid "Download & Install"
+msgstr "Descarregar e instalar"
+
+#: runexe/frontend/ui/component-entry.blp:58
+msgid "0%"
+msgstr "0%"
+
+#: runexe/frontend/ui/dependency-entry.blp:16
+msgid "Show Manifest"
+msgstr "Mostrar manifesto"
+
+#: runexe/frontend/ui/dependency-entry.blp:20
+msgid "License"
+msgstr "Licença"
+
+#: runexe/frontend/ui/dependency-entry.blp:24
+msgid "Reinstall"
+msgstr "Reinstalar"
+
+#: runexe/frontend/ui/dependency-entry.blp:36
+#: runexe/frontend/ui/installer-entry.blp:27
+msgid "Report a Bug…"
+msgstr "Reportar um erro…"
+
+#: runexe/frontend/ui/dependency-entry.blp:42
+msgid "Dependency name"
+msgstr "Nome da dependência"
+
+#: runexe/frontend/ui/dependency-entry.blp:44
+msgid "Dependency description"
+msgstr "Descrição da dependência"
+
+#: runexe/frontend/ui/dependency-entry.blp:51
+msgid "Category"
+msgstr "Categoria"
+
+#: runexe/frontend/ui/dependency-entry.blp:64
+msgid "Download & Install this Dependency"
+msgstr "Baixe e instale esta dependência"
+
+#: runexe/frontend/ui/dependency-entry.blp:79
+msgid ""
+"An installation error occurred. Restart RunExe to read the Crash Report or "
+"run it via terminal to read the output."
+msgstr ""
+"Ocorreu um erro na instalação. Reinicie o RunExe para ler o relatório de "
+"falha ou execute-o no terminal para ler o resultado."
+
+#: runexe/frontend/ui/dependency-entry.blp:93
+msgid "Dependency Menu"
+msgstr "Menu Dependência"
+
+#: runexe/frontend/ui/details-capsule.blp:16
+msgid "Troubleshooting"
+msgstr "Solução de problemas"
+
+#: runexe/frontend/ui/details-capsule.blp:24
+msgid "Browse Files…"
+msgstr "Procurar ficheiro…"
+
+#: runexe/frontend/ui/details-capsule.blp:28
+msgid "Duplicate Capsule…"
+msgstr "Duplicar garrafa…"
+
+#: runexe/frontend/ui/details-capsule.blp:32
+#: runexe/frontend/ui/importer.blp:73
+msgid "This is the complete archive of your capsule, including personal files."
+msgstr "Este é o arquivo completo do seu Capsule, incluindo ficheiros pessoais."
+
+#: runexe/frontend/ui/details-capsule.blp:33
+msgid "Full Backup…"
+msgstr "Backup completo…"
+
+#: runexe/frontend/ui/details-capsule.blp:37
+#: runexe/frontend/ui/importer.blp:68
+msgid ""
+"This is just the capsule configuration, it's perfect if you want to create a "
+"new one but without personal files."
+msgstr ""
+"Esta é apenas a configuração do Capsule que pode ser utilizada para criar uma "
+"nova sem ficheiros pessoais."
+
+#: runexe/frontend/ui/details-capsule.blp:38
+msgid "Export Configuration…"
+msgstr "Exportar configuração…"
+
+#: runexe/frontend/ui/details-capsule.blp:45
+#: runexe/frontend/views/capsule_details.py:344
+msgid "Show Hidden Programs"
+msgstr "Mostrar programas ocultos"
+
+#: runexe/frontend/ui/details-capsule.blp:49
+msgid "Search for new programs"
+msgstr "Procurar novos programas"
+
+#: runexe/frontend/ui/details-capsule.blp:56
+msgid "Delete Capsule…"
+msgstr "Apagar Garrafa…"
+
+#: runexe/frontend/ui/details-capsule.blp:73
+#: runexe/frontend/ui/details-dependencies.blp:99
+#: runexe/frontend/ui/details-installers.blp:68
+msgid "Secondary Menu"
+msgstr "Menu Secundário"
+
+#: runexe/frontend/ui/details-capsule.blp:90
+msgid "Force Stop all Processes"
+msgstr "Forçar parada de todos os processos"
+
+#: runexe/frontend/ui/details-capsule.blp:94
+msgid "Simulate a Windows system shutdown."
+msgstr "Simular um desligamento do sistema Windows."
+
+#: runexe/frontend/ui/details-capsule.blp:95
+msgid "Shutdown"
+msgstr "Desligar"
+
+#: runexe/frontend/ui/details-capsule.blp:99
+msgid "Simulate a Windows system reboot."
+msgstr "Simular uma reinicialização do sistema Windows."
+
+#: runexe/frontend/ui/details-capsule.blp:100
+msgid "Reboot"
+msgstr "Reiniciar"
+
+#: runexe/frontend/ui/details-capsule.blp:118
+#: runexe/frontend/ui/dialog-launch-options.blp:6
+msgid "Launch Options"
+msgstr "Opções de lançamento"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+msgid "Pre-run Script"
+msgstr "Script de pré-execução"
+
+#: runexe/frontend/ui/details-capsule.blp:135
+msgid "Run in Terminal"
+msgstr "Executar no Terminal"
+
+#: runexe/frontend/ui/details-capsule.blp:148
+msgid "Drop files to execute them"
+msgstr "Solte ficheiros para executá-los"
+
+#: runexe/frontend/ui/details-capsule.blp:164
+msgid "My capsule"
+msgstr "Minha garrafa"
+
+#: runexe/frontend/ui/details-capsule.blp:177
+msgid "Win64"
+msgstr "Win64"
+
+#: runexe/frontend/ui/details-capsule.blp:189
+#: runexe/frontend/ui/list-entry.blp:12 runexe/frontend/ui/new.blp:71
+msgid "Environment"
+msgstr "Ambiente"
+
+#: runexe/frontend/ui/details-capsule.blp:201
+#: runexe/frontend/ui/details-preferences.blp:14
+#: runexe/frontend/ui/new.blp:128
+msgid "Runner"
+msgstr "Agente de execução (runner)"
+
+#: runexe/frontend/ui/details-capsule.blp:213
+#: runexe/frontend/ui/list-entry.blp:21
+msgid "Versioning enabled for this capsule"
+msgstr "Controlo da versão ativado para este Capsule"
+
+#: runexe/frontend/ui/details-capsule.blp:218
+msgid "Versioning is active for this capsule."
+msgstr "O controle de versão está ativo nessa garrafa."
+
+#: runexe/frontend/ui/details-capsule.blp:227
+#: runexe/frontend/ui/list-entry.blp:31
+msgid "0"
+msgstr "0"
+
+#: runexe/frontend/ui/details-capsule.blp:247
+msgid "Run Executable…"
+msgstr "Iniciar executável…"
+
+#: runexe/frontend/ui/details-capsule.blp:272
+msgid "Programs"
+msgstr "Programas"
+
+#: runexe/frontend/ui/details-capsule.blp:275
+msgid ""
+"Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an "
+"executable to the Programs list, or \"Install Programs…\" to install "
+"programs curated by the community."
+msgstr ""
+"Clique em \"Executar executável...\" para executar um executável, "
+"\"Adicionar atalhos…\" para adicionar um executável à lista de programas ou "
+"\"Instalar programas…\" para instalar programas selecionados pela comunidade."
+
+#: runexe/frontend/ui/details-capsule.blp:298
+msgid "Add Shortcuts…"
+msgstr "Adicionar atalhos…"
+
+#: runexe/frontend/ui/details-capsule.blp:325
+msgid "Install Programs…"
+msgstr "Instalar Programas…"
+
+#: runexe/frontend/ui/details-capsule.blp:346
+msgid "Options"
+msgstr "Opções"
+
+#: runexe/frontend/ui/details-capsule.blp:350
+#: runexe/frontend/views/details.py:141
+msgid "Settings"
+msgstr "Configurações"
+
+#: runexe/frontend/ui/details-capsule.blp:351
+msgid "Configure capsule settings."
+msgstr "Defina as configurações da capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:360
+#: runexe/frontend/views/details.py:145
+msgid "Dependencies"
+msgstr "Dependências"
+
+#: runexe/frontend/ui/details-capsule.blp:361
+msgid "Install dependencies for programs."
+msgstr "Instalar dependências para programas."
+
+#: runexe/frontend/ui/details-capsule.blp:370
+#: runexe/frontend/ui/details-preferences.blp:377
+#: runexe/frontend/views/details.py:149
+msgid "Snapshots"
+msgstr "Capturas de ecrã"
+
+#: runexe/frontend/ui/details-capsule.blp:371
+msgid "Create and manage capsule states."
+msgstr "Crie e gira estados de capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:380
+#: runexe/frontend/ui/details-capsule.blp:426
+#: runexe/frontend/views/details.py:157
+msgid "Task Manager"
+msgstr "Gestor de tarefas"
+
+#: runexe/frontend/ui/details-capsule.blp:381
+msgid "Manage running programs."
+msgstr "Gerir programas em execução."
+
+#: runexe/frontend/ui/details-capsule.blp:390
+msgid "Tools"
+msgstr "Ferramentas"
+
+#: runexe/frontend/ui/details-capsule.blp:394
+msgid "Command Line"
+msgstr "Linha de comando"
+
+#: runexe/frontend/ui/details-capsule.blp:395
+msgid "Run commands inside the Capsule."
+msgstr "Execute comandos dentro do Capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:404
+msgid "Registry Editor"
+msgstr "Editor de registo"
+
+#: runexe/frontend/ui/details-capsule.blp:405
+msgid "Edit the internal registry."
+msgstr "Edite o registo interno."
+
+#: runexe/frontend/ui/details-capsule.blp:413
+msgid "Legacy Wine Tools"
+msgstr "Ferramentas de Wine herdadas"
+
+#: runexe/frontend/ui/details-capsule.blp:417
+msgid "Explorer"
+msgstr "Explorador"
+
+#: runexe/frontend/ui/details-capsule.blp:435
+msgid "Debugger"
+msgstr "Depurador"
+
+#: runexe/frontend/ui/details-capsule.blp:444
+#: runexe/frontend/ui/importer.blp:69 runexe/frontend/ui/new.blp:145
+msgid "Configuration"
+msgstr "Configuração"
+
+#: runexe/frontend/ui/details-capsule.blp:453
+msgid "Uninstaller"
+msgstr "Desinstalador"
+
+#: runexe/frontend/ui/details-capsule.blp:462
+msgid "Control Panel"
+msgstr "Painel de controlo"
+
+#: runexe/frontend/ui/details-dependencies.blp:9
+msgid "Search for dependencies…"
+msgstr "Pesquisar dependências…"
+
+#: runexe/frontend/ui/details-dependencies.blp:22
+#: runexe/frontend/ui/preferences.blp:178
+#: runexe/frontend/ui/preferences.blp:235
+msgid "You're offline :("
+msgstr "Está offline :("
+
+#: runexe/frontend/ui/details-dependencies.blp:25
+msgid "RunExe is running in offline mode, so dependencies are not available."
+msgstr ""
+"O RunExe executa no modo offline, logo as dependências não estão "
+"disponíveis."
+
+#: runexe/frontend/ui/details-dependencies.blp:47
+msgid ""
+"Dependencies are resources that improve compatibility of Windows software.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Dependências são recursos que melhoram compatibilidade de programas Windows."
+"\n"
+"\n"
+"Os ficheiros nesta página são fornecidos por terceiros sob uma licença "
+"proprietária. Ao instalá-los, concorda com os seus respetivos termos de "
+"licenciamento."
+
+#: runexe/frontend/ui/details-dependencies.blp:76
+msgid "Report a problem or a missing dependency."
+msgstr "Reportar uma dependência ausente."
+
+#: runexe/frontend/ui/details-dependencies.blp:77
+msgid "Report Missing Dependency"
+msgstr "Relatar dependência ausente"
+
+#: runexe/frontend/ui/details-dependencies.blp:81
+msgid "Read Documentation."
+msgstr "Leia a Documentação."
+
+#: runexe/frontend/ui/details-dependencies.blp:82
+#: runexe/frontend/ui/details-installers.blp:51
+#: runexe/frontend/ui/details-versioning.blp:37
+msgid "Documentation"
+msgstr "Documentação"
+
+#: runexe/frontend/ui/details-dependencies.blp:92
+#: runexe/frontend/ui/details-installers.blp:61
+#: runexe/frontend/ui/window.blp:46
+msgid "Search"
+msgstr "Procurar"
+
+#: runexe/frontend/ui/details-installers.blp:9
+msgid "Search for Programs…"
+msgstr "Pesquisar programas…"
+
+#: runexe/frontend/ui/details-installers.blp:15
+msgid ""
+"Install programs curated by our community.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Instale programas selecionados pela nossa comunidade.\n"
+"\n"
+"Os ficheiros desta página são fornecidos por terceiros sob uma licença "
+"proprietária. Ao instalá-los, concorda com os respectivos termos de "
+"licenciamento."
+
+#: runexe/frontend/ui/details-installers.blp:29
+msgid "No Installers Found"
+msgstr "Nenhum Instalador Encontrado"
+
+#: runexe/frontend/ui/details-installers.blp:32
+msgid ""
+"The repository is unreachable or no installer is compatible with this capsule."
+msgstr ""
+"O repositório está inacessível ou nenhum instalador é compatível com esta "
+"garrafa."
+
+#: runexe/frontend/ui/details-installers.blp:50
+#: runexe/frontend/ui/details-versioning.blp:36
+#: runexe/frontend/ui/preferences.blp:81
+msgid "Read Documentation"
+msgstr "Leia a documentação"
+
+#: runexe/frontend/ui/details-preferences.blp:6
+#: runexe/frontend/ui/dialog-duplicate.blp:52
+msgid "Name"
+msgstr "Nome"
+
+#: runexe/frontend/ui/details-preferences.blp:11
+msgid "Components"
+msgstr "Componentes"
+
+#: runexe/frontend/ui/details-preferences.blp:15
+#: runexe/frontend/ui/new.blp:129
+msgid "The version of the Wine compatibility layer."
+msgstr "A versão da camada de compatibilidade do Wine."
+
+#: runexe/frontend/ui/details-preferences.blp:17
+msgid "Updating Runner and components, please wait…"
+msgstr "Atualizando Runner e componentes, aguarde…"
+
+#: runexe/frontend/ui/details-preferences.blp:27
+#: runexe/frontend/ui/preferences.blp:262
+msgid "DXVK"
+msgstr "DXVK"
+
+#: runexe/frontend/ui/details-preferences.blp:28
+msgid "Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan."
+msgstr ""
+"Melhore a compatibilidade do Direct3D 8/9/10/11 traduzindo-o para Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:30
+msgid "Updating DXVK, please wait…"
+msgstr "Atualizando o DXVK, aguarde…"
+
+#: runexe/frontend/ui/details-preferences.blp:40
+#: runexe/frontend/ui/preferences.blp:266
+msgid "VKD3D"
+msgstr "VKD3D"
+
+#: runexe/frontend/ui/details-preferences.blp:41
+msgid "Improve Direct3D 12 compatibility by translating it to Vulkan."
+msgstr "Melhore a compatibilidade do Direct3D 12 traduzindo-o para Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:43
+msgid "Updating VKD3D, please wait…"
+msgstr "Atualizando o VKD3D, aguarde…"
+
+#: runexe/frontend/ui/details-preferences.blp:54
+msgid "DXVK NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/details-preferences.blp:58
+#: runexe/frontend/ui/details-preferences.blp:93
+msgid "Updating DXVK-NVAPI, please wait…"
+msgstr "Atualizando o DXVK-NVAPI, aguarde…"
+
+#: runexe/frontend/ui/details-preferences.blp:68
+#: runexe/frontend/ui/preferences.blp:274
+msgid "LatencyFleX"
+msgstr "LatencyFleX"
+
+#: runexe/frontend/ui/details-preferences.blp:69
+msgid "Increase responsiveness. Can be detected by some anti-cheat software."
+msgstr ""
+"Aumente a capacidade de resposta. Pode ser detectado por algum software "
+"antitrapaça."
+
+#: runexe/frontend/ui/details-preferences.blp:71
+msgid "Updating LatencyFleX, please wait…"
+msgstr "A atualizar o LatencyFleX, aguarde…"
+
+#: runexe/frontend/ui/details-preferences.blp:84
+msgid "Display"
+msgstr "Ecrã"
+
+#: runexe/frontend/ui/details-preferences.blp:88
+msgid "Deep Learning Super Sampling"
+msgstr "Super amostragem de aprendizado profundo"
+
+#: runexe/frontend/ui/details-preferences.blp:89
+msgid ""
+"Increase performance at the expense of visuals using DXVK-NVAPI. Only works "
+"on newer NVIDIA GPUs."
+msgstr ""
+"Aumente o desempenho em detrimento dos recursos visuais usando DXVK-NVAPI. "
+"Funciona apenas em GPUs NVIDIA mais recentes."
+
+#: runexe/frontend/ui/details-preferences.blp:105
+msgid "FidelityFX Super Resolution"
+msgstr "Super resolução FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:106
+msgid "Increase performance at the expense of visuals. Only works on Vulkan."
+msgstr "Aumente o desempenho em detrimento do visual. Só funciona no Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:108
+msgid "Manage FidelityFX Super Resolution settings"
+msgstr "Gerir as configurações do FidelityFX Super Resolution"
+
+#: runexe/frontend/ui/details-preferences.blp:125
+msgid "Discrete Graphics"
+msgstr "Use placa gráfica discreta"
+
+#: runexe/frontend/ui/details-preferences.blp:126
+msgid ""
+"Use the discrete graphics card to increase performance at the expense of "
+"power consumption."
+msgstr ""
+"Use a placa gráfica discreta para aumentar o desempenho em detrimento do "
+"consumo de energia."
+
+#: runexe/frontend/ui/details-preferences.blp:135
+msgid "Post-Processing Effects"
+msgstr "Efeitos de pós-processamento"
+
+#: runexe/frontend/ui/details-preferences.blp:136
+msgid ""
+"Add various post-processing effects using vkBasalt. Only works on Vulkan."
+msgstr ""
+"Adicionar vários efeitos de pós-processamento usando vkBasalt. Funciona "
+"apenas no Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:138
+msgid "Manage Post-Processing Layer settings"
+msgstr "Gerir configurações de camada de pós-processamento"
+
+#: runexe/frontend/ui/details-preferences.blp:154
+msgid "Manage how games should be displayed on the screen using Gamescope."
+msgstr "Gere como os jogos devem ser exibidos no ecrã usando o Gamescope."
+
+#: runexe/frontend/ui/details-preferences.blp:157
+msgid "Manage Gamescope settings"
+msgstr "Gira as configurações do Gamescope"
+
+#: runexe/frontend/ui/details-preferences.blp:171
+msgid "Advanced Display Settings"
+msgstr "Configuração Avançada de Ecrã"
+
+#: runexe/frontend/ui/details-preferences.blp:184
+msgid "Performance"
+msgstr "Desempenho"
+
+#: runexe/frontend/ui/details-preferences.blp:188
+msgid "Enable synchronization to increase performance of multicore processors."
+msgstr ""
+"Ative a sincronização para aumentar o desempenho de processadores multicore."
+
+#: runexe/frontend/ui/details-preferences.blp:189
+msgid "Synchronization"
+msgstr "Sincronização"
+
+#: runexe/frontend/ui/details-preferences.blp:193
+msgid "System"
+msgstr "Sistema"
+
+#: runexe/frontend/ui/details-preferences.blp:194
+msgid "Esync"
+msgstr "Esync"
+
+#: runexe/frontend/ui/details-preferences.blp:195
+msgid "Fsync"
+msgstr "Fsync"
+
+#: runexe/frontend/ui/details-preferences.blp:196
+msgid "Futex2"
+msgstr "Futex2"
+
+#: runexe/frontend/ui/details-preferences.blp:202
+msgid "Monitor Performance"
+msgstr "Monitorar Desempenho"
+
+#: runexe/frontend/ui/details-preferences.blp:203
+msgid ""
+"Display monitoring information such as framerate, temperatures, CPU/GPU load "
+"and more on OpenGL and Vulkan using MangoHud."
+msgstr ""
+"Exibe informações de monitoramento, como taxa de quadros, temperaturas, "
+"carga de CPU/GPU e muito mais em OpenGL e Vulkan usando o MangoHud."
+
+#: runexe/frontend/ui/details-preferences.blp:211
+msgid "Feral GameMode"
+msgstr "Feral GameMode"
+
+#: runexe/frontend/ui/details-preferences.blp:212
+msgid ""
+"Apply a set of optimizations to your device. Can improve game performance."
+msgstr ""
+"Aplica um conjunto de otimizações ao seu aparelho. Pode melhorar o "
+"desempenho do jogo."
+
+#: runexe/frontend/ui/details-preferences.blp:221
+msgid "Preload Game Files"
+msgstr "Pré-carregar ficheiros do jogo"
+
+#: runexe/frontend/ui/details-preferences.blp:222
+msgid ""
+"Improve loading time when launching the game multiple times. The game will "
+"take longer to start for the first time."
+msgstr ""
+"Melhora o tempo de carregamento ao iniciar o jogo várias vezes. O jogo vai "
+"demorar mais para começar pela primeira vez."
+
+#: runexe/frontend/ui/details-preferences.blp:226
+msgid "Manage vmtouch settings"
+msgstr "Gerir configurações de vmtouch"
+
+#: runexe/frontend/ui/details-preferences.blp:241
+msgid "OBS Game Capture"
+msgstr "Captura de jogo do OBS"
+
+#: runexe/frontend/ui/details-preferences.blp:242
+msgid "Toggle OBS Game Capture for all Vulkan and OpenGL programs."
+msgstr ""
+"Alternar a captura de jogos do OBS para todos os programas Vulkan ou OpenGL."
+
+#: runexe/frontend/ui/details-preferences.blp:251
+msgid "Compatibility"
+msgstr "Compatibilidade"
+
+#: runexe/frontend/ui/details-preferences.blp:254
+msgid "Windows Version"
+msgstr "Versão do Windows"
+
+#: runexe/frontend/ui/details-preferences.blp:257
+msgid "Updating Windows version, please wait…"
+msgstr "Atualizando a versão do Windows, aguarde…"
+
+#: runexe/frontend/ui/details-preferences.blp:266
+msgid "Language"
+msgstr "Idioma"
+
+#: runexe/frontend/ui/details-preferences.blp:267
+msgid "Choose the language to use with programs."
+msgstr "Escolha o idioma para usar com programas."
+
+#: runexe/frontend/ui/details-preferences.blp:275
+msgid "Dedicated Sandbox"
+msgstr "Sandbox dedicada"
+
+#: runexe/frontend/ui/details-preferences.blp:276
+msgid "Use a restricted/managed environment for this capsule."
+msgstr "CapsuleDefina um runner diferente para esta Capsule."
+
+#: runexe/frontend/ui/details-preferences.blp:279
+msgid "Manage the Sandbox Permissions"
+msgstr "Gerir permissões do Sandbox"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/details-preferences.blp:295
+msgid "RunExe Runtime"
+msgstr "Tempo de execução do RunExe"
+
+#: runexe/frontend/ui/details-preferences.blp:296
+msgid ""
+"Provide a bundle of extra libraries for more compatibility. Disable it if "
+"you run into issues."
+msgstr ""
+"Fornece um pacote de bibliotecas extras para maior compatibilidade, desative "
+"se tiver problemas."
+
+#: runexe/frontend/ui/details-preferences.blp:306
+msgid "Steam Runtime"
+msgstr "Tempo de execução do Steam"
+
+#: runexe/frontend/ui/details-preferences.blp:307
+msgid ""
+"Provide a bundle of extra libraries for more compatibility with Steam games. "
+"Disable it if you run into issues."
+msgstr ""
+"Fornece um pacote de bibliotecas extras para maior compatibilidade com jogos "
+"da Steam. Desative se tiver problemas."
+
+#: runexe/frontend/ui/details-preferences.blp:315
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Working Directory"
+msgstr "Diretório de trabalho"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Pre-run Script Arguments"
+msgstr "Argumentos do script de pré-execução"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+msgid "e.g.: ludusavi restore --force \"Game Name\""
+msgstr "ex.: ludusavi restore --force \"Nome do Jogo\""
+
+#: runexe/frontend/ui/dialog-launch-options.blp:118
+msgid "Post-run Script Arguments"
+msgstr "Argumentos do script de pós-execução"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:121
+msgid "e.g.: ludusavi backup --force \"Game Name\""
+msgstr "ex.: ludusavi backup --force \"Nome do Jogo\""
+
+#: runexe/frontend/ui/details-preferences.blp:318
+#: runexe/frontend/ui/dialog-launch-options.blp:59
+#: runexe/frontend/ui/dialog-launch-options.blp:90
+#: runexe/frontend/ui/new.blp:150 runexe/frontend/ui/new.blp:181
+#: runexe/frontend/ui/preferences.blp:136
+msgid "Reset to Default"
+msgstr "Restaurar padrão"
+
+#: runexe/frontend/ui/details-preferences.blp:339
+#: runexe/frontend/ui/preferences.blp:157 runexe/frontend/views/new.py:78
+#: runexe/frontend/views/preferences.py:210
+msgid "(Default)"
+msgstr "(Padrão)"
+
+#: runexe/frontend/ui/details-preferences.blp:347
+#: runexe/frontend/ui/dialog-dll-overrides.blp:7
+#: runexe/frontend/ui/dialog-dll-overrides.blp:12
+msgid "DLL Overrides"
+msgstr "Substituições de DLL"
+
+#: runexe/frontend/ui/details-preferences.blp:357
+#: runexe/frontend/ui/dialog-env-vars.blp:20
+msgid "Environment Variables"
+msgstr "Variáveis de ambiente"
+
+#: runexe/frontend/ui/details-preferences.blp:367
+msgid "Manage Drives"
+msgstr "Gerir unidades"
+
+#: runexe/frontend/ui/details-preferences.blp:381
+msgid "Automatic Snapshots"
+msgstr "Snapshots automáticos"
+
+#: runexe/frontend/ui/details-preferences.blp:382
+msgid ""
+"Automatically create snapshots before installing software or changing "
+"settings."
+msgstr ""
+"Cria snapshots automaticamente antes de instalar o software ou alterar as "
+"configurações."
+
+#: runexe/frontend/ui/details-preferences.blp:391
+msgid "Compression"
+msgstr "Compressão"
+
+#: runexe/frontend/ui/details-preferences.blp:392
+msgid ""
+"Compress snapshots to reduce space. This will slow down the creation of "
+"snapshots."
+msgstr ""
+"Comprime snapshots para reduzir o espaço. Isso tornará mais lento a criação "
+"de snapshots."
+
+#: runexe/frontend/ui/details-preferences.blp:401
+msgid "Use Exclusion Patterns"
+msgstr "Usar padrões de exclusão"
+
+#: runexe/frontend/ui/details-preferences.blp:402
+msgid "Exclude paths in snapshots."
+msgstr "Exclui caminhos em snapshots."
+
+#: runexe/frontend/ui/details-preferences.blp:405
+msgid "Manage Patterns"
+msgstr "Gerir padrões"
+
+#: runexe/frontend/ui/details-taskmanager.blp:17
+msgid "Refresh"
+msgstr "Atualizar"
+
+#: runexe/frontend/ui/details-taskmanager.blp:22
+msgid "Stop process"
+msgstr "Parar processo"
+
+#: runexe/frontend/ui/details-versioning.blp:18
+msgid "No Snapshots Found"
+msgstr "Nenhum Snapshot Encontrado"
+
+#: runexe/frontend/ui/details-versioning.blp:19
+msgid "Create your first snapshot to start saving states of your preferences."
+msgstr ""
+"Crie o seu primeiro snapshot para começar a gravar estados de suas "
+"preferências."
+
+#: runexe/frontend/ui/details-versioning.blp:54
+msgid "A short comment"
+msgstr "Um breve comentário"
+
+#: runexe/frontend/ui/details-versioning.blp:58
+msgid "Save the capsule state."
+msgstr "Guardar estado do capsule."
+
+#: runexe/frontend/ui/details-versioning.blp:78
+msgid "Create new Snapshot"
+msgstr "Criar novo Snapshot"
+
+#: runexe/frontend/ui/details.blp:16
+msgid "Details"
+msgstr "Detalhes"
+
+#: runexe/frontend/ui/details.blp:24 runexe/frontend/ui/details.blp:64
+#: runexe/frontend/ui/importer.blp:15
+msgid "Go Back"
+msgstr "Voltar"
+
+#: runexe/frontend/ui/details.blp:75
+msgid "Operations"
+msgstr "Operações"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:4
+msgid "Select Capsule"
+msgstr "Selecionar garrafa"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:16
+#: runexe/frontend/ui/dialog-proton-alert.blp:16
+#: runexe/frontend/ui/dialog-rename.blp:15
+#: runexe/frontend/ui/dialog-run-args.blp:20
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:21
+msgid "Select"
+msgstr "Selecionar"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:38
+#: runexe/frontend/ui/new.blp:9 runexe/frontend/ui/new.blp:49
+#: runexe/frontend/ui/window.blp:25
+msgid "Create New Capsule"
+msgstr "Criar nova garrafa"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/dialog-crash-report.blp:8
+msgid "RunExe Crash Report"
+msgstr "Relatório de erros do RunExe"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:18
+#: runexe/frontend/ui/dialog-duplicate.blp:22
+#: runexe/frontend/ui/dialog-gamescope.blp:23
+#: runexe/frontend/ui/dialog-launch-options.blp:16
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:22
+#: runexe/frontend/ui/dialog-vkbasalt.blp:27 runexe/frontend/ui/new.blp:26
+#: runexe/frontend/views/capsule_details.py:504
+#: runexe/frontend/views/capsule_details.py:600
+#: runexe/frontend/views/capsule_preferences.py:749
+#: runexe/frontend/views/preferences.py:201
+msgid "_Cancel"
+msgstr "_Cancelar"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:25
+msgid "Send Report"
+msgstr "Enviar relatório"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:44
+msgid ""
+"RunExe crashed last time. Please fill out a report attaching the following "
+"traceback to help us identify the problem preventing it from happening again."
+msgstr ""
+"O RunExe fechou inesperadamente da última vez. Por favor, preencha um "
+"relatório a anexar o seguinte traceback para nos ajudar a identificar o "
+"problema, a evitar que ele ocorra novamente."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:74
+msgid ""
+"We found one or more similar (or identical) reports. Please make sure to "
+"check carefully that it has not already been reported before submitting a "
+"new one. Each report requires effort on the part of the developers to "
+"diagnose, please respect their work and make sure you don't post duplicates."
+msgstr ""
+"Encontramos um ou mais relatórios semelhantes (ou idênticos). Verifique "
+"cuidadosamente se já não foi relatado antes de enviar um novo. Cada "
+"relatório requer esforço por parte dos programadores para diagnosticar, por "
+"favor, respeite o trabalho deles e certifique-se de não postar duplicatas."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:89
+msgid "I still want to report."
+msgstr "Ainda quero reportar."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:95
+msgid "Advanced options"
+msgstr "Opções avançadas"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:13
+msgid "Incomplete package"
+msgstr "Pacote incompleto"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:14
+msgid ""
+"This version of RunExe does not seem to provide all the necessary core "
+"dependencies, please contact the package maintainer or use an official "
+"version."
+msgstr ""
+"Esta versão do RunExe parece não fornecer todas as dependências essenciais "
+"necessárias, entre em contato com o mantenedor do pacote ou use uma versão "
+"oficial."
+
+#: runexe/frontend/ui/dialog-deps-check.blp:18
+msgid "Quit"
+msgstr "Sair"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:11
+msgid ""
+"Dynamic Link Libraries can be specified to be builtin (provided by Wine) or "
+"native (provided by the program)."
+msgstr ""
+"Bibliotecas de ligações dinâmicas podem ser especificadas para serem "
+"integradas (fornecidas pelo Wine) ou nativas (fornecidas pelo programa)."
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:15
+msgid "New Override"
+msgstr "Nova substituição"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:21
+msgid "Overrides"
+msgstr "Substituições"
+
+#: runexe/frontend/ui/dialog-drives.blp:7
+msgid "Drives"
+msgstr "Discos"
+
+#: runexe/frontend/ui/dialog-drives.blp:24
+msgid ""
+"These are paths from your host system that are mapped and recognized as "
+"devices by the runner (e.g. C: D:…)."
+msgstr ""
+"Esses são os caminhos do seu sistema host que são mapeados e reconhecidos "
+"como aparelhos pelo executor (por exemplo, C: D:...)."
+
+#: runexe/frontend/ui/dialog-drives.blp:27
+msgid "Letter"
+msgstr "Letra"
+
+#: runexe/frontend/ui/dialog-drives.blp:49
+msgid "Existing Drives"
+msgstr "Discos Existentes"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:16
+msgid "Duplicate Capsule"
+msgstr "Duplicar garrafa"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:38
+msgid "Duplicate"
+msgstr "Duplicar"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:49
+msgid "Enter a name for the duplicate of the Capsule."
+msgstr "Digite um nome para a duplicata da garrafa."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:69
+msgid "Duplicating…"
+msgstr "A duplicar…"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:78
+#: runexe/frontend/ui/dialog-installer.blp:103
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:112
+#: runexe/frontend/views/new.py:177
+msgid "This could take a while."
+msgstr "Isso pode levar um tempo."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:97
+msgid "Capsule Duplicated"
+msgstr "Garrafa duplicada"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:28
+msgid ""
+"Environment variables are dynamic-named value that can affect the way "
+"running processes will behave on your capsule."
+msgstr ""
+"Variáveis de ambiente são valores nomeados dinamicamente que podem afetar a "
+"maneira como os processos em execução se comportarão na sua garrafa."
+
+#: runexe/frontend/ui/dialog-env-vars.blp:31
+msgid "Variable Name"
+msgstr "Nome da Variável"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:37
+msgid "Existing Variables"
+msgstr "Variáveis Existentes"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:20
+msgid "Exclusion Patterns"
+msgstr "Padrões de exclusão"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:28
+msgid ""
+"Define patterns that will be used to prevent some directories to being "
+"versioned."
+msgstr ""
+"Defina padrões que serão usados para evitar que alguns diretórios sejam "
+"versionados."
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:31
+msgid "Pattern"
+msgstr "Modelo"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:37
+msgid "Existing Patterns"
+msgstr "Padrões existentes"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:6
+msgid "Gamescope Settings"
+msgstr "Configurações do Gamescope"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:30
+#: runexe/frontend/ui/dialog-launch-options.blp:32
+#: runexe/frontend/ui/dialog-rename.blp:20
+#: runexe/frontend/ui/dialog-vkbasalt.blp:34
+msgid "Save"
+msgstr "Guardar"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:40
+msgid "Manage how games should be displayed."
+msgstr "Gere como os jogos devem ser exibidos."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:44
+msgid "Game Resolution"
+msgstr "Resolução do jogo"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:45
+msgid "Uses the resolution of the video game as a reference in pixels."
+msgstr "Usa a resolução de vídeo do jogo como referência em pixels."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:48
+#: runexe/frontend/ui/dialog-gamescope.blp:85
+msgid "Width"
+msgstr "Largura"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:64
+#: runexe/frontend/ui/dialog-gamescope.blp:101
+msgid "Height"
+msgstr "Altura"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:81
+msgid "Window Resolution"
+msgstr "Resolução da Janela"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:82
+msgid ""
+"Upscales the resolution when using a resolution higher than the game "
+"resolution in pixels."
+msgstr ""
+"Aumenta a resolução ao usar uma resolução maior que a resolução do jogo em "
+"pixels."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:118
+msgid "Miscellaneous"
+msgstr "Diversos"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:121
+msgid "Frame Rate Limit"
+msgstr "Limite da Taxa de Quadros"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:137
+msgid "Frame Rate Limit When Unfocused"
+msgstr "Limite da taxa de quadros quando não está em foco"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:153
+msgid "Integer Scaling"
+msgstr "Escalonamento Íntegro"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:162
+msgid "Window Type"
+msgstr "Tipo de janela"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:166
+msgid "Borderless"
+msgstr "Sem bordas"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:172
+msgid "Fullscreen"
+msgstr "Ecrã cheio"
+
+#: runexe/frontend/ui/dialog-installer.blp:40
+msgid "Do you want to proceed with the installation?"
+msgstr "Quer prosseguir com a instalação?"
+
+#: runexe/frontend/ui/dialog-installer.blp:45
+msgid "Start Installation"
+msgstr "Começar instalação"
+
+#: runexe/frontend/ui/dialog-installer.blp:64
+msgid ""
+"This installer requires some local resources which cannot be provided "
+"otherwise."
+msgstr ""
+"Este instalador requer alguns recursos locais que não podem ser fornecidos "
+"de outra forma."
+
+#: runexe/frontend/ui/dialog-installer.blp:68
+msgid "Proceed"
+msgstr "Seguir"
+
+#: runexe/frontend/ui/dialog-installer.blp:127
+msgid "Completed!"
+msgstr "Concluído!"
+
+#: runexe/frontend/ui/dialog-installer.blp:130
+msgid "Show Programs"
+msgstr "Mostrar programas"
+
+#: runexe/frontend/ui/dialog-installer.blp:148
+msgid "Installation Failed!"
+msgstr "Falha na Instalação!"
+
+#: runexe/frontend/ui/dialog-installer.blp:149
+msgid "Something went wrong."
+msgstr "Algo deu errado."
+
+#: runexe/frontend/ui/dialog-journal.blp:9
+msgid "All messages"
+msgstr "Todas as mensagens"
+
+#: runexe/frontend/ui/dialog-journal.blp:13
+msgid "Critical"
+msgstr "Crítico"
+
+#: runexe/frontend/ui/dialog-journal.blp:17
+msgid "Errors"
+msgstr "Erros"
+
+#: runexe/frontend/ui/dialog-journal.blp:21
+msgid "Warnings"
+msgstr "Avisos"
+
+#: runexe/frontend/ui/dialog-journal.blp:25
+msgid "Info"
+msgstr "Informações"
+
+#: runexe/frontend/ui/dialog-journal.blp:40
+msgid "Journal browser"
+msgstr "Navegador do journal"
+
+#: runexe/frontend/ui/dialog-journal.blp:48
+msgid "Journal Browser"
+msgstr "Navegador de diário"
+
+#: runexe/frontend/ui/dialog-journal.blp:53
+msgid "Change Logging Level."
+msgstr "Altera o nível dos logs."
+
+#: runexe/frontend/ui/dialog-journal.blp:57
+msgid "All"
+msgstr "Tudo"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:42
+msgid "Those arguments will be passed at launch."
+msgstr "Esses argumentos serão passados no lançamento."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:43
+msgid "Custom Arguments"
+msgstr "Argumentos personalizados"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:46
+msgid "Command Arguments"
+msgstr "Argumentos do comando"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:47
+#, c-format
+msgid "e.g.: VAR=value %command% -example1 -example2 -example3=hello"
+msgstr "ex.: VAR=valor %comando% -exemplo1 -exemplo2 -exemplo3=olá"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:52
+msgid "Post-run Script"
+msgstr "Script de pós-execução"
+
+#. endregion
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+#: runexe/frontend/windows/launchoptions.py:54
+msgid "Choose a script which should be executed after run."
+msgstr "Escolha um script que deve ser executado após a execução."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:70
+msgid "Choose a Script"
+msgstr "Escolha um Script"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+#: runexe/frontend/windows/launchoptions.py:55
+msgid "Choose from where start the program."
+msgstr "Escolha de onde iniciar o programa."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:118
+msgid "Choose a Directory"
+msgstr "Escolher um diretório"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:114
+msgid "These settings will override the default settings for this executable."
+msgstr ""
+"Essas configurações substituirão as configurações padrão para este "
+"executável."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:115
+msgid "Preferences Overrides"
+msgstr "Substituições de preferências"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:119
+msgid "Reset to Capsule's Defaults"
+msgstr "Restaurar ao Padrão do Capsule"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:165
+msgid "Virtual Desktop"
+msgstr "Área de trabalho virtual"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:4
+msgid "Proton Disclaimer"
+msgstr "Aviso do Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:21
+msgid "Use Proton"
+msgstr "Usar o Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:35
+msgid ""
+"Beware, using Proton-based runners in non-Steam capsules can cause problems "
+"and prevent them from behaving correctly.\n"
+"\n"
+"We recommend using Wine-GE rather, a version of Proton meant to run outside "
+"of Steam.\n"
+"\n"
+"Proceeding will automatically enable the Steam runtime (if present in the "
+"system and detected by RunExe) in order to allow it to access the necessary "
+"libraries and limit compatibility problems. Be aware that GloriousEggroll, "
+"the runner's provider, is not responsible for any problems and we ask that "
+"you do not report to them."
+msgstr ""
+"Cuidado, o uso de executor baseados no Proton em garrafas que não sejam da "
+"Steam pode causar problemas e impedir que eles se comportem corretamente.\n"
+"\n"
+"Recomendamos o uso do Wine-GE, uma versão do Proton destinada a ser "
+"executada fora do Steam.\n"
+"\n"
+"O procedimento ativará automaticamente a Steam Runtime "
+"(se presente no sistema e detectado pelo RunExe) para permitir que ele "
+"acesse as bibliotecas necessárias e limitar os problemas de compatibilidade. "
+"Esteja ciente de que o GloriousEggroll, fornecedor do executor, não é "
+"responsável por quaisquer problemas e pedimos que não comunique com eles."
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:43
+msgid "I got it."
+msgstr "Entendi."
+
+#: runexe/frontend/ui/dialog-rename.blp:7
+msgid "Rename"
+msgstr "Renomear"
+
+#: runexe/frontend/ui/dialog-rename.blp:30
+msgid "Choose a new name for the selected program."
+msgstr "Escolha um novo nome para o programa selecionado."
+
+#: runexe/frontend/ui/dialog-rename.blp:33
+msgid "New Name"
+msgstr "Novo nome"
+
+#: runexe/frontend/ui/dialog-run-args.blp:13
+msgid "Run With Arguments"
+msgstr "Executar com argumentos"
+
+#: runexe/frontend/ui/dialog-run-args.blp:34
+#: runexe/frontend/views/capsule_details.py:401
+#: runexe/frontend/views/list.py:131
+msgid "Run"
+msgstr "Executar"
+
+#: runexe/frontend/ui/dialog-run-args.blp:44
+msgid "Write below the arguments to be passed to the executable."
+msgstr "Escreva abaixo os argumentos a serem passados para o executável."
+
+#: runexe/frontend/ui/dialog-run-args.blp:47
+msgid "e.g.: -opengl -SkipBuildPatchPrereq"
+msgstr "por exemplo: -opengl -SkipBuildPatchPrereq"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:7
+msgid "Sandbox Settings"
+msgstr "Configurações da Sandbox"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:25
+msgid "Share Network"
+msgstr "Compartilhar rede"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:34
+msgid "Share Sound"
+msgstr "Compartilhar som"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:16
+msgid "Upgrade Needed"
+msgstr "Atualização necessária"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:38
+#: runexe/frontend/ui/onboard.blp:81
+msgid "Continue"
+msgstr "Continuar"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:47
+msgid "Launch upgrade"
+msgstr "Iniciar atualização"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:66
+msgid "New Versioning System"
+msgstr "Novo sistema de versionamento"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:69
+msgid "The new capsule versioning system has landed."
+msgstr "O novo sistema de versões de garrafas chegou."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:83
+msgid ""
+"RunExe has a whole new Versioning System that is not backwards compatible.\n"
+"\n"
+"To continue using versioning we need to re-initialize the capsule repository. "
+"This will not delete data from your capsule but will delete all existing "
+"snapshots and create a new one.\n"
+"\n"
+"If you need to go back to a previous snapshot before continuing, close this "
+"window and restore the snapshot, then reopen the capsule to show this window "
+"again.\n"
+"\n"
+"The old system will be discontinued in one of the next releases."
+msgstr ""
+"RunExe tem um Sistema de Versionamento totalmente novo que não é compatível "
+"com versões anteriores.\n"
+"\n"
+"Para continuar usando o controle de versão, precisamos reinicializar o "
+"repositório da garrafa. Isso não excluirá os dados da sua garrafa, mas "
+"excluirá todos os snapshots existentes e criará um novo.\n"
+"\n"
+"Se precisar de voltar a um estado anterior antes de continuar, feche esta "
+"janela e restaure o estado, depois reabra a garrafa para mostrar esta janela "
+"novamente.\n"
+"\n"
+"O sistema antigo será descontinuado num dos próximos lançamentos."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:103
+msgid "Re-initializing Repository…"
+msgstr "Reinicializando repositório…"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:133
+msgid "Done! Please restart RunExe."
+msgstr "Pronto! Por favor, reinicie o RunExe."
+
+#. Translators: vkBasalt is a Vulkan post processing layer for Linux
+#: runexe/frontend/ui/dialog-vkbasalt.blp:10
+msgid "Post-Processing Effects Settings"
+msgstr "Configuração de Efeitos de Pós-Processamento"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:44
+msgid "Default"
+msgstr "Predefinição"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:48
+msgid "Default Settings"
+msgstr "Configurações padrão"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:57
+msgid "Effects are applied according to the list order."
+msgstr "Os efeitos são aplicados conforme a ordem da lista."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:58
+msgid "Effects"
+msgstr "Efeitos"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:62
+msgid "Contrast Adaptive Sharpening"
+msgstr "Nitidez adaptável ao contraste"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:65
+#: runexe/frontend/ui/dialog-vkbasalt.blp:102
+msgid "Sharpness"
+msgstr "Nitidez"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:69
+#: runexe/frontend/ui/dialog-vkbasalt.blp:106
+#: runexe/frontend/ui/dialog-vkbasalt.blp:134
+#: runexe/frontend/ui/dialog-vkbasalt.blp:167
+#: runexe/frontend/ui/dialog-vkbasalt.blp:195
+#: runexe/frontend/ui/dialog-vkbasalt.blp:223
+#: runexe/frontend/ui/dialog-vkbasalt.blp:256
+#: runexe/frontend/ui/dialog-vkbasalt.blp:288
+#: runexe/frontend/ui/dialog-vkbasalt.blp:316
+#: runexe/frontend/ui/dialog-vkbasalt.blp:343
+#: runexe/frontend/ui/dialog-vkbasalt.blp:370 runexe/frontend/ui/new.blp:58
+msgid "Show Information"
+msgstr "Mostrar informação"
+
+#. Translators: Luma is not translatable
+#: runexe/frontend/ui/dialog-vkbasalt.blp:99
+msgid "Denoised Luma Sharpening"
+msgstr "Nitidez de Luma sem ruído"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:130
+msgid "Denoise"
+msgstr "Diminuir ruído"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:160
+msgid "Fast Approximate Anti-Aliasing"
+msgstr "Anti-Aliasing rápido aproximado"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:163
+msgid "Subpixel Quality"
+msgstr "Qualidade Subpixel"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:191
+msgid "Quality Edge Threshold"
+msgstr "Limiar de Qualidade de Borda"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:219
+msgid "Quality Edge Threshold Minimum"
+msgstr "Limiar Mínimo de Qualidade de Borda"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:249
+msgid "Subpixel Morphological Anti-Aliasing"
+msgstr "Antisserrilhamento morfológico de subpixel"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:252
+msgid "Edge Detection"
+msgstr "Detecção de bordas"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:267
+msgid "Luma"
+msgstr "Luma"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:273
+msgid "Color"
+msgstr "Cor"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:284
+msgid "Threshold"
+msgstr "Limite"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:312
+msgid "Max Search Steps"
+msgstr "Etapas de pesquisa máxima"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:339
+msgid "Max Search Steps Diagonal"
+msgstr "Etapas máximas de busca diagonal"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:366
+msgid "Max Corner Rounding"
+msgstr "Arredondamento Máximo de Cantos"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:411
+msgid ""
+"CAS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper, whereas values lower than 0 make the frame softer than native."
+msgstr ""
+"CAS sharpness aumenta a nitidez de um quadro. Valores mais altos tornam o "
+"quadro mais nítido, enquanto valores menores que 0 tornam o quadro mais "
+"suave que nativo."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:428
+msgid ""
+"DLS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper."
+msgstr ""
+"DLS sharpness aumenta a nitidez de um frame. Valores altos tornam o frame "
+"mais nítido."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:445
+msgid ""
+"DLS denoise decreases the noise of a frame. Higher values make the frame "
+"softer."
+msgstr ""
+"DLS denoise diminuem o ruído de um frame. Valores baixos tornam o frame mais "
+"suave."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:462
+msgid ""
+"FXAA subpixel quality decreases aliasing at the subpixel level. Higher "
+"values make the frame softer."
+msgstr ""
+"FXAA subpixel quality diminui o aliasing ao nível do subpixel. Valores altos "
+"suavizam o frame."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:479
+msgid ""
+"FXAA edge threshold is the minimum amount of contrast required to apply the "
+"FXAA algorithm. Higher values make the frame have more contrast."
+msgstr ""
+"Limite de borda FXAA é a quantidade mínima de contraste necessária para "
+"aplicar o algoritmo FXAA. Valores mais altos fazem com que o quadro tenha "
+"mais contraste."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:496
+msgid ""
+"FXAA quality edge threshold minimum is the minimum value of dark pixels that "
+"are ignored by the FXAA algorithm. Higher values make FXAA ignore pixels "
+"below the specified value and can lead to a performance increase."
+msgstr ""
+"Limite mínimo de qualidade da borda FXAA é o valor mínimo de pixels escuros "
+"que são ignorados pelo algoritmo FXAA. Valores mais altos fazem o FXAA "
+"ignorar pixels abaixo do valor especificado e podem levar a um aumento de "
+"desempenho."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:513
+msgid ""
+"Luma detects edges from a monochrome perspective, whereas Color detects "
+"edges based on colors. Luma is more performant than Color."
+msgstr ""
+"Luma deteta bordas de uma perspectiva monocromática, enquanto Color deteta "
+"bordas com base em cores. Luma é mais performante que Color."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:530
+msgid ""
+"SMAA threshold specifies the sensitivity of edge detection. Lower values "
+"detect more edges at the expense of performance."
+msgstr ""
+"O limiar do SMAA especifica a sensibilidade da detecção de bordas. Valores "
+"mais baixos detetam mais bordas à custa do desempenho."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:547
+msgid ""
+"SMAA max search steps specifies how many horizontal and vertical search "
+"steps are performed when searching for edges."
+msgstr ""
+"As etapas máximas de busca do SMAA especificam quantas etapas de busca "
+"horizontal e vertical são feitas ao buscar bordas."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:564
+msgid ""
+"SMAA max diagonal search steps specifies how many diagonal search steps are "
+"performed when searching for edges."
+msgstr ""
+"As etapas máximas de busca diagonal do SMAA especificam quantas etapas de "
+"busca diagonais são executadas ao buscar bordas."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:581
+msgid "SMAA corner rounding specifies the strength of rounding edge corners."
+msgstr ""
+"O arredondamento dos cantos do SMAA especifica a intensidade do "
+"arredondamento dos cantos."
+
+#: runexe/frontend/ui/dll-override-entry.blp:8
+msgid "Builtin (Wine)"
+msgstr "Integrado (Wine)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:9
+msgid "Native (Windows)"
+msgstr "Nativo (Windows)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:10
+msgid "Builtin, then Native"
+msgstr "Integrado, depois nativo"
+
+#: runexe/frontend/ui/dll-override-entry.blp:11
+msgid "Native, then Builtin"
+msgstr "Nativo, depois integrado"
+
+#: runexe/frontend/ui/dll-override-entry.blp:12
+msgid "Disabled"
+msgstr "Desativar"
+
+#: runexe/frontend/ui/dll-override-entry.blp:20
+#: runexe/frontend/ui/drive-entry.blp:12
+msgid "Remove"
+msgstr "Remover"
+
+#: runexe/frontend/ui/drive-entry.blp:5
+msgid "/point/to/path"
+msgstr "/aponte/pro/caminho"
+
+#: runexe/frontend/ui/env-var-entry.blp:4
+#: runexe/frontend/ui/exclusion-pattern-entry.blp:4
+msgid "Value"
+msgstr "Valor"
+
+#: runexe/frontend/ui/importer-entry.blp:13
+msgid "Browse files"
+msgstr "Navegar pelos ficheiros"
+
+#. Translators: A Wine prefix is a separate environment (C:\ drive) for the Wine program
+#: runexe/frontend/ui/importer-entry.blp:21
+msgid "Wine prefix name"
+msgstr "Nome do prefixo Wine"
+
+#: runexe/frontend/ui/importer-entry.blp:28
+msgid "Manager"
+msgstr "Gestor"
+
+#: runexe/frontend/ui/importer-entry.blp:38
+msgid "This Wine prefix was already imported in RunExe."
+msgstr "Este prefixo Wine já foi importado no RunExe."
+
+#: runexe/frontend/ui/importer.blp:22
+msgid "Import a Capsule backup"
+msgstr "Importar uma cópia de segurança do RunExe"
+
+#: runexe/frontend/ui/importer.blp:28
+msgid "Search again for prefixes"
+msgstr "Pesquisar novamente por prefixos"
+
+#: runexe/frontend/ui/importer.blp:38
+msgid "No Prefixes Found"
+msgstr "Nenhum Prefixo Encontrado"
+
+#: runexe/frontend/ui/importer.blp:39
+msgid ""
+"No external prefixes were found. Does RunExe have access to them?\n"
+"Use the icon on the top to import a capsule from a backup."
+msgstr ""
+"Nenhum prefixo externo foi encontrado. Tem o RunExe acesso a eles?\n"
+"Use o ícone na parte superior para importar uma garrafa de um backup."
+
+#: runexe/frontend/ui/importer.blp:74
+msgid "Full Archive"
+msgstr "Ficheiro completo"
+
+#: runexe/frontend/ui/installer-entry.blp:16
+msgid "Show Manifest…"
+msgstr "Mostrar manifesto…"
+
+#: runexe/frontend/ui/installer-entry.blp:20
+msgid "Read Review…"
+msgstr "Ler análise…"
+
+#: runexe/frontend/ui/installer-entry.blp:34
+msgid "Installer name"
+msgstr "Nome do instalador"
+
+#: runexe/frontend/ui/installer-entry.blp:35
+msgid "Installer description"
+msgstr "Descrição do instalador"
+
+#: runexe/frontend/ui/installer-entry.blp:42
+msgid "Unknown"
+msgstr "Desconhecido"
+
+#: runexe/frontend/ui/installer-entry.blp:51
+msgid "Install this Program"
+msgstr "Instale este programa"
+
+#: runexe/frontend/ui/installer-entry.blp:69
+msgid "Program Menu"
+msgstr "Menu de programas"
+
+#: runexe/frontend/ui/library-entry.blp:36
+msgid "No Thumbnail"
+msgstr "Sem miniatura"
+
+#: runexe/frontend/ui/library-entry.blp:57
+msgid "Launch"
+msgstr "Iniciar"
+
+#: runexe/frontend/ui/library-entry.blp:70
+#: runexe/frontend/ui/program-entry.blp:89
+msgid "Launch with Steam"
+msgstr "Iniciar com Steam"
+
+#: runexe/frontend/ui/library-entry.blp:108
+msgid "Item name"
+msgstr "Nome do item"
+
+#: runexe/frontend/ui/library-entry.blp:132
+msgid "Remove from Library"
+msgstr "Remover da biblioteca"
+
+#: runexe/frontend/ui/library-entry.blp:143
+msgid "Stop"
+msgstr "Parar"
+
+#: runexe/frontend/ui/library.blp:11
+#: runexe/frontend/windows/main_window.py:196
+msgid "Library"
+msgstr "Biblioteca"
+
+#: runexe/frontend/ui/library.blp:12
+msgid "Add items here from your capsule's program list"
+msgstr "Adicione itens aqui da lista de programas da sua garrafa"
+
+#: runexe/frontend/ui/list-entry.blp:26
+msgid "Versioning is active in this capsule."
+msgstr "O controlo da versão está ativo neste Capsule."
+
+#: runexe/frontend/ui/list-entry.blp:42
+msgid "This capsule looks damaged."
+msgstr "Este Capsule parece danificado."
+
+#: runexe/frontend/ui/list-entry.blp:55
+msgid "Execute in this Capsule"
+msgstr "Executar nesta garrafa"
+
+#: runexe/frontend/ui/list-entry.blp:69
+msgid "Run Here"
+msgstr "Executar aqui"
+
+#: runexe/frontend/ui/list-entry.blp:75
+msgid ""
+"This capsule looks damaged, the configuration file is missing. I can try to "
+"solve by creating a new configuration."
+msgstr ""
+"Este Capsule parece danificado, o ficheiro de configuração não foi "
+"encontrado. Posso tentar resolver criando uma nova configuração."
+
+#: runexe/frontend/ui/list.blp:12
+msgid "Search your capsules…"
+msgstr "Procure as suas garrafas…"
+
+#: runexe/frontend/ui/list.blp:28
+msgid "Steam Proton"
+msgstr "Steam Proton"
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/list.blp:42 runexe/frontend/windows/main_window.py:191
+#: data/io.github.runexe.RunExe.metainfo.xml.in:7
+msgid "RunExe"
+msgstr "RunExe"
+
+#: runexe/frontend/ui/list.blp:49
+msgid "Create New Capsule…"
+msgstr "Criar Nova Garrafa…"
+
+#: runexe/frontend/ui/list.blp:63
+msgid "No Results Found"
+msgstr "Nenhum resultado encontrado"
+
+#: runexe/frontend/ui/list.blp:64
+msgid "Try a different search."
+msgstr "Tente uma pesquisa diferente."
+
+#: runexe/frontend/ui/loading.blp:13
+msgid "Starting up…"
+msgstr "Começando…"
+
+#: runexe/frontend/ui/local-resource-entry.blp:4
+msgid "This resource is missing."
+msgstr "Este recurso está em falta."
+
+#: runexe/frontend/ui/local-resource-entry.blp:8
+msgid "Browse"
+msgstr "Navegar"
+
+#: runexe/frontend/ui/new.blp:32
+msgid "C_reate"
+msgstr "C_riar"
+
+#: runexe/frontend/ui/new.blp:53
+msgid "Capsule Name"
+msgstr "Nome do Capsule"
+
+#: runexe/frontend/ui/new.blp:75
+msgid "_Application"
+msgstr "_Aplicativo"
+
+#: runexe/frontend/ui/new.blp:88
+msgid "_Gaming"
+msgstr "_Jogos"
+
+#: runexe/frontend/ui/new.blp:101
+msgid "C_ustom"
+msgstr "C_ustomizado"
+
+#: runexe/frontend/ui/new.blp:114
+msgid "Custom"
+msgstr "Personalizado"
+
+#: runexe/frontend/ui/new.blp:118
+msgid "Share User Directory"
+msgstr "Partilhar Diretório de Utilizador"
+
+#: runexe/frontend/ui/new.blp:119
+msgid ""
+"This makes the user directory discoverable in the capsule, at the risk of "
+"sharing personal information to Windows software. This option cannot be "
+"changed after the capsule has been created."
+msgstr ""
+"Isto torna o diretório do utilizador detectável na garrafa, com o risco de "
+"partilhar informações pessoais com programas de Windows. Esta opção não pode "
+"ser mudada após criar a garrafa."
+
+#: runexe/frontend/ui/new.blp:136
+msgid "Architecture"
+msgstr "Arquitetura"
+
+#: runexe/frontend/ui/new.blp:137
+msgid "32-bit should only be used if strictly necessary."
+msgstr "32 bits só deve ser usado se estritamente necessário."
+
+#: runexe/frontend/ui/new.blp:146
+msgid "Import a custom configuration."
+msgstr "Importe uma configuração customizada."
+
+#: runexe/frontend/ui/new.blp:176
+msgid "Capsule Directory"
+msgstr "Diretório da Garrafa"
+
+#: runexe/frontend/ui/new.blp:177
+msgid "Directory that will contain the data of this capsule."
+msgstr "Diretório que contém os dados desta garrafa."
+
+#: runexe/frontend/ui/new.blp:249
+msgid "_Close"
+msgstr "_Fechar"
+
+#: runexe/frontend/ui/new.blp:281
+msgid "This name is unavailable, please try another."
+msgstr "Este nome está indisponível, tente outro."
+
+#: runexe/frontend/ui/onboard.blp:34
+msgid "Previous"
+msgstr "Anterior"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:59
+msgid "Welcome to RunExe"
+msgstr "Bem-vindo(a) ao RunExe"
+
+#: runexe/frontend/ui/onboard.blp:60
+msgid "Run Windows Software on Linux."
+msgstr "Execute programas do Windows no Linux."
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/onboard.blp:65
+msgid "Windows in RunExe"
+msgstr "Windows no RunExe"
+
+#: runexe/frontend/ui/onboard.blp:66
+msgid ""
+"RunExe uses compatibility runners to provide isolated containerized Windows-"
+"like environments where programs run."
+msgstr ""
+"O RunExe usa executores de compatibilidade para fornecer ambientes isolados "
+"do tipo Windows em contentores onde os programas são executados."
+
+#: runexe/frontend/ui/onboard.blp:72
+msgid "Almost Done"
+msgstr "Quase pronto"
+
+#: runexe/frontend/ui/onboard.blp:73
+msgid "We need a few more minutes to set everything up…"
+msgstr "Precisamos de mais alguns minutos para configurar tudo…"
+
+#: runexe/frontend/ui/onboard.blp:105
+msgid "All Ready!"
+msgstr "Tudo pronto!"
+
+#: runexe/frontend/ui/onboard.blp:114
+msgid "Please Finish the setup first"
+msgstr "Termine a configuração primeiro"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:120
+msgid "Start using RunExe"
+msgstr "Comece a usar o RunExe"
+
+#: runexe/frontend/ui/onboard.blp:141
+msgid "Next"
+msgstr "Próximo"
+
+#: runexe/frontend/ui/preferences.blp:4 runexe/frontend/ui/window.blp:86
+msgid "Preferences"
+msgstr "Preferências"
+
+#: runexe/frontend/ui/preferences.blp:11
+#: runexe/frontend/ui/preferences.blp:39
+msgid "General"
+msgstr "Em geral"
+
+#: runexe/frontend/ui/preferences.blp:14
+msgid "Appearance"
+msgstr "Aparência"
+
+#: runexe/frontend/ui/preferences.blp:17
+msgid "Dark Mode"
+msgstr "Tema escuro"
+
+#: runexe/frontend/ui/preferences.blp:18
+msgid "Whether RunExe should use the dark color scheme."
+msgstr "Se o RunExe deve usar o esquema de cor escuro."
+
+#: runexe/frontend/ui/preferences.blp:28
+msgid "Show Update Date"
+msgstr "Mostrar data de atualização"
+
+#: runexe/frontend/ui/preferences.blp:29
+msgid "Whether to show the update date in the capsule list."
+msgstr "Se deseja exibir a data de atualização na lista de garrafas."
+
+#: runexe/frontend/ui/preferences.blp:42
+#: data/io.github.runexe.RunExe.gschema.xml:46
+msgid "Notifications"
+msgstr "Notificações"
+
+#: runexe/frontend/ui/preferences.blp:43
+msgid "Show notifications for downloads and installs."
+msgstr "Mostrar notificações para descarregas e instalações."
+
+#: runexe/frontend/ui/preferences.blp:52
+msgid "Temp Files"
+msgstr "Ficheiros temporários"
+
+#: runexe/frontend/ui/preferences.blp:53
+msgid "Clean temp files when RunExe launches?"
+msgstr "Limpar ficheiros temporários quando o RunExe for lançado?"
+
+#: runexe/frontend/ui/preferences.blp:62
+msgid "Close RunExe After Starting a Program"
+msgstr "Fechar o RunExe Após Iniciar Um Programa"
+
+#: runexe/frontend/ui/preferences.blp:63
+msgid "Close RunExe after starting a program from the file manager."
+msgstr "Fechar o RunExe depois de iniciar um programa no gestor de ficheiros."
+
+#: runexe/frontend/ui/preferences.blp:73
+msgid "Integrations"
+msgstr "Integrações"
+
+#: runexe/frontend/ui/preferences.blp:76
+msgid "Steam Proton Prefixes"
+msgstr "Prefixos do Steam Proton"
+
+#: runexe/frontend/ui/preferences.blp:77
+msgid "List and manage Steam Proton prefixes."
+msgstr "Liste e gira os prefixos do Steam Proton."
+
+#: runexe/frontend/ui/preferences.blp:97
+msgid "List Steam Apps in Programs List"
+msgstr "Lista os Apps Steam na Lista de Programas"
+
+#: runexe/frontend/ui/preferences.blp:98
+msgid "Requires Steam for Windows installed in the capsule."
+msgstr "Requer Steam para Windows instalado na garrafa."
+
+#: runexe/frontend/ui/preferences.blp:107
+msgid "List Epic Games in Programs List"
+msgstr "Lista Epic Games na Lista de Programas"
+
+#: runexe/frontend/ui/preferences.blp:108
+msgid "Requires Epic Games Store installed in the capsule."
+msgstr "Requer a Epic Games Store instalada na garrafa."
+
+#: runexe/frontend/ui/preferences.blp:117
+msgid "List Ubisoft Games in Programs List"
+msgstr "Listar jogos da Ubisoft na lista de programas"
+
+#: runexe/frontend/ui/preferences.blp:118
+msgid "Requires Ubisoft Connect installed in the capsule."
+msgstr "Requer Ubisoft Connect instalado na garrafa."
+
+#: runexe/frontend/ui/preferences.blp:128
+msgid "Advanced"
+msgstr "Avançado"
+
+#: runexe/frontend/ui/preferences.blp:131
+msgid "Capsules Directory"
+msgstr "Diretório do RunExe"
+
+#: runexe/frontend/ui/preferences.blp:132
+msgid "Directory that contains the data of your Capsules."
+msgstr "Diretório que contém os dados das suas garrafas."
+
+#: runexe/frontend/ui/preferences.blp:167
+msgid "Runners"
+msgstr "Runners"
+
+#: runexe/frontend/ui/preferences.blp:181
+msgid "RunExe is running in offline mode, so runners are not available."
+msgstr ""
+"O RunExe executa no modo offline, logo os executores não estão disponíveis."
+
+#: runexe/frontend/ui/preferences.blp:208
+msgid "Pre-Release"
+msgstr "Pré-lançamento"
+
+#: runexe/frontend/ui/preferences.blp:209
+msgid "Display unstable versions of runners."
+msgstr "Exibe versões instáveis de executores."
+
+#: runexe/frontend/ui/preferences.blp:224
+msgid "DLL Components"
+msgstr "Componentes DLL"
+
+#: runexe/frontend/ui/preferences.blp:238
+msgid "RunExe is running in offline mode, so DLLs are not available."
+msgstr "O RunExe executa no modo offline, logo as DLLs não estão disponíveis."
+
+#: runexe/frontend/ui/preferences.blp:270
+msgid "DXVK-NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/preferences.blp:283
+msgid "Core"
+msgstr "Núcleo"
+
+#: runexe/frontend/ui/preferences.blp:287
+msgid "Runtime"
+msgstr "Tempo de execução"
+
+#: runexe/frontend/ui/preferences.blp:291
+msgid "WineBridge"
+msgstr "WineBridge"
+
+#: runexe/frontend/ui/preferences.blp:297
+#: data/io.github.runexe.RunExe.gschema.xml:66
+msgid "Experiments"
+msgstr "Funcionalidades experimentais"
+
+#: runexe/frontend/ui/preferences.blp:300
+msgid ""
+"These features are under heavy development and may be unstable, expect bugs "
+"and breakage."
+msgstr ""
+"Estes recursos estão em desenvolvimento pesado e podem ser instáveis, espere "
+"bugs e quebras."
+
+#: runexe/frontend/ui/preferences.blp:303
+msgid "Sandbox per capsule"
+msgstr "Sandbox por garrafa"
+
+#: runexe/frontend/ui/preferences.blp:304
+msgid "In early development."
+msgstr "Em desenvolvimento inicial."
+
+#: runexe/frontend/ui/program-entry.blp:19
+msgid "Launch with Terminal"
+msgstr "Iniciar com terminal"
+
+#: runexe/frontend/ui/program-entry.blp:25
+msgid "Browse Path"
+msgstr "Navegar no caminho"
+
+#: runexe/frontend/ui/program-entry.blp:39
+msgid "Change Launch Options…"
+msgstr "Alterar opções de inicialização…"
+
+#: runexe/frontend/ui/program-entry.blp:43
+msgid "Add to Library"
+msgstr "Adicionar à biblioteca"
+
+#: runexe/frontend/ui/program-entry.blp:47
+msgid "Add Desktop Entry"
+msgstr "Adicionar entrada à área de trabalho"
+
+#: runexe/frontend/ui/program-entry.blp:51
+msgid "Add to Steam"
+msgstr "Adicionar à Steam"
+
+#: runexe/frontend/ui/program-entry.blp:55
+msgid "Rename…"
+msgstr "Renomear…"
+
+#: runexe/frontend/ui/program-entry.blp:62
+msgid "Hide Program"
+msgstr "Ocultar programa"
+
+#: runexe/frontend/ui/program-entry.blp:66
+msgid "Show Program"
+msgstr "Mostrar programa"
+
+#: runexe/frontend/ui/program-entry.blp:70
+msgid "Remove from List"
+msgstr "Remover da lista"
+
+#: runexe/frontend/ui/program-entry.blp:83
+msgid "Program name"
+msgstr "Nome do programa"
+
+#. Translators: id as identification
+#: runexe/frontend/ui/state-entry.blp:8
+msgid "State id"
+msgstr "Identificação do estado"
+
+#: runexe/frontend/ui/state-entry.blp:9
+msgid "State comment"
+msgstr "Comentário do estado"
+
+#: runexe/frontend/ui/state-entry.blp:16
+msgid "Restore this Snapshot"
+msgstr "Voltar a este ponto de restauração"
+
+#: runexe/frontend/ui/task-entry.blp:19
+msgid "Delete message"
+msgstr "Apagar mensagem"
+
+#: runexe/frontend/ui/window.blp:40
+msgid "Main Menu"
+msgstr "Menu principal"
+
+#: runexe/frontend/ui/window.blp:54
+msgid ""
+"You don't seem connected to the internet. Without it you will not be able to "
+"download essential components. Click this icon when you have reestablished "
+"the connection."
+msgstr ""
+"Não parece conectado à Internet. Sem ele, não poderá descarregar componentes "
+"essenciais. Clique neste ícone quando tiver restabelecido a conexão."
+
+#: runexe/frontend/ui/window.blp:79
+msgid "Import…"
+msgstr "Importar…"
+
+#: runexe/frontend/ui/window.blp:91
+msgid "Help"
+msgstr "Ajuda"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/window.blp:96
+msgid "About RunExe"
+msgstr "Sobre o RunExe"
+
+#: runexe/frontend/views/capsule_details.py:191
+#, python-brace-format
+msgid "File \"{0}\" is not a .exe or .msi file"
+msgstr "O ficheiro \"{0}\" não é um ficheiro .exe ou .msi"
+
+#: runexe/frontend/views/capsule_details.py:207
+#, python-format
+msgid "Updated: %s"
+msgstr "Atualizado: %s"
+
+#: runexe/frontend/views/capsule_details.py:267
+#, python-brace-format
+msgid "\"{0}\" added"
+msgstr "\"{0}\" adicionado"
+
+#: runexe/frontend/views/capsule_details.py:270
+#: runexe/frontend/views/capsule_details.py:398
+#: runexe/frontend/views/list.py:128
+msgid "Select Executable"
+msgstr "Selecionar Executável"
+
+#: runexe/frontend/views/capsule_details.py:273
+msgid "Add"
+msgstr "Adicionar"
+
+#: runexe/frontend/views/capsule_details.py:346
+msgid "Hide Hidden Programs"
+msgstr "Ocultar Programas Ocultos"
+
+#: runexe/frontend/views/capsule_details.py:383
+#: runexe/frontend/widgets/library.py:156
+#: runexe/frontend/widgets/program.py:184
+#, python-brace-format
+msgid "Launching \"{0}\"…"
+msgstr "A iniciar \"{0}\"…"
+
+#: runexe/frontend/views/capsule_details.py:413
+msgid "Be Aware of Sandbox"
+msgstr "Esteja Atento ao Sandbox"
+
+#: runexe/frontend/views/capsule_details.py:414
+msgid ""
+"RunExe is running in a sandbox, a restricted permission environment needed "
+"to keep you safe. If the program won't run, consider moving inside the "
+"capsule (3 dots icon on the top), then launch from there."
+msgstr ""
+"O RunExe executa num sandbox, um ambiente de permissão restrita necessário "
+"para mantê-lo seguro. Considere movê-lo para dentro da garrafa "
+"(ícone de 3 pontos na parte superior) e iniciar a partir daí se o programa "
+"não for executado."
+
+#: runexe/frontend/views/capsule_details.py:416
+#: runexe/frontend/views/capsule_details.py:525
+#: runexe/frontend/windows/main_window.py:223
+msgid "_Dismiss"
+msgstr "_Dispensar"
+
+#: runexe/frontend/views/capsule_details.py:429
+msgid "Select the location where to save the backup config"
+msgstr "Selecione o local onde gravar a configuração da cópia de segurança"
+
+#: runexe/frontend/views/capsule_details.py:431
+msgid "Export"
+msgstr "Exportar"
+
+#: runexe/frontend/views/capsule_details.py:433
+msgid "Select the location where to save the backup archive"
+msgstr "Selecione o local onde gravar o ficheiro da cópia de segurança"
+
+#: runexe/frontend/views/capsule_details.py:435
+msgid "Backup"
+msgstr "Backup"
+
+#: runexe/frontend/views/capsule_details.py:440
+#, python-brace-format
+msgid "Backup created for \"{0}\""
+msgstr "Backup criado para \"{0}\""
+
+#: runexe/frontend/views/capsule_details.py:442
+#, python-brace-format
+msgid "Backup failed for \"{0}\""
+msgstr "Backup falhou para \"{0}\""
+
+#: runexe/frontend/views/capsule_details.py:501
+msgid "Are you sure you want to permanently delete \"{}\"?"
+msgstr "Tem certeza de que quer apagar \"{}\" para sempre?"
+
+#: runexe/frontend/views/capsule_details.py:502
+msgid ""
+"This will permanently delete all programs and settings associated with it."
+msgstr ""
+"Isto apagará para sempre todos programas e a configuração lhes associadas."
+
+#: runexe/frontend/views/capsule_details.py:505
+#: runexe/frontend/views/capsule_preferences.py:750
+msgid "_Delete"
+msgstr "_Excluir"
+
+#: runexe/frontend/views/capsule_details.py:521
+msgid "Missing Runner"
+msgstr "Executor ausente"
+
+#: runexe/frontend/views/capsule_details.py:522
+msgid ""
+"The runner requested by this capsule is missing. Install it through the "
+"RunExe preferences or choose a new one to run applications."
+msgstr ""
+"O executor solicitado por esta garrafa falta. Instale-o através das "
+"preferências do RunExe ou escolha uma nova garrafa para executar aplicações."
+
+#: runexe/frontend/views/capsule_details.py:597
+msgid "Are you sure you want to force stop all processes?"
+msgstr "Tem certeza de que quer forçar a paragem de todos os processos?"
+
+#: runexe/frontend/views/capsule_details.py:598
+msgid "This can cause data loss, corruption, and programs to malfunction."
+msgstr ""
+"Isto pode causar perda de dados, corrupção e mau funcionamento de programas."
+
+#: runexe/frontend/views/capsule_details.py:601
+msgid "Force _Stop"
+msgstr "Forçar _parada"
+
+#: runexe/frontend/views/capsule_preferences.py:195
+msgid "This feature is unavailable on your system."
+msgstr "Este recurso está indisponível no seu sistema."
+
+#: runexe/frontend/views/capsule_preferences.py:196
+msgid "{} To add this feature, please run flatpak install"
+msgstr "{} Para adicionar este recurso, execute flatpak install"
+
+#: runexe/frontend/views/capsule_preferences.py:246
+msgid "This capsule name is already in use."
+msgstr "Este nome de garrafa já está em uso."
+
+#: runexe/frontend/views/capsule_preferences.py:301
+#: runexe/frontend/windows/launchoptions.py:241
+msgid "Select Working Directory"
+msgstr "Selecione Diretório de Trabalho"
+
+#: runexe/frontend/views/capsule_preferences.py:423
+msgid "Directory that contains the data of \"{}\"."
+msgstr "Diretório que contém os dados de \"{}\"."
+
+#: runexe/frontend/views/capsule_preferences.py:746
+msgid "Are you sure you want to delete all snapshots?"
+msgstr "Tem certeza de que deseja apagar todos os pontos de restauração?"
+
+#: runexe/frontend/views/capsule_preferences.py:747
+msgid "This will delete all snapshots but keep your files."
+msgstr ""
+"Isto apagará todos os pontos de restauração, mas manterá os seus ficheiros."
+
+#: runexe/frontend/views/capsule_versioning.py:90
+msgid "Please migrate to the new Versioning system to create new states."
+msgstr "Migre para o novo sistema de controle de versão para criar estados."
+
+#: runexe/frontend/views/details.py:153
+msgid "Installers"
+msgstr "Instaladores"
+
+#: runexe/frontend/views/details.py:234
+msgid "Operations in progress, please wait."
+msgstr "Operação em andamento, aguarde."
+
+#: runexe/frontend/views/details.py:239
+msgid "Return to your capsules."
+msgstr "Retorne às suas garrafas."
+
+#: runexe/frontend/views/importer.py:92
+msgid "Backup imported successfully"
+msgstr "Backup importado com sucesso"
+
+#: runexe/frontend/views/importer.py:94
+msgid "Import failed"
+msgstr "Falha na importação"
+
+#: runexe/frontend/views/importer.py:108
+#: runexe/frontend/views/importer.py:147
+msgid "Importing backup…"
+msgstr "Importando backup…"
+
+#: runexe/frontend/views/importer.py:119
+msgid "Select a Backup Archive"
+msgstr "Selecione um Arquivo de Backup"
+
+#: runexe/frontend/views/importer.py:122
+#: runexe/frontend/views/importer.py:161
+msgid "Import"
+msgstr "Importar"
+
+#: runexe/frontend/views/importer.py:158 runexe/frontend/views/new.py:136
+msgid "Select a Configuration File"
+msgstr "Selecione um Ficheiro de Configuração"
+
+#: runexe/frontend/views/list.py:60 runexe/frontend/views/list.py:66
+msgid "N/A"
+msgstr "N/A"
+
+#. Set tooltip text
+#: runexe/frontend/views/list.py:91
+#, python-brace-format
+msgid "Run executable in \"{self.config.Name}\""
+msgstr "Executar executável em \"{self.config.Name}\""
+
+#: runexe/frontend/views/list.py:118
+#, python-brace-format
+msgid "Launching \"{0}\" in \"{1}\"…"
+msgstr "A iniciar \"{0}\" em \"{1}\"…"
+
+#: runexe/frontend/views/list.py:235
+msgid "Your Capsules"
+msgstr "Os seus RunExe"
+
+#: runexe/frontend/views/loading.py:41
+#, python-brace-format
+msgid "Downloading ~{0} of packages…"
+msgstr "A descarregar ~{0} de pacotes…"
+
+#: runexe/frontend/views/loading.py:42
+#, python-brace-format
+msgid "Fetched {0} of {1} packages"
+msgstr "Obteve {0} de {1} pacotes"
+
+#: runexe/frontend/views/new.py:157
+msgid "Select Capsule Directory"
+msgstr "Selecione o Diretório da Garrafa"
+
+#: runexe/frontend/views/new.py:176
+msgid "Creating Capsule…"
+msgstr "A criar Garrafa…"
+
+#: runexe/frontend/views/new.py:221
+msgid "Unable to Create Capsule"
+msgstr "Incapaz de Criar Garrafa"
+
+#: runexe/frontend/views/new.py:225
+msgid "Capsule failed to create with one or more errors."
+msgstr "Falha na criação da garrafa com um ou mais erros."
+
+#. Show success
+#: runexe/frontend/views/new.py:232
+msgid "Capsule Created"
+msgstr "Garrafa criada"
+
+#: runexe/frontend/views/new.py:233
+#, python-brace-format
+msgid "\"{0}\" was created successfully."
+msgstr "\"{0}\" foi criado com sucesso."
+
+#: runexe/frontend/views/preferences.py:142
+msgid "Steam was not found or RunExe does not have enough permissions."
+msgstr "Steam não foi encontrada ou RunExe não tem permissões suficientes."
+
+#: runexe/frontend/views/preferences.py:176
+msgid "Select Capsules Path"
+msgstr "Selecione o Caminho das Garrafas"
+
+#: runexe/frontend/views/preferences.py:198
+msgid "Relaunch RunExe?"
+msgstr "Reiniciar RunExe?"
+
+#: runexe/frontend/views/preferences.py:199
+msgid ""
+"RunExe will need to be relaunched to use this directory.\n"
+"\n"
+"Be sure to close every program launched from RunExe before relaunching "
+"RunExe, as not doing so can cause data loss, corruption and programs to "
+"malfunction."
+msgstr ""
+"RunExe terá de ser reiniciado para usar este diretório.\n"
+"\n"
+"Certifique-se de fechar todo programa iniciado a partir do RunExe antes de "
+"reiniciar o RunExe, pois não fazer isso pode causar perda de dados, "
+"corrupção e mau funcionamento dos programas."
+
+#: runexe/frontend/views/preferences.py:202
+msgid "_Relaunch"
+msgstr "_Reiniciar"
+
+#: runexe/frontend/views/preferences.py:243
+msgid "Based on Valve's Wine, includes staging and Proton patches."
+msgstr "Baseado no Valve's Wine, inclui testes e patches Proton."
+
+#: runexe/frontend/views/preferences.py:244
+msgid "Based on Wine upstream, includes staging and Proton patches."
+msgstr "Baseado no Wine upstream, inclui testes e patches Proton."
+
+#: runexe/frontend/views/preferences.py:247
+msgid "Based on Wine upstream, includes staging patches."
+msgstr "Baseado no Wine upstream, inclui testes e patches de teste."
+
+#: runexe/frontend/views/preferences.py:248
+msgid ""
+"Based on Valve's Wine, includes staging, Proton and Steam-specific patches. "
+"Requires the Steam Runtime turned on."
+msgstr ""
+"Baseado no Valve's Wine, inclui patches específicos de teste, Proton e "
+"Steam. Requer que o Steam Runtime esteja ativado."
+
+#: runexe/frontend/views/preferences.py:250
+msgid "Other"
+msgstr "Outro"
+
+#: runexe/frontend/widgets/component.py:74
+msgid "Upgrade"
+msgstr "Atualizar"
+
+#: runexe/frontend/widgets/component.py:140
+msgid "Installing…"
+msgstr "Instalando…"
+
+#: runexe/frontend/widgets/dependency.py:107
+#: runexe/frontend/widgets/installer.py:81
+#, python-brace-format
+msgid "Manifest for {0}"
+msgstr "Manifest para {0}"
+
+#: runexe/frontend/widgets/dependency.py:172
+#, python-brace-format
+msgid "\"{0}\" uninstalled"
+msgstr "\"{0}\" desinstalado"
+
+#: runexe/frontend/widgets/dependency.py:174
+#, python-brace-format
+msgid "\"{0}\" installed"
+msgstr "\"{0}\" instalado"
+
+#: runexe/frontend/widgets/dependency.py:188
+#, python-brace-format
+msgid "\"{0}\" failed to install"
+msgstr "\"{0}\" falha ao instalar"
+
+#: runexe/frontend/widgets/importer.py:68
+#, python-brace-format
+msgid "\"{0}\" imported"
+msgstr "\"{0}\" importado"
+
+#: runexe/frontend/widgets/installer.py:49
+msgid ""
+"This application may work poorly. The installer was configured to provide "
+"the best possible experience, but expect glitches, instability and lack of "
+"working features."
+msgstr ""
+"Esta aplicação pode funcionar mal. O instalador foi configurado para "
+"fornecer a melhor experiência possível, mas espere falhas, instabilidade e "
+"falta de recursos funcionais."
+
+#: runexe/frontend/widgets/installer.py:50
+msgid ""
+"This program works with noticeable glitches, but these glitches do not "
+"affect the application's functionality."
+msgstr ""
+"Este programa funciona com falhas notáveis, mas estas falhas não afetam a "
+"funcionalidade da aplicação."
+
+#: runexe/frontend/widgets/installer.py:51
+msgid "This program works with minor glitches."
+msgstr "Este programa funciona com pequenas falhas."
+
+#: runexe/frontend/widgets/installer.py:52
+msgid "This program works perfectly."
+msgstr "Este programa funciona perfeitamente."
+
+#: runexe/frontend/widgets/installer.py:90
+#, python-brace-format
+msgid "Review for {0}"
+msgstr "Análise de {0}"
+
+#: runexe/frontend/widgets/library.py:169
+#: runexe/frontend/widgets/program.py:194
+#, python-brace-format
+msgid "Stopping \"{0}\"…"
+msgstr "A parar \"{0}\"…"
+
+#: runexe/frontend/widgets/program.py:190
+#, python-brace-format
+msgid "Launching \"{0}\" with Steam…"
+msgstr "A iniciar \"{0}\" com Steam…"
+
+#: runexe/frontend/widgets/program.py:214
+#, python-brace-format
+msgid "\"{0}\" hidden"
+msgstr "\"{0}\" oculto"
+
+#: runexe/frontend/widgets/program.py:216
+#, python-brace-format
+msgid "\"{0}\" showed"
+msgstr "\"{0}\" mostrado(s)"
+
+#: runexe/frontend/widgets/program.py:242
+#, python-brace-format
+msgid "\"{0}\" removed"
+msgstr "\"{0}\" removido"
+
+#: runexe/frontend/widgets/program.py:274
+#, python-brace-format
+msgid "\"{0}\" renamed to \"{1}\""
+msgstr "\"{0}\" renomeado para \"{1}\""
+
+#: runexe/frontend/widgets/program.py:297
+#, python-brace-format
+msgid "Desktop Entry created for \"{0}\""
+msgstr "Entrada da área de trabalho criada para \"{0}\""
+
+#: runexe/frontend/widgets/program.py:313
+#, python-brace-format
+msgid "\"{0}\" added to your library"
+msgstr "\"{0}\" adicionado à sua biblioteca"
+
+#: runexe/frontend/widgets/program.py:331
+#, python-brace-format
+msgid "\"{0}\" added to your Steam library"
+msgstr "\"{0}\" adicionado à sua biblioteca Steam"
+
+#: runexe/frontend/windows/crash.py:33
+msgid "Show report"
+msgstr "Mostrar relatório"
+
+#: runexe/frontend/windows/crash.py:80
+msgid ""
+"            This issue was reported 5 times and cannot be sent again.\n"
+"            Report your feedback in one of the below existing reports."
+msgstr ""
+"            Este problema foi reportado 5 vezes e não pode ser enviado "
+"novamente.\n"
+"            Faça os seus comentários num dos relatórios existentes abaixo."
+
+#: runexe/frontend/windows/display.py:102
+msgid "Updating display settings, please wait…"
+msgstr "A atualizar onfigurações do ecrã, aguarde…"
+
+#: runexe/frontend/windows/display.py:114
+msgid "Display settings updated"
+msgstr "Configurações do ecrã atualizados"
+
+#: runexe/frontend/windows/dlloverrides.py:136
+msgid "No overrides found."
+msgstr "Nenhuma substituição encontrada."
+
+#: runexe/frontend/windows/drives.py:71
+msgid "Select Drive Path"
+msgstr "Selecione o Caminho da Unidade"
+
+#: runexe/frontend/windows/envvars.py:131
+msgid "No environment variables defined."
+msgstr "Nenhuma variável de ambiente definida."
+
+#: runexe/frontend/windows/exclusionpatterns.py:108
+msgid "No exclusion patterns defined."
+msgstr "Nenhum padrão de exclusão definido."
+
+#: runexe/frontend/windows/generic.py:24
+msgid "An error has occurred."
+msgstr "Ocorreu um erro."
+
+#: runexe/frontend/windows/generic.py:91
+#: runexe/frontend/windows/generic.py:137
+#: runexe/frontend/windows/generic.py:182
+msgid "Copy to clipboard"
+msgstr "Copiar para a área de transferência"
+
+#: runexe/frontend/windows/installer.py:62
+msgid "Select Resource File"
+msgstr "Selecionar Ficheiro de Recurso"
+
+#: runexe/frontend/windows/installer.py:109
+msgid "Installing Windows dependencies…"
+msgstr "Instalando dependências do Windows…"
+
+#: runexe/frontend/windows/installer.py:110
+msgid "Configuring the capsule…"
+msgstr "Configurando a garrafa…"
+
+#: runexe/frontend/windows/installer.py:111
+msgid "Processing installer steps…"
+msgstr "Processando etapas do instalador…"
+
+#: runexe/frontend/windows/installer.py:112
+msgid "Installing the {}…"
+msgstr "Instalando o {}…"
+
+#: runexe/frontend/windows/installer.py:113
+msgid "Performing final checks…"
+msgstr "Fazendo as verificações finais…"
+
+#: runexe/frontend/windows/installer.py:117
+#, python-brace-format
+msgid "Installing {0}…"
+msgstr "Instalando {0}…"
+
+#: runexe/frontend/windows/installer.py:119
+#, python-brace-format
+msgid "{0} is now available in the programs view."
+msgstr "{0} está agora disponível na visualização dos programas."
+
+#: runexe/frontend/windows/installer.py:166
+msgid "Installer failed with unknown error"
+msgstr "O instalador falhou com erro desconhecido"
+
+#: runexe/frontend/windows/launchoptions.py:56
+#, python-brace-format
+msgid "{0} is already disabled for this capsule."
+msgstr "{0} já está desativado para esta garrafa."
+
+#: runexe/frontend/windows/launchoptions.py:57
+msgid "This setting is different from the capsule's default."
+msgstr "Esta configuração é diferente do padrão da garrafa."
+
+#: runexe/frontend/windows/launchoptions.py:215
+msgid "Select Script"
+msgstr "Selecione um Script"
+
+#: runexe/frontend/windows/main_window.py:220
+msgid "Custom Capsules Path not Found"
+msgstr "Caminho de Garrafas Personalizado não encontrado"
+
+#: runexe/frontend/windows/main_window.py:221
+msgid ""
+"Falling back to default path. No capsules from the given path will be listed."
+msgstr ""
+"A voltar ao caminho padrão. Nenhuma garrafa do caminho dado será listada."
+
+#: data/io.github.runexe.RunExe.desktop.in.in:3
+msgid "@APP_NAME@"
+msgstr "@APP_NAME@"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:4
+#: data/io.github.runexe.RunExe.metainfo.xml.in:8
+msgid "Run Windows Software"
+msgstr "Execute programas do Windows"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:13
+msgid "wine;windows;"
+msgstr "wine;windows;"
+
+#: data/io.github.runexe.RunExe.gschema.xml:6
+msgid "Flatpak migration"
+msgstr "Migração Flatpak"
+
+#: data/io.github.runexe.RunExe.gschema.xml:7
+msgid "Toggle the Flatpak migration dialog."
+msgstr "Accione diálogo de Migração Flatpak."
+
+#: data/io.github.runexe.RunExe.gschema.xml:11
+msgid "Dark theme"
+msgstr "Tema escuro"
+
+#: data/io.github.runexe.RunExe.gschema.xml:12
+msgid "Force the use of dark theme."
+msgstr "Força o uso do tema escuro."
+
+#: data/io.github.runexe.RunExe.gschema.xml:16
+msgid "Toggle update date in list"
+msgstr "Accionar a data de atualização na lista"
+
+#: data/io.github.runexe.RunExe.gschema.xml:17
+msgid "Toggle the update date in list of capsules."
+msgstr "Accionar a data de atualização na lista de RunExe."
+
+#: data/io.github.runexe.RunExe.gschema.xml:21
+msgid "Steam apps listing"
+msgstr "Listagem de apps da Steam"
+
+#: data/io.github.runexe.RunExe.gschema.xml:22
+msgid "Toggle steam apps listing."
+msgstr "Alternar a listagem de apps da Steam."
+
+#: data/io.github.runexe.RunExe.gschema.xml:26
+msgid "Epic Games listing"
+msgstr "Listagem da Epic Games"
+
+#: data/io.github.runexe.RunExe.gschema.xml:27
+msgid "Toggle epic games listing."
+msgstr "Alterne a listagem da Epic Games."
+
+#: data/io.github.runexe.RunExe.gschema.xml:31
+msgid "Ubisoft Connect listing"
+msgstr "Listagem do Ubisoft Connect"
+
+#: data/io.github.runexe.RunExe.gschema.xml:32
+msgid "Toggle ubisoft connect listing."
+msgstr "Alternar a listagem do Ubisoft Connect."
+
+#: data/io.github.runexe.RunExe.gschema.xml:36
+msgid "Window width"
+msgstr "Largura da janela"
+
+#: data/io.github.runexe.RunExe.gschema.xml:37
+msgid "Change the window width."
+msgstr "Modificar a largura da janela."
+
+#: data/io.github.runexe.RunExe.gschema.xml:41
+msgid "Window height"
+msgstr "Altura da janela"
+
+#: data/io.github.runexe.RunExe.gschema.xml:42
+msgid "Change the window height."
+msgstr "Modificar a altura da janela."
+
+#: data/io.github.runexe.RunExe.gschema.xml:47
+msgid "Show notifications."
+msgstr "Mostrar as notificações."
+
+#: data/io.github.runexe.RunExe.gschema.xml:51
+msgid "Temp cleaning"
+msgstr "Esvaziar ficheiros temporários"
+
+#: data/io.github.runexe.RunExe.gschema.xml:52
+msgid "Clean the temp path when booting the system."
+msgstr "Esvazie os ficheiros temporários na abertura da aplicação."
+
+#: data/io.github.runexe.RunExe.gschema.xml:56
+msgid "Release Candidate"
+msgstr "Versão de testes"
+
+#: data/io.github.runexe.RunExe.gschema.xml:57
+msgid "Toggle release candidate for runners."
+msgstr "Alterar as versões de testes para os runners."
+
+#: data/io.github.runexe.RunExe.gschema.xml:61
+msgid "Startup view"
+msgstr "Ecrã inicial"
+
+#: data/io.github.runexe.RunExe.gschema.xml:62
+msgid "Choose which view the application should be started in."
+msgstr ""
+"Escolha quais das opções devem ser carregadas em conjunto com a aplicação."
+
+#: data/io.github.runexe.RunExe.gschema.xml:67
+msgid ""
+"Toggle experimental features such as versioning and installers. Release "
+"candidate for runners."
+msgstr ""
+"Acciona recursos experimentais, como controlo de versão e instaladores. "
+"Candidato a Lançamento para Runners."
+
+#: data/io.github.runexe.RunExe.gschema.xml:71
+msgid "Steam Proton Support"
+msgstr "Suporte ao Steam Proton"
+
+#: data/io.github.runexe.RunExe.gschema.xml:72
+msgid "Toggle Steam Proton prefixes support."
+msgstr "Alternar suporte a prefixos Steam Proton."
+
+#: data/io.github.runexe.RunExe.gschema.xml:76
+msgid "Experiments:sandbox"
+msgstr "Experimentos:sandbox"
+
+#: data/io.github.runexe.RunExe.gschema.xml:77
+msgid "Toggle experimental Sandbox per capsule."
+msgstr "Alternar modo experimental de biblioteca por garrafa."
+
+#: data/io.github.runexe.RunExe.gschema.xml:81
+msgid "Automatically close RunExe"
+msgstr "Fechar garrafas automaticamente"
+
+#: data/io.github.runexe.RunExe.gschema.xml:82
+msgid "Close RunExe after starting an executable from the file manager."
+msgstr ""
+"Fechar as capsules depois de iniciar o executável a partir do gestor de "
+"ficheiros."
+
+#: data/io.github.runexe.RunExe.gschema.xml:86
+msgid "Show sandbox warning"
+msgstr "Exibir aviso de sandbox"
+
+#: data/io.github.runexe.RunExe.gschema.xml:87
+msgid "Toggle sandbox warning."
+msgstr "Alternar aviso de sandbox."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:11
+msgid "Run Windows software on Linux with RunExe!"
+msgstr "Execute programas do Windows no Linux com o RunExe!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:12
+msgid "Capsule software and enjoy at your leisure!"
+msgstr "Engarrafe programas e divirta-se no seu lazer!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:13
+msgid ""
+"Our built-in dependency installation system grants automatic software "
+"compatibility access. Use the download manager to download the official "
+"components: the runner (Wine, Proton), DXVK, dependencies, etc."
+msgstr ""
+"O nosso sistema de instalação de dependência integrado permite fácil acesso "
+"a um amplo nível de compatibilidade de software. Também incluímos um gestor "
+"de descarregamentos para descarregar os componentes oficiais: runner "
+"(Wine, Proton), DXVK, dependências, etc."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:16
+msgid ""
+"Capsule versioning keeps your work safe now and lets you restore it later!"
+msgstr ""
+"A versão de capsule mantém o seu trabalho seguro agora e permite-lhe restaurá-"
+"lo mais tarde!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:17
+msgid "Features:"
+msgstr "Funcionalidades:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:19
+msgid "Create capsules using preconfigured environments or create your own"
+msgstr "Crie \"capsules\"usando ambientes pré-configurados ou crie os seus"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:20
+msgid ""
+"Run executables (.exe/.msi) in your capsules, directly from the context menu "
+"of your file-manager"
+msgstr ""
+"Execute todos os executáveis (.exe/.msi) nos seus capsules, diretamente do "
+"menu de contexto do seu gestor de ficheiros"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:21
+msgid "Automated detection of applications installed in your capsules"
+msgstr "Detecção automatizada de aplicações instalados nos seus capsules"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:22
+msgid "Add environment variables quickly"
+msgstr "Adicione variáveis de ambiente facilmente"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:23
+msgid "Override DLLs directly from per-capsule preferences"
+msgstr "Substitua DLLs diretamente das preferências do capsule"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:24
+msgid "On-the-fly runner change for any Capsule"
+msgstr "Mudança de runner em tempo real para qualquer capsule"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:25
+msgid ""
+"Various gaming-performance optimizations (esync, fsync, DXVK, cache, shader "
+"compiler, offload … and much more.)"
+msgstr ""
+"Várias otimizações para melhor desempenho de jogos "
+"(esync, fsync, DXVK, cache, compilador de shaders… e muito mais.)"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:26
+msgid "Automatic installation and management of Wine and Proton runners"
+msgstr "Instalação automática e gestão de runners Wine e Proton"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:27
+msgid "Automatic capsule repair in case of breakage"
+msgstr "Reparo automático do capsule em caso de quebra"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:28
+msgid "Integrated dependency-installer based on a community-driven repository"
+msgstr ""
+"Instalador de dependências integrado baseado num repositório orientado numa "
+"comunidade"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:29
+msgid "Integrated Task manager for Wine processes"
+msgstr "Gestor de tarefas integrado para processos do wine"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:30
+msgid "Access to ProtonDB and WineHQ for support"
+msgstr "Fácil acesso ao ProtonDB e WineHQ para suporte"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:31
+msgid "System for bringing your configuration to new versions of RunExe"
+msgstr "Sistema para trazer as suas configurações para novas versões do RunExe"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:32
+msgid "Back up and import runexe"
+msgstr "Faça cópias de segurança e importe capsules"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:33
+msgid "Import Wine prefixes from other managers"
+msgstr "Importe facilmente o wineprefix de outros gestores"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:34
+msgid "RunExe versioning"
+msgstr "Versionamento de garrafas"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:35
+msgid "... and much more that you can find by installing RunExe!"
+msgstr ".. e muito mais que pode encontrar ao instalar o RunExe!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:84
+msgid "Update metadata information"
+msgstr "Atualizar informações de metadados"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:89
+msgid "Add more update information and correct release notes version"
+msgstr ""
+"Adicionadas mais informações de atualização e corrigida a versão das notas "
+"de versão"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:94
+msgid "Fixed \"Add to Steam\" button"
+msgstr "Corrigido o botão “Adicionar à Steam”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:95
+msgid "Fixed CapsuleConfig being not serializable"
+msgstr "Corrigido o CapsuleConfig sendo não serializável"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:96
+msgid "Fixed Patool double extraction failing"
+msgstr "Corrigida uma falha na extração dupla do Patool"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:101
+msgid "Correct version"
+msgstr "Versão correta"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:106
+msgid "Fix crash when creating a capsule"
+msgstr "Corrigido um erro ao criar uma garrafa"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:111
+msgid "Major change: Redesign New Capsule interface"
+msgstr "Grande mudança: Redesenho da Interface de Nova Garrafa"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:112
+msgid "Quality of life improvements:"
+msgstr "Melhorias na qualidade de vida:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:114
+msgid "Replace emote-love icon with library in library page"
+msgstr "Substitua o ícone emote-love pela biblioteca na página da biblioteca"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:115
+msgid "Add toast for \"Run Executable\""
+msgstr "Adicionar notificação do sistema para “Executar Executável”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:117
+msgid "Bug fixes:"
+msgstr "Correções de bugs:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:119
+msgid "Adding shortcut to Steam resulted an error"
+msgstr "Adicionar atalho ao Steam resultou em erro"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:120
+msgid "Importing backups resulted an error"
+msgstr "Importar backups causou um erro"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:121
+msgid "Steam Runtime automatically enabled when using wine-ge-custom"
+msgstr ""
+"Ambiente de Execução da Steam automaticamente ativado ao usar o wine-ge-"
+"custom"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:122
+msgid ""
+"Various library related fixes, like empty covers, and crashes related to "
+"missing entries"
+msgstr ""
+"Várias correções relacionadas à biblioteca, como capas vazias e falhas "
+"relacionadas a entradas ausentes"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:123
+msgid "Fix various issues related to text encoding"
+msgstr "Corrigidos vários problemas relacionados à codificação de texto"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:130
+msgid "Fix error when downloading if RunExe isn't run from terminal"
+msgstr ""
+"Corrigido o erro ao descarregar se o RunExe não for executado no terminal"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:137
+msgid "Correct version date"
+msgstr "Data correta da versão"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:138
+msgid "Hide NVIDIA-related critical errors on non NVIDIA systems"
+msgstr ""
+"Ocultar erros críticos relacionados à NVIDIA em sistemas que não sejam da "
+"NVIDIA"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:145
+msgid "Gamescope improvements and fixes"
+msgstr "Melhorias e correções do Gamescope"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:146
+msgid "Dependency installation is faster and more stable"
+msgstr "A instalação de dependências é mais rápida e mais estável"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:147
+msgid "The health check has more information for faster debugging"
+msgstr ""
+"A verificação de integridade tem mais informações para uma depuração mais "
+"rápida"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:148
+msgid "NVAPI has a lot of fixes and is more stable, should now work properly"
+msgstr ""
+"O NVAPI tem várias correções e está mais estável e agora deve funcionar "
+"corretamente"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:149
+msgid "Fix crash when downloading a component"
+msgstr "Corrigido um erro ao descarregar um componente"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:150
+msgid "Backend code improvement by avoiding spin-lock"
+msgstr "Melhora do código de back-end ao evitar o spin-lock"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:151
+msgid "More variables for installer scripting"
+msgstr "Mais variáveis para o script do instalador"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:152
+msgid "Fix onboard dialog showing \"All ready\" while it was in fact not ready"
+msgstr ""
+"Correção da caixa de diálogo integrada mostrando \"Tudo pronto\" quando na "
+"verdade não estava pronto"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:153
+msgid "Improvement to build system"
+msgstr "Melhoria do sistema de builds"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:154
+msgid "Enabling VKD3D by default when creating capsules for gaming"
+msgstr "Ativação do VKD3D por padrão ao criar garrafas para jogos"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:155
+msgid "Fix crashes when reading Steam files with bad encodings"
+msgstr "Corrigidos erros ao ler ficheiros da Steam com má codificação"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:156
+msgid ""
+"Fix components not updated correctly in the UI after installation/"
+"uninstallation"
+msgstr ""
+"Corrigidos componentes não atualizados corretamente na interface do "
+"utilizador após a instalação/desinstalação"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:157
+msgid "More FSR fixes"
+msgstr "Mais correções de FSR"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:158
+msgid ""
+"Fix the issue when a program closes after it was launched from \"Run "
+"executable\""
+msgstr ""
+"Corrigido o problema quando um programa fecha após ser iniciado a partir de “"
+"Executar executável”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:159
+msgid "and many, many, many more!"
+msgstr "e muito, muito, muito mais!"

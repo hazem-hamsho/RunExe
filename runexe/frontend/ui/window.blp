@@ -1,0 +1,141 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RunExeWindow: Adw.ApplicationWindow {
+  title: "RunExe";
+  close-request => $on_close_request();
+
+  Adw.ToastOverlay toasts {
+    Adw.Leaflet main_leaf {
+      can-unfold: false;
+      can-navigate-back: true;
+
+      Box {
+        orientation: vertical;
+
+        HeaderBar headerbar {
+          title-widget: Adw.ViewSwitcherTitle view_switcher_title {
+            title: "RunExe";
+            stack: stack_main;
+          };
+
+          Stack btn_add {
+            StackPage {
+              name: "capsule";
+              child: Button btn_create_direct {
+                tooltip-text: _("Create a Capsule");
+                icon-name: "list-add-symbolic";
+              };
+            }
+          }
+
+          Box box_actions {}
+
+          styles [
+            "titlebar",
+          ]
+
+          [end]
+          MenuButton {
+            icon-name: "open-menu-symbolic";
+            menu-model: primary_menu;
+            tooltip-text: _("Main Menu");
+            primary: true;
+          }
+
+          [end]
+          ToggleButton btn_search {
+            tooltip-text: _("Search");
+            icon-name: "system-search-symbolic";
+            visible: false;
+          }
+
+          [end]
+          Button btn_donate {
+            tooltip-text: _("Support RunExe");
+            icon-name: "heart-symbolic";
+          }
+
+          [end]
+          Button btn_noconnection {
+            visible: false;
+            tooltip-text: _("You don\'t seem connected to the internet. Without it you will not be able to download essential components. Click this icon when you have reestablished the connection.");
+            icon-name: "dialog-error-symbolic";
+          }
+        }
+
+        Adw.Banner banner_offline {
+          title: _("You are offline. Some components and dependencies cannot be downloaded.");
+          button-label: _("Try Again");
+          revealed: false;
+        }
+
+        SearchBar searchbar {}
+
+        Adw.ViewStack stack_main {
+          vexpand: true;
+        }
+
+        Adw.ViewSwitcherBar view_switcher_bar {
+          stack: stack_main;
+          reveal: bind view_switcher_title.title-visible;
+        }
+      }
+    }
+  }
+}
+
+Popover pop_add {
+  styles [
+    "menu",
+  ]
+
+  Box {
+    orientation: vertical;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+
+    $GtkModelButton btn_create_capsule {
+      text: _("Create a Capsule");
+    }
+
+  }
+}
+
+menu primary_menu {
+  section {
+    item {
+      label: _("Import…");
+      action: "app.import";
+    }
+
+    item {
+      label: _("Journal");
+      action: "app.journal";
+    }
+  }
+
+  section {
+    item {
+      label: _("Preferences");
+      action: "app.preferences";
+    }
+
+    item {
+      label: _("Keyboard Shortcuts");
+      action: "win.show-help-overlay";
+    }
+
+    item {
+      label: _("Help");
+      action: "app.help";
+    }
+
+    item {
+      label: _("About RunExe");
+      action: "app.about";
+    }
+  }
+}

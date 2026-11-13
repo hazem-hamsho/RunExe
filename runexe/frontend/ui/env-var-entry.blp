@@ -1,0 +1,16 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $EnvironmentVariableEntryRow: Adw.EntryRow {
+  show-apply-button: true;
+
+  Button btn_remove {
+    valign: center;
+    icon-name: "user-trash-symbolic";
+    tooltip-text: _("Remove");
+
+    styles [
+      "flat",
+    ]
+  }
+}

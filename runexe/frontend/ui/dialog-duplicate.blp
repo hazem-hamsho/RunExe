@@ -1,0 +1,119 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DuplicateDialog: Adw.Window {
+  modal: true;
+  default-width: 400;
+  default-height: 400;
+  destroy-with-parent: true;
+
+  Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      show-end-title-buttons: false;
+
+      title-widget: Adw.WindowTitle {
+        title: _("Duplicate Capsule");
+      };
+
+      Button btn_cancel {
+        label: _("_Cancel");
+        use-underline: true;
+        action-name: "window.close";
+      }
+
+      ShortcutController {
+        scope: managed;
+
+        Shortcut {
+          trigger: "Escape";
+          action: "action(window.close)";
+        }
+      }
+
+      [end]
+      Button btn_duplicate {
+        label: _("Duplicate");
+        sensitive: false;
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    Stack stack_switcher {
+      Adw.PreferencesPage page_name {
+        Adw.PreferencesGroup {
+          description: _("Enter a name for the duplicate of the Capsule.");
+
+          Adw.EntryRow entry_name {
+            title: _("Name");
+          }
+
+          Adw.ActionRow row_destination {
+            title: _("Destination");
+            Button btn_destination {
+              icon-name: "folder-open-symbolic";
+              tooltip-text: _("Choose Destination");
+              valign: center;
+            }
+          }
+        }
+      }
+
+      StackPage {
+        name: "page_duplicating";
+
+        child: Box page_duplicating {
+          margin-top: 24;
+          margin-bottom: 24;
+          orientation: vertical;
+
+          Label {
+            halign: center;
+            margin-top: 12;
+            margin-bottom: 12;
+            label: _("Duplicating…");
+
+            styles [
+              "title-1",
+            ]
+          }
+
+          Label {
+            margin-bottom: 6;
+            label: _("This could take a while.");
+          }
+
+          ProgressBar progressbar {
+            width-request: 300;
+            halign: center;
+            margin-top: 24;
+            margin-bottom: 12;
+          }
+        };
+      }
+
+      StackPage {
+        name: "page_duplicated";
+
+        child: Adw.StatusPage page_duplicated {
+          icon-name: "object-select-symbolic";
+          title: _("Capsule Duplicated");
+        };
+      }
+
+      StackPage {
+        name: "page_failed";
+
+        child: Adw.StatusPage page_failed {
+          icon-name: "dialog-error-symbolic";
+          title: _("Capsule Duplication Failed");
+          description: _("The capsule could not be duplicated.");
+        };
+      }
+    }
+  }
+}

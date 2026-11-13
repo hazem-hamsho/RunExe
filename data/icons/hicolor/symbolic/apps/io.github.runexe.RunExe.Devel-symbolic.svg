@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <g transform="rotate(-45 8 8)" fill="#241f31">
+    <path d="M 8 4 H 4.5 A 4 4 0 0 0 4.5 12 H 8 Z"/>
+    <path fill-rule="evenodd" d="M 8 4 H 11.5 A 4 4 0 0 1 11.5 12 H 8 Z M 9 5.5 H 11.5 A 2.5 2.5 0 0 1 11.5 10.5 H 9 Z"/>
+  </g>
+</svg>

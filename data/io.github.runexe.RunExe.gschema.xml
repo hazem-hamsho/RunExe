@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="io.github.runexe.RunExe">
+	<schema id="@APP_ID@" path="/io/github/runexe/RunExe/">
+    <key type="b" name="flatpak-migration">
+      <default>true</default>
+      <summary>Flatpak migration</summary>
+      <description>Toggle the Flatpak migration dialog.</description>
+    </key>
+    <key type="b" name="dark-theme">
+      <default>false</default>
+      <summary>Dark theme</summary>
+      <description>Force the use of dark theme.</description>
+    </key>
+    <key type="s" name="ui-language">
+      <default>'system'</default>
+      <summary>Application language</summary>
+      <description>Choose the language used by the RunExe interface.</description>
+    </key>
+    <key type="b" name="force-offline">
+      <default>false</default>
+      <summary>Force Offline</summary>
+      <description>"Force disable any network activity even with available network connection."</description>
+    </key>
+    <key type="b" name="update-date">
+      <default>false</default>
+      <summary>Toggle update date in list</summary>
+      <description>Toggle the update date in list of capsules.</description>
+    </key>
+    <key type="as" name="capsule-order">
+      <default>[]</default>
+      <summary>Capsule order</summary>
+      <description>Store the custom order of capsules in the list.</description>
+    </key>
+    <key type="d" name="font-scale">
+      <range min="1.0" max="2.0"/>
+      <default>1.0</default>
+      <summary>Application font scale</summary>
+      <description>Scale RunExe text relative to the system font size.</description>
+    </key>
+    <key type="u" name="library-sort-order">
+      <range min="0" max="1"/>
+      <default>0</default>
+      <summary>Library sort order</summary>
+      <description>Sort the library by program name or by capsule and program name.</description>
+    </key>
+    <key type="i" name="window-width">
+      <default>880</default>
+      <summary>Window width</summary>
+      <description>Change the window width.</description>
+    </key>
+    <key type="i" name="window-height">
+      <default>640</default>
+      <summary>Window height</summary>
+      <description>Change the window height.</description>
+    </key>
+    <key type="b" name="notifications">
+      <default>true</default>
+      <summary>Notifications</summary>
+      <description>Show notifications.</description>
+    </key>
+    <key type="b" name="show-component-updates">
+      <default>true</default>
+      <summary>Component update suggestions</summary>
+      <description>Show runner and component update suggestions for capsules.</description>
+    </key>
+    <key type="b" name="eagle-security-scan">
+      <default>true</default>
+      <summary>Eagle security scan</summary>
+      <description>Scan executables for malware patterns before running them.</description>
+    </key>
+    <key type="b" name="eagle-crash-detection">
+      <default>true</default>
+      <summary>Eagle crash detection</summary>
+      <description>Offer an Eagle analysis when a program closes right after starting.</description>
+    </key>
+    <key type="b" name="temp">
+      <default>false</default>
+      <summary>Temp cleaning</summary>
+      <description>Clean the temp path when booting the system.</description>
+    </key>
+    <key type="b" name="release-candidate">
+      <default>false</default>
+      <summary>Release Candidate</summary>
+      <description>Toggle release candidate for runners.</description>
+    </key>
+    <key type="s" name="startup-view">
+      <default>'page_library'</default>
+      <summary>Startup view</summary>
+      <description>Choose which view the application should be started in.</description>
+    </key>
+    <key type="b" name="experiments">
+      <default>false</default>
+      <summary>Experiments</summary>
+      <description>Toggle experimental features such as versioning and installers. Release candidate for runners.</description>
+    </key>
+    <key type="b" name="auto-close-capsules">
+      <default>false</default>
+      <summary>Automatically close RunExe</summary>
+      <description>Close RunExe after starting an executable from the file manager.</description>
+    </key>
+    <key type="s" name="audio-driver">
+      <default>'default'</default>
+      <summary>Wine audio driver</summary>
+      <description>Select which Wine audio driver should be enforced for all capsules. Use "default" to leave the driver unchanged.</description>
+    </key>
+    <key type="b" name="disable-home-drive">
+      <default>false</default>
+      <summary>Disable the default Z: drive</summary>
+      <description>Do not expose the filesystem as the Z: drive in new capsules.</description>
+    </key>
+    <key type="b" name="show-sandbox-warning">
+      <default>true</default>
+      <summary>Show sandbox warning</summary>
+      <description>Toggle sandbox warning.</description>
+    </key>
+    <key type="b" name="playtime-enabled">
+      <default>true</default>
+      <summary>Enable playtime tracking</summary>
+      <description>When true, RunExe records playtime telemetry to a local SQLite database. Disable to stop tracking.</description>
+    </key>
+    <key type="i" name="playtime-heartbeat-interval">
+      <default>60</default>
+      <summary>Playtime heartbeat interval (seconds)</summary>
+      <description>How often to update session heartbeat. Defines max timestamp error for abrupt exits.</description>
+    </key>
+    <key type="i" name="eagle-scan-limit">
+      <default>50</default>
+      <summary>Eagle deep scan limit</summary>
+      <description>Maximum number of binaries to scan when analysing installers. Higher values provide more thorough analysis but take longer.</description>
+    </key>
+    <key type="b" name="show-funding">
+      <default>false</default>
+      <summary>Show funding dialog</summary>
+      <description>Toggle the funding dialog.</description>
+    </key>
+	</schema>
+</schemalist>

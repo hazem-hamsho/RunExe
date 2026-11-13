@@ -1,0 +1,504 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $PreferencesWindow: Adw.PreferencesDialog {
+  title: _("Preferences");
+  content-width: 750;
+  content-height: 720;
+
+  Adw.PreferencesPage {
+    name: "general";
+    icon-name: "preferences-system-symbolic";
+    title: _("General");
+
+    Adw.PreferencesGroup {
+      title: _("Appearance");
+
+      Adw.ActionRow row_theme {
+        title: _("Dark Mode");
+        subtitle: _("Whether RunExe should use the dark color scheme.");
+        visible: false;
+        activatable-widget: switch_theme;
+
+        Switch switch_theme {
+          valign: center;
+        }
+      }
+
+      Adw.ComboRow combo_ui_language {
+        title: _("Language");
+        subtitle: _("Quit and reopen RunExe to apply changes.");
+        model: StringList str_list_ui_languages {};
+      }
+
+      Adw.ComboRow combo_font_scale {
+        title: _("Text Size");
+        subtitle: _("Increase text size relative to the system setting.");
+
+        model: StringList {
+          strings [
+            _("System Default"),
+            "110%",
+            "125%",
+            "150%",
+            "175%",
+            "200%",
+          ]
+        };
+      }
+
+      Adw.ActionRow {
+        title: _("Show Update Date");
+        subtitle: _("Whether to show the update date in the capsule list.");
+        activatable-widget: switch_update_date;
+
+        Switch switch_update_date {
+          valign: center;
+        }
+      }
+
+      Adw.ComboRow combo_library_order {
+        title: _("Library Order");
+        model: StringList {
+          strings [
+            _("Program Name"),
+            _("Capsule Name"),
+          ]
+        };
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("General");
+
+      Adw.ActionRow {
+        title: _("Notifications");
+        subtitle: _("Show notifications for downloads and installs.");
+        activatable-widget: switch_notifications;
+
+        Switch switch_notifications {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Show Component Updates");
+        subtitle: _("Show runner and component update suggestions for all capsules.");
+        activatable-widget: switch_component_updates;
+
+        Switch switch_component_updates {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        visible: false;
+        title: _("Show Funding Dialog");
+        subtitle: _("Whether to show the funding dialog to support RunExe development.");
+        activatable-widget: switch_show_funding;
+
+        Switch switch_show_funding {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Temp Files");
+        subtitle: _("Clean temp files when RunExe launches?");
+        activatable-widget: switch_temp;
+
+        Switch switch_temp {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Close RunExe After Starting a Program");
+        subtitle: _("Close RunExe after starting a program from the file manager.");
+        activatable-widget: switch_auto_close;
+
+        Switch switch_auto_close {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Playtime Tracking");
+        subtitle: _("Record playtime statistics for programs launched from RunExe.");
+        activatable-widget: switch_playtime_tracking;
+
+        Switch switch_playtime_tracking {
+          valign: center;
+        }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Eagle");
+
+      Adw.ActionRow row_eagle_security {
+        title: _("Scan Files for Threats");
+        subtitle: _("Check executables for malware patterns before running them.");
+        activatable-widget: switch_eagle_security;
+
+        Switch switch_eagle_security {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Detect Crashes");
+        subtitle: _("Offer an Eagle analysis when a program closes right after starting.");
+        activatable-widget: switch_eagle_crash;
+
+        Switch switch_eagle_crash {
+          valign: center;
+        }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Advanced");
+
+      Adw.ActionRow action_prerelease {
+        title: _("Pre-Release");
+        subtitle: _("Display unstable versions of runners and components.");
+        activatable-widget: switch_release_candidate;
+
+        Switch switch_release_candidate {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Force Offline Mode");
+        subtitle: _("Force disable any network activity even with available network connection.");
+        activatable-widget: switch_force_offline;
+
+        Switch switch_force_offline {
+          valign: center;
+        }
+      }
+
+      Adw.ActionRow {
+        title: _("Default Z: Drive in New RunExe");
+        subtitle: _("Expose the filesystem, including your home directory, through Z:.");
+        activatable-widget: switch_home_drive;
+
+        Switch switch_home_drive {
+          valign: center;
+        }
+      }
+
+      Adw.ComboRow combo_audio_driver {
+        title: _("Audio Driver");
+        subtitle: _("Choose which Wine audio driver RunExe should enforce for all capsules.");
+
+        model: StringList {
+          strings [
+            _("System Default"),
+            _("PulseAudio"),
+            _("ALSA"),
+            _("OSS"),
+            _("Disabled"),
+          ]
+        };
+      }
+
+      Adw.SpinRow spin_eagle_limit {
+        title: _("Eagle Deep Scan Limit");
+        subtitle: _("Maximum binaries to analyze when extracting installers.");
+        adjustment: Adjustment {
+          lower: 10;
+          upper: 200;
+          step-increment: 10;
+          page-increment: 50;
+          value: 50;
+        };
+      }
+
+      Adw.ActionRow {
+        title: _("Capsules Directory");
+        subtitle: _("Directory that contains the data of your Capsules.");
+        activatable-widget: btn_capsules_path;
+
+        Button btn_capsules_path_reset {
+          tooltip-text: _("Reset to Default");
+          valign: center;
+          visible: false;
+          icon-name: "edit-undo-symbolic";
+
+          styles [
+            "flat",
+          ]
+        }
+
+        Button btn_capsules_path {
+          valign: center;
+
+          Box {
+            spacing: 6;
+
+            Image {
+              icon-name: "document-open-symbolic";
+            }
+
+            Label label_capsules_path {
+              label: _("(Default)");
+            }
+          }
+        }
+      }
+    }
+
+    Adw.PreferencesGroup {
+      title: _("Repositories");
+      description: _("Override the default repositories RunExe uses when downloading resources.");
+
+      Adw.EntryRow entry_personal_components {
+        title: _("Components Repository");
+        tooltip-text: _("Custom URL for components. Leave empty to use the default endpoint.");
+        show-apply-button: true;
+      }
+
+      Adw.EntryRow entry_personal_dependencies {
+        title: _("Dependencies Repository");
+        tooltip-text: _("Custom URL for dependencies. Leave empty to use the default endpoint.");
+        show-apply-button: true;
+      }
+
+      Adw.EntryRow entry_personal_installers {
+        title: _("Installers Repository");
+        tooltip-text: _("Custom URL for installers. Leave empty to use the default endpoint.");
+        show-apply-button: true;
+      }
+    }
+  }
+
+  Adw.PreferencesPage {
+    name: "runners";
+    icon-name: "system-run-symbolic";
+    title: _("Runners");
+
+    Adw.PreferencesGroup {
+      Stack installers_stack {
+        transition-type: crossfade;
+
+        StackPage {
+          name: "installers_offline";
+
+          child: Adw.StatusPage {
+            icon-name: "dialog-error-symbolic";
+            title: _("You're offline :(");
+            vexpand: true;
+            hexpand: true;
+            description: _("RunExe is running in offline mode, so runners are not available.");
+          };
+        }
+
+        StackPage {
+          name: "installers_loading";
+
+          child: Adw.StatusPage {
+            vexpand: true;
+            hexpand: true;
+
+            Spinner installers_spinner {
+              valign: center;
+            }
+          };
+        }
+
+        StackPage {
+          name: "installers_list";
+
+          child: Adw.PreferencesPage {
+            Adw.PreferencesGroup list_runners {
+              vexpand: true;
+              hexpand: true;
+            }
+          };
+        }
+      }
+    }
+  }
+
+  Adw.PreferencesPage {
+    name: "cache";
+    icon-name: "folder-open-symbolic";
+    title: _("Cache");
+
+    Adw.PreferencesGroup {
+      Stack cache_stack {
+       transition-type: crossfade;
+
+       StackPage {
+         name: "cache_loading";
+
+         child: Adw.StatusPage {
+           vexpand: true;
+           hexpand: true;
+
+           Spinner cache_spinner {
+             valign: center;
+           }
+         };
+       }
+
+       StackPage {
+         name: "cache_list";
+
+         child: Adw.PreferencesPage {
+           Adw.PreferencesGroup {
+             title: _("Overview");
+             description: _("Manage cached files used to speed up downloads and capsule creation.");
+
+             Adw.ActionRow row_cache_all {
+               title: _("All caches");
+               subtitle: _("Remove every cached download and template. RunExe will recreate them when required, which may take longer.");
+               activatable-widget: btn_cache_clear_all;
+
+               [suffix]
+               Box {
+                 spacing: 6;
+
+                 Label label_cache_total_size {
+                   xalign: 1.0;
+                   styles [
+                     "dim-label"
+                     ]
+                 }
+
+                 Button btn_cache_clear_all {
+                   label: _("_Delete All");
+                   use-underline: true;
+                   valign: center;
+
+                   styles [
+                     "destructive-action",
+                   ]
+                 }
+               }
+             }
+           }
+
+           Adw.PreferencesGroup {
+             title: _("Temp files");
+             description: _("Includes archives and extracted resources downloaded for runners, dependencies, and installers.");
+
+             Adw.ActionRow row_cache_temp {
+               title: _("Temp cache");
+               subtitle: _("Clearing this cache can increase download times because resources must be fetched again.");
+               activatable-widget: btn_cache_clear_temp;
+
+               [suffix]
+               Box {
+                 spacing: 6;
+
+                 Label label_cache_temp_size {
+                   xalign: 1.0;
+                   styles [
+                     "dim-label"
+                     ]
+                 }
+
+                 Button btn_cache_clear_temp {
+                   label: _("_Delete");
+                   use-underline: true;
+                   valign: center;
+
+                   styles [
+                     "destructive-action",
+                   ]
+                 }
+               }
+             }
+           }
+
+           Adw.PreferencesGroup template_cache_group {
+             title: _("Prefix templates");
+             description: _("These caches store ready-made prefixes for each environment so new capsules start faster.");
+
+             Adw.ActionRow row_cache_templates_all {
+               title: _("All prefix templates");
+               subtitle: _("Remove every cached prefix template. RunExe will rebuild them when a new capsule is created, which may take longer.");
+               activatable-widget: btn_cache_clear_templates;
+
+               [suffix]
+               Box {
+                 spacing: 6;
+
+                 Label label_cache_templates_size {
+                   xalign: 1.0;
+                   styles [
+                     "dim-label"
+                     ]
+                 }
+
+                 Button btn_cache_clear_templates {
+                   label: _("_Delete");
+                   use-underline: true;
+                   valign: center;
+
+                   styles [
+                     "destructive-action",
+                   ]
+                 }
+               }
+             }
+           }
+         };
+       }
+     }
+   }
+  }
+
+  Adw.PreferencesPage {
+    name: "dll-components";
+    icon-name: "applications-games-symbolic";
+    title: _("DLL Components");
+
+    Adw.PreferencesGroup {
+      Stack dlls_stack {
+       transition-type: crossfade;
+
+       StackPage {
+         name: "dlls_offline";
+
+         child: Adw.StatusPage {
+           icon-name: "dialog-error-symbolic";
+           title: _("You're offline :(");
+           vexpand: true;
+           hexpand: true;
+           description: _("RunExe is running in offline mode, so DLLs are not available.");
+         };
+       }
+
+       StackPage {
+         name: "dlls_loading";
+
+         child: Adw.StatusPage {
+           vexpand: true;
+           hexpand: true;
+
+           Spinner dlls_spinner {
+             valign: center;
+           }
+         };
+       }
+
+       StackPage {
+         name: "dlls_list";
+
+         child: Adw.PreferencesPage {
+           Adw.PreferencesGroup list_dlls {
+             vexpand: true;
+             hexpand: true;
+           }
+         };
+       }
+     }
+   }
+  }
+
+}

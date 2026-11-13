@@ -1,0 +1,14 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RunExeCheckRow: Adw.ActionRow {
+  activatable-widget: check_button;
+  active: bind check_button.active bidirectional;
+
+  [prefix]
+  CheckButton check_button {
+    valign: center;
+    can-focus: false;
+    can-target: false;
+  }
+}

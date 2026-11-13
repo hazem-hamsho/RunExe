@@ -1,0 +1,100 @@
+import os
+from typing import Optional
+
+from runexe.backend.logger import Logger
+from runexe.backend.globals import Paths
+from runexe.backend.models.config import CapsuleConfig
+from runexe.backend.wine.winecommand import WineCommand
+
+logging = Logger()
+
+
+class WineProgram:
+    program: str = "unknown"
+    command: str = ""
+    config: CapsuleConfig
+    colors: str = "default"
+    is_internal: bool = False
+    internal_path: str = ""
+    returncode: Optional[int] = None
+
+    def __init__(self, config: CapsuleConfig, silent=False):
+        if not isinstance(config, CapsuleConfig):
+            raise TypeError(
+                "config should be CapsuleConfig type, but it was %s" % type(config)
+            )
+        self.config = config
+        self.silent = silent
+
+    def get_command(self, args: Optional[str] = None):
+        command = self.command
+
+        if self.is_internal:
+            command = os.path.join(Paths.base, self.internal_path, command)
+
+        if args is not None:
+            command += f" {args}"
+
+        return command
+
+    def launch(
+        self,
+        args: tuple | str | None = None,
+        terminal: bool = False,
+        minimal: bool = True,
+        communicate: bool = False,
+        environment: Optional[dict] = None,
+        pre_script: Optional[str] = None,
+        post_script: Optional[str] = None,
+        pre_script_args: Optional[str] = None,
+        post_script_args: Optional[str] = None,
+        cwd: Optional[str] = None,
+        action_name: str = "launch",
+        forced_dll_overrides: Optional[str] = None,
+        sandbox_override: Optional[str] = None,
+        capture_stderr: bool = False,
+    ):
+        if environment is None:
+            environment = {}
+
+        if not self.silent:
+            logging.info(f"Using {self.program} -- {action_name}")
+
+        if isinstance(args, tuple):
+            wineprogram_args = args[0]
+            program_args = args[1]
+        else:
+            wineprogram_args = args
+            program_args = None
+
+        command = self.get_command(wineprogram_args)
+        winecommand = WineCommand(
+            self.config,
+            command=command,
+            terminal=terminal,
+            minimal=minimal,
+            communicate=communicate,
+            colors=self.colors,
+            environment=environment,
+            forced_dll_overrides=forced_dll_overrides,
+            pre_script=pre_script,
+            post_script=post_script,
+            pre_script_args=pre_script_args,
+            post_script_args=post_script_args,
+            cwd=cwd,
+            arguments=program_args,
+            sandbox_override=sandbox_override,
+            capture_stderr=capture_stderr,
+        )
+
+        # logging.info("Executing command:", res.command)
+        self.returncode = None
+        res = winecommand.run()
+        self.returncode = getattr(winecommand, "returncode", None)
+        return res
+
+    def launch_terminal(self, args: Optional[str] = None):
+        self.launch(args=args, terminal=True, action_name="launch_terminal")
+
+    def launch_minimal(self, args: Optional[str] = None):
+        self.launch(args=args, minimal=True, action_name="launch_minimal")

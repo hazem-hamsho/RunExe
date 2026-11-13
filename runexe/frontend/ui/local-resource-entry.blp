@@ -1,0 +1,16 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $LocalResourceEntry: Adw.ActionRow {
+  subtitle: _("This resource is missing.");
+
+  Button btn_path {
+    valign: center;
+    tooltip-text: _("Browse");
+    icon-name: "document-open-symbolic";
+
+    styles [
+      "flat",
+    ]
+  }
+}

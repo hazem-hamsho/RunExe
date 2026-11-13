@@ -1,0 +1,101 @@
+import os
+import re
+import shlex
+from functools import lru_cache
+
+from runexe.backend.logger import Logger
+from runexe.backend.utils.manager import ManagerUtils
+from runexe.backend.wine.wineprogram import WineProgram
+
+logging = Logger()
+
+
+class WinePath(WineProgram):
+    program = "Wine path converter"
+    command = "winepath"
+
+    @staticmethod
+    @lru_cache
+    def is_windows(path: str):
+        return ":" in path or "\\" in path
+
+    @staticmethod
+    @lru_cache
+    def is_unix(path: str):
+        return not WinePath.is_windows(path)
+
+    @staticmethod
+    @lru_cache
+    def __clean_path(path):
+        return path.replace("\n", " ").replace("\r", " ").replace("\t", " ").strip()
+
+    @lru_cache
+    def to_unix(
+        self,
+        path: str,
+        native: bool = False,
+        sandbox_override: str | None = None,
+    ):
+        if native:
+            capsule_path = os.path.realpath(ManagerUtils.get_capsule_path(self.config))
+            path = path.replace("\\", "/")
+            path = path.replace(
+                path[0:2], f"{capsule_path}/dosdevices/{path[0:2].lower()}"
+            )
+            return self.__clean_path(path)
+        args = f"--unix {shlex.quote(path)}"
+        res = self.launch(
+            args=args,
+            communicate=True,
+            action_name="--unix",
+            sandbox_override=sandbox_override,
+        )
+        return self.__clean_path(res.data)
+
+    @lru_cache
+    def to_windows(
+        self,
+        path: str,
+        native: bool = False,
+        sandbox_override: str | None = None,
+    ):
+        path = self.__clean_path(path)
+
+        if native:
+            if self.is_windows(path):
+                return self.__clean_path(path)
+            capsule_path = os.path.realpath(ManagerUtils.get_capsule_path(self.config))
+            path = os.path.realpath(path)
+            if "/drive_" in path:
+                drive = re.search(r"drive_([a-z])/", path.lower()).group(1)
+                path = path.replace(
+                    f"{capsule_path}/drive_{drive.lower()}", f"{drive.upper()}:"
+                )
+            elif "/dosdevices" in path:
+                drive = re.search(r"dosdevices/([a-z]):", path.lower()).group(1)
+                path = path.replace(
+                    f"{capsule_path}/dosdevices/{drive.lower()}", f"{drive.upper()}:"
+                )
+            path = path.replace("/", "\\")
+            return self.__clean_path(path)
+
+        args = f"--windows {shlex.quote(path)}"
+        res = self.launch(
+            args=args,
+            communicate=True,
+            action_name="--windows",
+            sandbox_override=sandbox_override,
+        )
+        return self.__clean_path(res.data)
+
+    @lru_cache
+    def to_long(self, path: str):
+        args = f"--long {shlex.quote(path)}"
+        res = self.launch(args=args, communicate=True, action_name="--long")
+        return self.__clean_path(res.data)
+
+    @lru_cache
+    def to_short(self, path: str):
+        args = f"--short {shlex.quote(path)}"
+        res = self.launch(args=args, communicate=True, action_name="--short")
+        return self.__clean_path(res.data)

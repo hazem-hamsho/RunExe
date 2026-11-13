@@ -1,0 +1,40 @@
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+dialogsdir = join_paths(pkgdatadir, 'runexe/frontend/windows')
+
+runexe_sources = [
+  '__init__.py',
+  'crash.py',
+  'dlloverrides.py',
+  'dependency_install.py',
+  'duplicate.py',
+  'envvars.py',
+  'fileassociations.py',
+  'generic.py',
+  'launchoptions.py',
+  'onboard.py',
+  'playtimegraph.py',
+  'programbackups.py',
+  'rename.py',
+  'drives.py',
+  'eagleintel.py',
+  'funding.py',
+  'display.py',
+  'generic_cli.py',
+  'journal.py',
+  'capsulepicker.py',
+  'bulkupdate.py',
+  'sandbox.py',
+  'installer.py',
+  'depscheck.py',
+  'exclusionpatterns.py',
+  'registry_rules.py',
+  'winebridgeupdate.py',
+  'upgradeversioning.py',
+  'window.py',
+  'versioning_settings.py',
+  'versioning_commit.py',
+  'versioning_branch.py',
+  'versioning_manage_branches.py',
+]
+
+install_data(runexe_sources, install_dir: dialogsdir)

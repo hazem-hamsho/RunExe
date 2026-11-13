@@ -1,0 +1,3146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the runexe package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: runexe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-27 13:50+0530\n"
+"PO-Revision-Date: 2026-07-30 02:01+0000\n"
+"Last-Translator: \"Omer I.S.\" <omeritzicschwartz@gmail.com>\n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
+"n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 2026.8.dev0\n"
+
+#: runexe/backend/managers/backup.py:48 runexe/backend/managers/backup.py:95
+msgid "No path specified"
+msgstr "לא צוין נתיב"
+
+#: runexe/backend/managers/backup.py:56
+#, python-brace-format
+msgid "Backup {0}"
+msgstr "גיבוי {0}"
+
+#: runexe/backend/managers/backup.py:101
+#, python-brace-format
+msgid "Importing backup: {0}"
+msgstr "מייבא גיבוי: {0}"
+
+#: runexe/backend/managers/manager.py:1057
+msgid "Fail to install components, tried 3 times."
+msgstr "התקנת רכיבים נכשלה, בוצעו 3 ניסיונות."
+
+#: runexe/backend/managers/manager.py:1068
+msgid "Missing essential components. Installing…"
+msgstr "חסרים רכיבים חיוניים. מותקנים…"
+
+#: runexe/backend/managers/manager.py:1145
+msgid "Failed to create capsule directory."
+msgstr "יצירת תיקיית בקבוק נכשלה."
+
+#: runexe/backend/managers/manager.py:1157
+msgid "Failed to create placeholder directory/file."
+msgstr "יצירת תיקייה/קובץ ממלאי מקום נכשלה."
+
+#: runexe/backend/managers/manager.py:1162
+msgid "Generating capsule configuration…"
+msgstr "נוצרת תצורת בקבוק…"
+
+#: runexe/backend/managers/manager.py:1185
+msgid "Template found, applying…"
+msgstr "נמצאה תבנית, מיושמת…"
+
+#. execute wineboot on the capsule path
+#: runexe/backend/managers/manager.py:1197
+msgid "The Wine config is being updated…"
+msgstr "תצורת Wine מתעדכנת…"
+
+#: runexe/backend/managers/manager.py:1199
+msgid "Wine config updated!"
+msgstr "תצורת Wine עודכנה!"
+
+#: runexe/backend/managers/manager.py:1207
+msgid "Running as Flatpak, sandboxing userdir…"
+msgstr "מורץ בתור Flatpak, מבודד את ספריית המשתמש…"
+
+#: runexe/backend/managers/manager.py:1209
+msgid "Sandboxing userdir…"
+msgstr "מבודד את ספריית המשתמש…"
+
+#: runexe/backend/managers/manager.py:1250
+msgid "Setting Windows version…"
+msgstr "גרסת Windows מוגדרת…"
+
+#: runexe/backend/managers/manager.py:1260
+msgid "Apply CMD default settings…"
+msgstr "הגדרות CMD כברירת מחדל חלות…"
+
+#: runexe/backend/managers/manager.py:1268
+msgid "Optimizing environment…"
+msgstr "הסביבה ממוטבת…"
+
+#: runexe/backend/managers/manager.py:1279
+#, python-brace-format
+msgid "Applying environment: {0}…"
+msgstr "הסביבה מיושמת: {0}…"
+
+#: runexe/backend/managers/manager.py:1289
+msgid "(!) Using a custom environment recipe…"
+msgstr "(!) מתכון לסביבה מותאמת אישית בשימוש…"
+
+#: runexe/backend/managers/manager.py:1292
+msgid "(!) Recipe not not found or not valid…"
+msgstr "(!) המתכון לא נמצא או לא תקין…"
+
+#: runexe/backend/managers/manager.py:1309
+msgid "Installing DXVK…"
+msgstr "DXVK מותקן…"
+
+#: runexe/backend/managers/manager.py:1317
+msgid "Installing VKD3D…"
+msgstr "VKD3D מותקן…"
+
+#: runexe/backend/managers/manager.py:1326
+msgid "Installing DXVK-NVAPI…"
+msgstr "DXVK-NVAPI מותקן…"
+
+#: runexe/backend/managers/manager.py:1335
+#, python-format
+msgid "Installing dependency: %s …"
+msgstr "חבילת תלות מותקנת: %s …"
+
+#: runexe/backend/managers/manager.py:1345
+msgid "Creating versioning state 0…"
+msgstr "נוצרות גרסאות מצב 0…"
+
+#: runexe/backend/managers/manager.py:1353
+msgid "Finalizing…"
+msgstr "בתהליך סיום…"
+
+#: runexe/backend/managers/manager.py:1364
+msgid "Caching template…"
+msgstr "התבנית נשמרת במטמון…"
+
+#: runexe/backend/managers/versioning.py:83
+msgid "Committing state …"
+msgstr "המצב מקובע …"
+
+#: runexe/backend/managers/versioning.py:90
+msgid "Nothing to commit"
+msgstr "אין מה לקבע"
+
+#: runexe/backend/managers/versioning.py:96
+#, python-brace-format
+msgid "New state [{0}] created successfully!"
+msgstr "מצב חדש [{0}] נוצר בהצלחה!"
+
+#: runexe/backend/managers/versioning.py:123
+msgid "States list retrieved successfully!"
+msgstr "רשימת המצבים אוחזרה בהצלחה!"
+
+#: runexe/backend/managers/versioning.py:153
+#, python-brace-format
+msgid "State {0} restored successfully!"
+msgstr "מצב {0} שוחזר בהצלחה!"
+
+#: runexe/backend/managers/versioning.py:155
+msgid "Restoring state {} …"
+msgstr "מצב {} משוחזר …"
+
+#: runexe/backend/managers/versioning.py:162
+msgid "State not found"
+msgstr "המצב לא נמצא"
+
+#: runexe/backend/managers/versioning.py:168
+msgid "State {} is already the active state"
+msgstr "המצב {} הוא כבר המצב הפעיל"
+
+#: runexe/frontend/main.py:112
+msgid "Show version"
+msgstr "הצגת גרסה"
+
+#: runexe/frontend/main.py:120
+msgid "Executable path"
+msgstr "נתיב קובץ הפעלה"
+
+#: runexe/frontend/main.py:128
+msgid "lnk path"
+msgstr "נתיב lnk"
+
+#: runexe/frontend/main.py:136 runexe/frontend/ui/library-entry.blp:118
+#: runexe/frontend/ui/list-entry.blp:5
+msgid "Capsule name"
+msgstr "שם הבקבוק"
+
+#: runexe/frontend/main.py:144
+msgid "Pass arguments"
+msgstr "העברת ארגומנטים"
+
+#: runexe/frontend/main.py:203
+msgid "Invalid URI (syntax: capsules:run/<capsule>/<program>)"
+msgstr "כתובת URI לא חוקית (תחביר: ‪capsules:run/<בקבוק>/<‎תוכנית>‬)"
+
+#: runexe/frontend/main.py:244
+msgid "[Quit] request received."
+msgstr "בקשת [יציאה] התקבלה."
+
+#: runexe/frontend/main.py:253
+msgid "[Help] request received."
+msgstr "בקשת [סיוע] התקבלה."
+
+#: runexe/frontend/main.py:261
+msgid "[Refresh] request received."
+msgstr "בקשת [רענון] התקבלה."
+
+#: runexe/frontend/main.py:294
+msgid "Donate"
+msgstr "תרומה"
+
+#: runexe/frontend/main.py:299
+msgid "Third-Party Libraries and Special Thanks"
+msgstr "ספריות צד שלישי ותודה מיוחדת"
+
+#: runexe/frontend/main.py:325
+msgid "Sponsored and Funded by"
+msgstr "בחסות ובמימון"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/about.blp:10
+msgid "RunExe Developers"
+msgstr "מפתחי „בקבוקים”"
+
+#: runexe/frontend/ui/about.blp:12
+msgid "translator_credits"
+msgstr "Joe Shachaf, Gilad the Grain, Yaron Shahrabani, xocodokie, omeritzics"
+
+#: runexe/frontend/ui/component-entry.blp:4
+msgid "Component version"
+msgstr "גרסת רכיב"
+
+#: runexe/frontend/ui/component-entry.blp:12
+#: runexe/frontend/ui/dependency-entry.blp:29
+#: runexe/frontend/ui/program-entry.blp:77
+msgid "Uninstall"
+msgstr "הסרת התקנה"
+
+#: runexe/frontend/ui/component-entry.blp:23
+msgid "Browse Files"
+msgstr "עיון בקבצים"
+
+#: runexe/frontend/ui/component-entry.blp:34
+msgid ""
+"The installation failed. This may be due to a repository error, partial "
+"download or checksum mismatch. Press to try again."
+msgstr ""
+"ההתקנה נכשלה. ייתכן שהסיבה לכך היא שגיאת מאגר מידע, הורדה חלקית או אי־התאמה "
+"של סיכום ביקורת. יש ללחוץ כדי לנסות שוב."
+
+#: runexe/frontend/ui/component-entry.blp:45
+msgid "Download & Install"
+msgstr "הורדה והתקנה"
+
+#: runexe/frontend/ui/component-entry.blp:58
+msgid "0%"
+msgstr "0%"
+
+#: runexe/frontend/ui/dependency-entry.blp:16
+msgid "Show Manifest"
+msgstr "הצגת מניפסט"
+
+#: runexe/frontend/ui/dependency-entry.blp:20
+msgid "License"
+msgstr "רישיון"
+
+#: runexe/frontend/ui/dependency-entry.blp:24
+msgid "Reinstall"
+msgstr "התקנה מחדש"
+
+#: runexe/frontend/ui/dependency-entry.blp:36
+#: runexe/frontend/ui/installer-entry.blp:27
+msgid "Report a Bug…"
+msgstr "דיווח על תֶּקֶל…"
+
+#: runexe/frontend/ui/dependency-entry.blp:42
+msgid "Dependency name"
+msgstr "שם חבילת תלות"
+
+#: runexe/frontend/ui/dependency-entry.blp:44
+msgid "Dependency description"
+msgstr "תיאור חבילת תלות"
+
+#: runexe/frontend/ui/dependency-entry.blp:51
+msgid "Category"
+msgstr "קטגוריה"
+
+#: runexe/frontend/ui/dependency-entry.blp:64
+msgid "Download & Install this Dependency"
+msgstr "הורדה והתקנת חבילת תלות זו"
+
+#: runexe/frontend/ui/dependency-entry.blp:79
+msgid ""
+"An installation error occurred. Restart RunExe to read the Crash Report or "
+"run it via terminal to read the output."
+msgstr ""
+"אירעה שגיאת התקנה. נא להפעיל מחדש את „בקבוקים” כדי לקרוא את דוח הקריסה או "
+"להריץ את התוכנית דרך מסוף כדי לקרוא את הפלט."
+
+#: runexe/frontend/ui/dependency-entry.blp:93
+msgid "Dependency Menu"
+msgstr "תפריט חבילת תלות"
+
+#: runexe/frontend/ui/details-capsule.blp:16
+msgid "Troubleshooting"
+msgstr "איתור תקלות"
+
+#: runexe/frontend/ui/details-capsule.blp:24
+msgid "Browse Files…"
+msgstr "עיון בקבצים…"
+
+#: runexe/frontend/ui/details-capsule.blp:28
+msgid "Duplicate Capsule…"
+msgstr "שכפול בקבוק…"
+
+#: runexe/frontend/ui/details-capsule.blp:32
+#: runexe/frontend/ui/importer.blp:73
+msgid "This is the complete archive of your capsule, including personal files."
+msgstr "זהו הארכיון המלא של הבקבוק שלך, כולל קבצים אישיים."
+
+#: runexe/frontend/ui/details-capsule.blp:33
+msgid "Full Backup…"
+msgstr "גיבוי מלא…"
+
+#: runexe/frontend/ui/details-capsule.blp:37
+#: runexe/frontend/ui/importer.blp:68
+msgid ""
+"This is just the capsule configuration, it's perfect if you want to create a "
+"new one but without personal files."
+msgstr ""
+"זוהי רק תצורת הבקבוק, היא מושלמת אם ברצונך ליצור אחד חדש אך ללא קבצים אישיים."
+
+#: runexe/frontend/ui/details-capsule.blp:38
+msgid "Export Configuration…"
+msgstr "ייצוא תצורה…"
+
+#: runexe/frontend/ui/details-capsule.blp:45
+#: runexe/frontend/views/capsule_details.py:344
+msgid "Show Hidden Programs"
+msgstr "הצגת תוכניות נסתרות"
+
+#: runexe/frontend/ui/details-capsule.blp:49
+msgid "Search for new programs"
+msgstr "חיפוש אחר תוכניות חדשות"
+
+#: runexe/frontend/ui/details-capsule.blp:56
+msgid "Delete Capsule…"
+msgstr "מחיקת בקבוק…"
+
+#: runexe/frontend/ui/details-capsule.blp:73
+#: runexe/frontend/ui/details-dependencies.blp:99
+#: runexe/frontend/ui/details-installers.blp:68
+msgid "Secondary Menu"
+msgstr "תפריט משני"
+
+#: runexe/frontend/ui/details-capsule.blp:90
+msgid "Force Stop all Processes"
+msgstr "עצירה כפויה של כל התהליכים"
+
+#: runexe/frontend/ui/details-capsule.blp:94
+msgid "Simulate a Windows system shutdown."
+msgstr "הדמיית כיבוי מערכת Windows."
+
+#: runexe/frontend/ui/details-capsule.blp:95
+msgid "Shutdown"
+msgstr "כיבוי"
+
+#: runexe/frontend/ui/details-capsule.blp:99
+msgid "Simulate a Windows system reboot."
+msgstr "הדמיית אתחול מערכת Windows."
+
+#: runexe/frontend/ui/details-capsule.blp:100
+msgid "Reboot"
+msgstr "אתחול"
+
+#: runexe/frontend/ui/details-capsule.blp:118
+#: runexe/frontend/ui/dialog-launch-options.blp:6
+msgid "Launch Options"
+msgstr "אפשרויות הפעלה"
+
+#: runexe/frontend/ui/details-capsule.blp:135
+msgid "Run in Terminal"
+msgstr "הרצה במסוף"
+
+#: runexe/frontend/ui/details-capsule.blp:148
+msgid "Drop files to execute them"
+msgstr "יש לשחרר קבצים כדי להריץ אותם"
+
+#: runexe/frontend/ui/details-capsule.blp:164
+msgid "My capsule"
+msgstr "הבקבוק שלי"
+
+#: runexe/frontend/ui/details-capsule.blp:177
+msgid "Win64"
+msgstr "Win64"
+
+#: runexe/frontend/ui/details-capsule.blp:189
+#: runexe/frontend/ui/list-entry.blp:12 runexe/frontend/ui/new.blp:71
+msgid "Environment"
+msgstr "סביבה"
+
+#: runexe/frontend/ui/details-capsule.blp:201
+#: runexe/frontend/ui/details-preferences.blp:14
+#: runexe/frontend/ui/new.blp:128
+msgid "Runner"
+msgstr "כלי הרצה"
+
+#: runexe/frontend/ui/details-capsule.blp:213
+#: runexe/frontend/ui/list-entry.blp:21
+msgid "Versioning enabled for this capsule"
+msgstr "ניהול גרסאות מופעל עבור בקבוק זה"
+
+#: runexe/frontend/ui/details-capsule.blp:218
+msgid "Versioning is active for this capsule."
+msgstr "רשומת גרסאות פעילה עבור הבקבוק."
+
+#: runexe/frontend/ui/details-capsule.blp:227
+#: runexe/frontend/ui/list-entry.blp:31
+msgid "0"
+msgstr "0"
+
+#: runexe/frontend/ui/details-capsule.blp:247
+msgid "Run Executable…"
+msgstr "הרצת קובץ הפעלה…"
+
+#: runexe/frontend/ui/details-capsule.blp:272
+msgid "Programs"
+msgstr "תוכניות"
+
+#: runexe/frontend/ui/details-capsule.blp:275
+msgid ""
+"Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an "
+"executable to the Programs list, or \"Install Programs…\" to install "
+"programs curated by the community."
+msgstr ""
+"יש ללחוץ על „הרצת קובץ הפעלה…” כדי להריץ קובץ הפעלה, „הוספת קיצורי דרך…” כדי "
+"להוסיף קובץ הפעלה לרשימת התוכניות, או „התקנת תוכניות…” כדי להתקין תוכניות "
+"שנאצרו על ידי הקהילה."
+
+#: runexe/frontend/ui/details-capsule.blp:298
+msgid "Add Shortcuts…"
+msgstr "הוספת קיצורי דרך…"
+
+#: runexe/frontend/ui/details-capsule.blp:325
+msgid "Install Programs…"
+msgstr "התקנת תוכניות…"
+
+#: runexe/frontend/ui/details-capsule.blp:346
+msgid "Options"
+msgstr "אפשרויות"
+
+#: runexe/frontend/ui/details-capsule.blp:350
+#: runexe/frontend/views/details.py:141
+msgid "Settings"
+msgstr "הגדרות"
+
+#: runexe/frontend/ui/details-capsule.blp:351
+msgid "Configure capsule settings."
+msgstr "קביעת תצורה של הגדרות בקבוק."
+
+#: runexe/frontend/ui/details-capsule.blp:360
+#: runexe/frontend/views/details.py:145
+msgid "Dependencies"
+msgstr "חבילות תלות"
+
+#: runexe/frontend/ui/details-capsule.blp:361
+msgid "Install dependencies for programs."
+msgstr "התקנת חבילות תלות עבור תוכניות."
+
+#: runexe/frontend/ui/details-capsule.blp:370
+#: runexe/frontend/ui/details-preferences.blp:377
+#: runexe/frontend/views/details.py:149
+msgid "Snapshots"
+msgstr "תמונות מצב"
+
+#: runexe/frontend/ui/details-capsule.blp:371
+msgid "Create and manage capsule states."
+msgstr "יצירה וניהול של מצבי בקבוק."
+
+#: runexe/frontend/ui/details-capsule.blp:380
+#: runexe/frontend/ui/details-capsule.blp:426
+#: runexe/frontend/views/details.py:157
+msgid "Task Manager"
+msgstr "מנהל המשימות"
+
+#: runexe/frontend/ui/details-capsule.blp:381
+msgid "Manage running programs."
+msgstr "ניהול תוכניות פועלות."
+
+#: runexe/frontend/ui/details-capsule.blp:390
+msgid "Tools"
+msgstr "כלים"
+
+#: runexe/frontend/ui/details-capsule.blp:394
+msgid "Command Line"
+msgstr "שורת פקודה"
+
+#: runexe/frontend/ui/details-capsule.blp:395
+msgid "Run commands inside the Capsule."
+msgstr "הרצת פקודות בתוך הבקבוק."
+
+#: runexe/frontend/ui/details-capsule.blp:404
+msgid "Registry Editor"
+msgstr "עורך רישום"
+
+#: runexe/frontend/ui/details-capsule.blp:405
+msgid "Edit the internal registry."
+msgstr "עריכת הרישום הפנימי."
+
+#: runexe/frontend/ui/details-capsule.blp:413
+msgid "Legacy Wine Tools"
+msgstr "כלי Wine מדור קודם"
+
+#: runexe/frontend/ui/details-capsule.blp:417
+msgid "Explorer"
+msgstr "סייר"
+
+#: runexe/frontend/ui/details-capsule.blp:435
+msgid "Debugger"
+msgstr "מנפה"
+
+#: runexe/frontend/ui/details-capsule.blp:444
+#: runexe/frontend/ui/importer.blp:69 runexe/frontend/ui/new.blp:145
+msgid "Configuration"
+msgstr "תצורה"
+
+#: runexe/frontend/ui/details-capsule.blp:453
+msgid "Uninstaller"
+msgstr "תוכנית להסרת התקנה"
+
+#: runexe/frontend/ui/details-capsule.blp:462
+msgid "Control Panel"
+msgstr "לוח בקרה"
+
+#: runexe/frontend/ui/details-dependencies.blp:9
+msgid "Search for dependencies…"
+msgstr "חיפוש אחר חבילות תלות…"
+
+#: runexe/frontend/ui/details-dependencies.blp:22
+#: runexe/frontend/ui/preferences.blp:178
+#: runexe/frontend/ui/preferences.blp:235
+msgid "You're offline :("
+msgstr "הינך במצב לא מקוון :("
+
+#: runexe/frontend/ui/details-dependencies.blp:25
+msgid "RunExe is running in offline mode, so dependencies are not available."
+msgstr ""
+"התוכנית „בקבוקים” פועלת במצב לא מקוון, לכן חבילות תלות מסוימות אינן זמינות."
+
+#: runexe/frontend/ui/details-dependencies.blp:47
+msgid ""
+"Dependencies are resources that improve compatibility of Windows software.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"חבילות תלות הינן משאבים המשפרים את התאימות של תוכנות Windows.\n"
+"\n"
+"קבצים בעמוד זה מסופקים על ידי צדדים שלישיים תחת רישיון קנייני. התקנתם מעידה "
+"על הסכמתך לתנאי הרישוי המתאימים שלהם."
+
+#: runexe/frontend/ui/details-dependencies.blp:76
+msgid "Report a problem or a missing dependency."
+msgstr "דיווח על בעיה או חבילת תלות חסרה."
+
+#: runexe/frontend/ui/details-dependencies.blp:77
+msgid "Report Missing Dependency"
+msgstr "דיווח על חבילת תלות חסרה"
+
+#: runexe/frontend/ui/details-dependencies.blp:81
+msgid "Read Documentation."
+msgstr "לקריאת התיעוד."
+
+#: runexe/frontend/ui/details-dependencies.blp:82
+#: runexe/frontend/ui/details-installers.blp:51
+#: runexe/frontend/ui/details-versioning.blp:37
+msgid "Documentation"
+msgstr "תיעוד"
+
+#: runexe/frontend/ui/details-dependencies.blp:92
+#: runexe/frontend/ui/details-installers.blp:61
+#: runexe/frontend/ui/window.blp:46
+msgid "Search"
+msgstr "חיפוש"
+
+#: runexe/frontend/ui/details-installers.blp:9
+msgid "Search for Programs…"
+msgstr "חיפוש אחר תוכניות…"
+
+#: runexe/frontend/ui/details-installers.blp:15
+msgid ""
+"Install programs curated by our community.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"התקנת תוכניות שנאצרו על ידי קהילתנו.\n"
+"\n"
+"קבצים בעמוד זה מסופקים על ידי צדדים שלישיים תחת רישיון קנייני. התקנתם מעידה "
+"על הסכמתך לתנאי הרישוי המתאימים שלהם."
+
+#: runexe/frontend/ui/details-installers.blp:29
+msgid "No Installers Found"
+msgstr "לא נמצאו תוכניות התקנה"
+
+#: runexe/frontend/ui/details-installers.blp:32
+msgid ""
+"The repository is unreachable or no installer is compatible with this capsule."
+msgstr "מאגר המידע אינו ניתן להשגה או שאף תוכנית התקנה אינה תואמת לבקבוק זה."
+
+#: runexe/frontend/ui/details-installers.blp:50
+#: runexe/frontend/ui/details-versioning.blp:36
+#: runexe/frontend/ui/preferences.blp:81
+msgid "Read Documentation"
+msgstr "לקריאת התיעוד"
+
+#: runexe/frontend/ui/details-preferences.blp:6
+#: runexe/frontend/ui/dialog-duplicate.blp:52
+msgid "Name"
+msgstr "שם"
+
+#: runexe/frontend/ui/details-preferences.blp:11
+msgid "Components"
+msgstr "רכיבים"
+
+#: runexe/frontend/ui/details-preferences.blp:15
+#: runexe/frontend/ui/new.blp:129
+msgid "The version of the Wine compatibility layer."
+msgstr "גרסת שכבת התאימות של Wine."
+
+#: runexe/frontend/ui/details-preferences.blp:17
+msgid "Updating Runner and components, please wait…"
+msgstr "כלי ההרצה והרכיבים מתעדכנים, נא להמתין…"
+
+#: runexe/frontend/ui/details-preferences.blp:27
+#: runexe/frontend/ui/preferences.blp:262
+msgid "DXVK"
+msgstr "DXVK"
+
+#: runexe/frontend/ui/details-preferences.blp:28
+msgid "Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan."
+msgstr "שיפור התאימות לגרסה 8/9/10/11 של Direct3D בעזרת המרתו ל־Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:30
+msgid "Updating DXVK, please wait…"
+msgstr "הרכיב DXVK מתעדכן, נא להמתין…"
+
+#: runexe/frontend/ui/details-preferences.blp:40
+#: runexe/frontend/ui/preferences.blp:266
+msgid "VKD3D"
+msgstr "VKD3D"
+
+#: runexe/frontend/ui/details-preferences.blp:41
+msgid "Improve Direct3D 12 compatibility by translating it to Vulkan."
+msgstr "שיפור התאימות לגרסה 12 של Direct3D בעזרת המרתו ל־Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:43
+msgid "Updating VKD3D, please wait…"
+msgstr "הרכיב VKD3D מתעדכן, נא להמתין…"
+
+#: runexe/frontend/ui/details-preferences.blp:54
+msgid "DXVK NVAPI"
+msgstr "DXVK NVAPI"
+
+#: runexe/frontend/ui/details-preferences.blp:58
+#: runexe/frontend/ui/details-preferences.blp:93
+msgid "Updating DXVK-NVAPI, please wait…"
+msgstr "הרכיב DXVK-NVAPI מתעדכן, נא להמתין…"
+
+#: runexe/frontend/ui/details-preferences.blp:68
+#: runexe/frontend/ui/preferences.blp:274
+msgid "LatencyFleX"
+msgstr "LatencyFleX"
+
+#: runexe/frontend/ui/details-preferences.blp:69
+msgid "Increase responsiveness. Can be detected by some anti-cheat software."
+msgstr "משפר תגובתיות. ניתן לזיהוי על ידי תוכנות נגד רמאות מסוימות."
+
+#: runexe/frontend/ui/details-preferences.blp:71
+msgid "Updating LatencyFleX, please wait…"
+msgstr "הרכיב LatencyFleX מתעדכן, נא להמתין…"
+
+#: runexe/frontend/ui/details-preferences.blp:84
+msgid "Display"
+msgstr "מסך"
+
+#: runexe/frontend/ui/details-preferences.blp:88
+msgid "Deep Learning Super Sampling"
+msgstr "סופר־דגימה בלמידה עמוקה (DLSS)"
+
+#: runexe/frontend/ui/details-preferences.blp:89
+msgid ""
+"Increase performance at the expense of visuals using DXVK-NVAPI. Only works "
+"on newer NVIDIA GPUs."
+msgstr ""
+"שיפור הביצועים על חשבון החזות באמצעות DXVK-NVAPI. עובד רק על מעבדים גרפיים "
+"חדשים יותר של NVIDIA."
+
+#: runexe/frontend/ui/details-preferences.blp:105
+msgid "FidelityFX Super Resolution"
+msgstr "רזולוציית סופר FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:106
+msgid "Increase performance at the expense of visuals. Only works on Vulkan."
+msgstr "שיפור הביצועים על חשבון החזות. עובד רק על Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:108
+msgid "Manage FidelityFX Super Resolution settings"
+msgstr "ניהול הגדרות רזולוציית סופר FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:125
+msgid "Discrete Graphics"
+msgstr "גרפיקה נפרדת"
+
+#: runexe/frontend/ui/details-preferences.blp:126
+msgid ""
+"Use the discrete graphics card to increase performance at the expense of "
+"power consumption."
+msgstr "יש להשתמש בכרטיס מסך נפרד כדי לשפר ביצועים על חשבון צריכת חשמל."
+
+#: runexe/frontend/ui/details-preferences.blp:135
+msgid "Post-Processing Effects"
+msgstr "אפקטים לאחר עיבוד"
+
+#: runexe/frontend/ui/details-preferences.blp:136
+msgid ""
+"Add various post-processing effects using vkBasalt. Only works on Vulkan."
+msgstr "הוספת אפקטים שונים לאחר העיבוד באמצעות vkBasalt. עובד רק על Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:138
+msgid "Manage Post-Processing Layer settings"
+msgstr "ניהול הגדרות שכבה לאחר עיבוד"
+
+#: runexe/frontend/ui/details-preferences.blp:154
+msgid "Manage how games should be displayed on the screen using Gamescope."
+msgstr "ניהול כיצד יש להציג משחקים על המסך באמצעות Gamescope."
+
+#: runexe/frontend/ui/details-preferences.blp:157
+msgid "Manage Gamescope settings"
+msgstr "ניהול הגדרות Gamescope"
+
+#: runexe/frontend/ui/details-preferences.blp:171
+msgid "Advanced Display Settings"
+msgstr "הגדרות תצוגה מתקדמות"
+
+#: runexe/frontend/ui/details-preferences.blp:184
+msgid "Performance"
+msgstr "ביצועים"
+
+#: runexe/frontend/ui/details-preferences.blp:188
+msgid "Enable synchronization to increase performance of multicore processors."
+msgstr "הפעלת סנכרון כדי לשפר ביצועים של מעבדים מרובי ליבות."
+
+#: runexe/frontend/ui/details-preferences.blp:189
+msgid "Synchronization"
+msgstr "סנכרון"
+
+#: runexe/frontend/ui/details-preferences.blp:193
+msgid "System"
+msgstr "מערכת"
+
+#: runexe/frontend/ui/details-preferences.blp:194
+msgid "Esync"
+msgstr "Esync"
+
+#: runexe/frontend/ui/details-preferences.blp:195
+msgid "Fsync"
+msgstr "Fsync"
+
+#: runexe/frontend/ui/details-preferences.blp:196
+msgid "Futex2"
+msgstr "Futex2"
+
+#: runexe/frontend/ui/details-preferences.blp:202
+msgid "Monitor Performance"
+msgstr "ניטור ביצועים"
+
+#: runexe/frontend/ui/details-preferences.blp:203
+msgid ""
+"Display monitoring information such as framerate, temperatures, CPU/GPU load "
+"and more on OpenGL and Vulkan using MangoHud."
+msgstr ""
+"הצגת מידע ניטורי כגון קצב תמוניות, טמפרטורה, עומס על המעבדים ועוד על גבי "
+"OpenGL ו־Vulkan באמצעות MangoHud."
+
+#: runexe/frontend/ui/details-preferences.blp:211
+msgid "Feral GameMode"
+msgstr "Feral GameMode"
+
+#: runexe/frontend/ui/details-preferences.blp:212
+msgid ""
+"Apply a set of optimizations to your device. Can improve game performance."
+msgstr "יישום סדרת מיטובים למכשירך. יכול לשפר ביצועי משחקים."
+
+#: runexe/frontend/ui/details-preferences.blp:221
+msgid "Preload Game Files"
+msgstr "טעינה מוקדמת של קבצי משחק"
+
+#: runexe/frontend/ui/details-preferences.blp:222
+msgid ""
+"Improve loading time when launching the game multiple times. The game will "
+"take longer to start for the first time."
+msgstr ""
+"שיפור זמן הטעינה בעת הפעלת המשחק מספר פעמים. למשחק ייקח זמן רב יותר להתחיל "
+"בפעם הראשונה."
+
+#: runexe/frontend/ui/details-preferences.blp:226
+msgid "Manage vmtouch settings"
+msgstr "ניהול הגדרות vmtouch"
+
+#: runexe/frontend/ui/details-preferences.blp:241
+msgid "OBS Game Capture"
+msgstr "לכידת משחק עם OBS"
+
+#: runexe/frontend/ui/details-preferences.blp:242
+msgid "Toggle OBS Game Capture for all Vulkan and OpenGL programs."
+msgstr "החלפת מצב „לכידת משחק עם OBS” עבור כל תוכניות Vulkan ו־OpenGL."
+
+#: runexe/frontend/ui/details-preferences.blp:251
+msgid "Compatibility"
+msgstr "תאימות"
+
+#: runexe/frontend/ui/details-preferences.blp:254
+msgid "Windows Version"
+msgstr "גרסת Windows"
+
+#: runexe/frontend/ui/details-preferences.blp:257
+msgid "Updating Windows version, please wait…"
+msgstr "גרסת Windows מתעדכנת, נא להמתין…"
+
+#: runexe/frontend/ui/details-preferences.blp:266
+msgid "Language"
+msgstr "שפה"
+
+#: runexe/frontend/ui/details-preferences.blp:267
+msgid "Choose the language to use with programs."
+msgstr "בחירת השפה לשימוש עם תוכניות."
+
+#: runexe/frontend/ui/details-preferences.blp:275
+msgid "Dedicated Sandbox"
+msgstr "ארגז חול ייעודי"
+
+#: runexe/frontend/ui/details-preferences.blp:276
+msgid "Use a restricted/managed environment for this capsule."
+msgstr "שימוש בסביבה מוגבלת/מנוהלת עבור בקבוק זה."
+
+#: runexe/frontend/ui/details-preferences.blp:279
+msgid "Manage the Sandbox Permissions"
+msgstr "ניהול הרשאות ארגז החול"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/details-preferences.blp:295
+msgid "RunExe Runtime"
+msgstr "מערכת זמן הריצה של „בקבוקים”"
+
+#: runexe/frontend/ui/details-preferences.blp:296
+msgid ""
+"Provide a bundle of extra libraries for more compatibility. Disable it if "
+"you run into issues."
+msgstr ""
+"אספקת חבילת ספריות נוספות לשיפור התאימות. יש להשבית זאת אם נתקלת בבעיות."
+
+#: runexe/frontend/ui/details-preferences.blp:306
+msgid "Steam Runtime"
+msgstr "מערכת זמן הריצה של Steam"
+
+#: runexe/frontend/ui/details-preferences.blp:307
+msgid ""
+"Provide a bundle of extra libraries for more compatibility with Steam games. "
+"Disable it if you run into issues."
+msgstr ""
+"אספקת חבילת ספריות נוספות לשיפור התאימות עם משחקי Steam. יש להשבית זאת אם "
+"נתקלת בבעיות."
+
+#: runexe/frontend/ui/details-preferences.blp:315
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Working Directory"
+msgstr "תיקיית עבודה"
+
+#: runexe/frontend/ui/details-preferences.blp:318
+#: runexe/frontend/ui/dialog-launch-options.blp:59
+#: runexe/frontend/ui/dialog-launch-options.blp:90
+#: runexe/frontend/ui/new.blp:150 runexe/frontend/ui/new.blp:181
+#: runexe/frontend/ui/preferences.blp:136
+msgid "Reset to Default"
+msgstr "איפוס לברירת מחדל"
+
+#: runexe/frontend/ui/details-preferences.blp:339
+#: runexe/frontend/ui/preferences.blp:157 runexe/frontend/views/new.py:78
+#: runexe/frontend/views/preferences.py:210
+msgid "(Default)"
+msgstr "(ברירת מחדל)"
+
+#: runexe/frontend/ui/details-preferences.blp:347
+#: runexe/frontend/ui/dialog-dll-overrides.blp:7
+#: runexe/frontend/ui/dialog-dll-overrides.blp:12
+msgid "DLL Overrides"
+msgstr "דריסות DLL"
+
+#: runexe/frontend/ui/details-preferences.blp:357
+#: runexe/frontend/ui/dialog-env-vars.blp:20
+msgid "Environment Variables"
+msgstr "משתני סביבה"
+
+#: runexe/frontend/ui/details-preferences.blp:367
+msgid "Manage Drives"
+msgstr "ניהול כוננים"
+
+#: runexe/frontend/ui/details-preferences.blp:381
+msgid "Automatic Snapshots"
+msgstr "תמונות מצב אוטומטיות"
+
+#: runexe/frontend/ui/details-preferences.blp:382
+msgid ""
+"Automatically create snapshots before installing software or changing "
+"settings."
+msgstr "יצירת תמונות מצב באופן אוטומטי לפני התקנת תוכנה או שינוי הגדרות."
+
+#: runexe/frontend/ui/details-preferences.blp:391
+msgid "Compression"
+msgstr "דחיסה"
+
+#: runexe/frontend/ui/details-preferences.blp:392
+msgid ""
+"Compress snapshots to reduce space. This will slow down the creation of "
+"snapshots."
+msgstr ""
+"דחיסת תמונות מצב כדי לצמצם שטח אחסון. הגדרה זו תאט את היצירה של תמונות מצב."
+
+#: runexe/frontend/ui/details-preferences.blp:401
+msgid "Use Exclusion Patterns"
+msgstr "שימוש בדפוסי החרגה"
+
+#: runexe/frontend/ui/details-preferences.blp:402
+msgid "Exclude paths in snapshots."
+msgstr "החרגת נתיבים בתמונות מצב."
+
+#: runexe/frontend/ui/details-preferences.blp:405
+msgid "Manage Patterns"
+msgstr "ניהול דפוסים"
+
+#: runexe/frontend/ui/details-taskmanager.blp:17
+msgid "Refresh"
+msgstr "רענון"
+
+#: runexe/frontend/ui/details-taskmanager.blp:22
+msgid "Stop process"
+msgstr "עצירת תהליך"
+
+#: runexe/frontend/ui/details-versioning.blp:18
+msgid "No Snapshots Found"
+msgstr "לא נמצאו תמונות מצב"
+
+#: runexe/frontend/ui/details-versioning.blp:19
+msgid "Create your first snapshot to start saving states of your preferences."
+msgstr ""
+"יש ליצור את תמונת המצב הראשונה שלך כדי להתחיל לשמור מצבים של ההעדפות שלך."
+
+#: runexe/frontend/ui/details-versioning.blp:54
+msgid "A short comment"
+msgstr "הערה קצרה"
+
+#: runexe/frontend/ui/details-versioning.blp:58
+msgid "Save the capsule state."
+msgstr "שמירת מצב הבקבוק."
+
+#: runexe/frontend/ui/details-versioning.blp:78
+msgid "Create new Snapshot"
+msgstr "יצירת תמונת מצב חדשה"
+
+#: runexe/frontend/ui/details.blp:16
+msgid "Details"
+msgstr "פרטים"
+
+#: runexe/frontend/ui/details.blp:24 runexe/frontend/ui/details.blp:64
+#: runexe/frontend/ui/importer.blp:15
+msgid "Go Back"
+msgstr "חזרה"
+
+#: runexe/frontend/ui/details.blp:75
+msgid "Operations"
+msgstr "פעולות"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:4
+msgid "Select Capsule"
+msgstr "בחירת בקבוק"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:16
+#: runexe/frontend/ui/dialog-proton-alert.blp:16
+#: runexe/frontend/ui/dialog-rename.blp:15
+#: runexe/frontend/ui/dialog-run-args.blp:20
+msgid "Cancel"
+msgstr "ביטול"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:21
+msgid "Select"
+msgstr "בחירה"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:38
+#: runexe/frontend/ui/new.blp:9 runexe/frontend/ui/new.blp:49
+#: runexe/frontend/ui/window.blp:25
+msgid "Create New Capsule"
+msgstr "יצירת בקבוק חדש"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/dialog-crash-report.blp:8
+msgid "RunExe Crash Report"
+msgstr "דוח קריסה של „בקבוקים”"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:18
+#: runexe/frontend/ui/dialog-duplicate.blp:22
+#: runexe/frontend/ui/dialog-gamescope.blp:23
+#: runexe/frontend/ui/dialog-launch-options.blp:16
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:22
+#: runexe/frontend/ui/dialog-vkbasalt.blp:27 runexe/frontend/ui/new.blp:26
+#: runexe/frontend/views/capsule_details.py:504
+#: runexe/frontend/views/capsule_details.py:600
+#: runexe/frontend/views/capsule_preferences.py:749
+#: runexe/frontend/views/preferences.py:201
+msgid "_Cancel"
+msgstr "_ביטול"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:25
+msgid "Send Report"
+msgstr "שליחת דוח"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:44
+msgid ""
+"RunExe crashed last time. Please fill out a report attaching the following "
+"traceback to help us identify the problem preventing it from happening again."
+msgstr ""
+"התוכנית „בקבוקים” קרסה בפעם האחרונה. נא למלא דוח בצירוף מעקב הקריאות "
+"(traceback) הבא בשביל לעזור לנו לזהות את הבעיה ולמנוע ממנה לקרות שוב."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:74
+msgid ""
+"We found one or more similar (or identical) reports. Please make sure to "
+"check carefully that it has not already been reported before submitting a "
+"new one. Each report requires effort on the part of the developers to "
+"diagnose, please respect their work and make sure you don't post duplicates."
+msgstr ""
+"מצאנו לפחות דוח אחד דומה (או זהה). נא לבדוק בקפידה שבעיה זו טרם דווחה לפני "
+"הגשת דוח חדש. כל דוח דורש מאמץ מצד המפתחים לאבחן, נא לכבד את פועלם ולוודא "
+"שלא לפרסם כפילויות."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:89
+msgid "I still want to report."
+msgstr "ארצה לדווח למרות זאת."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:95
+msgid "Advanced options"
+msgstr "אפשרויות מתקדמות"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:13
+msgid "Incomplete package"
+msgstr "חבילה חלקית"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:14
+msgid ""
+"This version of RunExe does not seem to provide all the necessary core "
+"dependencies, please contact the package maintainer or use an official "
+"version."
+msgstr ""
+"נראה שגרסה זו של „בקבוקים” אינה מספקת את כל תלויות הליבה הנדרשות, נא ליצור "
+"קשר עם מתחזק/ת החבילה או להשתמש בגרסה הרשמית."
+
+#: runexe/frontend/ui/dialog-deps-check.blp:18
+msgid "Quit"
+msgstr "יציאה"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:11
+msgid ""
+"Dynamic Link Libraries can be specified to be builtin (provided by Wine) or "
+"native (provided by the program)."
+msgstr ""
+"ניתן לציין שספריות קישור דינמי (DLL) תהיינה מובנות (תסופקנה על ידי Wine) או "
+"מקומיות (תסופקנה על ידי התוכנית)."
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:15
+msgid "New Override"
+msgstr "דריסה חדשה"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:21
+msgid "Overrides"
+msgstr "דריסות"
+
+#: runexe/frontend/ui/dialog-drives.blp:7
+msgid "Drives"
+msgstr "כוננים"
+
+#: runexe/frontend/ui/dialog-drives.blp:24
+msgid ""
+"These are paths from your host system that are mapped and recognized as "
+"devices by the runner (e.g. C: D:…)."
+msgstr ""
+"אלה הם נתיבים ממערכת המארח שלך אשר ממופים ומזוהים כהתקנים על ידי כלי ההרצה "
+"(למשל ‏C:‎‏ D:‎…)."
+
+#: runexe/frontend/ui/dialog-drives.blp:27
+msgid "Letter"
+msgstr "אות"
+
+#: runexe/frontend/ui/dialog-drives.blp:49
+msgid "Existing Drives"
+msgstr "כוננים קיימים"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:16
+msgid "Duplicate Capsule"
+msgstr "שכפול בקבוק"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:38
+msgid "Duplicate"
+msgstr "שכפול"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:49
+msgid "Enter a name for the duplicate of the Capsule."
+msgstr "יש להזין שם עבור השכפול של הבקבוק."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:69
+msgid "Duplicating…"
+msgstr "משכפל…"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:78
+#: runexe/frontend/ui/dialog-installer.blp:103
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:112
+#: runexe/frontend/views/new.py:177
+msgid "This could take a while."
+msgstr "זה עשוי לקחת זמן מה."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:97
+msgid "Capsule Duplicated"
+msgstr "הבקבוק שוכפל"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:28
+msgid ""
+"Environment variables are dynamic-named value that can affect the way "
+"running processes will behave on your capsule."
+msgstr ""
+"משתני סביבה הם ערכים בעלי שם דינמי אשר יכולים להשפיע על האופן שבו תהליכים "
+"פועלים יתנהגו בבקבוק שלך."
+
+#: runexe/frontend/ui/dialog-env-vars.blp:31
+msgid "Variable Name"
+msgstr "שם משתנה"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:37
+msgid "Existing Variables"
+msgstr "משתנים קיימים"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:20
+msgid "Exclusion Patterns"
+msgstr "דפוסי החרגה"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:28
+msgid ""
+"Define patterns that will be used to prevent some directories to being "
+"versioned."
+msgstr "הגדרת דפוסים אשר ישמשו למניעת ניהול גרסאות של תיקיות מסוימות."
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:31
+msgid "Pattern"
+msgstr "דפוס"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:37
+msgid "Existing Patterns"
+msgstr "דפוסים קיימים"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:6
+msgid "Gamescope Settings"
+msgstr "הגדרות Gamescope"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:30
+#: runexe/frontend/ui/dialog-launch-options.blp:32
+#: runexe/frontend/ui/dialog-rename.blp:20
+#: runexe/frontend/ui/dialog-vkbasalt.blp:34
+msgid "Save"
+msgstr "שמירה"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:40
+msgid "Manage how games should be displayed."
+msgstr "ניהול אופן הצגת משחקים."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:44
+msgid "Game Resolution"
+msgstr "רזולוציית משחק"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:45
+msgid "Uses the resolution of the video game as a reference in pixels."
+msgstr "הגדרה זו משתמשת ברזולוציה של משחק הווידאו כנקודת ייחוס בפיקסלים."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:48
+#: runexe/frontend/ui/dialog-gamescope.blp:85
+msgid "Width"
+msgstr "רוחב"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:64
+#: runexe/frontend/ui/dialog-gamescope.blp:101
+msgid "Height"
+msgstr "גובה"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:81
+msgid "Window Resolution"
+msgstr "רזולוציית חלון"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:82
+msgid ""
+"Upscales the resolution when using a resolution higher than the game "
+"resolution in pixels."
+msgstr ""
+"הגדרה זו משדרגת את הרזולוציה כאשר משתמשים ברזולוציה גבוהה יותר מרזולוציית "
+"המשחק בפיקסלים."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:118
+msgid "Miscellaneous"
+msgstr "שונות"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:121
+msgid "Frame Rate Limit"
+msgstr "מגבלת קצב תמוניות"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:137
+msgid "Frame Rate Limit When Unfocused"
+msgstr "מגבלת קצב תמוניות כאשר החלון אינו ממוקד"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:153
+msgid "Integer Scaling"
+msgstr "סילום מספרים שלמים"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:162
+msgid "Window Type"
+msgstr "סוג חלון"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:166
+msgid "Borderless"
+msgstr "ללא שוליים"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:172
+msgid "Fullscreen"
+msgstr "מסך מלא"
+
+#: runexe/frontend/ui/dialog-installer.blp:40
+msgid "Do you want to proceed with the installation?"
+msgstr "האם להתקדם עם ההתקנה?"
+
+#: runexe/frontend/ui/dialog-installer.blp:45
+msgid "Start Installation"
+msgstr "התחלת התקנה"
+
+#: runexe/frontend/ui/dialog-installer.blp:64
+msgid ""
+"This installer requires some local resources which cannot be provided "
+"otherwise."
+msgstr "תוכנית התקנה זו דורשת משאבים מקומיים מסוימים שלא ניתן לספק אחרת."
+
+#: runexe/frontend/ui/dialog-installer.blp:68
+msgid "Proceed"
+msgstr "התקדמות"
+
+#: runexe/frontend/ui/dialog-installer.blp:127
+msgid "Completed!"
+msgstr "סיימנו!"
+
+#: runexe/frontend/ui/dialog-installer.blp:130
+msgid "Show Programs"
+msgstr "הצגת תוכניות"
+
+#: runexe/frontend/ui/dialog-installer.blp:148
+msgid "Installation Failed!"
+msgstr "ההתקנה נכשלה!"
+
+#: runexe/frontend/ui/dialog-installer.blp:149
+msgid "Something went wrong."
+msgstr "משהו השתבש."
+
+#: runexe/frontend/ui/dialog-journal.blp:9
+msgid "All messages"
+msgstr "כל ההודעות"
+
+#: runexe/frontend/ui/dialog-journal.blp:13
+msgid "Critical"
+msgstr "קריטי"
+
+#: runexe/frontend/ui/dialog-journal.blp:17
+msgid "Errors"
+msgstr "שגיאות"
+
+#: runexe/frontend/ui/dialog-journal.blp:21
+msgid "Warnings"
+msgstr "אזהרות"
+
+#: runexe/frontend/ui/dialog-journal.blp:25
+msgid "Info"
+msgstr "מידע"
+
+#: runexe/frontend/ui/dialog-journal.blp:40
+msgid "Journal browser"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-journal.blp:48
+msgid "Journal Browser"
+msgstr "דפדפן יומן"
+
+#: runexe/frontend/ui/dialog-journal.blp:53
+msgid "Change Logging Level."
+msgstr "שינוי רמת רישום."
+
+#: runexe/frontend/ui/dialog-journal.blp:57
+msgid "All"
+msgstr "הכול"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:42
+msgid "Those arguments will be passed at launch."
+msgstr "הארגומנטים האלה יועברו בהפעלה."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:43
+msgid "Custom Arguments"
+msgstr "ארגומנטים מותאמים אישית"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:46
+msgid "Command Arguments"
+msgstr "ארגומנטים של פקודה"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:47
+#, c-format
+msgid "e.g.: VAR=value %command% -example1 -example2 -example3=hello"
+msgstr "למשל: ‪משתנה=‎ערך %‎פקודה% -‎דוגמה1 -‎דוגמה2 -‎דוגמה3=‎שלום‬"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:52
+msgid "Post-run Script"
+msgstr "סקריפט לאחר הרצה"
+
+#. endregion
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+#: runexe/frontend/windows/launchoptions.py:54
+msgid "Choose a script which should be executed after run."
+msgstr "בחירת סקריפט לביצוע לאחר הרצה."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:70
+msgid "Choose a Script"
+msgstr "בחירת סקריפט"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+#: runexe/frontend/windows/launchoptions.py:55
+msgid "Choose from where start the program."
+msgstr "בחירה מאיפה להתחיל את התוכנית."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:101
+#: runexe/frontend/ui/drive-entry.blp:22
+msgid "Choose a Directory"
+msgstr "בחירת תיקייה"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:114
+msgid "These settings will override the default settings for this executable."
+msgstr "הגדרות אלה ידרסו את הגדרות ברירת המחדל עבור קובץ הפעלה זה."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:115
+msgid "Preferences Overrides"
+msgstr "דריסות של העדפות"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:119
+msgid "Reset to Capsule's Defaults"
+msgstr "שחזור לברירות המחדל של „בקבוקים”"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:165
+msgid "Virtual Desktop"
+msgstr "שולחן עבודה וירטואלי"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:4
+msgid "Proton Disclaimer"
+msgstr "כתב ויתור של Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:21
+msgid "Use Proton"
+msgstr "שימוש ב־Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:35
+msgid ""
+"Beware, using Proton-based runners in non-Steam capsules can cause problems "
+"and prevent them from behaving correctly.\n"
+"\n"
+"We recommend using Wine-GE rather, a version of Proton meant to run outside "
+"of Steam.\n"
+"\n"
+"Proceeding will automatically enable the Steam runtime (if present in the "
+"system and detected by RunExe) in order to allow it to access the necessary "
+"libraries and limit compatibility problems. Be aware that GloriousEggroll, "
+"the runner's provider, is not responsible for any problems and we ask that "
+"you do not report to them."
+msgstr ""
+"זהירות, שימוש בכלי הרצה מבוססי Proton בבקבוקים שאינם של Steam יכול לגרום "
+"לבעיות ולמנוע מהם להתנהג כראוי.\n"
+"\n"
+"אנו ממליצים להשתמש בכלי ההרצה Wine-GE במקום זאת, שהוא גרסת Proton שנועדה "
+"לרוץ מחוץ ל־Steam.\n"
+"\n"
+"המשך ההליך יפעיל באופן אוטומטי את מערכת זמן הריצה של Steam "
+"(אם קיימת במערכת ומזוהה על ידי „בקבוקים”) על מנת לאפשר לכלי ההרצה לגשת "
+"לספריות הנדרשות ולצמצם בעיות תאימות. חשוב לדעת ש־GloriousEggroll, הספק של "
+"כלי ההרצה, אינו אחראי לשום בעיה ואנו מבקשים שלא לדווח אליו."
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:43
+msgid "I got it."
+msgstr "הבנתי."
+
+#: runexe/frontend/ui/dialog-rename.blp:7
+msgid "Rename"
+msgstr "שינוי שם"
+
+#: runexe/frontend/ui/dialog-rename.blp:30
+msgid "Choose a new name for the selected program."
+msgstr "בחירת שם חדש עבור התוכנית שנבחרה."
+
+#: runexe/frontend/ui/dialog-rename.blp:33
+msgid "New Name"
+msgstr "שם חדש"
+
+#: runexe/frontend/ui/dialog-run-args.blp:13
+msgid "Run With Arguments"
+msgstr "הרצה עם ארגומנטים"
+
+#: runexe/frontend/ui/dialog-run-args.blp:34
+#: runexe/frontend/views/capsule_details.py:401
+#: runexe/frontend/views/list.py:131
+msgid "Run"
+msgstr "הרצה"
+
+#: runexe/frontend/ui/dialog-run-args.blp:44
+msgid "Write below the arguments to be passed to the executable."
+msgstr "יש לכתוב למטה את הארגומנטים שיש להעביר לקובץ ההפעלה."
+
+#: runexe/frontend/ui/dialog-run-args.blp:47
+msgid "e.g.: -opengl -SkipBuildPatchPrereq"
+msgstr "למשל: ‪-opengl -SkipBuildPatchPrereq‬"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:7
+msgid "Sandbox Settings"
+msgstr "הגדרות ארגז חול"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:25
+msgid "Share Network"
+msgstr "שיתוף רשת"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:34
+msgid "Share Sound"
+msgstr "שיתוף שמע"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:16
+msgid "Upgrade Needed"
+msgstr "נחוץ שדרוג"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:38
+#: runexe/frontend/ui/onboard.blp:81
+msgid "Continue"
+msgstr "המשך"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:47
+msgid "Launch upgrade"
+msgstr "הפעלת השדרוג"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:66
+msgid "New Versioning System"
+msgstr "מערכת ניהול גרסאות חדשה"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:69
+msgid "The new capsule versioning system has landed."
+msgstr "המערכת לניהול גרסאות בקבוק החדשה נחתה."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:83
+msgid ""
+"RunExe has a whole new Versioning System that is not backwards compatible.\n"
+"\n"
+"To continue using versioning we need to re-initialize the capsule repository. "
+"This will not delete data from your capsule but will delete all existing "
+"snapshots and create a new one.\n"
+"\n"
+"If you need to go back to a previous snapshot before continuing, close this "
+"window and restore the snapshot, then reopen the capsule to show this window "
+"again.\n"
+"\n"
+"The old system will be discontinued in one of the next releases."
+msgstr ""
+"לתוכנית „בקבוקים” יש מערכת ניהול גרסאות חדשה לגמרי שאינה תואמת לאחור.\n"
+"\n"
+"כדי להמשיך להשתמש בניהול גרסאות יש לאתחל מחדש את מאגר המידע של הבקבוק. פעולה "
+"זו לא תמחק נתונים מהבקבוק שלך אך תמחק את כל תמונות המצב הקיימות ותיצור אחת "
+"חדשה.\n"
+"\n"
+"אם צריך לחזור לתמונת מצב קודמת לפני המשך הפעולה, יש לסגור חלון זה ולשחזר את "
+"תמונת המצב, לאחר מכן יש לפתוח מחדש את הבקבוק כדי להציג חלון זה שוב.\n"
+"\n"
+"התמיכה במערכת הישנה תופסק באחד מהשחרורים הבאים."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:103
+msgid "Re-initializing Repository…"
+msgstr "מאגר המידע מאותחל מחדש…"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:133
+msgid "Done! Please restart RunExe."
+msgstr "בוצע! נא להפעיל את „בקבוקים” מחדש."
+
+#. Translators: vkBasalt is a Vulkan post processing layer for Linux
+#: runexe/frontend/ui/dialog-vkbasalt.blp:10
+msgid "Post-Processing Effects Settings"
+msgstr "הגדרות אפקטים לאחר עיבוד"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:44
+msgid "Default"
+msgstr "ברירת מחדל"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:48
+msgid "Default Settings"
+msgstr "הגדרות ברירת מחדל"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:57
+msgid "Effects are applied according to the list order."
+msgstr "האפקטים מיושמים בהתאם לסדר הרשימה."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:58
+msgid "Effects"
+msgstr "אפקטים"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:62
+msgid "Contrast Adaptive Sharpening"
+msgstr "חידוד ניגודיות הסתגלותי (CAS)"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:65
+#: runexe/frontend/ui/dialog-vkbasalt.blp:102
+msgid "Sharpness"
+msgstr "חדות"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:69
+#: runexe/frontend/ui/dialog-vkbasalt.blp:106
+#: runexe/frontend/ui/dialog-vkbasalt.blp:134
+#: runexe/frontend/ui/dialog-vkbasalt.blp:167
+#: runexe/frontend/ui/dialog-vkbasalt.blp:195
+#: runexe/frontend/ui/dialog-vkbasalt.blp:223
+#: runexe/frontend/ui/dialog-vkbasalt.blp:256
+#: runexe/frontend/ui/dialog-vkbasalt.blp:288
+#: runexe/frontend/ui/dialog-vkbasalt.blp:316
+#: runexe/frontend/ui/dialog-vkbasalt.blp:343
+#: runexe/frontend/ui/dialog-vkbasalt.blp:370 runexe/frontend/ui/new.blp:58
+msgid "Show Information"
+msgstr "הצגת מידע"
+
+#. Translators: Luma is not translatable
+#: runexe/frontend/ui/dialog-vkbasalt.blp:99
+msgid "Denoised Luma Sharpening"
+msgstr "חידוד לומה מופחת רעשים"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:130
+msgid "Denoise"
+msgstr "הפחתת רעשים"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:160
+msgid "Fast Approximate Anti-Aliasing"
+msgstr "החלקת קצוות משוערות מהירה (FXAA)"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:163
+msgid "Subpixel Quality"
+msgstr "איכות תת־פיקסל"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:191
+msgid "Quality Edge Threshold"
+msgstr "סף איכות קצה"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:219
+msgid "Quality Edge Threshold Minimum"
+msgstr "סף איכות קצה מזערי"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:249
+msgid "Subpixel Morphological Anti-Aliasing"
+msgstr "החלקת קצוות צורנית ברמת תת־פיקסל (SMAA)"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:252
+msgid "Edge Detection"
+msgstr "זיהוי קצה"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:267
+msgid "Luma"
+msgstr "Luma"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:273
+msgid "Color"
+msgstr "צבע"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:284
+msgid "Threshold"
+msgstr "סף"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:312
+msgid "Max Search Steps"
+msgstr "שלבי חיפוש מרביים"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:339
+msgid "Max Search Steps Diagonal"
+msgstr "שלבי חיפוש אלכסוניים מרביים"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:366
+msgid "Max Corner Rounding"
+msgstr "עיגול פינות מרבי"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:411
+msgid ""
+"CAS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper, whereas values lower than 0 make the frame softer than native."
+msgstr ""
+"חדות CAS משפרת את חדות התמונית. ערכים גבוהים יותר הופכים את התמונית לחדה "
+"יותר, בעוד שערכים נמוכים יותר מ־0 הופכים את התמונית לרכה יותר מהמקור."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:428
+msgid ""
+"DLS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper."
+msgstr ""
+"חדות DLS משפרת את חדות התמונית. ערכים גבוהים יותר הופכים את התמונית לחדה "
+"יותר."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:445
+msgid ""
+"DLS denoise decreases the noise of a frame. Higher values make the frame "
+"softer."
+msgstr ""
+"הפחתת רעשים בעזרת DLSS מפחיתה את רעש התמונית. ערכים גבוהים יותר הופכים את "
+"התמונית לרכה יותר."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:462
+msgid ""
+"FXAA subpixel quality decreases aliasing at the subpixel level. Higher "
+"values make the frame softer."
+msgstr ""
+"איכות תת־פיקסל של FXAA מפחיתה קצוות משוננים ברמת התת־פיקסל. ערכים גבוהים "
+"יותר הופכים את התמונית לרכה יותר."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:479
+msgid ""
+"FXAA edge threshold is the minimum amount of contrast required to apply the "
+"FXAA algorithm. Higher values make the frame have more contrast."
+msgstr ""
+"סף איכות קצה של FXAA הוא הכמות המזערית של ניגודיות הדרושה ליישום האלגוריתם "
+"של FXAA. ערכים גבוהים יותר גורמים לתמונית להיות בעלת ניגודיות רבה יותר."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:496
+msgid ""
+"FXAA quality edge threshold minimum is the minimum value of dark pixels that "
+"are ignored by the FXAA algorithm. Higher values make FXAA ignore pixels "
+"below the specified value and can lead to a performance increase."
+msgstr ""
+"סף איכות קצה מזערי של FXAA הוא הערך המזערי של פיקסלים כהים שהאלגוריתם של "
+"FXAA מתעלם מהם. ערכים גבוהים יותר גורמים לאלגוריתם של FXAA להתעלם מפיקסלים "
+"מתחת לערך שצוין ויכולים להוביל לעלייה בביצועים."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:513
+msgid ""
+"Luma detects edges from a monochrome perspective, whereas Color detects "
+"edges based on colors. Luma is more performant than Color."
+msgstr ""
+"הטכניקה Luma מזהה קצוות מנקודת מבט חד־צבעית, בעוד שהטכניקה „צבע” מזהה קצוות "
+"בהתבסס על צבעים. הביצועים של Luma טובים יותר מאלה של „צבע”."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:530
+msgid ""
+"SMAA threshold specifies the sensitivity of edge detection. Lower values "
+"detect more edges at the expense of performance."
+msgstr ""
+"סף של SMAA מציין את הרגישות של זיהוי קצוות. ערכים נמוכים יותר מזהים יותר "
+"קצוות על חשבון הביצועים."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:547
+msgid ""
+"SMAA max search steps specifies how many horizontal and vertical search "
+"steps are performed when searching for edges."
+msgstr ""
+"שלבי חיפוש מרביים של SMAA הוא הערך שמציין כמה שלבי חיפוש אופקיים ואנכיים "
+"מבוצעים בעת חיפוש קצוות."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:564
+msgid ""
+"SMAA max diagonal search steps specifies how many diagonal search steps are "
+"performed when searching for edges."
+msgstr ""
+"שלבי חיפוש אלכסוניים מרביים של SMAA הוא הערך שמציין כמה שלבי חיפוש אנכיים "
+"מבוצעים בעת חיפוש קצוות."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:581
+msgid "SMAA corner rounding specifies the strength of rounding edge corners."
+msgstr "עיגול פינות של SMAA מציין את החוזק של עיגול פינות של קצוות."
+
+#: runexe/frontend/ui/dll-override-entry.blp:8
+msgid "Builtin (Wine)"
+msgstr "מובנה (Wine)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:9
+msgid "Native (Windows)"
+msgstr "מקומי (Windows)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:10
+msgid "Builtin, then Native"
+msgstr "„מובנה”, ואז „מקומי”"
+
+#: runexe/frontend/ui/dll-override-entry.blp:11
+msgid "Native, then Builtin"
+msgstr "„מקומי”, ואז „מובנה”"
+
+#: runexe/frontend/ui/dll-override-entry.blp:12
+msgid "Disabled"
+msgstr "מושבת"
+
+#: runexe/frontend/ui/dll-override-entry.blp:20
+#: runexe/frontend/ui/drive-entry.blp:12
+msgid "Remove"
+msgstr "הסרה"
+
+#: runexe/frontend/ui/drive-entry.blp:5
+msgid "/point/to/path"
+msgstr "‪/הצבעה/על/נתיב‬"
+
+#: runexe/frontend/ui/env-var-entry.blp:4
+#: runexe/frontend/ui/exclusion-pattern-entry.blp:4
+msgid "Value"
+msgstr "ערך"
+
+#: runexe/frontend/ui/importer-entry.blp:13
+msgid "Browse files"
+msgstr "עיון בקבצים"
+
+#. Translators: A Wine prefix is a separate environment (C:\ drive) for the Wine program
+#: runexe/frontend/ui/importer-entry.blp:21
+msgid "Wine prefix name"
+msgstr "שם קידומת Wine"
+
+#: runexe/frontend/ui/importer-entry.blp:28
+msgid "Manager"
+msgstr "מנהל"
+
+#: runexe/frontend/ui/importer-entry.blp:38
+msgid "This Wine prefix was already imported in RunExe."
+msgstr "קידומת Wine זו כבר יובאה אל „בקבוקים”."
+
+#: runexe/frontend/ui/importer.blp:22
+msgid "Import a Capsule backup"
+msgstr "ייבוא גיבוי בקבוק"
+
+#: runexe/frontend/ui/importer.blp:28
+msgid "Search again for prefixes"
+msgstr "חיפוש חוזר אחר קידומות"
+
+#: runexe/frontend/ui/importer.blp:38
+msgid "No Prefixes Found"
+msgstr "לא נמצאו קידומות"
+
+#: runexe/frontend/ui/importer.blp:39
+msgid ""
+"No external prefixes were found. Does RunExe have access to them?\n"
+"Use the icon on the top to import a capsule from a backup."
+msgstr ""
+"לא נמצאו קידומות חיצוניות. האם לתוכנית „בקבוקים” יש גישה אליהן?\n"
+"יש להשתמש בסמל למעלה כדי לייבא בקבוק מגיבוי."
+
+#: runexe/frontend/ui/importer.blp:74
+msgid "Full Archive"
+msgstr "ארכיון מלא"
+
+#: runexe/frontend/ui/installer-entry.blp:16
+msgid "Show Manifest…"
+msgstr "הצגת מניפסט…"
+
+#: runexe/frontend/ui/installer-entry.blp:20
+msgid "Read Review…"
+msgstr "קריאת ביקורת…"
+
+#: runexe/frontend/ui/installer-entry.blp:34
+msgid "Installer name"
+msgstr "שם תוכנית התקנה"
+
+#: runexe/frontend/ui/installer-entry.blp:35
+msgid "Installer description"
+msgstr "תיאור תוכנית התקנה"
+
+#: runexe/frontend/ui/installer-entry.blp:42
+msgid "Unknown"
+msgstr "לא ידוע"
+
+#: runexe/frontend/ui/installer-entry.blp:51
+msgid "Install this Program"
+msgstr "התקנת תוכנית זו"
+
+#: runexe/frontend/ui/installer-entry.blp:69
+msgid "Program Menu"
+msgstr "תפריט תוכנית"
+
+#: runexe/frontend/ui/library-entry.blp:36
+msgid "No Thumbnail"
+msgstr "אין תמונה ממוזערת"
+
+#: runexe/frontend/ui/library-entry.blp:57
+msgid "Launch"
+msgstr "הפעלה"
+
+#: runexe/frontend/ui/library-entry.blp:70
+#: runexe/frontend/ui/program-entry.blp:89
+msgid "Launch with Steam"
+msgstr "הפעלה עם Steam"
+
+#: runexe/frontend/ui/library-entry.blp:108
+msgid "Item name"
+msgstr "שם פריט"
+
+#: runexe/frontend/ui/library-entry.blp:132
+msgid "Remove from Library"
+msgstr "הסרה מהספרייה"
+
+#: runexe/frontend/ui/library-entry.blp:143
+msgid "Stop"
+msgstr "עצירה"
+
+#: runexe/frontend/ui/library.blp:11
+#: runexe/frontend/windows/main_window.py:196
+msgid "Library"
+msgstr "ספרייה"
+
+#: runexe/frontend/ui/library.blp:12
+msgid "Add items here from your capsule's program list"
+msgstr "יש להוסיף פריטים כאן מרשימת התוכניות של הבקבוק שלך"
+
+#: runexe/frontend/ui/list-entry.blp:26
+msgid "Versioning is active in this capsule."
+msgstr "ניהול גרסאות פעיל בבקבוק זה."
+
+#: runexe/frontend/ui/list-entry.blp:42
+msgid "This capsule looks damaged."
+msgstr "בקבוק זה נראה פגום."
+
+#: runexe/frontend/ui/list-entry.blp:55
+msgid "Execute in this Capsule"
+msgstr "ביצוע בבקבוק זה"
+
+#: runexe/frontend/ui/list-entry.blp:69
+msgid "Run Here"
+msgstr "הרצה כאן"
+
+#: runexe/frontend/ui/list-entry.blp:75
+msgid ""
+"This capsule looks damaged, the configuration file is missing. I can try to "
+"solve by creating a new configuration."
+msgstr ""
+"בקבוק זה נראה פגום, קובץ התצורה שלו חסר. ניתן לנסות לתקן זאת על ידי יצירת "
+"תצורה חדשה."
+
+#: runexe/frontend/ui/list.blp:12
+msgid "Search your capsules…"
+msgstr "חיפוש הבקבוקים שלך…"
+
+#: runexe/frontend/ui/list.blp:28
+msgid "Steam Proton"
+msgstr "Steam Proton"
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/list.blp:42 runexe/frontend/windows/main_window.py:191
+#: data/io.github.runexe.RunExe.metainfo.xml.in:7
+msgid "RunExe"
+msgstr "בקבוקים"
+
+#: runexe/frontend/ui/list.blp:49
+msgid "Create New Capsule…"
+msgstr "יצירת בקבוק חדש…"
+
+#: runexe/frontend/ui/list.blp:63
+msgid "No Results Found"
+msgstr "לא נמצאו תוצאות"
+
+#: runexe/frontend/ui/list.blp:64
+msgid "Try a different search."
+msgstr "יש לנסות חיפוש שונה."
+
+#: runexe/frontend/ui/loading.blp:13
+msgid "Starting up…"
+msgstr "מתחילים…"
+
+#: runexe/frontend/ui/local-resource-entry.blp:4
+msgid "This resource is missing."
+msgstr "משאב זה חסר."
+
+#: runexe/frontend/ui/local-resource-entry.blp:8
+msgid "Browse"
+msgstr "עיון"
+
+#: runexe/frontend/ui/new.blp:32
+msgid "C_reate"
+msgstr "י_צירה"
+
+#: runexe/frontend/ui/new.blp:53
+msgid "Capsule Name"
+msgstr "שם הבקבוק"
+
+#: runexe/frontend/ui/new.blp:75
+msgid "_Application"
+msgstr "_יישום"
+
+#: runexe/frontend/ui/new.blp:88
+msgid "_Gaming"
+msgstr "_גיימינג"
+
+#: runexe/frontend/ui/new.blp:101
+msgid "C_ustom"
+msgstr "_התאמה אישית"
+
+#: runexe/frontend/ui/new.blp:114
+msgid "Custom"
+msgstr "התאמה אישית"
+
+#: runexe/frontend/ui/new.blp:118
+msgid "Share User Directory"
+msgstr "שיתוף תיקיית משתמש"
+
+#: runexe/frontend/ui/new.blp:119
+msgid ""
+"This makes the user directory discoverable in the capsule, at the risk of "
+"sharing personal information to Windows software. This option cannot be "
+"changed after the capsule has been created."
+msgstr ""
+"אפשרות זו הופכת את תיקיית המשתמש לניתנת לגילוי בבקבוק, בסיכון של שיתוף מידע "
+"אישי עם תוכנות Windows. אפשרות זו אינה ניתנת לשינוי לאחר שהבקבוק נוצר."
+
+#: runexe/frontend/ui/new.blp:136
+msgid "Architecture"
+msgstr "ארכיטקטורה"
+
+#: runexe/frontend/ui/new.blp:137
+msgid "32-bit should only be used if strictly necessary."
+msgstr "יש להשתמש ב־32 סיביות רק אם הדבר הכרחי בהחלט."
+
+#: runexe/frontend/ui/new.blp:146
+msgid "Import a custom configuration."
+msgstr "ייבוא תצורה מותאמת אישית."
+
+#: runexe/frontend/ui/new.blp:176
+msgid "Capsule Directory"
+msgstr "תיקייה בקבוק"
+
+#: runexe/frontend/ui/new.blp:177
+msgid "Directory that will contain the data of this capsule."
+msgstr "תיקייה שתכלול את כל הנתונים של בקבוק זה."
+
+#: runexe/frontend/ui/new.blp:249
+msgid "_Close"
+msgstr "_סגירה"
+
+#: runexe/frontend/ui/new.blp:281
+msgid "This name is unavailable, please try another."
+msgstr "שם זה אינו זמין, נא לנסות אחד אחר."
+
+#: runexe/frontend/ui/onboard.blp:34
+msgid "Previous"
+msgstr "הקודם"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:59
+msgid "Welcome to RunExe"
+msgstr "ברוך בואך אל „בקבוקים”"
+
+#: runexe/frontend/ui/onboard.blp:60
+msgid "Run Windows Software on Linux."
+msgstr "הרצת תוכנות Windows על לינוקס."
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/onboard.blp:65
+msgid "Windows in RunExe"
+msgstr "‫Windows‬ בבקבוקים"
+
+#: runexe/frontend/ui/onboard.blp:66
+msgid ""
+"RunExe uses compatibility runners to provide isolated containerized Windows-"
+"like environments where programs run."
+msgstr ""
+"התוכנית „בקבוקים” משתמשת בכלי הרצה של תאימות כדי לספק סביבות דמויות Windows "
+"המבודדות במכולות בהן תוכניות רצות."
+
+#: runexe/frontend/ui/onboard.blp:72
+msgid "Almost Done"
+msgstr "כמעט סיימנו"
+
+#: runexe/frontend/ui/onboard.blp:73
+msgid "We need a few more minutes to set everything up…"
+msgstr "אנחנו צריכים עוד כמה דקות בשביל להגדיר הכול…"
+
+#: runexe/frontend/ui/onboard.blp:105
+msgid "All Ready!"
+msgstr "הכול מוכן!"
+
+#: runexe/frontend/ui/onboard.blp:114
+msgid "Please Finish the setup first"
+msgstr "נא לסיים את ההתקנה קודם"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:120
+msgid "Start using RunExe"
+msgstr "התחלת השימוש ב„בקבוקים”"
+
+#: runexe/frontend/ui/onboard.blp:141
+msgid "Next"
+msgstr "הבא"
+
+#: runexe/frontend/ui/preferences.blp:4 runexe/frontend/ui/window.blp:86
+msgid "Preferences"
+msgstr "העדפות"
+
+#: runexe/frontend/ui/preferences.blp:11
+#: runexe/frontend/ui/preferences.blp:39
+msgid "General"
+msgstr "כללי"
+
+#: runexe/frontend/ui/preferences.blp:14
+msgid "Appearance"
+msgstr "מראה"
+
+#: runexe/frontend/ui/preferences.blp:17
+msgid "Dark Mode"
+msgstr "מצב כהה"
+
+#: runexe/frontend/ui/preferences.blp:18
+msgid "Whether RunExe should use the dark color scheme."
+msgstr "האם על „בקבוקים” להשתמש בערכת הצבעים הכהה."
+
+#: runexe/frontend/ui/preferences.blp:28
+msgid "Show Update Date"
+msgstr "הצגת תאריך עדכון"
+
+#: runexe/frontend/ui/preferences.blp:29
+msgid "Whether to show the update date in the capsule list."
+msgstr "האם יש להציג את תאריך העדכון ברשימת הבקבוקים."
+
+#: runexe/frontend/ui/preferences.blp:42
+#: data/io.github.runexe.RunExe.gschema.xml:46
+msgid "Notifications"
+msgstr "התראות"
+
+#: runexe/frontend/ui/preferences.blp:43
+msgid "Show notifications for downloads and installs."
+msgstr "הצגת התראות עבור הורדות והתקנות."
+
+#: runexe/frontend/ui/preferences.blp:52
+msgid "Temp Files"
+msgstr "קבצים זמניים"
+
+#: runexe/frontend/ui/preferences.blp:53
+msgid "Clean temp files when RunExe launches?"
+msgstr "לנקות קבצים זמניים כאשר התוכנית „בקבוקים” מופעלת?"
+
+#: runexe/frontend/ui/preferences.blp:62
+msgid "Close RunExe After Starting a Program"
+msgstr "סגירת התוכנית „בקבוקים” לאחר פתיחת תוכנית"
+
+#: runexe/frontend/ui/preferences.blp:63
+msgid "Close RunExe after starting a program from the file manager."
+msgstr "סגירת התוכנית „בקבוקים” לאחר פתיחת תוכנית ממנהל הקבצים."
+
+#: runexe/frontend/ui/preferences.blp:73
+msgid "Integrations"
+msgstr "שילובים"
+
+#: runexe/frontend/ui/preferences.blp:76
+msgid "Steam Proton Prefixes"
+msgstr "קידומות Steam Proton"
+
+#: runexe/frontend/ui/preferences.blp:77
+msgid "List and manage Steam Proton prefixes."
+msgstr "הצגת רשימה וניהול של קידומות Steam Proton."
+
+#: runexe/frontend/ui/preferences.blp:97
+msgid "List Steam Apps in Programs List"
+msgstr "רישום יישומי Steam ברשימת התוכניות"
+
+#: runexe/frontend/ui/preferences.blp:98
+msgid "Requires Steam for Windows installed in the capsule."
+msgstr "אפשרות זו דורשת התקנת Steam עבור Windows בבקבוק."
+
+#: runexe/frontend/ui/preferences.blp:107
+msgid "List Epic Games in Programs List"
+msgstr "רישום משחקי Epic ברשימת התוכניות"
+
+#: runexe/frontend/ui/preferences.blp:108
+msgid "Requires Epic Games Store installed in the capsule."
+msgstr "אפשרות זו דורשת התקנת Epic Games Store בבקבוק."
+
+#: runexe/frontend/ui/preferences.blp:117
+msgid "List Ubisoft Games in Programs List"
+msgstr "רישום משחקי Ubisoft ברשימת התוכניות"
+
+#: runexe/frontend/ui/preferences.blp:118
+msgid "Requires Ubisoft Connect installed in the capsule."
+msgstr "אפשרות זו דורשת התקנת Ubisoft Connect בבקבוק."
+
+#: runexe/frontend/ui/preferences.blp:128
+msgid "Advanced"
+msgstr "מתקדם"
+
+#: runexe/frontend/ui/preferences.blp:131
+msgid "Capsules Directory"
+msgstr "תיקיית בקבוקים"
+
+#: runexe/frontend/ui/preferences.blp:132
+msgid "Directory that contains the data of your Capsules."
+msgstr "תיקייה שמכילה את הנתונים של הבקבוקים שלך."
+
+#: runexe/frontend/ui/preferences.blp:167
+msgid "Runners"
+msgstr "כלי הרצה"
+
+#: runexe/frontend/ui/preferences.blp:181
+msgid "RunExe is running in offline mode, so runners are not available."
+msgstr "התוכנית „בקבוקים” רצה במצב לא מקוון, לכן כלי הרצה אינם זמינים."
+
+#: runexe/frontend/ui/preferences.blp:208
+msgid "Pre-Release"
+msgstr "קדם־שחרור"
+
+#: runexe/frontend/ui/preferences.blp:209
+msgid "Display unstable versions of runners."
+msgstr ""
+
+#: runexe/frontend/ui/preferences.blp:224
+msgid "DLL Components"
+msgstr "רכיבי DLL"
+
+#: runexe/frontend/ui/preferences.blp:238
+msgid "RunExe is running in offline mode, so DLLs are not available."
+msgstr "התוכנית „בקבוקים” רצה במצב לא מקוון, לכן קובצי DLL אינם זמינים."
+
+#: runexe/frontend/ui/preferences.blp:270
+msgid "DXVK-NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/preferences.blp:283
+msgid "Core"
+msgstr "ליבה"
+
+#: runexe/frontend/ui/preferences.blp:287
+msgid "Runtime"
+msgstr "מערכת זמן ריצה"
+
+#: runexe/frontend/ui/preferences.blp:291
+msgid "WineBridge"
+msgstr "WineBridge"
+
+#: runexe/frontend/ui/preferences.blp:297
+#: data/io.github.runexe.RunExe.gschema.xml:66
+msgid "Experiments"
+msgstr "ניסויים"
+
+#: runexe/frontend/ui/preferences.blp:300
+msgid ""
+"These features are under heavy development and may be unstable, expect bugs "
+"and breakage."
+msgstr ""
+"תכונות אלה נמצאות תחת פיתוח כבד ועשויות להיות לא יציבות, יש לצפות לתקלות."
+
+#: runexe/frontend/ui/preferences.blp:303
+msgid "Sandbox per capsule"
+msgstr "ארגז חול לכל בקבוק"
+
+#: runexe/frontend/ui/preferences.blp:304
+msgid "In early development."
+msgstr "בפיתוח מוקדם."
+
+#: runexe/frontend/ui/program-entry.blp:19
+msgid "Launch with Terminal"
+msgstr "הפעלה עם מסוף"
+
+#: runexe/frontend/ui/program-entry.blp:25
+msgid "Browse Path"
+msgstr "עיון בנתיב"
+
+#: runexe/frontend/ui/program-entry.blp:39
+msgid "Change Launch Options…"
+msgstr "שינוי הגדרות הפעלה…"
+
+#: runexe/frontend/ui/program-entry.blp:43
+msgid "Add to Library"
+msgstr "הוספה לספרייה"
+
+#: runexe/frontend/ui/program-entry.blp:47
+msgid "Add Desktop Entry"
+msgstr "הוספת רישום בשולחן העבודה"
+
+#: runexe/frontend/ui/program-entry.blp:51
+msgid "Add to Steam"
+msgstr "הוספה ל־Steam"
+
+#: runexe/frontend/ui/program-entry.blp:55
+msgid "Rename…"
+msgstr "שינוי שם…"
+
+#: runexe/frontend/ui/program-entry.blp:62
+msgid "Hide Program"
+msgstr "הסתרת תוכנית"
+
+#: runexe/frontend/ui/program-entry.blp:66
+msgid "Show Program"
+msgstr "הצגת תוכנית"
+
+#: runexe/frontend/ui/program-entry.blp:70
+msgid "Remove from List"
+msgstr "הסרה מהרשימה"
+
+#: runexe/frontend/ui/program-entry.blp:83
+msgid "Program name"
+msgstr "שם תוכנית"
+
+#. Translators: id as identification
+#: runexe/frontend/ui/state-entry.blp:8
+msgid "State id"
+msgstr "מזהה מצב"
+
+#: runexe/frontend/ui/state-entry.blp:9
+msgid "State comment"
+msgstr "הערת מצב"
+
+#: runexe/frontend/ui/state-entry.blp:16
+msgid "Restore this Snapshot"
+msgstr "שחזור תמונת מצב זו"
+
+#: runexe/frontend/ui/task-entry.blp:19
+msgid "Delete message"
+msgstr "מחיקת הודעה"
+
+#: runexe/frontend/ui/window.blp:40
+msgid "Main Menu"
+msgstr "תפריט ראשי"
+
+#: runexe/frontend/ui/window.blp:54
+msgid ""
+"You don't seem connected to the internet. Without it you will not be able to "
+"download essential components. Click this icon when you have reestablished "
+"the connection."
+msgstr ""
+"נראה שאין חיבור לאינטרנט. בלעדיו לא יהיה ניתן להוריד רכיבים חיוניים. יש "
+"ללחוץ על סמל זה כשהחיבור חודש."
+
+#: runexe/frontend/ui/window.blp:79
+msgid "Import…"
+msgstr "ייבוא…"
+
+#: runexe/frontend/ui/window.blp:91
+msgid "Help"
+msgstr "עזרה"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/window.blp:96
+msgid "About RunExe"
+msgstr "על „בקבוקים”"
+
+#: runexe/frontend/views/capsule_details.py:191
+#, python-brace-format
+msgid "File \"{0}\" is not a .exe or .msi file"
+msgstr "הקובץ „{0}” אינו קובץ ‪.exe‬ או ‪.msi‬"
+
+#: runexe/frontend/views/capsule_details.py:207
+#, python-format
+msgid "Updated: %s"
+msgstr "בוצע עדכון: %s"
+
+#: runexe/frontend/views/capsule_details.py:267
+#, python-brace-format
+msgid "\"{0}\" added"
+msgstr "בוצעה הוספת „{0}”"
+
+#: runexe/frontend/views/capsule_details.py:270
+#: runexe/frontend/views/capsule_details.py:398
+#: runexe/frontend/views/list.py:128
+msgid "Select Executable"
+msgstr "בחירת קובץ הפעלה"
+
+#: runexe/frontend/views/capsule_details.py:273
+msgid "Add"
+msgstr "הוספה"
+
+#: runexe/frontend/views/capsule_details.py:346
+msgid "Hide Hidden Programs"
+msgstr "הסתרת תוכניות מוסתרות"
+
+#: runexe/frontend/views/capsule_details.py:383
+#: runexe/frontend/widgets/library.py:156
+#: runexe/frontend/widgets/program.py:184
+#, python-brace-format
+msgid "Launching \"{0}\"…"
+msgstr "בתהליך הפעלת „{0}”…"
+
+#: runexe/frontend/views/capsule_details.py:413
+msgid "Be Aware of Sandbox"
+msgstr "יש להיות מודע לארגז החול"
+
+#: runexe/frontend/views/capsule_details.py:414
+msgid ""
+"RunExe is running in a sandbox, a restricted permission environment needed "
+"to keep you safe. If the program won't run, consider moving inside the "
+"capsule (3 dots icon on the top), then launch from there."
+msgstr ""
+"התוכנית „בקבוקים” מורצת בארגז חול, סביבת הרשאות מוגבלות הדרושה כדי לשמור על "
+"בטיחותך. אם התוכנית לא תרוץ, יש לשקול לעבור לתוך הבקבוק (סמל 3 נקודות למעלה)"
+", ואז להפעיל משם."
+
+#: runexe/frontend/views/capsule_details.py:416
+#: runexe/frontend/views/capsule_details.py:525
+#: runexe/frontend/windows/main_window.py:223
+msgid "_Dismiss"
+msgstr "_דחייה"
+
+#: runexe/frontend/views/capsule_details.py:429
+msgid "Select the location where to save the backup config"
+msgstr "נא לבחור לאן לשמור את הגדרות הגיבוי"
+
+#: runexe/frontend/views/capsule_details.py:431
+msgid "Export"
+msgstr "ייצוא"
+
+#: runexe/frontend/views/capsule_details.py:433
+msgid "Select the location where to save the backup archive"
+msgstr "נא לבחור לאן לשמור את ארכיון הגיבוי"
+
+#: runexe/frontend/views/capsule_details.py:435
+msgid "Backup"
+msgstr "גיבוי"
+
+#: runexe/frontend/views/capsule_details.py:440
+#, python-brace-format
+msgid "Backup created for \"{0}\""
+msgstr "נוצר גיבוי עבור „{0}”"
+
+#: runexe/frontend/views/capsule_details.py:442
+#, python-brace-format
+msgid "Backup failed for \"{0}\""
+msgstr "הגיבוי של „{0}” נכשל"
+
+#: runexe/frontend/views/capsule_details.py:501
+msgid "Are you sure you want to permanently delete \"{}\"?"
+msgstr "למחוק את „{}” לצמיתות?"
+
+#: runexe/frontend/views/capsule_details.py:502
+msgid ""
+"This will permanently delete all programs and settings associated with it."
+msgstr "הפעולה הזאת תמחק את כל התוכניות וההגדרות שמשויכות אליו לצמיתות."
+
+#: runexe/frontend/views/capsule_details.py:505
+#: runexe/frontend/views/capsule_preferences.py:750
+msgid "_Delete"
+msgstr "מ_חיקה"
+
+#: runexe/frontend/views/capsule_details.py:521
+msgid "Missing Runner"
+msgstr "כלי הרצה חסר"
+
+#: runexe/frontend/views/capsule_details.py:522
+msgid ""
+"The runner requested by this capsule is missing. Install it through the "
+"RunExe preferences or choose a new one to run applications."
+msgstr ""
+"כלי ההרצה המבוקש על ידי בקבוק זה חסר. יש להתקין אותו דרך ההעדפות של „בקבוקים”"
+" או לבחור אחד חדש להרצת יישומים."
+
+#: runexe/frontend/views/capsule_details.py:597
+msgid "Are you sure you want to force stop all processes?"
+msgstr "לעצור את כל התהליכים בכוח?"
+
+#: runexe/frontend/views/capsule_details.py:598
+msgid "This can cause data loss, corruption, and programs to malfunction."
+msgstr "עלול לגרום לאובדן או השחתה של נתונים וכשלים בתוכניות."
+
+#: runexe/frontend/views/capsule_details.py:601
+msgid "Force _Stop"
+msgstr "כפיית _עצירה"
+
+#: runexe/frontend/views/capsule_preferences.py:195
+msgid "This feature is unavailable on your system."
+msgstr "תכונה זו אינה זמינה במערכת שלך."
+
+#: runexe/frontend/views/capsule_preferences.py:196
+msgid "{} To add this feature, please run flatpak install"
+msgstr "{} כדי להוסיף תכונה זו, נא להריץ flatpak install"
+
+#: runexe/frontend/views/capsule_preferences.py:246
+msgid "This capsule name is already in use."
+msgstr "שם הבקבוק הזה כבר בשימוש."
+
+#: runexe/frontend/views/capsule_preferences.py:301
+#: runexe/frontend/windows/launchoptions.py:241
+msgid "Select Working Directory"
+msgstr "בחירת תיקיית עבודה"
+
+#: runexe/frontend/views/capsule_preferences.py:423
+msgid "Directory that contains the data of \"{}\"."
+msgstr "תיקייה שמכילה את הנתונים של „{}”."
+
+#: runexe/frontend/views/capsule_preferences.py:746
+msgid "Are you sure you want to delete all snapshots?"
+msgstr "למחוק את כל תמונות המצב?"
+
+#: runexe/frontend/views/capsule_preferences.py:747
+msgid "This will delete all snapshots but keep your files."
+msgstr "הפעולה הזאת תמחק את כל תמונות המצב אבל תשאיר את הקבצים שלך."
+
+#: runexe/frontend/views/capsule_versioning.py:90
+msgid "Please migrate to the new Versioning system to create new states."
+msgstr "נא לעבור למערכת ניהול הגרסאות החדשה כדי ליצור מצבים חדשים."
+
+#: runexe/frontend/views/details.py:153
+msgid "Installers"
+msgstr "תוכניות התקנה"
+
+#: runexe/frontend/views/details.py:234
+msgid "Operations in progress, please wait."
+msgstr "מתבצעות פעולות, נא להמתין."
+
+#: runexe/frontend/views/details.py:239
+msgid "Return to your capsules."
+msgstr "חזרה לבקבוקים שלך."
+
+#: runexe/frontend/views/importer.py:92
+msgid "Backup imported successfully"
+msgstr "הגיבוי יובא בהצלחה"
+
+#: runexe/frontend/views/importer.py:94
+msgid "Import failed"
+msgstr "הייבוא נכשל"
+
+#: runexe/frontend/views/importer.py:108
+#: runexe/frontend/views/importer.py:147
+msgid "Importing backup…"
+msgstr "הגיבוי מיובא…"
+
+#: runexe/frontend/views/importer.py:119
+msgid "Select a Backup Archive"
+msgstr "נא לבחור ארכיון גיבוי"
+
+#: runexe/frontend/views/importer.py:122
+#: runexe/frontend/views/importer.py:161
+msgid "Import"
+msgstr "ייבוא"
+
+#: runexe/frontend/views/importer.py:158 runexe/frontend/views/new.py:136
+msgid "Select a Configuration File"
+msgstr "בחירת קובץ תצורה"
+
+#: runexe/frontend/views/list.py:60 runexe/frontend/views/list.py:66
+msgid "N/A"
+msgstr "לא זמין"
+
+#. Set tooltip text
+#: runexe/frontend/views/list.py:91
+#, python-brace-format
+msgid "Run executable in \"{self.config.Name}\""
+msgstr "הרצת קובץ הפעלה ב־„{self.config.Name}”"
+
+#: runexe/frontend/views/list.py:118
+#, python-brace-format
+msgid "Launching \"{0}\" in \"{1}\"…"
+msgstr "בתהליך הפעלת „{0}\" ב־„{1}\"…"
+
+#: runexe/frontend/views/list.py:235
+msgid "Your Capsules"
+msgstr "הבקבוקים שלך"
+
+#: runexe/frontend/views/loading.py:41
+#, python-brace-format
+msgid "Downloading ~{0} of packages…"
+msgstr "מתבצעת הורדת ‪~{0}‬ של חבילות…"
+
+#: runexe/frontend/views/loading.py:42
+#, python-brace-format
+msgid "Fetched {0} of {1} packages"
+msgstr "הובאו {0} מתוך {1} חבילות"
+
+#: runexe/frontend/views/new.py:157
+msgid "Select Capsule Directory"
+msgstr "בחירת תיקיית בקבוק"
+
+#: runexe/frontend/views/new.py:176
+msgid "Creating Capsule…"
+msgstr "מתבצעת יצירת בקבוק…"
+
+#: runexe/frontend/views/new.py:221
+msgid "Unable to Create Capsule"
+msgstr "לא ניתן ליצור בקבוק"
+
+#: runexe/frontend/views/new.py:225
+msgid "Capsule failed to create with one or more errors."
+msgstr "יצירת הבקבוק נכשלה עם שגיאה אחת או יותר."
+
+#. Show success
+#: runexe/frontend/views/new.py:232
+msgid "Capsule Created"
+msgstr "הבקבוק נוצר"
+
+#: runexe/frontend/views/new.py:233
+#, python-brace-format
+msgid "\"{0}\" was created successfully."
+msgstr "יצירת „{0}” הושלמה בהצלחה."
+
+#: runexe/frontend/views/preferences.py:142
+msgid "Steam was not found or RunExe does not have enough permissions."
+msgstr "היישום Steam לא נמצא או שלתוכנית „בקבוקים” אין מספיק הרשאות."
+
+#: runexe/frontend/views/preferences.py:176
+msgid "Select Capsules Path"
+msgstr "בחירת נתיב בקבוקים"
+
+#: runexe/frontend/views/preferences.py:198
+msgid "Relaunch RunExe?"
+msgstr "להפעיל את „בקבוקים” מחדש?"
+
+#: runexe/frontend/views/preferences.py:199
+msgid ""
+"RunExe will need to be relaunched to use this directory.\n"
+"\n"
+"Be sure to close every program launched from RunExe before relaunching "
+"RunExe, as not doing so can cause data loss, corruption and programs to "
+"malfunction."
+msgstr ""
+"יהיה צורך להפעיל מחדש את התוכנית „בקבוקים” כדי להשתמש בתיקייה זו.\n"
+"\n"
+"יש להקפיד לסגור כל תוכנית שהופעלה מתוך „בקבוקים” לפני הפעלת „בקבוקים” מחדש, "
+"מכיוון שאי־ביצוע עלול לגרום לאובדן או השחתה של נתונים וכשלים בתוכניות."
+
+#: runexe/frontend/views/preferences.py:202
+msgid "_Relaunch"
+msgstr "ה_פעלה מחדש"
+
+#: runexe/frontend/views/preferences.py:243
+msgid "Based on Valve's Wine, includes staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:244
+msgid "Based on Wine upstream, includes staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:247
+msgid "Based on Wine upstream, includes staging patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:248
+msgid ""
+"Based on Valve's Wine, includes staging, Proton and Steam-specific patches. "
+"Requires the Steam Runtime turned on."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:250
+msgid "Other"
+msgstr ""
+
+#: runexe/frontend/widgets/component.py:74
+msgid "Upgrade"
+msgstr "שדרוג"
+
+#: runexe/frontend/widgets/component.py:140
+msgid "Installing…"
+msgstr "בתהליך התקנה…"
+
+#: runexe/frontend/widgets/dependency.py:107
+#: runexe/frontend/widgets/installer.py:81
+#, python-brace-format
+msgid "Manifest for {0}"
+msgstr "מניפסט עבור {0}"
+
+#: runexe/frontend/widgets/dependency.py:172
+#, python-brace-format
+msgid "\"{0}\" uninstalled"
+msgstr "הוסרה התקנת „{0}”"
+
+#: runexe/frontend/widgets/dependency.py:174
+#, python-brace-format
+msgid "\"{0}\" installed"
+msgstr "התקנת „{0}” הושלמה"
+
+#: runexe/frontend/widgets/dependency.py:188
+#, python-brace-format
+msgid "\"{0}\" failed to install"
+msgstr "התקנת „{0}” נכשלה"
+
+#: runexe/frontend/widgets/importer.py:68
+#, python-brace-format
+msgid "\"{0}\" imported"
+msgstr "ייבוא „{0}” הושלם"
+
+#: runexe/frontend/widgets/installer.py:49
+msgid ""
+"This application may work poorly. The installer was configured to provide "
+"the best possible experience, but expect glitches, instability and lack of "
+"working features."
+msgstr ""
+"היישום הזה עשוי לעבוד בצורה גרועה. תוכנית ההתקנה הוגדרה לספק את החוויה הטובה "
+"ביותר האפשרית, אבל יש לצפות לתקלות, אי־יציבות והיעדר תכונות שעובדות."
+
+#: runexe/frontend/widgets/installer.py:50
+msgid ""
+"This program works with noticeable glitches, but these glitches do not "
+"affect the application's functionality."
+msgstr ""
+"תוכנית זו פועלת עם תקלות בולטות, אבל התקלות האלה אינן משפיעות על תפקוד "
+"היישום."
+
+#: runexe/frontend/widgets/installer.py:51
+msgid "This program works with minor glitches."
+msgstr "תוכנית זו פועלת עם תקלות קלות."
+
+#: runexe/frontend/widgets/installer.py:52
+msgid "This program works perfectly."
+msgstr "תוכנית זו עובדת באופן מושלם."
+
+#: runexe/frontend/widgets/installer.py:90
+#, python-brace-format
+msgid "Review for {0}"
+msgstr "ביקורת עבור {0}"
+
+#: runexe/frontend/widgets/library.py:169
+#: runexe/frontend/widgets/program.py:194
+#, python-brace-format
+msgid "Stopping \"{0}\"…"
+msgstr "בתהליך עצירת „{0}”…"
+
+#: runexe/frontend/widgets/program.py:190
+#, python-brace-format
+msgid "Launching \"{0}\" with Steam…"
+msgstr "בתהליך פתיחת „{0}” עם Steam…"
+
+#: runexe/frontend/widgets/program.py:214
+#, python-brace-format
+msgid "\"{0}\" hidden"
+msgstr "„{0}” מוסתרת"
+
+#: runexe/frontend/widgets/program.py:216
+#, python-brace-format
+msgid "\"{0}\" showed"
+msgstr "„{0}” מופיעה"
+
+#: runexe/frontend/widgets/program.py:242
+#, python-brace-format
+msgid "\"{0}\" removed"
+msgstr "הסרת „{0}” בוצעה"
+
+#: runexe/frontend/widgets/program.py:274
+#, python-brace-format
+msgid "\"{0}\" renamed to \"{1}\""
+msgstr "השם „{0}” שונה ל־„{1}”"
+
+#: runexe/frontend/widgets/program.py:297
+#, python-brace-format
+msgid "Desktop Entry created for \"{0}\""
+msgstr "נוצר רישום בשולחן העבודה עבור „{0}”"
+
+#: runexe/frontend/widgets/program.py:313
+#, python-brace-format
+msgid "\"{0}\" added to your library"
+msgstr "התוכנית „{0}” נוספה לספרייה שלך"
+
+#: runexe/frontend/widgets/program.py:331
+#, python-brace-format
+msgid "\"{0}\" added to your Steam library"
+msgstr "התוכנית „{0}” נוספה לספריית Steam שלך"
+
+#: runexe/frontend/windows/crash.py:33
+msgid "Show report"
+msgstr "הצגת דוח"
+
+#: runexe/frontend/windows/crash.py:80
+msgid ""
+"            This issue was reported 5 times and cannot be sent again.\n"
+"            Report your feedback in one of the below existing reports."
+msgstr ""
+"            בעיה זו דווחה 5 פעמים ולא ניתן לשלוח אותה שוב.\n"
+"            יש לדווח את המשוב שלך באחד מהדוחות הקיימים למטה."
+
+#: runexe/frontend/windows/display.py:102
+msgid "Updating display settings, please wait…"
+msgstr "בתהליך עדכון הגדרות תצוגה, נא להמתין…"
+
+#: runexe/frontend/windows/display.py:114
+msgid "Display settings updated"
+msgstr "הגדרות התצוגה עודכנו"
+
+#: runexe/frontend/windows/dlloverrides.py:136
+msgid "No overrides found."
+msgstr "לא נמצאו דריסות."
+
+#: runexe/frontend/windows/drives.py:71
+msgid "Select Drive Path"
+msgstr "בחירת נתיב כונן"
+
+#: runexe/frontend/windows/envvars.py:131
+msgid "No environment variables defined."
+msgstr "לא הוגדרו משתני סביבה."
+
+#: runexe/frontend/windows/exclusionpatterns.py:108
+msgid "No exclusion patterns defined."
+msgstr "לא הוגדרו דפוסי החרגה."
+
+#: runexe/frontend/windows/generic.py:24
+msgid "An error has occurred."
+msgstr "אירעה שגיאה."
+
+#: runexe/frontend/windows/generic.py:91
+#: runexe/frontend/windows/generic.py:137
+#: runexe/frontend/windows/generic.py:182
+msgid "Copy to clipboard"
+msgstr "העתקה ללוח"
+
+#: runexe/frontend/windows/installer.py:62
+msgid "Select Resource File"
+msgstr "בחירת קובץ משאבים"
+
+#: runexe/frontend/windows/installer.py:109
+msgid "Installing Windows dependencies…"
+msgstr "מתבצעת התקנת חבילות תלות של Windows…"
+
+#: runexe/frontend/windows/installer.py:110
+msgid "Configuring the capsule…"
+msgstr "בתהליך קביעת תצורת הבקבוק…"
+
+#: runexe/frontend/windows/installer.py:111
+msgid "Processing installer steps…"
+msgstr "בתהליך עיבוד שלבי תוכנית ההתקנה…"
+
+#: runexe/frontend/windows/installer.py:112
+msgid "Installing the {}…"
+msgstr "בתהליך התקנת {}…"
+
+#: runexe/frontend/windows/installer.py:113
+msgid "Performing final checks…"
+msgstr "מתבצעות בדיקות אחרונות…"
+
+#: runexe/frontend/windows/installer.py:117
+#, python-brace-format
+msgid "Installing {0}…"
+msgstr "בתהליך התקנת {0}…"
+
+#: runexe/frontend/windows/installer.py:119
+#, python-brace-format
+msgid "{0} is now available in the programs view."
+msgstr "התוכנית {0} זמינה כעת בתצוגת התוכניות."
+
+#: runexe/frontend/windows/installer.py:166
+msgid "Installer failed with unknown error"
+msgstr "תוכנית ההתקנה נכשלה עם שגיאה לא ידועה"
+
+#: runexe/frontend/windows/launchoptions.py:56
+#, python-brace-format
+msgid "{0} is already disabled for this capsule."
+msgstr "ההגדרה {0} כבר מושבתת עבור בקבוק זה."
+
+#: runexe/frontend/windows/launchoptions.py:57
+msgid "This setting is different from the capsule's default."
+msgstr "הגדרה זו שונה מברירת המחדל של הבקבוק."
+
+#: runexe/frontend/windows/launchoptions.py:215
+msgid "Select Script"
+msgstr "בחירת סקריפט"
+
+#: runexe/frontend/windows/main_window.py:220
+msgid "Custom Capsules Path not Found"
+msgstr "נתיב בקבוקים מותאם אישית לא נמצא"
+
+#: runexe/frontend/windows/main_window.py:221
+msgid ""
+"Falling back to default path. No capsules from the given path will be listed."
+msgstr "בתהליך נסגירה לנתיב ברירת המחדל. לא יופיעו בקבוקים מהנתיב הנתון."
+
+#: data/io.github.runexe.RunExe.desktop.in.in:3
+msgid "@APP_NAME@"
+msgstr "@שם_היישום@"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:4
+#: data/io.github.runexe.RunExe.metainfo.xml.in:8
+msgid "Run Windows Software"
+msgstr "הרצת תוכנות Windows"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:13
+msgid "wine;windows;"
+msgstr "‪wine;windows;‬"
+
+#: data/io.github.runexe.RunExe.gschema.xml:6
+msgid "Flatpak migration"
+msgstr "הגירת Flatpak"
+
+#: data/io.github.runexe.RunExe.gschema.xml:7
+msgid "Toggle the Flatpak migration dialog."
+msgstr "החלפת מצב הנראות של תיבת דו־השיח להגירת Flatpak."
+
+#: data/io.github.runexe.RunExe.gschema.xml:11
+msgid "Dark theme"
+msgstr "ערכת נושא כהה"
+
+#: data/io.github.runexe.RunExe.gschema.xml:12
+msgid "Force the use of dark theme."
+msgstr "כפיית השימוש בערכת נושא כהה."
+
+#: data/io.github.runexe.RunExe.gschema.xml:16
+msgid "Toggle update date in list"
+msgstr "החלפת מצב הנראות של תאריך העדכון ברשימה"
+
+#: data/io.github.runexe.RunExe.gschema.xml:17
+msgid "Toggle the update date in list of capsules."
+msgstr "החלפת מצב הנראות של תאריך העדכון ברשימה של בקבוקים."
+
+#: data/io.github.runexe.RunExe.gschema.xml:21
+msgid "Steam apps listing"
+msgstr "רשימת יישומי Steam"
+
+#: data/io.github.runexe.RunExe.gschema.xml:22
+msgid "Toggle steam apps listing."
+msgstr "החלפת מצב החשיפה של רשימת יישומי Steam."
+
+#: data/io.github.runexe.RunExe.gschema.xml:26
+msgid "Epic Games listing"
+msgstr "רשימת Epic Games"
+
+#: data/io.github.runexe.RunExe.gschema.xml:27
+msgid "Toggle epic games listing."
+msgstr "החלפת מצב החשיפה של רשימת Epic Games."
+
+#: data/io.github.runexe.RunExe.gschema.xml:31
+msgid "Ubisoft Connect listing"
+msgstr "רשימת Ubisoft Connect"
+
+#: data/io.github.runexe.RunExe.gschema.xml:32
+msgid "Toggle ubisoft connect listing."
+msgstr "החלפת מצב החשיפה של רשימת Ubisoft Connect."
+
+#: data/io.github.runexe.RunExe.gschema.xml:36
+msgid "Window width"
+msgstr "רוחב חלון"
+
+#: data/io.github.runexe.RunExe.gschema.xml:37
+msgid "Change the window width."
+msgstr "שינוי רוחב החלון."
+
+#: data/io.github.runexe.RunExe.gschema.xml:41
+msgid "Window height"
+msgstr "גובה חלון"
+
+#: data/io.github.runexe.RunExe.gschema.xml:42
+msgid "Change the window height."
+msgstr "שינוי גובה החלון."
+
+#: data/io.github.runexe.RunExe.gschema.xml:47
+msgid "Show notifications."
+msgstr "הצגת התראות."
+
+#: data/io.github.runexe.RunExe.gschema.xml:51
+msgid "Temp cleaning"
+msgstr "ניקוי קבצים זמניים"
+
+#: data/io.github.runexe.RunExe.gschema.xml:52
+msgid "Clean the temp path when booting the system."
+msgstr "ניקוי הנתיב של הקבצים הזמניים בעת אתחול המערכת."
+
+#: data/io.github.runexe.RunExe.gschema.xml:56
+msgid "Release Candidate"
+msgstr "בעמדה לשחרור"
+
+#: data/io.github.runexe.RunExe.gschema.xml:57
+msgid "Toggle release candidate for runners."
+msgstr "החלפת מצב הנראות של כלי הרצה בעמדה לשחרור."
+
+#: data/io.github.runexe.RunExe.gschema.xml:61
+msgid "Startup view"
+msgstr "תצוגת הפעלה"
+
+#: data/io.github.runexe.RunExe.gschema.xml:62
+msgid "Choose which view the application should be started in."
+msgstr "נא לבחור באיזו תצוגה יש להפעיל את היישום."
+
+#: data/io.github.runexe.RunExe.gschema.xml:67
+msgid ""
+"Toggle experimental features such as versioning and installers. Release "
+"candidate for runners."
+msgstr ""
+"החלפת מצב ההפעלה של תכונות ניסיוניות כגון ניהול גרסאות, תוכניות התקנה וכלי "
+"הרצה בעמדה לשחרור."
+
+#: data/io.github.runexe.RunExe.gschema.xml:71
+msgid "Steam Proton Support"
+msgstr "תמיכה ב־Steam Proton"
+
+#: data/io.github.runexe.RunExe.gschema.xml:72
+msgid "Toggle Steam Proton prefixes support."
+msgstr "החלפת מצב התמיכה בקידומות Steam Proton."
+
+#: data/io.github.runexe.RunExe.gschema.xml:76
+msgid "Experiments:sandbox"
+msgstr "ניסויים:ארגז חול"
+
+#: data/io.github.runexe.RunExe.gschema.xml:77
+msgid "Toggle experimental Sandbox per capsule."
+msgstr "החלפת מצב ההפעלה של ארגז חול ניסיוני לכל בקבוק."
+
+#: data/io.github.runexe.RunExe.gschema.xml:81
+msgid "Automatically close RunExe"
+msgstr "סגירת „בקבוקים” באופן אוטומטי"
+
+#: data/io.github.runexe.RunExe.gschema.xml:82
+msgid "Close RunExe after starting an executable from the file manager."
+msgstr "סגירת „בקבוקים” לאחר הפעלת קובץ הפעלה ממנהל הקבצים."
+
+#: data/io.github.runexe.RunExe.gschema.xml:86
+msgid "Show sandbox warning"
+msgstr "הצגת אזהרת ארגז חול"
+
+#: data/io.github.runexe.RunExe.gschema.xml:87
+msgid "Toggle sandbox warning."
+msgstr "החלפת מצב הנראות של אזהרת ארגז חול."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:11
+msgid "Run Windows software on Linux with RunExe!"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:12
+msgid "Capsule software and enjoy at your leisure!"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:13
+msgid ""
+"Our built-in dependency installation system grants automatic software "
+"compatibility access. Use the download manager to download the official "
+"components: the runner (Wine, Proton), DXVK, dependencies, etc."
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:16
+msgid ""
+"Capsule versioning keeps your work safe now and lets you restore it later!"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:17
+msgid "Features:"
+msgstr "תכונות:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:19
+msgid "Create capsules using preconfigured environments or create your own"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:20
+msgid ""
+"Run executables (.exe/.msi) in your capsules, directly from the context menu "
+"of your file-manager"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:21
+msgid "Automated detection of applications installed in your capsules"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:22
+msgid "Add environment variables quickly"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:23
+msgid "Override DLLs directly from per-capsule preferences"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:24
+msgid "On-the-fly runner change for any Capsule"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:25
+msgid ""
+"Various gaming-performance optimizations (esync, fsync, DXVK, cache, shader "
+"compiler, offload … and much more.)"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:26
+msgid "Automatic installation and management of Wine and Proton runners"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:27
+msgid "Automatic capsule repair in case of breakage"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:28
+msgid "Integrated dependency-installer based on a community-driven repository"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:29
+msgid "Integrated Task manager for Wine processes"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:30
+msgid "Access to ProtonDB and WineHQ for support"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:31
+msgid "System for bringing your configuration to new versions of RunExe"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:32
+msgid "Back up and import runexe"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:33
+msgid "Import Wine prefixes from other managers"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:34
+msgid "RunExe versioning"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:35
+msgid "... and much more that you can find by installing RunExe!"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:84
+msgid "Update metadata information"
+msgstr "עדכון פרטי נתוני־על"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:89
+msgid "Add more update information and correct release notes version"
+msgstr "הוספת מידע נוסף על עדכונים וגרסה נכונה של הערות שחרור"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:94
+msgid "Fixed \"Add to Steam\" button"
+msgstr "הלחצן „הוספה ל־Steam” תוקן"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:95
+msgid "Fixed CapsuleConfig being not serializable"
+msgstr "בעיית סדר של CapsuleConfig תוקנה"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:96
+msgid "Fixed Patool double extraction failing"
+msgstr "הכשל בחילוץ כפול של Patool תוקן"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:101
+msgid "Correct version"
+msgstr "גרסה נכונה"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:106
+msgid "Fix crash when creating a capsule"
+msgstr "תוקנה קריסה ביצירת בקבוק"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:111
+msgid "Major change: Redesign New Capsule interface"
+msgstr "שינוי עיקרי: עיצוב מחדש של ממשק בקבוק חדש"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:112
+msgid "Quality of life improvements:"
+msgstr "שיפורי איכות חיים:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:114
+msgid "Replace emote-love icon with library in library page"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:115
+msgid "Add toast for \"Run Executable\""
+msgstr "נוספה הודעה קופצת עבור „הרצת קובץ הפעלה”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:117
+msgid "Bug fixes:"
+msgstr "תיקוני תקלות:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:119
+msgid "Adding shortcut to Steam resulted an error"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:120
+msgid "Importing backups resulted an error"
+msgstr "ייבוא גיבויים הוביל לשגיאה"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:121
+msgid "Steam Runtime automatically enabled when using wine-ge-custom"
+msgstr ""
+"מערכת זמן הריצה של Steam מופעלת באופן אוטומטי בעת שימוש בכלי ההרצה wine-ge-"
+"custom"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:122
+msgid ""
+"Various library related fixes, like empty covers, and crashes related to "
+"missing entries"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:123
+msgid "Fix various issues related to text encoding"
+msgstr "תיקון מגוון בעיות הקשורות לקידוד טקסט"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:130
+msgid "Fix error when downloading if RunExe isn't run from terminal"
+msgstr "תיקון שגיאה בעת הורדה אם התוכנית „בקבוקים” לא מורצת ממסוף"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:137
+msgid "Correct version date"
+msgstr "תאריך גרסה נכון"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:138
+msgid "Hide NVIDIA-related critical errors on non NVIDIA systems"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:145
+msgid "Gamescope improvements and fixes"
+msgstr "שיפורים ותיקונים של Gamescope"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:146
+msgid "Dependency installation is faster and more stable"
+msgstr "התקנת חבילות תלות מהירה ויציבה יותר"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:147
+msgid "The health check has more information for faster debugging"
+msgstr "בדיקת הבריאות כוללת מידע נוסף לניפוי שגיאות מהיר יותר"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:148
+msgid "NVAPI has a lot of fixes and is more stable, should now work properly"
+msgstr "לרכיב NVAPI יש המון והוא יציב יותר, אמור לעבוד עכשיו כראוי"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:149
+msgid "Fix crash when downloading a component"
+msgstr "תיקון קריסה בעת הורדת רכיב"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:150
+msgid "Backend code improvement by avoiding spin-lock"
+msgstr "שיפור קוד קצה אחורי על ידי הימנעות מנעילת סביב"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:151
+msgid "More variables for installer scripting"
+msgstr "משתנים נוספים עבור כתיבת סקריפטים של תוכניות התקנה"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:152
+msgid "Fix onboard dialog showing \"All ready\" while it was in fact not ready"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:153
+msgid "Improvement to build system"
+msgstr "שיפור לבניית מערכת"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:154
+msgid "Enabling VKD3D by default when creating capsules for gaming"
+msgstr "הפעלת VKD3D כברירת מחדל בעת יצירת בקבוקים עבור גיימינג"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:155
+msgid "Fix crashes when reading Steam files with bad encodings"
+msgstr "תיקון קריסות בעת קריאת קבצי Steam עם קידודים מקולקלים"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:156
+msgid ""
+"Fix components not updated correctly in the UI after installation/"
+"uninstallation"
+msgstr "תיקון עדכון לקוי של רכיבים בממשק המשתמש לאחר התקנה/הסרת התקנה"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:157
+msgid "More FSR fixes"
+msgstr "תיקוני FSR נוספים"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:158
+msgid ""
+"Fix the issue when a program closes after it was launched from \"Run "
+"executable\""
+msgstr "תיקון הבעיה כאשר תוכנית נסגרת לאחר שהיא הופעלה מ„הרצת קובץ הפעלה”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:159
+msgid "and many, many, many more!"
+msgstr "ועוד הרבה, הרבה, הרבה יותר!"

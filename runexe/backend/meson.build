@@ -1,0 +1,32 @@
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+backenddir = join_paths(pkgdatadir, 'runexe/backend')
+
+params_file = configure_file(
+    input:  'params.py',
+    output:  'params.py',
+    configuration: conf
+)
+
+subdir('wine')
+subdir('models')
+subdir('utils')
+subdir('dlls')
+subdir('repos')
+subdir('managers')
+
+runexe_sources = [
+  '__init__.py',
+  'globals.py',
+  'runner.py',
+  'diff.py',
+  'health.py',
+  'identity.py',
+  'identity_ui.py',
+  'downloader.py',
+  'logger.py',
+  'cabextract.py',
+  'state.py',
+  params_file
+]
+
+install_data(runexe_sources, install_dir: backenddir)

@@ -1,0 +1,61 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $CapsuleView: Adw.Bin {
+  ScrolledWindow {
+    Box {
+      hexpand: true;
+      vexpand: true;
+      orientation: vertical;
+
+      SearchBar search_bar {
+        SearchEntry entry_search {
+          placeholder-text: _("Search your capsules…");
+        }
+      }
+
+      Adw.Banner update_banner {
+        button-label: _("Review");
+        revealed: false;
+      }
+
+      Adw.PreferencesPage pref_page {
+        Adw.PreferencesGroup group_capsules {
+          ListBox list_capsules {
+            selection-mode: none;
+
+            styles [
+              "boxed-list",
+            ]
+          }
+        }
+      }
+
+      Adw.StatusPage capsule_status {
+        title: _("RunExe");
+        hexpand: true;
+        vexpand: true;
+
+        child: Button btn_create {
+          valign: center;
+          halign: center;
+          label: _("Create New Capsule…");
+
+          styles [
+            "suggested-action",
+            "pill",
+          ]
+        };
+      }
+
+      Adw.StatusPage no_capsules_found {
+        visible: false;
+        icon-name: "system-search-symbolic";
+        title: _("No Results Found");
+        description: _("Try a different search.");
+        hexpand: true;
+        vexpand: true;
+      }
+    }
+  }
+}

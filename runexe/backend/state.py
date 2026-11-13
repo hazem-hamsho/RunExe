@@ -1,0 +1,271 @@
+import dataclasses
+from enum import Enum
+from gettext import gettext as _
+from threading import Lock as PyLock, Event as PyEvent
+from typing import Dict, Callable, Optional, Protocol, List
+from uuid import UUID, uuid4
+
+from runexe.backend.logger import Logger
+from runexe.backend.models.result import Result
+
+logging = Logger()
+
+
+class Locks(Enum):
+    ComponentsInstall = "components.install"
+
+
+class Events(Enum):
+    ComponentsFetching = "components.fetching"
+    DependenciesFetching = "dependencies.fetching"
+    InstallersFetching = "installers.fetching"
+    ComponentsOrganizing = "components.organizing"
+    DependenciesOrganizing = "dependencies.organizing"
+    InstallersOrganizing = "installers.organizing"
+
+
+class Signals(Enum):
+    """Signals backend support"""
+
+    ManagerLocalCapsulesLoaded = "Manager.local_capsules_loaded"  # no extra data
+
+    ForceStopNetworking = (
+        "LoadingView.stop_networking"  # status(bool): Force Stop network operations
+    )
+    RepositoryFetched = "RepositoryManager.repo_fetched"  # status: fetch success or not, data(int): total repositories
+    NetworkStatusChanged = (
+        "ConnectionUtils.status_changed"  # status(bool): network ready or not
+    )
+
+    GNotification = (
+        "G.send_notification"  # data(Notification): data for Gio notification
+    )
+    GShowUri = "G.show_uri"  # data(str): the URI
+
+    # data(UUID): the UUID of task
+    TaskAdded = "task.added"
+    TaskRemoved = "task.removed"
+    TaskUpdated = "task.updated"
+
+    # Playtime lifecycle signals
+    ProgramStarted = "Playtime.program_started"
+
+    # ProgramFinished data payload:
+    ProgramFinished = "Playtime.program_finished"
+
+    # Eagle analysis signals
+    EagleStep = "Eagle.step"  # data(Result): msg(str)
+    EagleFinished = "Eagle.finished"  # data(Result): results(dict)
+
+    # Dynamic launcher portal
+    DesktopEntryCreated = "DesktopEntry.created"
+
+
+class Status(Enum):
+    RUNNING = "running"
+    DONE = "done"
+    FAILED = "failed"
+    CANCELLED = "cancelled"
+
+
+class TaskStreamUpdateHandler(Protocol):
+    def __call__(
+        self,
+        received_size: int = 0,
+        total_size: int = 0,
+        status: Optional[Status] = None,
+    ) -> None: ...
+
+
+class SignalHandler(Protocol):
+    def __call__(self, data: Optional[Result] = None) -> None: ...
+
+
+@dataclasses.dataclass
+class Notification:
+    title: str = "RunExe"
+    text: str = "no message provided"
+    image: str = ""
+
+
+@dataclasses.dataclass(init=False)
+class Task:
+    _task_id: Optional[UUID] = None  # should only be set by TaskManager
+    title: str = "Task"
+    _subtitle: str = ""
+    hidden: bool = False  # hide from UI
+    cancellable: bool = False
+
+    def __init__(
+        self,
+        title: str = "Task",
+        subtitle: str = "",
+        hidden: bool = False,
+        cancellable: bool = False,
+        cancel_event: Optional[PyEvent] = None,
+    ):
+        self._task_id = None
+        self.title = title
+        self.subtitle = subtitle
+        self.hidden = hidden
+        self.cancellable = cancellable or cancel_event is not None
+        self.cancel_event = cancel_event or PyEvent()
+
+    @property
+    def task_id(self) -> Optional[UUID]:
+        return self._task_id
+
+    @task_id.setter
+    def task_id(self, value: UUID):
+        if self._task_id is not None:
+            raise NotImplementedError(
+                "Invalid usage, Task.task_id should only set once"
+            )
+        self._task_id = value
+
+    @property
+    def subtitle(self) -> str:
+        return self._subtitle
+
+    @subtitle.setter
+    def subtitle(self, value: str):
+        self._subtitle = value
+        SignalManager.send(Signals.TaskUpdated, Result(True, self.task_id))
+
+    def stream_update(
+        self,
+        received_size: int = 0,
+        total_size: int = 0,
+        status: Optional[Status] = None,
+    ):
+        """This is a default subtitle updating handler for streaming downloading progress"""
+        match status:
+            case Status.DONE | Status.FAILED | Status.CANCELLED:
+                TaskManager.remove(self)
+                return
+            case _:
+                pass
+
+        if total_size == 0 and received_size == 0:
+            self.subtitle = _("Calculating…")
+            return
+
+        percent = int(received_size / total_size * 100)
+        self.subtitle = f"{percent}%"
+
+    def request_cancel(self) -> bool:
+        if not self.cancellable:
+            return False
+        if not self.cancel_event.is_set():
+            self.cancel_event.set()
+            self.subtitle = _("Cancelling...")
+        return True
+
+
+class LockManager:
+    _LOCKS: Dict[Locks, PyLock] = {}
+
+    @classmethod
+    def lock(cls, name: Locks):
+        """decorator, used for mutex locking the decorated function"""
+        lock = cls.get(name)
+
+        def func_wrapper(func: Callable):
+            def wrapper(*args, **kwargs):
+                lock.acquire()
+                rv = func(*args, **kwargs)
+                lock.release()
+                return rv
+
+            return wrapper
+
+        return func_wrapper
+
+    @classmethod
+    def get(cls, name: Locks) -> PyLock:
+        return cls._LOCKS.setdefault(name, PyLock())
+
+
+class EventManager:
+    """
+    This class manages events, which are one-time events (can be reset) during the lifecycle of the app.
+    You can wait for the event to occur, or set it when the associated operations are finished.
+    Wait for an event that has already been set, will immediately return.
+    """
+
+    _EVENTS: Dict[Events, PyEvent] = {}
+
+    @classmethod
+    def wait(cls, event: Events):
+        _event = cls._EVENTS.setdefault(event, PyEvent())
+        # By default, when an Event is created, it will be unset, so it will block
+        logging.debug(f"Waiting on operation {event}")
+        _event.wait()
+        logging.debug(f"Done wait operation {event}")
+
+    @classmethod
+    def done(cls, event: Events):
+        _event = cls._EVENTS.setdefault(event, PyEvent())
+        _event.set()
+        logging.debug(f"Done operation {event}")
+
+    @classmethod
+    def reset(cls, event: Events):
+        _event = cls._EVENTS.setdefault(event, PyEvent())
+        _event.clear()
+        logging.debug(f"Reset operation {event}")
+
+
+class TaskManager:
+    """Long-running tasks are registered here, for tracking and display them on UI"""
+
+    _TASKS: Dict[UUID, Task] = {}  # {UUID4: Task}
+
+    @classmethod
+    def get(cls, task_id: UUID) -> Optional[Task]:
+        return cls._TASKS.get(task_id)
+
+    @classmethod
+    def add(cls, task: Task) -> UUID:
+        """register a running task to TaskManager"""
+        uniq = uuid4()
+        task.task_id = uniq
+        cls._TASKS[uniq] = task
+        SignalManager.send(Signals.TaskAdded, Result(True, task.task_id))
+        return uniq
+
+    @classmethod
+    def remove(cls, task: UUID | Task):
+        if isinstance(task, Task):
+            task = task.task_id
+        if cls._TASKS.pop(task, None) is None:
+            return
+        SignalManager.send(Signals.TaskRemoved, Result(True, task))
+
+    @classmethod
+    def cancel(cls, task_id: UUID) -> bool:
+        task = cls.get(task_id)
+        return task.request_cancel() if task else False
+
+
+class SignalManager:
+    """sync backend state to frontend via registered signal handlers"""
+
+    _SIGNALS: Dict[Signals, List[SignalHandler]] = {}
+
+    @classmethod
+    def connect(cls, signal: Signals, handler: SignalHandler) -> None:
+        cls._SIGNALS.setdefault(signal, [])
+        cls._SIGNALS[signal].append(handler)
+
+    @classmethod
+    def send(cls, signal: Signals, data: Optional[Result] = None) -> None:
+        """
+        Send signal
+        should only be called by backend logic
+        """
+        if signal not in cls._SIGNALS:
+            logging.debug(f"No handler registered for {signal}")
+            return
+        for fn in cls._SIGNALS[signal]:
+            fn(data)

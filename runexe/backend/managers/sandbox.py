@@ -1,0 +1,274 @@
+# sandbox.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
+import os
+import shlex
+import signal
+import subprocess
+import time
+from configparser import ConfigParser
+from typing import Optional
+
+
+FLATPAK_INFO = "/.flatpak-info"
+FLATPAK_SHARE_INPUT = 1 << 5
+FLATPAK_SHARE_USB = 1 << 6
+FLATPAK_SHARE_ALL_DEVICES = 1 << 9
+FLATPAK_SHARE_DEVICES_VERSION = (1, 17, 1)
+
+
+class SandboxManager:
+    # Track the flatpak-spawn launcher processes per WINEPREFIX so they can be
+    # stopped later. Under `flatpak-spawn --sandbox` the wine processes run in a
+    # separate sandbox instance the host cannot see by scanning /proc, so the
+    # only reliable way to stop them is to kill the launcher process group
+    # (combined with --watch-bus, which makes the sandboxed command exit when
+    # its launcher goes away).
+    _running: dict[str, list[subprocess.Popen]] = {}
+
+    def __init__(
+        self,
+        envs: Optional[dict] = None,
+        chdir: Optional[str] = None,
+        clear_env: bool = False,
+        share_paths_ro: Optional[list] = None,
+        share_paths_rw: Optional[list] = None,
+        share_net: bool = False,
+        share_user: bool = False,
+        share_host_ro: bool = True,
+        share_display: bool = True,
+        share_sound: bool = True,
+        share_gpu: bool = True,
+        share_input: bool = False,
+        share_usb: bool = False,
+        share_hidraw: bool = False,
+    ):
+        self.envs = envs
+        self.chdir = chdir
+        self.clear_env = clear_env
+        self.share_paths_ro = list(share_paths_ro or [])
+        self.share_paths_rw = list(share_paths_rw or [])
+        self.share_net = share_net
+        self.share_user = share_user
+        self.share_host_ro = share_host_ro
+        self.share_display = share_display
+        self.share_sound = share_sound
+        self.share_gpu = share_gpu
+        self.share_input = share_input
+        self.share_usb = share_usb
+        self.share_hidraw = share_hidraw
+        self.__uid = os.environ.get("UID", "1000")
+
+    @staticmethod
+    def _supports_device(device: str, path: str) -> bool:
+        if "FLATPAK_ID" not in os.environ:
+            return os.path.isdir(path)
+
+        try:
+            info = ConfigParser(interpolation=None)
+            if not info.read(FLATPAK_INFO):
+                return False
+            version = tuple(
+                int(part) for part in info["Instance"]["flatpak-version"].split(".")
+            )
+            devices = info["Context"].get("devices", "").split(";")
+        except (KeyError, ValueError):
+            return False
+
+        return version >= FLATPAK_SHARE_DEVICES_VERSION and bool(
+            {"all", device}.intersection(devices)
+        )
+
+    @classmethod
+    def supports_input_devices(cls) -> bool:
+        return cls._supports_device("input", "/dev/input")
+
+    @classmethod
+    def supports_usb_devices(cls) -> bool:
+        return cls._supports_device("usb", "/dev/bus/usb")
+
+    @classmethod
+    def supports_hidraw_devices(cls) -> bool:
+        if "FLATPAK_ID" not in os.environ:
+            return True
+        return cls._supports_device("all", "/dev")
+
+    def __get_bwrap(self, cmd: str):
+        _cmd = ["bwrap"]
+
+        if self.clear_env:
+            _cmd.append("--clearenv")
+
+        if self.envs:
+            _cmd += [
+                f"--setenv {shlex.quote(k)} {shlex.quote(v)}"
+                for k, v in self.envs.items()
+            ]
+
+        if self.share_host_ro:
+            _cmd.append("--ro-bind / /")
+            _cmd.append("--tmpfs /tmp")
+            if "CPAK_CONTAINER_ID" in os.environ:
+                _cmd.append("--dev-bind /dev /dev")
+                _cmd.append("--bind /proc /proc")
+
+        if self.chdir:
+            _cmd.append(f"--chdir {shlex.quote(self.chdir)}")
+            _cmd.append(f"--bind {shlex.quote(self.chdir)} {shlex.quote(self.chdir)}")
+
+        if self.share_paths_ro:
+            _cmd += [
+                f"--ro-bind {shlex.quote(p)} {shlex.quote(p)}"
+                for p in self.share_paths_ro
+            ]
+
+        if self.share_paths_rw:
+            _cmd += [
+                f"--bind {shlex.quote(p)} {shlex.quote(p)}" for p in self.share_paths_rw
+            ]
+
+        if self.share_sound:
+            _cmd.append(
+                f"--ro-bind /run/user/{self.__uid}/pulse /run/user/{self.__uid}/pulse"
+            )
+
+        if self.share_gpu:
+            pass  # not implemented yet
+
+        if not self.share_input and os.path.isdir("/dev/input"):
+            _cmd.append("--tmpfs /dev/input")
+
+        if not self.share_usb and os.path.isdir("/dev/bus/usb"):
+            _cmd.append("--tmpfs /dev/bus/usb")
+
+        if self.share_display:
+            _cmd.append("--dev-bind /dev/video0 /dev/video0")
+
+        _cmd.append("--share-net" if self.share_net else "--unshare-net")
+        if not self.share_user:
+            _cmd.append("--unshare-user")
+        _cmd.append(cmd)
+
+        return _cmd
+
+    def __get_flatpak_spawn(self, cmd: str):
+        _cmd = ["flatpak-spawn", "--sandbox", "--watch-bus"]
+
+        if self.envs and not self.clear_env:
+            _cmd += [
+                shlex.quote(f"--env={key}={value}") for key, value in self.envs.items()
+            ]
+
+        if self.chdir:
+            quoted_dir = shlex.quote(self.chdir)
+            _cmd.append(f"--directory={quoted_dir}")
+            _cmd.append(f"--sandbox-expose-path={quoted_dir}")
+
+        if self.share_host_ro:
+            _cmd.append("--sandbox-expose-path-ro=/")
+
+        if self.share_paths_ro:
+            _cmd += [
+                f"--sandbox-expose-path-ro={shlex.quote(p)}"
+                for p in self.share_paths_ro
+            ]
+
+        if self.share_paths_rw:
+            _cmd += [
+                f"--sandbox-expose-path={shlex.quote(p)}" for p in self.share_paths_rw
+            ]
+
+        if not self.share_net:
+            _cmd.append("--no-network")
+
+        if self.share_display:
+            _cmd.append("--sandbox-flag=share-display")
+
+        if self.share_sound:
+            _cmd.append("--sandbox-flag=share-sound")
+
+        if self.share_gpu:
+            _cmd.append("--sandbox-flag=share-gpu")
+
+        _cmd.append("--sandbox-flag=allow-dbus")
+
+        if self.share_input and self.supports_input_devices():
+            _cmd.append(f"--sandbox-flag={FLATPAK_SHARE_INPUT}")
+
+        if self.share_usb and self.supports_usb_devices():
+            _cmd.append(f"--sandbox-flag={FLATPAK_SHARE_USB}")
+
+        if self.share_hidraw and self.supports_hidraw_devices():
+            _cmd.append(f"--sandbox-flag={FLATPAK_SHARE_ALL_DEVICES}")
+
+        if self.clear_env:
+            clean_env = " ".join(
+                shlex.quote(f"{key}={value}")
+                for key, value in (self.envs or {}).items()
+            )
+            cmd = " ".join(part for part in ("env -i", clean_env, cmd) if part)
+
+        _cmd.append(cmd)
+
+        return _cmd
+
+    def get_cmd(self, cmd: str):
+        if "FLATPAK_ID" in os.environ:
+            _cmd = self.__get_flatpak_spawn(cmd)
+        else:
+            _cmd = self.__get_bwrap(cmd)
+
+        return " ".join(_cmd)
+
+    def run(self, cmd: str) -> subprocess.Popen[bytes]:
+        proc = subprocess.Popen(
+            self.get_cmd(cmd),
+            shell=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            start_new_session=True,
+        )
+        prefix = (self.envs or {}).get("WINEPREFIX")
+        if prefix:
+            self._running.setdefault(prefix, []).append(proc)
+        return proc
+
+    @classmethod
+    def terminate_prefix(
+        cls, prefix: str, sig: int = signal.SIGKILL, timeout: Optional[float] = None
+    ) -> int:
+        """Kill the process group of every sandbox launcher started for the
+        given WINEPREFIX. Returns how many were signalled. Finished launchers
+        are pruned."""
+        killed = 0
+        deadline = time.monotonic() + timeout if timeout is not None else None
+        for proc in cls._running.get(prefix, []):
+            if proc.poll() is not None:
+                continue
+            try:
+                os.killpg(os.getpgid(proc.pid), sig)
+                killed += 1
+            except ProcessLookupError:
+                continue
+            except OSError:
+                if timeout is not None:
+                    raise
+            if deadline is not None:
+                proc.wait(timeout=max(0, deadline - time.monotonic()))
+        cls._running[prefix] = []
+        return killed

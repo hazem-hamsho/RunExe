@@ -1,0 +1,52 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $LibraryView: Adw.Bin {
+  Box {
+    orientation: vertical;
+
+    SearchBar search_bar {
+      SearchEntry entry_search {
+        placeholder-text: _("Search your library...");
+      }
+    }
+
+    Stack stack_content {
+      transition-type: crossfade;
+
+      StackPage {
+        name: "library";
+
+        child: ScrolledWindow scroll_window {
+          hexpand: true;
+          vexpand: true;
+
+          FlowBox main_flow {
+            max-children-per-line: bind template.items_per_line;
+            row-spacing: 5;
+            column-spacing: 5;
+            halign: center;
+            valign: start;
+            margin-top: 5;
+            margin-start: 5;
+            margin-bottom: 5;
+            margin-end: 5;
+            homogeneous: true;
+            selection-mode: none;
+            activate-on-single-click: false;
+          }
+        };
+      }
+
+      StackPage {
+        name: "empty";
+
+        child: Adw.StatusPage {
+          icon-name: "system-search-symbolic";
+          title: _("No Results Found");
+          description: _("Try a different search.");
+        };
+      }
+    }
+  }
+}

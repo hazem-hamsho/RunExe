@@ -1,0 +1,315 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DetailsPreferences: Adw.PreferencesPage {
+  Adw.PreferencesGroup group_details {
+    Adw.EntryRow entry_name {
+      title: _("Name");
+      show-apply-button: true;
+    }
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Notes");
+
+    Box {
+      orientation: vertical;
+      spacing: 6;
+
+      Frame {
+        ScrolledWindow {
+          min-content-height: 120;
+          max-content-height: 240;
+          hscrollbar-policy: never;
+
+          TextView text_notes {
+            wrap-mode: word_char;
+            top-margin: 12;
+            bottom-margin: 12;
+            left-margin: 12;
+            right-margin: 12;
+          }
+        }
+      }
+
+      Button btn_save_notes {
+        label: _("Save Notes");
+        halign: end;
+        sensitive: false;
+      }
+    }
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Components");
+
+    Adw.ComboRow combo_runner {
+      title: _("Runner");
+      subtitle: _("The version of the Wine compatibility layer.");
+
+      Spinner spinner_runner {
+        tooltip-text: _("Updating Runner and components, please wait…");
+        valign: center;
+        visible: false;
+      }
+
+      model: StringList str_list_runner {};
+    }
+
+    Adw.ComboRow combo_dxvk {
+      title: _("DXVK");
+      subtitle: _("Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan.");
+
+      Spinner spinner_dxvk {
+        tooltip-text: _("Updating DXVK, please wait…");
+        valign: center;
+        visible: false;
+      }
+
+      model: StringList str_list_dxvk {};
+    }
+
+    Adw.ComboRow combo_vkd3d {
+      title: _("VKD3D");
+      subtitle: _("Improve Direct3D 12 compatibility by translating it to Vulkan.");
+
+      Spinner spinner_vkd3d {
+        tooltip-text: _("Updating VKD3D, please wait…");
+        valign: center;
+        visible: false;
+      }
+
+      model: StringList str_list_vkd3d {};
+    }
+
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Display");
+
+    Adw.ActionRow row_discrete {
+      visible: false;
+      activatable-widget: switch_discrete;
+      title: _("Discrete Graphics");
+      subtitle: _("Use the discrete graphics card to increase performance at the expense of power consumption.");
+
+      Switch switch_discrete {
+        valign: center;
+      }
+    }
+
+    Adw.ActionRow row_wayland {
+      activatable-widget: switch_wayland;
+      title: _("Wayland (Experimental)");
+      subtitle: _("Force the experimental native Wayland driver instead of Xwayland. Requires a Wayland session.");
+
+      Switch switch_wayland {
+        valign: center;
+      }
+    }
+
+    Adw.ActionRow row_manage_display {
+      title: _("Advanced Display Settings");
+      activatable: true;
+
+      Spinner spinner_display {
+        valign: center;
+        margin-end: 6;
+      }
+
+      Image {
+        icon-name: "go-next-symbolic";
+
+        styles [
+          "dim-label"
+        ]
+      }
+    }
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Performance");
+
+    Adw.ComboRow combo_sync {
+      tooltip-text: _("Enable synchronization to increase performance of multicore processors.");
+      title: _("Synchronization");
+      subtitle: _("Esync requires runner support; otherwise the runner uses its default.");
+
+      model: StringList {
+        strings [
+          _("System"),
+          _("Esync"),
+          _("Fsync"),
+          _("NTSync"),
+        ]
+      };
+    }
+
+    Adw.ActionRow row_adaptive_launch {
+      activatable-widget: switch_adaptive_launch;
+      title: _("Adaptive Launch");
+      subtitle: _("Learn which modules a program loads and prepare them on future launches.");
+
+      Switch switch_adaptive_launch {
+        valign: center;
+      }
+    }
+
+    Adw.ActionRow row_eagle_tracing {
+      activatable-widget: switch_eagle_tracing;
+      title: _("Eagle Tracing");
+      subtitle: _("Collect debug details on program launches in logs/runs. Review logs before sharing; tracing can slow programs down.");
+
+      Button btn_eagle_logs {
+        tooltip-text: _("Open Trace Logs");
+        valign: center;
+        icon-name: "folder-symbolic";
+
+        styles [
+          "flat",
+        ]
+      }
+
+      Switch switch_eagle_tracing {
+        valign: center;
+      }
+    }
+
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Compatibility");
+
+    Adw.ComboRow combo_windows {
+      title: _("Windows Version");
+
+      Spinner spinner_windows {
+        tooltip-text: _("Updating Windows version, please wait…");
+        valign: center;
+        visible: false;
+      }
+
+      model: StringList str_list_windows {};
+    }
+
+    Adw.ComboRow combo_language {
+      title: _("Language");
+      subtitle: _("Choose the language to use with programs.");
+
+      model: StringList str_list_languages {};
+    }
+
+    Adw.ActionRow row_sandbox {
+      activatable-widget: switch_sandbox;
+      title: _("Dedicated Sandbox");
+      subtitle: _("Use a restricted/managed environment for this capsule.");
+
+      Button btn_manage_sandbox {
+        tooltip-text: _("Manage the Sandbox Permissions");
+        valign: center;
+        icon-name: "applications-system-symbolic";
+
+        styles [
+          "flat",
+        ]
+      }
+
+      Switch switch_sandbox {
+        valign: center;
+      }
+    }
+
+    Adw.ActionRow row_runtime {
+      activatable-widget: switch_runtime;
+      title: _("RunExe Runtime");
+      subtitle: _("Provide a bundle of extra libraries for more compatibility. Disable it if you run into issues.");
+      visible: false;
+
+      Switch switch_runtime {
+        valign: center;
+      }
+    }
+
+    Adw.ActionRow row_winebridge {
+      activatable-widget: switch_winebridge;
+      title: _("Use WineBridge");
+      subtitle: _("Start programs through WineBridge by default for this capsule.");
+
+      Switch switch_winebridge {
+        valign: center;
+      }
+    }
+
+    Adw.ActionRow row_cwd {
+      title: _("Working Directory");
+      activatable-widget: btn_cwd;
+
+      Button btn_cwd_reset {
+        tooltip-text: _("Reset to Default");
+        valign: center;
+        visible: false;
+        icon-name: "edit-undo-symbolic";
+
+        styles [
+          "flat",
+        ]
+      }
+
+      Button btn_cwd {
+        valign: center;
+
+        Box {
+          spacing: 6;
+
+          Image {
+            icon-name: "document-open-symbolic";
+          }
+
+          Label label_cwd {
+            label: _("(Default)");
+          }
+        }
+      }
+    }
+
+    Adw.ActionRow row_overrides {
+      activatable: true;
+      title: _("DLL Overrides");
+
+      Image {
+        icon-name: "go-next-symbolic";
+
+        styles [
+          "dim-label"
+        ]
+      }
+    }
+
+    Adw.ActionRow row_env_variables {
+      activatable: true;
+      title: _("Environment Variables");
+
+      Image {
+        icon-name: "go-next-symbolic";
+
+        styles [
+          "dim-label"
+        ]
+      }
+    }
+
+    Adw.ActionRow row_drives {
+      activatable: true;
+      title: _("Manage Drives");
+
+      Image {
+        icon-name: "go-next-symbolic";
+
+        styles [
+          "dim-label"
+        ]
+      }
+    }
+  }
+
+}

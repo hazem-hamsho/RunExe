@@ -1,0 +1,70 @@
+.vscode/
+.mypy_cache/
+.pytest_cache/
+/.project
+/.pydevproject
+/.settings
+/.cproject
+/.idea
+.flatpak-builder/
+/build
+/build-dir
+/mesonbuild
+
+__pycache__
+.coverage
+/install dir
+/work area
+
+/meson-test-run.txt
+/meson-test-run.xml
+/meson-cross-test-run.txt
+/meson-cross-test-run.xml
+
+/.flatpak
+/builddir
+
+.DS_Store
+*~
+*.swp
+packagecache
+/MANIFEST
+/dist
+/meson.egg-info
+
+/docs/built_docs
+/docs/hotdoc-private*
+
+*.pyc
+/*venv*
+
+.buildconfig
+
+# Ignore AppImage build dirs
+/AppDir
+/appimage-builder-cache
+
+# Ignore generated files
+*.deb
+*.dsc
+*.changes
+.build
+*.buildinfo
+*.tar.gz
+
+
+# Ignore files generated during build
+*debian/files
+*debian/.*
+*debian/io.github.runexe.RunExe*
+*obj-x86_64-linux-gnu
+
+# Ignore flatpak build dirs
+/repo/
+/flatpak/
+.vscode/*
+/.vscode/*
+
+/build-flatpak.sh
+
+/FVS*/

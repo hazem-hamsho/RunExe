@@ -1,0 +1,3136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the runexe package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: runexe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-27 10:57+0530\n"
+"PO-Revision-Date: 2026-02-18 12:09+0000\n"
+"Last-Translator: Amadɣas <massiin@proton.me>\n"
+"Language-Team: Kabyle\n"
+"Language: kab\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.16.1-dev\n"
+
+#: runexe/backend/managers/backup.py:48 runexe/backend/managers/backup.py:95
+msgid "No path specified"
+msgstr "Ulac abrid yettwafernen"
+
+#: runexe/backend/managers/backup.py:56
+#, python-brace-format
+msgid "Backup {0}"
+msgstr "Aḥraz {0}"
+
+#: runexe/backend/managers/backup.py:103
+#, python-brace-format
+msgid "Importing backup: {0}"
+msgstr "Aktar n weḥraz: {0}"
+
+#: runexe/backend/managers/manager.py:1076
+#: runexe/backend/managers/manager.py:1396
+#: runexe/backend/managers/manager.py:1397
+#, python-format
+msgid "Failed to install dependency: %s"
+msgstr "Ur izmir ara ad isebded aḍaraɛ: %s"
+
+#: runexe/backend/managers/manager.py:1115
+msgid "Fail to install components, tried 3 times."
+msgstr "ur yeddi ara usebded n yisegran, yeɛreḍ 3 n tikkal."
+
+#: runexe/backend/managers/manager.py:1126
+msgid "Missing essential components. Installing…"
+msgstr "Xuṣṣen isegran ilaqen. Asbeddi…"
+
+#: runexe/backend/managers/manager.py:1203
+msgid "Failed to create capsule directory."
+msgstr "Ulamek asnulfu n ukaram n tqerɛet."
+
+#: runexe/backend/managers/manager.py:1215
+msgid "Failed to create placeholder directory/file."
+msgstr "Ulamek asnulfu n ukaram/afaylu n usemselsi."
+
+#: runexe/backend/managers/manager.py:1220
+msgid "Generating capsule configuration…"
+msgstr "Asirew n twila n tqerɛet…"
+
+#: runexe/backend/managers/manager.py:1243
+msgid "Template found, applying…"
+msgstr "Taneɣruft tettwaf, snes…"
+
+#. execute wineboot on the capsule path
+#: runexe/backend/managers/manager.py:1255
+msgid "The Wine config is being updated…"
+msgstr "Tawila n Wine tettwaleqqem…"
+
+#: runexe/backend/managers/manager.py:1257
+msgid "Wine config updated!"
+msgstr "Tawila n Wine yettwaleqqem!"
+
+#: runexe/backend/managers/manager.py:1265
+msgid "Running as Flatpak, sandboxing userdir…"
+msgstr "Aselkem am Flatpak, aɛzel n ukaram n useqdac deg tnaka n ijdi…"
+
+#: runexe/backend/managers/manager.py:1267
+msgid "Sandboxing userdir…"
+msgstr "Aɛzel n ukaram n useqdac deg tnaka n ijdi…"
+
+#: runexe/backend/managers/manager.py:1308
+msgid "Setting Windows version…"
+msgstr "Asbadu n lqem n Windows…"
+
+#: runexe/backend/managers/manager.py:1318
+msgid "Apply CMD default settings…"
+msgstr "Snes iɣewwaṛen imezwar CMD…"
+
+#: runexe/backend/managers/manager.py:1326
+msgid "Optimizing environment…"
+msgstr "Asefrer n twennaḍt…"
+
+#: runexe/backend/managers/manager.py:1337
+#, python-brace-format
+msgid "Applying environment: {0}…"
+msgstr "Asnas n twennaḍt: {0}…"
+
+#: runexe/backend/managers/manager.py:1347
+msgid "(!) Using a custom environment recipe…"
+msgstr "(!) Aseqdec n tismelt tudmawant n twennaḍt…"
+
+#: runexe/backend/managers/manager.py:1350
+msgid "(!) Recipe not not found or not valid…"
+msgstr "(!) Ulac tismelt neɣ mačči d tameɣtut…"
+
+#: runexe/backend/managers/manager.py:1367
+msgid "Installing DXVK…"
+msgstr "Asbeddi n DXVK…"
+
+#: runexe/backend/managers/manager.py:1375
+msgid "Installing VKD3D…"
+msgstr "Asbeddi n VKD3D…"
+
+#: runexe/backend/managers/manager.py:1384
+msgid "Installing DXVK-NVAPI…"
+msgstr "Asbeddi n DXVK-NVAPI…"
+
+#: runexe/backend/managers/manager.py:1393
+#, python-format
+msgid "Installing dependency: %s …"
+msgstr "Asebded n uḍaraɛ: %s…"
+
+#: runexe/backend/managers/manager.py:1407
+msgid "Creating versioning state 0…"
+msgstr "Asnulfu n waddad n lqem 0…"
+
+#: runexe/backend/managers/manager.py:1415
+msgid "Finalizing…"
+msgstr "Kfu…"
+
+#: runexe/backend/managers/manager.py:1426
+msgid "Caching template…"
+msgstr "Taneɣruft ɣer tuffirt…"
+
+#: runexe/backend/managers/versioning.py:83
+msgid "Committing state …"
+msgstr "Addad n wayen yettwagen…"
+
+#: runexe/backend/managers/versioning.py:90
+msgid "Nothing to commit"
+msgstr "Ulac d acu ara yettwagen"
+
+#: runexe/backend/managers/versioning.py:96
+#, python-brace-format
+msgid "New state [{0}] created successfully!"
+msgstr "Addad amaynut [{0}] yenulfa-d akken iwata!"
+
+#: runexe/backend/managers/versioning.py:123
+msgid "States list retrieved successfully!"
+msgstr "Tabdart n waddaden ddan-d akken iwata!"
+
+#: runexe/backend/managers/versioning.py:153
+#, python-brace-format
+msgid "State {0} restored successfully!"
+msgstr "Addad {0} yettwarra-d akken iwata!"
+
+#: runexe/backend/managers/versioning.py:155
+msgid "Restoring state {} …"
+msgstr "Tiririt n waddad {}…"
+
+#: runexe/backend/managers/versioning.py:162
+msgid "State not found"
+msgstr "Addad ur yettwaf ara"
+
+#: runexe/backend/managers/versioning.py:168
+msgid "State {} is already the active state"
+msgstr "Addad n {} d addad urmid yakan"
+
+#: runexe/frontend/main.py:111
+msgid "Show version"
+msgstr "Sken lqem"
+
+#: runexe/frontend/main.py:119
+msgid "Executable path"
+msgstr "Abrid n umselkam"
+
+#: runexe/frontend/main.py:127
+msgid "lnk path"
+msgstr "abrid n lnk"
+
+#: runexe/frontend/main.py:135 runexe/frontend/ui/library-entry.blp:118
+#: runexe/frontend/ui/list-entry.blp:5
+msgid "Capsule name"
+msgstr "Isem n tqerɛet"
+
+#: runexe/frontend/main.py:143
+msgid "Pass arguments"
+msgstr "Ifukal n uɛeddi"
+
+#: runexe/frontend/main.py:202
+msgid "Invalid URI (syntax: capsules:run/<capsule>/<program>)"
+msgstr "URI arameɣtu (taseddast: tiqreɛtin:selkem/<Taqerɛet>/<ahil>)"
+
+#: runexe/frontend/main.py:242
+msgid "[Quit] request received."
+msgstr "[ffeɣ] asuter yettwarmes."
+
+#: runexe/frontend/main.py:252
+msgid "[Help] request received."
+msgstr "[Tallelt} asuter yettwarmes."
+
+#: runexe/frontend/main.py:260
+msgid "[Refresh] request received."
+msgstr "[Sismeḍ] asuter yettwarmes."
+
+#: runexe/frontend/main.py:293
+msgid "Donate"
+msgstr "Mudd tawsa"
+
+#: runexe/frontend/main.py:298
+msgid "Third-Party Libraries and Special Thanks"
+msgstr "Timkarḍiyin n wis kraḍ akked tanemmirt tuzzigt"
+
+#: runexe/frontend/main.py:324
+msgid "Sponsored and Funded by"
+msgstr "S lmendad akke tedrimt sɣur"
+
+#: runexe/frontend/ui/about.blp:10
+msgid "RunExe Developers"
+msgstr "Ineflayen n Tiqreɛtin"
+
+#: runexe/frontend/ui/about.blp:12
+msgid "translator_credits"
+msgstr "Athmane MOKRAOUI"
+
+#: runexe/frontend/ui/component-entry.blp:4
+msgid "Component version"
+msgstr "Lqem n yisegran"
+
+#: runexe/frontend/ui/component-entry.blp:12
+#: runexe/frontend/ui/dependency-entry.blp:29
+#: runexe/frontend/ui/program-entry.blp:77
+msgid "Uninstall"
+msgstr "Kkes asbeddi"
+
+#: runexe/frontend/ui/component-entry.blp:23
+#: runexe/frontend/ui/importer-entry.blp:13
+msgid "Browse Files"
+msgstr "Snirem ifuyla"
+
+#: runexe/frontend/ui/component-entry.blp:34
+msgid ""
+"The installation failed. This may be due to a repository error, partial "
+"download or checksum mismatch. Press to try again."
+msgstr ""
+
+#: runexe/frontend/ui/component-entry.blp:45
+msgid "Download & Install"
+msgstr "Sider & Sebded"
+
+#: runexe/frontend/ui/component-entry.blp:58
+msgid "0%"
+msgstr "0%"
+
+#: runexe/frontend/ui/dependency-entry.blp:16
+msgid "Show Manifest"
+msgstr ""
+
+#: runexe/frontend/ui/dependency-entry.blp:20
+msgid "License"
+msgstr "Turagt"
+
+#: runexe/frontend/ui/dependency-entry.blp:24
+msgid "Reinstall"
+msgstr "Ales asbeddi"
+
+#: runexe/frontend/ui/dependency-entry.blp:36
+#: runexe/frontend/ui/installer-entry.blp:27
+msgid "Report a Bug…"
+msgstr "Mmel abug…"
+
+#: runexe/frontend/ui/dependency-entry.blp:42
+msgid "Dependency name"
+msgstr "Isem uḍaraɛ"
+
+#: runexe/frontend/ui/dependency-entry.blp:44
+msgid "Dependency description"
+msgstr "Aglam uḍaraɛ"
+
+#: runexe/frontend/ui/dependency-entry.blp:51
+msgid "Category"
+msgstr "Taggayt"
+
+#: runexe/frontend/ui/dependency-entry.blp:64
+msgid "Download & Install this Dependency"
+msgstr "Sider sakin sbedd aḍaraɛ-agi"
+
+#: runexe/frontend/ui/dependency-entry.blp:79
+msgid ""
+"An installation error occurred. Restart RunExe to read the Crash Report or "
+"run it via terminal to read the output."
+msgstr ""
+"Teḍra-d tuccḍa n usebded. Ales asekker n Tiqreɛtin akken ad teɣreḍ aneqqis n "
+"uɣelluy neɣ selkem-it s tdiwent akken ad teɣreḍ tuffɣa-nni."
+
+#: runexe/frontend/ui/dependency-entry.blp:93
+msgid "Dependency Menu"
+msgstr "Umuɣ uḍaraɛ"
+
+#: runexe/frontend/ui/details-capsule.blp:16
+msgid "Troubleshooting"
+msgstr "Asellek"
+
+#: runexe/frontend/ui/details-capsule.blp:24
+msgid "Browse Files…"
+msgstr "Snirem ifuyla…"
+
+#: runexe/frontend/ui/details-capsule.blp:28
+msgid "Duplicate Capsule…"
+msgstr ""
+
+#: runexe/frontend/ui/details-capsule.blp:32
+#: runexe/frontend/ui/importer.blp:73
+msgid "This is the complete archive of your capsule, including personal files."
+msgstr "Wagi d aɣbaṛ ummid n tqerɛet-ik·im, gar-asen ifuyla udmawanen."
+
+#: runexe/frontend/ui/details-capsule.blp:33
+msgid "Full Backup…"
+msgstr "Aḥraz ummid…"
+
+#: runexe/frontend/ui/details-capsule.blp:37
+#: runexe/frontend/ui/importer.blp:68
+msgid ""
+"This is just the capsule configuration, it's perfect if you want to create a "
+"new one but without personal files."
+msgstr ""
+"D ta kan i d tawila n tqerɛet, d aneblal ma tebɣiḍ ad d-tesnulfuḍ yiwet maca "
+"war ifuyla udmawanen."
+
+#: runexe/frontend/ui/details-capsule.blp:38
+msgid "Export Configuration…"
+msgstr "Sifeḍ tawila…"
+
+#: runexe/frontend/ui/details-capsule.blp:45
+#: runexe/frontend/views/capsule_details.py:347
+msgid "Show Hidden Programs"
+msgstr "Sken ahilen yeffren"
+
+#: runexe/frontend/ui/details-capsule.blp:49
+msgid "Search for new programs"
+msgstr "Nadi ɣef wahilen imaynuten"
+
+#: runexe/frontend/ui/details-capsule.blp:56
+msgid "Delete Capsule…"
+msgstr "kkes Taqerɛet…"
+
+#: runexe/frontend/ui/details-capsule.blp:73
+#: runexe/frontend/ui/details-dependencies.blp:99
+#: runexe/frontend/ui/details-installers.blp:68
+msgid "Secondary Menu"
+msgstr "Umuɣ wis sin"
+
+#: runexe/frontend/ui/details-capsule.blp:90
+msgid "Force Stop all Processes"
+msgstr "Ḥettem aseḥbes n yakk Ikalan"
+
+#: runexe/frontend/ui/details-capsule.blp:94
+msgid "Simulate a Windows system shutdown."
+msgstr "Serwes asexsi n unagraw Windows."
+
+#: runexe/frontend/ui/details-capsule.blp:95
+msgid "Shutdown"
+msgstr "Sexsi"
+
+#: runexe/frontend/ui/details-capsule.blp:99
+msgid "Simulate a Windows system reboot."
+msgstr "Serwes ales n usenker n unagraw Windows."
+
+#: runexe/frontend/ui/details-capsule.blp:100
+msgid "Reboot"
+msgstr "Ales asenker"
+
+#: runexe/frontend/ui/details-capsule.blp:118
+#: runexe/frontend/ui/dialog-launch-options.blp:6
+msgid "Launch Options"
+msgstr "Iɣewwaṛen n usekker"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+msgid "Pre-run Script"
+msgstr "Azar uselkem n Uskript"
+
+#: runexe/frontend/ui/details-capsule.blp:135
+msgid "Run in Terminal"
+msgstr "Selkem deg tdiwent"
+
+#: runexe/frontend/ui/details-capsule.blp:148
+msgid "Drop files to execute them"
+msgstr "Sers ifuyla akken ad ten-tselkmeḍ"
+
+#: runexe/frontend/ui/details-capsule.blp:164
+msgid "My capsule"
+msgstr "Taqerɛet-iw"
+
+#: runexe/frontend/ui/details-capsule.blp:177
+msgid "Win64"
+msgstr "Win64"
+
+#: runexe/frontend/ui/details-capsule.blp:189
+#: runexe/frontend/ui/list-entry.blp:12 runexe/frontend/ui/new.blp:71
+msgid "Environment"
+msgstr "Tawennaḍt"
+
+#: runexe/frontend/ui/details-capsule.blp:201
+#: runexe/frontend/ui/details-preferences.blp:14
+#: runexe/frontend/ui/new.blp:128
+msgid "Runner"
+msgstr "Amsedday"
+
+#: runexe/frontend/ui/details-capsule.blp:213
+#: runexe/frontend/ui/list-entry.blp:21
+msgid "Versioning enabled for this capsule"
+msgstr "Lqem yermed i tqerɛet-a"
+
+#: runexe/frontend/ui/details-capsule.blp:218
+msgid "Versioning is active for this capsule."
+msgstr "Lqem d urmid i tqerɛet-a."
+
+#: runexe/frontend/ui/details-capsule.blp:227
+#: runexe/frontend/ui/list-entry.blp:31
+msgid "0"
+msgstr "0"
+
+#: runexe/frontend/ui/details-capsule.blp:247
+msgid "Run Executable…"
+msgstr "Selkem Amselkam…"
+
+#: runexe/frontend/ui/details-capsule.blp:272
+msgid "Programs"
+msgstr "Ahilen"
+
+#: runexe/frontend/ui/details-capsule.blp:275
+msgid ""
+"Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an "
+"executable to the Programs list, or \"Install Programs…\" to install "
+"programs curated by the community."
+msgstr ""
+"Sit ɣef \"Selkem Amselkam...\" akken ad tselkemeḍ amselkam, \"Rnu "
+"inegzumen...\" akken ad ternuḍ amselkam ɣer tebdart n wahilen, neɣ \"Sbedd "
+"ahilen...\" usebded n wahilen i d-yusan sɣur umɣiwan."
+
+#: runexe/frontend/ui/details-capsule.blp:298
+msgid "Add Shortcuts…"
+msgstr "Rnu inegzumen…"
+
+#: runexe/frontend/ui/details-capsule.blp:325
+msgid "Install Programs…"
+msgstr "Sbedd ahilen…"
+
+#: runexe/frontend/ui/details-capsule.blp:346
+msgid "Options"
+msgstr "Tixtiṛiyin"
+
+#: runexe/frontend/ui/details-capsule.blp:350
+#: runexe/frontend/views/details.py:141
+msgid "Settings"
+msgstr "Iɣewwaṛen"
+
+#: runexe/frontend/ui/details-capsule.blp:351
+msgid "Configure capsule settings."
+msgstr "Swel iɣewwaṛen n tqerɛet."
+
+#: runexe/frontend/ui/details-capsule.blp:360
+#: runexe/frontend/views/details.py:145
+msgid "Dependencies"
+msgstr "Iḍaraɛen"
+
+#: runexe/frontend/ui/details-capsule.blp:361
+msgid "Install dependencies for programs."
+msgstr "Sbedd iḍaraɛen i wahilen."
+
+#: runexe/frontend/ui/details-capsule.blp:370
+#: runexe/frontend/ui/details-preferences.blp:376
+#: runexe/frontend/views/details.py:149
+msgid "Snapshots"
+msgstr "Tuṭṭfiwin"
+
+#: runexe/frontend/ui/details-capsule.blp:371
+msgid "Create and manage capsule states."
+msgstr "Snulfu-d u sefrek addaden n tqerɛet."
+
+#: runexe/frontend/ui/details-capsule.blp:380
+#: runexe/frontend/ui/details-capsule.blp:426
+#: runexe/frontend/views/details.py:157
+msgid "Task Manager"
+msgstr "Amsefrak n Tiwuriwin"
+
+#: runexe/frontend/ui/details-capsule.blp:381
+msgid "Manage running programs."
+msgstr "Sefrek ahilen itteddun."
+
+#: runexe/frontend/ui/details-capsule.blp:390
+msgid "Tools"
+msgstr "Ifecka"
+
+#: runexe/frontend/ui/details-capsule.blp:394
+msgid "Command Line"
+msgstr "Izirig n tladna"
+
+#: runexe/frontend/ui/details-capsule.blp:395
+msgid "Run commands inside the Capsule."
+msgstr "Selkem tiludna sdaxel n Tqerɛet."
+
+#: runexe/frontend/ui/details-capsule.blp:404
+msgid "Registry Editor"
+msgstr ""
+
+#: runexe/frontend/ui/details-capsule.blp:405
+msgid "Edit the internal registry."
+msgstr ""
+
+#: runexe/frontend/ui/details-capsule.blp:413
+msgid "Legacy Wine Tools"
+msgstr "Ifecka iqbuṛen Wine"
+
+#: runexe/frontend/ui/details-capsule.blp:417
+msgid "Explorer"
+msgstr "Anaram"
+
+#: runexe/frontend/ui/details-capsule.blp:435
+msgid "Debugger"
+msgstr "Amseɣti"
+
+#: runexe/frontend/ui/details-capsule.blp:444
+#: runexe/frontend/ui/importer.blp:69 runexe/frontend/ui/new.blp:145
+msgid "Configuration"
+msgstr "Tawila"
+
+#: runexe/frontend/ui/details-capsule.blp:453
+msgid "Uninstaller"
+msgstr "Anekkas"
+
+#: runexe/frontend/ui/details-capsule.blp:462
+msgid "Control Panel"
+msgstr "Agalis n usenqed"
+
+#: runexe/frontend/ui/details-dependencies.blp:9
+msgid "Search for dependencies…"
+msgstr "Nadi iḍaraɛen…"
+
+#: runexe/frontend/ui/details-dependencies.blp:22
+#: runexe/frontend/ui/preferences.blp:199
+#: runexe/frontend/ui/preferences.blp:247
+msgid "You're offline :("
+msgstr "Aql-ik·im deg uskar aruqqin :("
+
+#: runexe/frontend/ui/details-dependencies.blp:25
+msgid "RunExe is running in offline mode, so dependencies are not available."
+msgstr "Tiqerɛtin la tetteddu deg uskar war tuqqna, ihi iḍaraɛen ur wjiden ara."
+
+#: runexe/frontend/ui/details-dependencies.blp:47
+msgid ""
+"Dependencies are resources that improve compatibility of Windows software.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Iḍaraɛen d tiɣbula i yettnernin amṣada n yiseɣẓanen n Windows.\n"
+"\n"
+"Ifuyla n usebter-agi ttunefken-ten-id tama tis kraḍ deg turagt n umli. Ma "
+"tesbeddeḍ-ten, ad tqebleḍ tiwtilin-nsen n turagt."
+
+#: runexe/frontend/ui/details-dependencies.blp:76
+msgid "Report a problem or a missing dependency."
+msgstr "Azen-d aneqqis n wugur neɣ aḍaraɛ ixuṣṣen."
+
+#: runexe/frontend/ui/details-dependencies.blp:77
+msgid "Report Missing Dependency"
+msgstr "Azen-d aneqqis n uḍaraɛ ixuṣṣen"
+
+#: runexe/frontend/ui/details-dependencies.blp:81
+msgid "Read Documentation."
+msgstr "Ɣeṛ tasemlit."
+
+#: runexe/frontend/ui/details-dependencies.blp:82
+#: runexe/frontend/ui/details-installers.blp:51
+#: runexe/frontend/ui/details-versioning.blp:37
+msgid "Documentation"
+msgstr "Tasemlit"
+
+#: runexe/frontend/ui/details-dependencies.blp:92
+#: runexe/frontend/ui/details-installers.blp:61
+#: runexe/frontend/ui/window.blp:46
+msgid "Search"
+msgstr "Nadi"
+
+#: runexe/frontend/ui/details-installers.blp:9
+msgid "Search for Programs…"
+msgstr "Nadi ɣef Wahilen…"
+
+#: runexe/frontend/ui/details-installers.blp:15
+msgid ""
+"Install programs curated by our community.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+
+#: runexe/frontend/ui/details-installers.blp:29
+msgid "No Installers Found"
+msgstr "Ulac imsebdeden yettwafen"
+
+#: runexe/frontend/ui/details-installers.blp:32
+msgid ""
+"The repository is unreachable or no installer is compatible with this capsule."
+msgstr "Asarsay ur yettwawaḍ ara neɣ ulac amsebded yemṣadan akked tqerɛet-a."
+
+#: runexe/frontend/ui/details-installers.blp:50
+#: runexe/frontend/ui/details-versioning.blp:36
+#: runexe/frontend/ui/preferences.blp:82
+msgid "Read Documentation"
+msgstr "Ɣeṛ tasemlit"
+
+#: runexe/frontend/ui/details-preferences.blp:6
+#: runexe/frontend/ui/dialog-duplicate.blp:52 runexe/frontend/ui/new.blp:53
+msgid "Name"
+msgstr "Isem"
+
+#: runexe/frontend/ui/details-preferences.blp:11
+msgid "Components"
+msgstr "isegran"
+
+#: runexe/frontend/ui/details-preferences.blp:15
+#: runexe/frontend/ui/new.blp:129
+msgid "The version of the Wine compatibility layer."
+msgstr "lqem n umṣada n tissi Wine."
+
+#: runexe/frontend/ui/details-preferences.blp:17
+msgid "Updating Runner and components, please wait…"
+msgstr "Aleqqem umsedday akked isegran, ttxil-k·m arǧu…"
+
+#: runexe/frontend/ui/details-preferences.blp:27
+#: runexe/frontend/ui/preferences.blp:274
+msgid "DXVK"
+msgstr "DXVK"
+
+#: runexe/frontend/ui/details-preferences.blp:28
+msgid "Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan."
+msgstr "Asnerni n umṣada n Direct3D 8/9/10/11 s usuqel-is ɣer Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:30
+msgid "Updating DXVK, please wait…"
+msgstr "Aleqqem n DXVK, ttxil-k·m arǧu…"
+
+#: runexe/frontend/ui/details-preferences.blp:40
+#: runexe/frontend/ui/preferences.blp:278
+msgid "VKD3D"
+msgstr "VKD3D"
+
+#: runexe/frontend/ui/details-preferences.blp:41
+msgid "Improve Direct3D 12 compatibility by translating it to Vulkan."
+msgstr "Asnerni n umṣada n Direct3D 12 s usuqel-is ɣer Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:43
+msgid "Updating VKD3D, please wait…"
+msgstr "Aleqqem n VKD3D, ttxil-k·m arǧu…"
+
+#: runexe/frontend/ui/details-preferences.blp:54
+msgid "DXVK NVAPI"
+msgstr "DXVK NVAPI"
+
+#: runexe/frontend/ui/details-preferences.blp:58
+#: runexe/frontend/ui/details-preferences.blp:93
+msgid "Updating DXVK-NVAPI, please wait…"
+msgstr "Aleqqem n DXVK-NVAPI, ttxil-k·m arǧu…"
+
+#: runexe/frontend/ui/details-preferences.blp:68
+#: runexe/frontend/ui/preferences.blp:286
+msgid "LatencyFleX"
+msgstr "LatencyFleX"
+
+#: runexe/frontend/ui/details-preferences.blp:69
+msgid "Increase responsiveness. Can be detected by some anti-cheat software."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:71
+msgid "Updating LatencyFleX, please wait…"
+msgstr "Aleqqem n LatencyFleX, ttxil-k·m arǧu…"
+
+#: runexe/frontend/ui/details-preferences.blp:84
+msgid "Display"
+msgstr "Beqqeḍ"
+
+#: runexe/frontend/ui/details-preferences.blp:88
+msgid "Deep Learning Super Sampling"
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:89
+msgid ""
+"Increase performance at the expense of visuals using DXVK-NVAPI. Only works "
+"on newer NVIDIA GPUs."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:105
+msgid "FidelityFX Super Resolution"
+msgstr "Tabadut tafellayt FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:106
+msgid "Increase performance at the expense of visuals. Only works on Vulkan."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:108
+msgid "Manage FidelityFX Super Resolution settings"
+msgstr "sefrek iɣewwaṛen n tbadut tafellayt FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:125
+msgid "Discrete Graphics"
+msgstr "Takarḍa tudlift"
+
+#: runexe/frontend/ui/details-preferences.blp:126
+msgid ""
+"Use the discrete graphics card to increase performance at the expense of "
+"power consumption."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:135
+msgid "Post-Processing Effects"
+msgstr "Isemda n uglezsefser"
+
+#: runexe/frontend/ui/details-preferences.blp:136
+msgid ""
+"Add various post-processing effects using vkBasalt. Only works on Vulkan."
+msgstr ""
+"Rnu agut isemda n uglezsefser s useqdec vkBasalt. Iteddu kan ɣef Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:138
+msgid "Manage Post-Processing Layer settings"
+msgstr "Sefrek iɣewwaṛen n tissi uglezsefser"
+
+#: runexe/frontend/ui/details-preferences.blp:154
+msgid "Manage how games should be displayed on the screen using Gamescope."
+msgstr "Sefrek amek ara ttwabeqqeḍen wuraren deg ugdil s useqdec n Gamescope."
+
+#: runexe/frontend/ui/details-preferences.blp:157
+msgid "Manage Gamescope settings"
+msgstr "sefrek iɣewwaṛen Gamescope"
+
+#: runexe/frontend/ui/details-preferences.blp:171
+msgid "Advanced Display Settings"
+msgstr "Iɣewwaṛen inaẓiyen n ubeqqeḍ"
+
+#: runexe/frontend/ui/details-preferences.blp:184
+msgid "Performance"
+msgstr "Timellit"
+
+#: runexe/frontend/ui/details-preferences.blp:188
+msgid "Enable synchronization to increase performance of multicore processors."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:189
+msgid "Synchronization"
+msgstr "Amtawi"
+
+#: runexe/frontend/ui/details-preferences.blp:193
+msgid "System"
+msgstr "Anagraw"
+
+#: runexe/frontend/ui/details-preferences.blp:194
+msgid "Esync"
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:195
+msgid "Fsync"
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:201
+msgid "Monitor Performance"
+msgstr "Amsefrak n tmellit"
+
+#: runexe/frontend/ui/details-preferences.blp:202
+msgid ""
+"Display monitoring information such as framerate, temperatures, CPU/GPU load "
+"and more on OpenGL and Vulkan using MangoHud."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:205
+msgid "Manage MangoHud settings"
+msgstr "Sefrek iɣewwaṛen n MangoHud"
+
+#: runexe/frontend/ui/details-preferences.blp:210
+msgid "Feral GameMode"
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:211
+msgid ""
+"Apply a set of optimizations to your device. Can improve game performance."
+msgstr ""
+"Snes asbadu n isekkayen i yibenk-ik·im. Yezmer ad yesnerni timellit n wurar."
+
+#: runexe/frontend/ui/details-preferences.blp:220
+msgid "Preload Game Files"
+msgstr "Sali-d ifuyla n wurar"
+
+#: runexe/frontend/ui/details-preferences.blp:221
+msgid ""
+"Improve loading time when launching the game multiple times. The game will "
+"take longer to start for the first time."
+msgstr ""
+"Snerni akud n usali mi ara yekker wurar s wagut n tikkal. Urar-nni ad yeṭṭef "
+"aṭas n wakud i usenker tikkelt tamezwarut."
+
+#: runexe/frontend/ui/details-preferences.blp:225
+msgid "Manage vmtouch settings"
+msgstr "Sefrek iɣewwaṛen vmtouch"
+
+#: runexe/frontend/ui/details-preferences.blp:240
+msgid "OBS Game Capture"
+msgstr "Tuṭṭfa n wurar OBS"
+
+#: runexe/frontend/ui/details-preferences.blp:241
+msgid "Toggle OBS Game Capture for all Vulkan and OpenGL programs."
+msgstr "Qluqel Tuṭṭfa n wurar OBS i akk n wahilen Vulkan akked OpenGL."
+
+#: runexe/frontend/ui/details-preferences.blp:250
+msgid "Compatibility"
+msgstr "Amṣada"
+
+#: runexe/frontend/ui/details-preferences.blp:253
+msgid "Windows Version"
+msgstr "Lqem n Windows"
+
+#: runexe/frontend/ui/details-preferences.blp:256
+msgid "Updating Windows version, please wait…"
+msgstr "Aleqqem n lqem n Windows, ma ulac aɣilif arǧu…"
+
+#: runexe/frontend/ui/details-preferences.blp:265
+msgid "Language"
+msgstr "Tutlayt"
+
+#: runexe/frontend/ui/details-preferences.blp:266
+msgid "Choose the language to use with programs."
+msgstr "Fren tutlayt ara tesqedceḍ s wahilen."
+
+#: runexe/frontend/ui/details-preferences.blp:274
+msgid "Dedicated Sandbox"
+msgstr "Tanaka n ijdi yettwaṭṭfen"
+
+#: runexe/frontend/ui/details-preferences.blp:275
+msgid "Use a restricted/managed environment for this capsule."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:278
+msgid "Manage the Sandbox Permissions"
+msgstr "Sefrek tisirag n tnaka n ijdi"
+
+#: runexe/frontend/ui/details-preferences.blp:294
+msgid "RunExe Runtime"
+msgstr "Aselkam n Teqreɛtin"
+
+#: runexe/frontend/ui/details-preferences.blp:295
+msgid ""
+"Provide a bundle of extra libraries for more compatibility. Disable it if "
+"you run into issues."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:305
+msgid "Steam Runtime"
+msgstr "Aselkam Steam"
+
+#: runexe/frontend/ui/details-preferences.blp:306
+msgid ""
+"Provide a bundle of extra libraries for more compatibility with Steam games. "
+"Disable it if you run into issues."
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:314
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Working Directory"
+msgstr "Akaram n umahil"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Pre-run Script Arguments"
+msgstr "Azar uselkem n Ifukal Uskript"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+msgid "e.g.: ludusavi restore --force \"Game Name\""
+msgstr ""
+
+#: runexe/frontend/ui/dialog-launch-options.blp:118
+msgid "Post-run Script Arguments"
+msgstr "Aglez uselkem n Ifukal Uskript"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:121
+msgid "e.g.: ludusavi backup --force \"Game Name\""
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:317
+#: runexe/frontend/ui/dialog-launch-options.blp:59
+#: runexe/frontend/ui/dialog-launch-options.blp:90
+#: runexe/frontend/ui/new.blp:150 runexe/frontend/ui/new.blp:181
+#: runexe/frontend/ui/preferences.blp:157
+msgid "Reset to Default"
+msgstr "Ales awennez ɣer Umezwer"
+
+#: runexe/frontend/ui/details-preferences.blp:338
+#: runexe/frontend/ui/preferences.blp:178 runexe/frontend/views/new.py:78
+#: runexe/frontend/views/preferences.py:221
+msgid "(Default)"
+msgstr "(Amezwer)"
+
+#: runexe/frontend/ui/details-preferences.blp:346
+#: runexe/frontend/ui/dialog-dll-overrides.blp:7
+#: runexe/frontend/ui/dialog-dll-overrides.blp:12
+msgid "DLL Overrides"
+msgstr "Asemseli DLL"
+
+#: runexe/frontend/ui/details-preferences.blp:356
+#: runexe/frontend/ui/dialog-env-vars.blp:20
+msgid "Environment Variables"
+msgstr "imuttiyen n twennaḍt"
+
+#: runexe/frontend/ui/details-preferences.blp:366
+msgid "Manage Drives"
+msgstr "Sefrek imeɣriyen"
+
+#: runexe/frontend/ui/details-preferences.blp:380
+msgid "Automatic Snapshots"
+msgstr "Tuṭṭfiwin s wudem awurman"
+
+#: runexe/frontend/ui/details-preferences.blp:381
+msgid ""
+"Automatically create snapshots before installing software or changing "
+"settings."
+msgstr ""
+"Asnulfu awurman n tuṭṭfiwin send asbeddi n useɣẓan neɣ asnifel n yiɣewwaṛen."
+
+#: runexe/frontend/ui/details-preferences.blp:390
+msgid "Compression"
+msgstr "Asekkussem"
+
+#: runexe/frontend/ui/details-preferences.blp:391
+msgid ""
+"Compress snapshots to reduce space. This will slow down the creation of "
+"snapshots."
+msgstr ""
+"Sekussem tuṭṭfiwin i usenɣes n tallunt yettwasqedcen. Aya ad yessenqes "
+"tamhelt n usnulfu n tuṭṭfiwin."
+
+#: runexe/frontend/ui/details-preferences.blp:400
+msgid "Use Exclusion Patterns"
+msgstr ""
+
+#: runexe/frontend/ui/details-preferences.blp:401
+msgid "Exclude paths in snapshots."
+msgstr "Stixer iberdan deg tuṭṭfiwin."
+
+#: runexe/frontend/ui/details-preferences.blp:404
+msgid "Manage Patterns"
+msgstr ""
+
+#: runexe/frontend/ui/details-taskmanager.blp:17
+msgid "Refresh"
+msgstr "Sismeḍ"
+
+#: runexe/frontend/ui/details-taskmanager.blp:22
+msgid "Stop process"
+msgstr "Ḥbes akala"
+
+#: runexe/frontend/ui/details-versioning.blp:18
+msgid "No Snapshots Found"
+msgstr "Ulac tuṭṭfiwin yettwafen"
+
+#: runexe/frontend/ui/details-versioning.blp:19
+msgid "Create your first snapshot to start saving states of your preferences."
+msgstr ""
+"Snulfu-d tuṭṭfa-inek·m tamezwarut i wakken ad tebduḍ asekles n waddad n "
+"ismenyifen-ik·im."
+
+#: runexe/frontend/ui/details-versioning.blp:54
+msgid "A short comment"
+msgstr "Awennit awezlan"
+
+#: runexe/frontend/ui/details-versioning.blp:58
+msgid "Save the capsule state."
+msgstr "Sekles addad n tqerɛet."
+
+#: runexe/frontend/ui/details-versioning.blp:78
+msgid "Create new Snapshot"
+msgstr "Snulfu-d Tuṭṭfa tamaynut"
+
+#: runexe/frontend/ui/details.blp:16
+msgid "Details"
+msgstr "Ifatusen"
+
+#: runexe/frontend/ui/details.blp:24 runexe/frontend/ui/details.blp:64
+#: runexe/frontend/ui/importer.blp:15
+msgid "Go Back"
+msgstr "Uɣal ɣer deffir"
+
+#: runexe/frontend/ui/details.blp:75
+msgid "Operations"
+msgstr "Timhalin"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:4
+msgid "Select Capsule"
+msgstr "Fren Taqerɛet"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:16
+#: runexe/frontend/ui/dialog-proton-alert.blp:16
+#: runexe/frontend/ui/dialog-rename.blp:15
+#: runexe/frontend/ui/dialog-run-args.blp:20
+msgid "Cancel"
+msgstr "Sefsex"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:21
+msgid "Select"
+msgstr "Fren"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:38
+#: runexe/frontend/ui/new.blp:9 runexe/frontend/ui/new.blp:49
+#: runexe/frontend/ui/window.blp:25
+msgid "Create New Capsule"
+msgstr "Snulfu-d Taqerɛet tamaynut"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:8
+msgid "RunExe Crash Report"
+msgstr "Aneqis n uɣelluy n teqreɛtin"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:18
+#: runexe/frontend/ui/dialog-duplicate.blp:22
+#: runexe/frontend/ui/dialog-gamescope.blp:23
+#: runexe/frontend/ui/dialog-launch-options.blp:16
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:22
+#: runexe/frontend/ui/dialog-vkbasalt.blp:27 runexe/frontend/ui/new.blp:26
+#: runexe/frontend/views/capsule_details.py:507
+#: runexe/frontend/views/capsule_details.py:603
+#: runexe/frontend/views/capsule_preferences.py:746
+#: runexe/frontend/views/preferences.py:212
+msgid "_Cancel"
+msgstr "_Sefsex"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:25
+msgid "Send Report"
+msgstr "Azen aneqqis"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:44
+msgid ""
+"RunExe crashed last time. Please fill out a report attaching the following "
+"traceback to help us identify the problem preventing it from happening again."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-crash-report.blp:74
+msgid ""
+"We found one or more similar (or identical) reports. Please make sure to "
+"check carefully that it has not already been reported before submitting a "
+"new one. Each report requires effort on the part of the developers to "
+"diagnose, please respect their work and make sure you don't post duplicates."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-crash-report.blp:89
+msgid "I still want to report."
+msgstr "Mazal-iyi bɣiɣ ad fkeɣ aneqqis."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:95
+msgid "Advanced options"
+msgstr "Tinefrunin tinaẓiyin"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:13
+msgid "Incomplete package"
+msgstr "Akemmus ur yemmid ara"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:14
+msgid ""
+"This version of RunExe does not seem to provide all the necessary core "
+"dependencies, please contact the package maintainer or use an official "
+"version."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-deps-check.blp:18
+msgid "Quit"
+msgstr "Ffeɣ"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:11
+msgid ""
+"Dynamic Link Libraries can be specified to be builtin (provided by Wine) or "
+"native (provided by the program)."
+msgstr ""
+"Timkarḍiyin useɣwen asmussan zemrent ad ttwasmersent akken ad ilint d "
+"tusliɣt (sɣur Wine) neɣ aneṣli (yettunefken-d sɣur ahil)."
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:15
+msgid "New Override"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:21
+msgid "Overrides"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-drives.blp:7
+msgid "Drives"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-drives.blp:24
+msgid ""
+"These are paths from your host system that are mapped and recognized as "
+"devices by the runner (e.g. C: D:…)."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-drives.blp:27
+msgid "Letter"
+msgstr "Asekkil"
+
+#: runexe/frontend/ui/dialog-drives.blp:49
+msgid "Existing Drives"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-duplicate.blp:16
+msgid "Duplicate Capsule"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-duplicate.blp:38
+msgid "Duplicate"
+msgstr "Sisleg"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:49
+msgid "Enter a name for the duplicate of the Capsule."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-duplicate.blp:69
+msgid "Duplicating…"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-duplicate.blp:78
+#: runexe/frontend/ui/dialog-installer.blp:103
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:112
+#: runexe/frontend/views/new.py:177
+msgid "This could take a while."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-duplicate.blp:97
+msgid "Capsule Duplicated"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-env-vars.blp:28
+msgid ""
+"Environment variables are dynamic-named value that can affect the way "
+"running processes will behave on your capsule."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-env-vars.blp:31
+msgid "Variable Name"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-env-vars.blp:37
+msgid "Existing Variables"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:20
+msgid "Exclusion Patterns"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:28
+msgid ""
+"Define patterns that will be used to prevent some directories to being "
+"versioned."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:31
+msgid "Pattern"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:37
+msgid "Existing Patterns"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-gamescope.blp:6
+msgid "Gamescope Settings"
+msgstr "Iɣewwaṛen n Gamescope"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:30
+#: runexe/frontend/ui/dialog-launch-options.blp:32
+#: runexe/frontend/ui/dialog-rename.blp:20
+#: runexe/frontend/ui/dialog-vkbasalt.blp:34
+msgid "Save"
+msgstr "Sekles"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:40
+msgid "Manage how games should be displayed."
+msgstr "Sefrek amek ara ttwabeqqeḍen wuraren."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:44
+msgid "Game Resolution"
+msgstr "Tabadut n wurar"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:45
+msgid "Uses the resolution of the video game as a reference in pixels."
+msgstr "Seqdec tabadut n wurar n tvidyut am temselɣut deg ipiksilen."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:48
+#: runexe/frontend/ui/dialog-gamescope.blp:85
+msgid "Width"
+msgstr "Tehri"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:64
+#: runexe/frontend/ui/dialog-gamescope.blp:101
+msgid "Height"
+msgstr "Teɣzi"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:81
+msgid "Window Resolution"
+msgstr "Tabadut n usfaylu"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:82
+msgid ""
+"Upscales the resolution when using a resolution higher than the game "
+"resolution in pixels."
+msgstr ""
+"Asnerni n tbadut ticki tseqdaceḍ tabadut yugaren tabadut n wurar deg "
+"ipiksilen."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:118
+msgid "Miscellaneous"
+msgstr "Ayen-nniḍen"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:121
+msgid "Frame Rate Limit"
+msgstr "Talast n usnagar n tugniwin"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:137
+msgid "Frame Rate Limit When Unfocused"
+msgstr "Talast n usnagar n tugniwin ticki warasaḍes"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:153
+msgid "Integer Scaling"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-gamescope.blp:162
+msgid "Window Type"
+msgstr "Anaw n usfaylu"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:166
+msgid "Borderless"
+msgstr "War iran"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:172
+msgid "Fullscreen"
+msgstr "Agdil aččuran"
+
+#: runexe/frontend/ui/dialog-installer.blp:40
+msgid "Do you want to proceed with the installation?"
+msgstr "Tebɣiḍ ad tkemmleḍ asebded?"
+
+#: runexe/frontend/ui/dialog-installer.blp:45
+msgid "Start Installation"
+msgstr "Senker asebded"
+
+#: runexe/frontend/ui/dialog-installer.blp:64
+msgid ""
+"This installer requires some local resources which cannot be provided "
+"otherwise."
+msgstr ""
+"Asbedday-agi yesra kra n teɣbula tidiganin ur nezmir ara ad d-ttunefkent "
+"akken nniḍen."
+
+#: runexe/frontend/ui/dialog-installer.blp:68
+msgid "Proceed"
+msgstr "Kemmel"
+
+#: runexe/frontend/ui/dialog-installer.blp:127
+msgid "Completed!"
+msgstr "Yemmed!"
+
+#: runexe/frontend/ui/dialog-installer.blp:130
+msgid "Show Programs"
+msgstr "Sken ahilen"
+
+#: runexe/frontend/ui/dialog-installer.blp:148
+msgid "Installation Failed!"
+msgstr "Asebded ur yeddi ara!"
+
+#: runexe/frontend/ui/dialog-installer.blp:149
+msgid "Something went wrong."
+msgstr "Yella wacu ur neddi ara akken ilaq."
+
+#: runexe/frontend/ui/dialog-journal.blp:9
+msgid "All messages"
+msgstr "Akk iznan"
+
+#: runexe/frontend/ui/dialog-journal.blp:13
+msgid "Critical"
+msgstr "Uzɣin"
+
+#: runexe/frontend/ui/dialog-journal.blp:17
+msgid "Errors"
+msgstr "Tuccḍiwin"
+
+#: runexe/frontend/ui/dialog-journal.blp:21
+msgid "Warnings"
+msgstr "Ɣur-k·m"
+
+#: runexe/frontend/ui/dialog-journal.blp:25
+msgid "Info"
+msgstr "Talɣut"
+
+#: runexe/frontend/ui/dialog-journal.blp:40
+#: runexe/frontend/ui/dialog-journal.blp:48
+msgid "Journal Browser"
+msgstr "Iminig n uɣmis"
+
+#: runexe/frontend/ui/dialog-journal.blp:53
+msgid "Change Logging Level."
+msgstr "Snifel aswir n uɣmis."
+
+#: runexe/frontend/ui/dialog-journal.blp:57
+msgid "All"
+msgstr "Akk"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:42
+msgid "Those arguments will be passed at launch."
+msgstr "Ifukal-a ad ttusɛeddan deg tnekra."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:43
+msgid "Custom Arguments"
+msgstr "Ifukal yugnen"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:46
+msgid "Command Arguments"
+msgstr "Ifukal n tiludna"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:47
+#, c-format
+msgid "e.g.: VAR=value %command% -example1 -example2 -example3=hello"
+msgstr "Deg umedya: VAR=azal %command% -eamedya1 -amedya2 -amedya3=azul"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:52
+msgid "Post-run Script"
+msgstr "Askript n uglez-selkem"
+
+#. endregion
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+#: runexe/frontend/windows/launchoptions.py:53
+msgid "Choose a script which should be executed after run."
+msgstr "Fren askript ara yettwaselkem seld asenker."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:70
+msgid "Choose a Script"
+msgstr "Fren askript"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+#: runexe/frontend/windows/launchoptions.py:54
+msgid "Choose from where start the program."
+msgstr "Fren seg wanda ara tebduḍ ahil."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:101
+#: runexe/frontend/ui/drive-entry.blp:22
+msgid "Choose a Directory"
+msgstr "Fren Akaram"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:114
+msgid "These settings will override the default settings for this executable."
+msgstr "Iɣewwaṛen-agi ad semselsin iɣewwaṛen imezwar i umselkam-agi."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:115
+msgid "Preferences Overrides"
+msgstr "Semselsi ismenyifen"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:119
+msgid "Reset to Capsule's Defaults"
+msgstr "Ales awennez ɣer Tqerɛet Tamezwert"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:165
+msgid "Virtual Desktop"
+msgstr "Tanarit tuhlist"
+
+#: runexe/frontend/ui/dialog-mangohud.blp:42
+msgid "Display On Game Start"
+msgstr "Beqqeḍ deg usenker n wurar"
+
+#: runexe/frontend/ui/dialog-mangohud.blp:43
+msgid "Display HUD as soon as the game starts. Can be toggled in-game (default keybind: [⇧ Right Shift] + [F12])."
+msgstr ""
+"Beqqeḍ HUD am akken kan ara yebdu wurar. Yezmer ad yettwaqluqel deg wurar "
+"(tasarut tamezwert: [⇧ Shift ayfus] + [F12])."
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:4
+msgid "Proton Disclaimer"
+msgstr "Alɣu ɣef Pruṭun"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:21
+msgid "Use Proton"
+msgstr "Seqdec Pruṭun"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:35
+msgid ""
+"Beware, using Proton-based runners in non-Steam capsules can cause problems "
+"and prevent them from behaving correctly.\n"
+"\n"
+"We recommend using Wine-GE rather, a version of Proton meant to run outside "
+"of Steam.\n"
+"\n"
+"Proceeding will automatically enable the Steam runtime (if present in the "
+"system and detected by RunExe) in order to allow it to access the necessary "
+"libraries and limit compatibility problems. Be aware that GloriousEggroll, "
+"the runner's provider, is not responsible for any problems and we ask that "
+"you do not report to them."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:43
+msgid "I got it."
+msgstr "Wwiɣ-t-id."
+
+#: runexe/frontend/ui/dialog-rename.blp:7
+msgid "Rename"
+msgstr "Snifel isem"
+
+#: runexe/frontend/ui/dialog-rename.blp:30
+msgid "Choose a new name for the selected program."
+msgstr "Fren isem amaynut i wahil yettwafernen."
+
+#: runexe/frontend/ui/dialog-rename.blp:33
+msgid "New Name"
+msgstr "Isem amaynut"
+
+#: runexe/frontend/ui/dialog-run-args.blp:13
+msgid "Run With Arguments"
+msgstr "Selkem S Ifukal"
+
+#: runexe/frontend/ui/dialog-run-args.blp:34
+#: runexe/frontend/views/capsule_details.py:404
+#: runexe/frontend/views/list.py:131
+msgid "Run"
+msgstr "Selkem"
+
+#: runexe/frontend/ui/dialog-run-args.blp:44
+msgid "Write below the arguments to be passed to the executable."
+msgstr "Aru ddaw ifukal iwakken ad d-ttwakecmen ɣer umselkam."
+
+#: runexe/frontend/ui/dialog-run-args.blp:47
+msgid "e.g.: -opengl -SkipBuildPatchPrereq"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-sandbox.blp:7
+msgid "Sandbox Settings"
+msgstr "Iɣewwaṛen n tnaka n ijdi"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:25
+msgid "Share Network"
+msgstr "Bḍu aẓeṭṭa"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:34
+msgid "Share Sound"
+msgstr "Bḍu imesli"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:16
+msgid "Upgrade Needed"
+msgstr "Aleqqem yettwasra"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:38
+#: runexe/frontend/ui/onboard.blp:81
+msgid "Continue"
+msgstr "Ddu"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:47
+msgid "Launch upgrade"
+msgstr "Sekker asali n uswir"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:66
+msgid "New Versioning System"
+msgstr "Anagraw usefrek amaynut n lqem"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:69
+msgid "The new capsule versioning system has landed."
+msgstr "Yewweḍ-d unagraw amaynut n usefrek n yileqman n teqreɛtin."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:83
+msgid ""
+"RunExe has a whole new Versioning System that is not backwards compatible.\n"
+"\n"
+"To continue using versioning we need to re-initialize the capsule repository. "
+"This will not delete data from your capsule but will delete all existing "
+"snapshots and create a new one.\n"
+"\n"
+"If you need to go back to a previous snapshot before continuing, close this "
+"window and restore the snapshot, then reopen the capsule to show this window "
+"again.\n"
+"\n"
+"The old system will be discontinued in one of the next releases."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:103
+msgid "Re-initializing Repository…"
+msgstr "Tulsa n uwennez n ukufi…"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:133
+msgid "Done! Please restart RunExe."
+msgstr "Yettwaxdem! Ttxil-k·m, ales asenker n Teqreɛtin."
+
+#. Translators: vkBasalt is a Vulkan post processing layer for Linux
+#: runexe/frontend/ui/dialog-vkbasalt.blp:10
+msgid "Post-Processing Effects Settings"
+msgstr "Iɣewwaṛen n usesfer n isemda n tsuffeɣt"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:44
+msgid "Default"
+msgstr "Amezwer"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:48
+msgid "Default Settings"
+msgstr "Iɣewwaṛen imezwar"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:57
+msgid "Effects are applied according to the list order."
+msgstr "Isemda ttwasnesen ɣef leḥsab n umizzwer n tebdart."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:58
+msgid "Effects"
+msgstr "Isemda"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:62
+msgid "Contrast Adaptive Sharpening"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:65
+#: runexe/frontend/ui/dialog-vkbasalt.blp:102
+msgid "Sharpness"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:69
+#: runexe/frontend/ui/dialog-vkbasalt.blp:106
+#: runexe/frontend/ui/dialog-vkbasalt.blp:134
+#: runexe/frontend/ui/dialog-vkbasalt.blp:167
+#: runexe/frontend/ui/dialog-vkbasalt.blp:195
+#: runexe/frontend/ui/dialog-vkbasalt.blp:223
+#: runexe/frontend/ui/dialog-vkbasalt.blp:256
+#: runexe/frontend/ui/dialog-vkbasalt.blp:288
+#: runexe/frontend/ui/dialog-vkbasalt.blp:316
+#: runexe/frontend/ui/dialog-vkbasalt.blp:343
+#: runexe/frontend/ui/dialog-vkbasalt.blp:370 runexe/frontend/ui/new.blp:58
+msgid "Show Information"
+msgstr "Sken talɣut"
+
+#. Translators: Luma is not translatable
+#: runexe/frontend/ui/dialog-vkbasalt.blp:99
+msgid "Denoised Luma Sharpening"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:130
+msgid "Denoise"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:160
+msgid "Fast Approximate Anti-Aliasing"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:163
+msgid "Subpixel Quality"
+msgstr "Taɣara n upiksil anaddaw"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:191
+msgid "Quality Edge Threshold"
+msgstr "Amnaṛ n yiri n tɣara"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:219
+msgid "Quality Edge Threshold Minimum"
+msgstr "Amnaṛ adday n yiri n tɣara"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:249
+msgid "Subpixel Morphological Anti-Aliasing"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:252
+msgid "Edge Detection"
+msgstr "Tifin n yiri"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:267
+msgid "Luma"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:273
+msgid "Color"
+msgstr "Ini"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:284
+msgid "Threshold"
+msgstr "Amnaṛ"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:312
+msgid "Max Search Steps"
+msgstr "Isurifen ufellay n unadi"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:339
+msgid "Max Search Steps Diagonal"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:366
+msgid "Max Corner Rounding"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:411
+msgid ""
+"CAS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper, whereas values lower than 0 make the frame softer than native."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:428
+msgid ""
+"DLS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:445
+msgid ""
+"DLS denoise decreases the noise of a frame. Higher values make the frame "
+"softer."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:462
+msgid ""
+"FXAA subpixel quality decreases aliasing at the subpixel level. Higher "
+"values make the frame softer."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:479
+msgid ""
+"FXAA edge threshold is the minimum amount of contrast required to apply the "
+"FXAA algorithm. Higher values make the frame have more contrast."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:496
+msgid ""
+"FXAA quality edge threshold minimum is the minimum value of dark pixels that "
+"are ignored by the FXAA algorithm. Higher values make FXAA ignore pixels "
+"below the specified value and can lead to a performance increase."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:513
+msgid ""
+"Luma detects edges from a monochrome perspective, whereas Color detects "
+"edges based on colors. Luma is more performant than Color."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:530
+msgid ""
+"SMAA threshold specifies the sensitivity of edge detection. Lower values "
+"detect more edges at the expense of performance."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:547
+msgid ""
+"SMAA max search steps specifies how many horizontal and vertical search "
+"steps are performed when searching for edges."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:564
+msgid ""
+"SMAA max diagonal search steps specifies how many diagonal search steps are "
+"performed when searching for edges."
+msgstr ""
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:581
+msgid "SMAA corner rounding specifies the strength of rounding edge corners."
+msgstr ""
+
+#: runexe/frontend/ui/dll-override-entry.blp:8
+msgid "Builtin (Wine)"
+msgstr "Yesleɣ (Wine)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:9
+msgid "Native (Windows)"
+msgstr "Aneṣli (Windows)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:10
+msgid "Builtin, then Native"
+msgstr "Yesleɣ, syin Aneṣli"
+
+#: runexe/frontend/ui/dll-override-entry.blp:11
+msgid "Native, then Builtin"
+msgstr "Aneṣli, syin Asleɣ"
+
+#: runexe/frontend/ui/dll-override-entry.blp:12
+msgid "Disabled"
+msgstr "Ittwasens"
+
+#: runexe/frontend/ui/dll-override-entry.blp:20
+#: runexe/frontend/ui/drive-entry.blp:12
+msgid "Remove"
+msgstr "Kkes"
+
+#: runexe/frontend/ui/drive-entry.blp:5
+msgid "/point/to/path"
+msgstr "/taneqqiḍt/ɣer/abrid"
+
+#: runexe/frontend/ui/env-var-entry.blp:4
+#: runexe/frontend/ui/exclusion-pattern-entry.blp:4
+msgid "Value"
+msgstr "Azal"
+
+#. Translators: A Wine prefix is a separate environment (C:\ drive) for the Wine program
+#: runexe/frontend/ui/importer-entry.blp:21
+msgid "Wine prefix name"
+msgstr ""
+
+#: runexe/frontend/ui/importer-entry.blp:28
+msgid "Manager"
+msgstr "Amsefrak"
+
+#: runexe/frontend/ui/importer-entry.blp:38
+msgid "This Wine prefix was already imported in RunExe."
+msgstr ""
+
+#: runexe/frontend/ui/importer.blp:22
+msgid "Import a Capsule backup"
+msgstr "Kter aḥraz n Tqerɛet"
+
+#: runexe/frontend/ui/importer.blp:28
+msgid "Search again for prefixes"
+msgstr ""
+
+#: runexe/frontend/ui/importer.blp:38
+msgid "No Prefixes Found"
+msgstr ""
+
+#: runexe/frontend/ui/importer.blp:39
+msgid ""
+"No external prefixes were found. Does RunExe have access to them?\n"
+"Use the icon on the top to import a capsule from a backup."
+msgstr ""
+
+#: runexe/frontend/ui/importer.blp:74
+msgid "Full Archive"
+msgstr "Aɣbaṛ ummid"
+
+#: runexe/frontend/ui/installer-entry.blp:16
+msgid "Show Manifest…"
+msgstr ""
+
+#: runexe/frontend/ui/installer-entry.blp:20
+msgid "Read Review…"
+msgstr "Ɣeṛ acegger…"
+
+#: runexe/frontend/ui/installer-entry.blp:34
+msgid "Installer name"
+msgstr "Isem n umsebded"
+
+#: runexe/frontend/ui/installer-entry.blp:35
+msgid "Installer description"
+msgstr "Aglam n umsebded"
+
+#: runexe/frontend/ui/installer-entry.blp:42
+msgid "Unknown"
+msgstr "Arussin"
+
+#: runexe/frontend/ui/installer-entry.blp:51
+msgid "Install this Program"
+msgstr "Sbedd ahil-agi"
+
+#: runexe/frontend/ui/installer-entry.blp:69
+msgid "Program Menu"
+msgstr "Umuɣ n wahil"
+
+#: runexe/frontend/ui/library-entry.blp:33
+msgid "No Thumbnail"
+msgstr "Ulac Tanfult"
+
+#: runexe/frontend/ui/library-entry.blp:57
+msgid "Launch"
+msgstr "Senker"
+
+#: runexe/frontend/ui/library-entry.blp:70
+#: runexe/frontend/ui/program-entry.blp:89
+msgid "Launch with Steam"
+msgstr "Senker s Steam"
+
+#: runexe/frontend/ui/library-entry.blp:108
+msgid "Item name"
+msgstr "Isem n uferdis"
+
+#: runexe/frontend/ui/library-entry.blp:132
+msgid "Remove from Library"
+msgstr "Kkes seg temkarḍit"
+
+#: runexe/frontend/ui/library-entry.blp:143
+msgid "Stop"
+msgstr "Rken"
+
+#: runexe/frontend/ui/library.blp:11
+#: runexe/frontend/windows/main_window.py:196
+msgid "Library"
+msgstr "Tamkarḍit"
+
+#: runexe/frontend/ui/library.blp:12
+msgid "Add items here from your capsule's program list"
+msgstr "Rnu iferdisen dagi seg tebdart n wahil-ik·im n tqerɛet"
+
+#: runexe/frontend/ui/list-entry.blp:26
+msgid "Versioning is active in this capsule."
+msgstr "Amsefrak n lqem yermed deg tqerɛet-a."
+
+#: runexe/frontend/ui/list-entry.blp:42
+msgid "This capsule looks damaged."
+msgstr "Taqerɛet-a tettban-d tettwaɣ."
+
+#: runexe/frontend/ui/list-entry.blp:55
+msgid "Execute in this Capsule"
+msgstr "Selkem deg Tqerɛet-a"
+
+#: runexe/frontend/ui/list-entry.blp:69
+msgid "Run Here"
+msgstr "Selkem dagi"
+
+#: runexe/frontend/ui/list-entry.blp:75
+msgid ""
+"This capsule looks damaged, the configuration file is missing. I can try to "
+"solve by creating a new configuration."
+msgstr ""
+"Taqerɛet-a tettban-d tettwaɣ, afaylu n twila ulac-it. Zemreɣ ad ɛerḍeɣ ad "
+"fruɣ s tmerna n twila tamaynut."
+
+#: runexe/frontend/ui/list.blp:12
+msgid "Search your capsules…"
+msgstr "Nadi tiqreɛtin-ik·im…"
+
+#: runexe/frontend/ui/list.blp:28
+msgid "Steam Proton"
+msgstr "Steam n Pruṭun"
+
+#: runexe/frontend/ui/list.blp:42 runexe/frontend/windows/main_window.py:191
+#: data/io.github.runexe.RunExe.metainfo.xml.in:7
+msgid "RunExe"
+msgstr "Tiqreɛtin"
+
+#: runexe/frontend/ui/list.blp:49
+msgid "Create New Capsule…"
+msgstr "Snulfu-d taqerɛet tamaynut…"
+
+#: runexe/frontend/ui/list.blp:63
+msgid "No Results Found"
+msgstr "Ulac igmaḍ yettwafen"
+
+#: runexe/frontend/ui/list.blp:64
+msgid "Try a different search."
+msgstr "Ɛreḍ anadi nniḍen."
+
+#: runexe/frontend/ui/loading.blp:13
+msgid "Starting up…"
+msgstr "Asenker…"
+
+#: runexe/frontend/ui/loading.blp:22
+msgid "Continue Offline"
+msgstr "Kemmel war tuqqna"
+
+#: runexe/frontend/ui/local-resource-entry.blp:4
+msgid "This resource is missing."
+msgstr "Txuṣ teɣbalut-agi."
+
+#: runexe/frontend/ui/local-resource-entry.blp:8
+msgid "Browse"
+msgstr "Snirem"
+
+#: runexe/frontend/ui/new.blp:32
+msgid "C_reate"
+msgstr "S_nulfu-d"
+
+#: runexe/frontend/ui/new.blp:75
+msgid "_Application"
+msgstr "_Asnas"
+
+#: runexe/frontend/ui/new.blp:88
+msgid "_Gaming"
+msgstr "Urar (_G)"
+
+#: runexe/frontend/ui/new.blp:101
+msgid "C_ustom"
+msgstr "Sa_gen"
+
+#: runexe/frontend/ui/new.blp:114
+msgid "Custom"
+msgstr "Sagen"
+
+#: runexe/frontend/ui/new.blp:118
+msgid "Share User Directory"
+msgstr "Bḍu akaram n useqdac"
+
+#: runexe/frontend/ui/new.blp:119
+msgid ""
+"This makes the user directory discoverable in the capsule, at the risk of "
+"sharing personal information to Windows software. This option cannot be "
+"changed after the capsule has been created."
+msgstr ""
+"Ayagi yettarra akaram n useqdac ad yettwaf deg tqerɛet, anct-agi yezmer ad "
+"yebḍu talɣut tudmawant akked useɣẓan Windows. Aɣewwaṛ-a ur yezmir ara ad "
+"ibeddel ticki tennulfa-d tqerɛet."
+
+#: runexe/frontend/ui/new.blp:136
+msgid "Architecture"
+msgstr "Tasegda"
+
+#: runexe/frontend/ui/new.blp:137
+msgid "32-bit should only be used if strictly necessary."
+msgstr "32 n yibiten ilaq kan ad yettwaseqdec ma ilaq-as kan."
+
+#: runexe/frontend/ui/new.blp:146
+msgid "Import a custom configuration."
+msgstr "Kter tawila yugnen."
+
+#: runexe/frontend/ui/new.blp:176
+msgid "Capsule Directory"
+msgstr "Akaram n Tqerɛet"
+
+#: runexe/frontend/ui/new.blp:177
+msgid "Directory that will contain the data of this capsule."
+msgstr "Akaram igebren isefka n taqerɛet-agi."
+
+#: runexe/frontend/ui/new.blp:249
+msgid "_Close"
+msgstr "_Mdel"
+
+#: runexe/frontend/ui/new.blp:281
+msgid "This name is unavailable, please try another."
+msgstr "Isem-agi ulac-it, ma ulac aɣilif ɛreḍ wayeḍ."
+
+#: runexe/frontend/ui/onboard.blp:34
+msgid "Previous"
+msgstr "Uzwir"
+
+#: runexe/frontend/ui/onboard.blp:59
+msgid "Welcome to RunExe"
+msgstr "Ansuf ɣer Teqreɛtin"
+
+#: runexe/frontend/ui/onboard.blp:60
+msgid "Run Windows Software on Linux."
+msgstr "Selkem aseɣẓan n Windows deg Linux."
+
+#: runexe/frontend/ui/onboard.blp:65
+msgid "Windows in RunExe"
+msgstr "Windows deg Teqreɛtin"
+
+#: runexe/frontend/ui/onboard.blp:66
+msgid ""
+"RunExe uses compatibility runners to provide isolated containerized Windows-"
+"like environments where programs run."
+msgstr ""
+"Tiqreɛtin sseqdacent imselkamen n umṣada akken ad d-muddent amgabar n "
+"tewwanaḍt icuban Windows anida ttwaselkamen wahilen."
+
+#: runexe/frontend/ui/onboard.blp:72
+msgid "Almost Done"
+msgstr "Qrib ad ifak"
+
+#: runexe/frontend/ui/onboard.blp:73
+msgid "We need a few more minutes to set everything up…"
+msgstr "Neḥwaǧ kra n tisdatin nniḍen akken ad nsbadu kullec…"
+
+#: runexe/frontend/ui/onboard.blp:105
+msgid "All Ready!"
+msgstr "Kullec ihegga!"
+
+#: runexe/frontend/ui/onboard.blp:114
+msgid "Please Finish the setup first"
+msgstr "Ma ulac aɣilif, fak yakan asbadu"
+
+#: runexe/frontend/ui/onboard.blp:120
+msgid "Start using RunExe"
+msgstr "Bdu s useqdec n Teqreɛtin"
+
+#: runexe/frontend/ui/onboard.blp:141
+msgid "Next"
+msgstr "Uḍfir"
+
+#: runexe/frontend/ui/preferences.blp:5 runexe/frontend/ui/window.blp:86
+msgid "Preferences"
+msgstr "Ismenyafen"
+
+#: runexe/frontend/ui/preferences.blp:12
+#: runexe/frontend/ui/preferences.blp:40
+msgid "General"
+msgstr "Amatu"
+
+#: runexe/frontend/ui/preferences.blp:15
+msgid "Appearance"
+msgstr "Timeẓriwt"
+
+#: runexe/frontend/ui/preferences.blp:18
+msgid "Dark Mode"
+msgstr "Askar Aɣmayan"
+
+#: runexe/frontend/ui/preferences.blp:19
+msgid "Whether RunExe should use the dark color scheme."
+msgstr "Ma yella Tiqreɛtin ad sqedcent azenziɣ n yini aberkan."
+
+#: runexe/frontend/ui/preferences.blp:29
+msgid "Show Update Date"
+msgstr "Sken azemz n uleqqem"
+
+#: runexe/frontend/ui/preferences.blp:30
+msgid "Whether to show the update date in the capsule list."
+msgstr "Ma tebɣiḍ ad d-tessekneḍ azemz n uleqqem deg wumuɣ n tqerɛet."
+
+#: runexe/frontend/ui/preferences.blp:43
+#: data/io.github.runexe.RunExe.gschema.xml:51
+msgid "Notifications"
+msgstr "Ilɣa"
+
+#: runexe/frontend/ui/preferences.blp:44
+msgid "Show notifications for downloads and installs."
+msgstr "Sken tilɣa i usider d usebded."
+
+#: runexe/frontend/ui/preferences.blp:53
+msgid "Temp Files"
+msgstr "Ifuyla iskudanen"
+
+#: runexe/frontend/ui/preferences.blp:54
+msgid "Clean temp files when RunExe launches?"
+msgstr "Sfeḍ ifuyla iskudanen mi ara tt-tsekkerent Teqerɛtin?"
+
+#: runexe/frontend/ui/preferences.blp:63
+msgid "Close RunExe After Starting a Program"
+msgstr "Mdel Tiqreɛtin Send Asenker n Wahil"
+
+#: runexe/frontend/ui/preferences.blp:64
+msgid "Close RunExe after starting a program from the file manager."
+msgstr "Mdel Tiqreɛtin send asenker n wahil seg umsefrak n yifuyla."
+
+#: runexe/frontend/ui/preferences.blp:74
+msgid "Integrations"
+msgstr "Aseddu"
+
+#: runexe/frontend/ui/preferences.blp:77
+msgid "Steam Proton Prefixes"
+msgstr "Adaten Steam Pruṭun"
+
+#: runexe/frontend/ui/preferences.blp:78
+msgid "List and manage Steam Proton prefixes."
+msgstr "Bder arnu sefrek adaten Steam Puṭun."
+
+#: runexe/frontend/ui/preferences.blp:98
+msgid "List Steam Apps in Programs List"
+msgstr "Bder isnasen Steam n tebdart n isnasen"
+
+#: runexe/frontend/ui/preferences.blp:99
+msgid "Requires Steam for Windows installed in the capsule."
+msgstr "Yesra asbeddi n Steam i Windows deg tqerɛet."
+
+#: runexe/frontend/ui/preferences.blp:108
+msgid "List Epic Games in Programs List"
+msgstr "Bder Epic Games deg tebdart n wahilen"
+
+#: runexe/frontend/ui/preferences.blp:109
+msgid "Requires Epic Games Store installed in the capsule."
+msgstr "Yesra asbeddi n Games Store deg tqerɛet."
+
+#: runexe/frontend/ui/preferences.blp:118
+msgid "List Ubisoft Games in Programs List"
+msgstr "Bder Uraren Ubisoft deg tebdart n wahilen"
+
+#: runexe/frontend/ui/preferences.blp:119
+msgid "Requires Ubisoft Connect installed in the capsule."
+msgstr "Yesra asbeddi n Ubisoft Connect deg tqerɛet."
+
+#: runexe/frontend/ui/preferences.blp:129
+msgid "Advanced"
+msgstr "Talqayt"
+
+#: runexe/frontend/ui/preferences.blp:132
+msgid "Pre-Release"
+msgstr "Azar Userreḥ Lqem"
+
+#: runexe/frontend/ui/preferences.blp:133
+msgid "Display unstable versions of runners and components."
+msgstr "Beqqeḍ ileqman n imseddayen akked isegran ur nerkid ara."
+
+#: runexe/frontend/ui/preferences.blp:142
+msgid "Force Offline Mode"
+msgstr "Ḥettem askar war tuqqna"
+
+#: runexe/frontend/ui/preferences.blp:143
+msgid ""
+"Force disable any network activity even with available network connection."
+msgstr "Ḥettem asexsi n yal armud n uẓeṭṭa ɣas akken tuqqna n uẓeṭṭa tella."
+
+#: runexe/frontend/ui/preferences.blp:152
+msgid "Capsules Directory"
+msgstr "Akaram n Teqreɛtin"
+
+#: runexe/frontend/ui/preferences.blp:153
+msgid "Directory that contains the data of your Capsules."
+msgstr "Akaram yegber isefka n Teqreɛtin-ik·im."
+
+#: runexe/frontend/ui/preferences.blp:188
+msgid "Runners"
+msgstr "Imseddayen"
+
+#: runexe/frontend/ui/preferences.blp:202
+msgid "RunExe is running in offline mode, so runners are not available."
+msgstr "Tiqreɛtin tteddunt s uskar aruqqin, ihi imseddayen ur wjiden ara."
+
+#: runexe/frontend/ui/preferences.blp:236
+msgid "DLL Components"
+msgstr "Isegran DLL"
+
+#: runexe/frontend/ui/preferences.blp:250
+msgid "RunExe is running in offline mode, so DLLs are not available."
+msgstr "Tiqreɛtin tteddunt s uskar aruqqin, ihi DLLs ur wjiden ara."
+
+#: runexe/frontend/ui/preferences.blp:282
+msgid "DXVK-NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/preferences.blp:295
+msgid "Core"
+msgstr "agejdan"
+
+#: runexe/frontend/ui/preferences.blp:299
+msgid "Runtime"
+msgstr "Aselkam"
+
+#: runexe/frontend/ui/preferences.blp:303
+msgid "WineBridge"
+msgstr "Tiqenṭert n Wine"
+
+#: runexe/frontend/ui/preferences.blp:309
+#: data/io.github.runexe.RunExe.gschema.xml:71
+msgid "Experiments"
+msgstr "Tirmitin"
+
+#: runexe/frontend/ui/preferences.blp:312
+msgid ""
+"These features are under heavy development and may be unstable, expect bugs "
+"and breakage."
+msgstr ""
+"Timahilin-agi atan llant ddaw n tneflit u zemrent ad ilint ur rkident ara. "
+"rrǧu ibuguten d uɣelluy."
+
+#: runexe/frontend/ui/preferences.blp:315
+msgid "Sandbox per capsule"
+msgstr "Tanaka n ijdi i yal taqerɛet"
+
+#: runexe/frontend/ui/preferences.blp:316
+msgid "In early development."
+msgstr "Atan deg tneflit."
+
+#: runexe/frontend/ui/program-entry.blp:19
+msgid "Launch with Terminal"
+msgstr "Sker s yixef"
+
+#: runexe/frontend/ui/program-entry.blp:25
+msgid "Browse Path"
+msgstr "Snirem abrid"
+
+#: runexe/frontend/ui/program-entry.blp:39
+msgid "Change Launch Options…"
+msgstr "Snifel tixtiṛiyin n usekker…"
+
+#: runexe/frontend/ui/program-entry.blp:43
+msgid "Add to Library"
+msgstr "Rnu ɣer temkarḍit"
+
+#: runexe/frontend/ui/program-entry.blp:47
+msgid "Add Desktop Entry"
+msgstr "Rnu anekcum n tnarit"
+
+#: runexe/frontend/ui/program-entry.blp:51
+msgid "Add to Steam"
+msgstr "Rnu Steam"
+
+#: runexe/frontend/ui/program-entry.blp:55
+msgid "Rename…"
+msgstr "Snifel isem…"
+
+#: runexe/frontend/ui/program-entry.blp:62
+msgid "Hide Program"
+msgstr "Ffer Ahil"
+
+#: runexe/frontend/ui/program-entry.blp:66
+msgid "Show Program"
+msgstr "Sken Ahil"
+
+#: runexe/frontend/ui/program-entry.blp:70
+msgid "Remove from List"
+msgstr "kkes seg tebdart"
+
+#: runexe/frontend/ui/program-entry.blp:83
+msgid "Program name"
+msgstr "Isem n wahil"
+
+#. Translators: id as identification
+#: runexe/frontend/ui/state-entry.blp:8
+msgid "State id"
+msgstr "Asulay n waddad"
+
+#: runexe/frontend/ui/state-entry.blp:9
+msgid "State comment"
+msgstr "Awennit n waddad"
+
+#: runexe/frontend/ui/state-entry.blp:16
+msgid "Restore this Snapshot"
+msgstr "Err-d Tuṭṭfa-agi"
+
+#: runexe/frontend/ui/task-entry.blp:19
+msgid "Delete message"
+msgstr "Kkes izen"
+
+#: runexe/frontend/ui/window.blp:40
+msgid "Main Menu"
+msgstr "Umuɣ agejdan"
+
+#: runexe/frontend/ui/window.blp:54
+msgid ""
+"You don't seem connected to the internet. Without it you will not be able to "
+"download essential components. Click this icon when you have reestablished "
+"the connection."
+msgstr ""
+"Ur tettbaneḍ ara teqqneḍ ɣer internet. Ma ulac-it, ur tettizmireḍ ara ad d-"
+"tessidreḍ isegran igejdanen. Tekki ɣef tignit-a mi ara talseḍ asebded n "
+"tuqqna."
+
+#: runexe/frontend/ui/window.blp:79
+msgid "Import…"
+msgstr "Kter…"
+
+#: runexe/frontend/ui/window.blp:91
+msgid "Help"
+msgstr "Tallelt"
+
+#: runexe/frontend/ui/window.blp:96
+msgid "About RunExe"
+msgstr "Ɣef Teqreɛtin"
+
+#: runexe/frontend/views/capsule_details.py:193
+#, python-brace-format
+msgid "File \"{0}\" is not a .exe or .msi file"
+msgstr "Afaylu \"{0}\" mačči d afaylu .exe neɣ .msi"
+
+#: runexe/frontend/views/capsule_details.py:209
+#, python-format
+msgid "Updated: %s"
+msgstr "Yettwaleqqem: %s"
+
+#: runexe/frontend/views/capsule_details.py:270
+#, python-brace-format
+msgid "\"{0}\" added"
+msgstr "\"{0}\" yettwarna"
+
+#: runexe/frontend/views/capsule_details.py:273
+#: runexe/frontend/views/capsule_details.py:401
+#: runexe/frontend/views/list.py:128
+msgid "Select Executable"
+msgstr "Fren Amselkam"
+
+#: runexe/frontend/views/capsule_details.py:276
+msgid "Add"
+msgstr "Rnu"
+
+#: runexe/frontend/views/capsule_details.py:349
+msgid "Hide Hidden Programs"
+msgstr "Ffer ahilen uffiren"
+
+#: runexe/frontend/views/capsule_details.py:386
+#: runexe/frontend/widgets/library.py:163
+#: runexe/frontend/widgets/program.py:184
+#, python-brace-format
+msgid "Launching \"{0}\"…"
+msgstr "Asenker n \"{0}\"…"
+
+#: runexe/frontend/views/capsule_details.py:416
+msgid "Be Aware of Sandbox"
+msgstr "Ili-k·m d win yessnen i Tnaka n ijdi"
+
+#: runexe/frontend/views/capsule_details.py:417
+msgid ""
+"RunExe is running in a sandbox, a restricted permission environment needed "
+"to keep you safe. If the program won't run, consider moving inside the "
+"capsule (3 dots icon on the top), then launch from there."
+msgstr ""
+"Tiqreɛtin tteddunt deg tnaka n yijdi, d tawennaḍt n tsirag tilas tettwasra "
+"akken ad teḍmen taɣellist-ik·im. Ma yella ahil ur itteddu ara, ɛreḍ ad "
+"tkecmeḍ ɣer daxel n tqerɛet (Tignit s kraḍ n wagazen sufella), syin sekker-d "
+"syin."
+
+#: runexe/frontend/views/capsule_details.py:419
+#: runexe/frontend/views/capsule_details.py:528
+#: runexe/frontend/windows/main_window.py:223
+msgid "_Dismiss"
+msgstr "_Agi"
+
+#: runexe/frontend/views/capsule_details.py:432
+msgid "Select the location where to save the backup config"
+msgstr "Fren ideg anida ara teskelseḍ tawila n weḥraz"
+
+#: runexe/frontend/views/capsule_details.py:434
+msgid "Export"
+msgstr "Sifeḍ"
+
+#: runexe/frontend/views/capsule_details.py:436
+msgid "Select the location where to save the backup archive"
+msgstr "Fren ideg anida ara teskelseḍ aɣbar n weḥraz"
+
+#: runexe/frontend/views/capsule_details.py:438
+msgid "Backup"
+msgstr "Aḥraz"
+
+#: runexe/frontend/views/capsule_details.py:443
+#, python-brace-format
+msgid "Backup created for \"{0}\""
+msgstr "Aḥraz yettwarna i \"{0}\""
+
+#: runexe/frontend/views/capsule_details.py:445
+#, python-brace-format
+msgid "Backup failed for \"{0}\""
+msgstr "Aḥraz ur yeddi ara i \"{0}\""
+
+#: runexe/frontend/views/capsule_details.py:504
+msgid "Are you sure you want to permanently delete \"{}\"?"
+msgstr "Tebɣiḍ ad tekkseḍ s wudem imezgi \"{}\"?"
+
+#: runexe/frontend/views/capsule_details.py:505
+msgid ""
+"This will permanently delete all programs and settings associated with it."
+msgstr "Ayagi ad yekkes s wudem imezgi ahilen akked iɣewwaṛen icudden ɣur-s."
+
+#: runexe/frontend/views/capsule_details.py:508
+#: runexe/frontend/views/capsule_preferences.py:747
+msgid "_Delete"
+msgstr "_Kkes"
+
+#: runexe/frontend/views/capsule_details.py:524
+msgid "Missing Runner"
+msgstr "Ixuṣṣ umsedday"
+
+#: runexe/frontend/views/capsule_details.py:525
+msgid ""
+"The runner requested by this capsule is missing. Install it through the "
+"RunExe preferences or choose a new one to run applications."
+msgstr ""
+"Amsedday yettwasutren sɣur tiqreɛtin-a ulac-it. Sebded-it deg ismenyifen n "
+"Teqreɛtin neɣ fren yiwen d amaynut i uselkem n yisnasen."
+
+#: runexe/frontend/views/capsule_details.py:600
+msgid "Are you sure you want to force stop all processes?"
+msgstr "D tidet tebɣiḍ ad tḥettmeḍ aḥbas n yakk ikalayen?"
+
+#: runexe/frontend/views/capsule_details.py:601
+msgid "This can cause data loss, corruption, and programs to malfunction."
+msgstr ""
+"Ayagi yezmer ad d-yeglu s lexṣara n yisefka, asgufsu akked wahilen ur teddun "
+"ara akken iwata."
+
+#: runexe/frontend/views/capsule_details.py:604
+msgid "Force _Stop"
+msgstr "Ḥettem a_seḥbes"
+
+#: runexe/frontend/views/capsule_preferences.py:195
+msgid "This feature is unavailable on your system."
+msgstr "Tamahilt-a ur tewjid ara deg unagraw-ik·im."
+
+#: runexe/frontend/views/capsule_preferences.py:196
+msgid "{} To add this feature, please run flatpak install"
+msgstr "{} Iwakken ad ternuḍ tamahilt-agi, ttxil-k·m selkem asbeddi flatpak"
+
+#: runexe/frontend/views/capsule_preferences.py:246
+msgid "This capsule name is already in use."
+msgstr "Isem-agi n tqerɛet yettwaseqdec yakan."
+
+#: runexe/frontend/views/capsule_preferences.py:301
+#: runexe/frontend/windows/launchoptions.py:240
+msgid "Select Working Directory"
+msgstr "Fren Akaram n umahil"
+
+#: runexe/frontend/views/capsule_preferences.py:422
+msgid "Directory that contains the data of \"{}\"."
+msgstr "Akaram igebren isefka n \"{}\"."
+
+#: runexe/frontend/views/capsule_preferences.py:743
+msgid "Are you sure you want to delete all snapshots?"
+msgstr "D tidet tebɣiḍ ad tekkseḍ akk tuṭṭfiwin?"
+
+#: runexe/frontend/views/capsule_preferences.py:744
+msgid "This will delete all snapshots but keep your files."
+msgstr "Ayagi ad yekkes akk tuṭṭfiwin maca ad yeḥrez ifuyla-inek·m."
+
+#: runexe/frontend/views/capsule_versioning.py:90
+msgid "Please migrate to the new Versioning system to create new states."
+msgstr ""
+"Ttxil-k·m seddu ɣer unagraw amaynut n lqem iwakken ad d-tesnulfuḍ addaden "
+"imaynuten."
+
+#: runexe/frontend/views/details.py:153
+msgid "Installers"
+msgstr "Isebdaden"
+
+#: runexe/frontend/views/details.py:234
+msgid "Operations in progress, please wait."
+msgstr "Timhalin tteddunt ɣer zdat, ma ulac aɣilif arǧu."
+
+#: runexe/frontend/views/details.py:239
+msgid "Return to your capsules."
+msgstr "Uɣal ɣer Teqreɛtin-ik·im."
+
+#: runexe/frontend/views/importer.py:92
+msgid "Backup imported successfully"
+msgstr "Aḥraz yettwakter akken iwata"
+
+#: runexe/frontend/views/importer.py:94
+msgid "Import failed"
+msgstr "Akter ur yeddi ara"
+
+#: runexe/frontend/views/importer.py:108
+#: runexe/frontend/views/importer.py:145
+msgid "Importing backup…"
+msgstr "Akter n uḥraz…"
+
+#: runexe/frontend/views/importer.py:117
+msgid "Select a Backup Archive"
+msgstr "Fren aɣbar n uḥraz"
+
+#: runexe/frontend/views/importer.py:120
+#: runexe/frontend/views/importer.py:157
+msgid "Import"
+msgstr "Kter"
+
+#: runexe/frontend/views/importer.py:154 runexe/frontend/views/new.py:136
+msgid "Select a Configuration File"
+msgstr "Fren afaylu n twila"
+
+#: runexe/frontend/views/list.py:60 runexe/frontend/views/list.py:66
+msgid "N/A"
+msgstr "Ulac"
+
+#. Set tooltip text
+#: runexe/frontend/views/list.py:91
+#, python-brace-format
+msgid "Run executable in \"{self.config.Name}\""
+msgstr "Selkem amselkam deg \"{self.config.Name}\""
+
+#: runexe/frontend/views/list.py:118
+#, python-brace-format
+msgid "Launching \"{0}\" in \"{1}\"…"
+msgstr "Asenker n \"{0}\" deg \"{1}\"…"
+
+#: runexe/frontend/views/list.py:235
+msgid "Your Capsules"
+msgstr "Tiqreɛtin-ik·im"
+
+#: runexe/frontend/views/loading.py:46
+#, python-brace-format
+msgid "Downloading ~{0} of packages…"
+msgstr "Asider n ~{0} n yikemmusen…"
+
+#: runexe/frontend/views/loading.py:47
+#, python-brace-format
+msgid "Fetched {0} of {1} packages"
+msgstr "Yewwi-d {0} n {1} n yikemmusen"
+
+#: runexe/frontend/views/new.py:157
+msgid "Select Capsule Directory"
+msgstr "Fren Akaram n Tqerɛet"
+
+#: runexe/frontend/views/new.py:176
+msgid "Creating Capsule…"
+msgstr "Asnulfu n Taqerɛet…"
+
+#: runexe/frontend/views/new.py:221
+msgid "Unable to Create Capsule"
+msgstr "Ur izmir ara ad d-yesnulfu Taqerɛet"
+
+#: runexe/frontend/views/new.py:225
+msgid "Capsule failed to create with one or more errors."
+msgstr "Ulamek asnulfu n Tqerɛet ɣef sebba n yiwet neɣ ugar n tuccḍiwin."
+
+#. Show success
+#: runexe/frontend/views/new.py:232
+msgid "Capsule Created"
+msgstr "Taqerɛet Tettwarna"
+
+#: runexe/frontend/views/new.py:233
+#, python-brace-format
+msgid "\"{0}\" was created successfully."
+msgstr "timerna n \"{0}\" yedda akken iwata."
+
+#: runexe/frontend/views/preferences.py:134
+msgid "Steam was not found or RunExe does not have enough permissions."
+msgstr "Steam ur yettwaf ara neɣ Tiqreɛtin ur sɛint ara aṭas n tsirag."
+
+#: runexe/frontend/views/preferences.py:187
+msgid "Select Capsules Path"
+msgstr "Fren Abrid n Teqreɛtin"
+
+#: runexe/frontend/views/preferences.py:209
+msgid "Relaunch RunExe?"
+msgstr "Ales asenker n Tiqreɛtin?"
+
+#: runexe/frontend/views/preferences.py:210
+msgid ""
+"RunExe will need to be relaunched to use this directory.\n"
+"\n"
+"Be sure to close every program launched from RunExe before relaunching "
+"RunExe, as not doing so can cause data loss, corruption and programs to "
+"malfunction."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:213
+msgid "_Relaunch"
+msgstr "Ales Asenke_r"
+
+#: runexe/frontend/views/preferences.py:306
+msgid "Based on Valve's Wine, includes Staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:307
+msgid "Based on Wine upstream, includes Staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:308
+msgid ""
+"Based on the most recent bleeding-edge Valve's Proton Experimental Wine, "
+"includes Staging and custom patches. This is meant to be used with non-steam "
+"games outside of Steam."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:311
+msgid ""
+"Based on Wine upstream, Staging, Staging-TkG and Proton patchset optionally "
+"available."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:313
+msgid "Based on Wine upstream, includes Staging patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:314
+msgid ""
+"Based on most recent bleeding-edge Valve's Proton Experimental, includes "
+"Staging and custom patches. Requires the Steam Runtime turned on."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:317
+msgid "Other Wine runners"
+msgstr "Imseddayen nniḍen n Wine"
+
+#: runexe/frontend/views/preferences.py:318
+msgid "Other Proton runners"
+msgstr "Imseddayen nniḍen n Pruṭun"
+
+#: runexe/frontend/widgets/component.py:76
+msgid "Upgrade"
+msgstr "Sali aswir"
+
+#: runexe/frontend/widgets/component.py:142
+msgid "Installing…"
+msgstr "Asbeddi…"
+
+#: runexe/frontend/widgets/dependency.py:107
+#: runexe/frontend/widgets/installer.py:81
+#, python-brace-format
+msgid "Manifest for {0}"
+msgstr ""
+
+#: runexe/frontend/widgets/dependency.py:172
+#, python-brace-format
+msgid "\"{0}\" uninstalled"
+msgstr "\"{0}\" yettwakkes usbeddi-s"
+
+#: runexe/frontend/widgets/dependency.py:174
+#, python-brace-format
+msgid "\"{0}\" installed"
+msgstr "\"{0}\" yettusbedd"
+
+#: runexe/frontend/widgets/dependency.py:188
+#, python-brace-format
+msgid "\"{0}\" failed to install"
+msgstr "Ur yeddi ara usebded n \"{0}\""
+
+#: runexe/frontend/widgets/importer.py:68
+#, python-brace-format
+msgid "\"{0}\" imported"
+msgstr "Yettwakter \"{0}\""
+
+#: runexe/frontend/widgets/installer.py:49
+msgid ""
+"This application may work poorly. The installer was configured to provide "
+"the best possible experience, but expect glitches, instability and lack of "
+"working features."
+msgstr ""
+"Asnas-a yezmer ur teddu ara ikken iwata. Amsebded yettuswel i wakken ad d-"
+"yefk tarmit ifazen, maca ttraju ad illin wuguren, war arkad, akked lexṣaṣ n "
+"tmahilin."
+
+#: runexe/frontend/widgets/installer.py:50
+msgid ""
+"This program works with noticeable glitches, but these glitches do not "
+"affect the application's functionality."
+msgstr ""
+
+#: runexe/frontend/widgets/installer.py:51
+msgid "This program works with minor glitches."
+msgstr "Ahil-a iteddu s kran wuguren itiknikanen imecṭaḥ."
+
+#: runexe/frontend/widgets/installer.py:52
+msgid "This program works perfectly."
+msgstr "Ahil-agi iteddu akken iwata."
+
+#: runexe/frontend/widgets/installer.py:90
+#, python-brace-format
+msgid "Review for {0}"
+msgstr "Acegger i {0}"
+
+#: runexe/frontend/widgets/library.py:176
+#: runexe/frontend/widgets/program.py:194
+#, python-brace-format
+msgid "Stopping \"{0}\"…"
+msgstr "Aḥebbas n \"{0}\"…"
+
+#: runexe/frontend/widgets/program.py:190
+#, python-brace-format
+msgid "Launching \"{0}\" with Steam…"
+msgstr "Asekker n \"{0}\" s Steam…"
+
+#: runexe/frontend/widgets/program.py:214
+#, python-brace-format
+msgid "\"{0}\" hidden"
+msgstr "Yettwaffer \"{0}\""
+
+#: runexe/frontend/widgets/program.py:216
+#, python-brace-format
+msgid "\"{0}\" showed"
+msgstr "Yettwaskan \"{0}\""
+
+#: runexe/frontend/widgets/program.py:242
+#, python-brace-format
+msgid "\"{0}\" removed"
+msgstr "Yettwakkes \"{0}\""
+
+#: runexe/frontend/widgets/program.py:274
+#, python-brace-format
+msgid "\"{0}\" renamed to \"{1}\""
+msgstr "\"{0}\" yettusenfel yisem ɣer \"{1}\""
+
+#: runexe/frontend/widgets/program.py:297
+#, python-brace-format
+msgid "Desktop Entry created for \"{0}\""
+msgstr "Anekcum n tnarit yettwarna i \"{0}\""
+
+#: runexe/frontend/widgets/program.py:313
+#, python-brace-format
+msgid "\"{0}\" added to your library"
+msgstr "\"{0}\" yettwarna ɣer temkarḍit-ik·im"
+
+#: runexe/frontend/widgets/program.py:331
+#, python-brace-format
+msgid "\"{0}\" added to your Steam library"
+msgstr "\"{0}\" tettwarna ɣer temkarḍit-ik·im n Steam"
+
+#: runexe/frontend/windows/crash.py:33
+msgid "Show report"
+msgstr "Sken aneqqis"
+
+#: runexe/frontend/windows/crash.py:80
+msgid ""
+"            This issue was reported 5 times and cannot be sent again.\n"
+"            Report your feedback in one of the below existing reports."
+msgstr ""
+"            Ugur-agi yettwammel 5 n tikkal arnu ur yezmir ara ad yettwazen "
+"tikelt nniḍen.\n"
+"            Azen tikti-inek ɣef yiwet seg ineqqisen yellan ddaw-a."
+
+#: runexe/frontend/windows/display.py:102
+msgid "Updating display settings, please wait…"
+msgstr "Aleqqem n yiɣewwaṛen n ubeqqeḍ, ttxil-k·m arǧu…"
+
+#: runexe/frontend/windows/display.py:114
+msgid "Display settings updated"
+msgstr "Iɣewwaṛen n ubeqqeḍ ttwaleqqemen"
+
+#: runexe/frontend/windows/dlloverrides.py:136
+msgid "No overrides found."
+msgstr "Ulac asemselsi yettwafen."
+
+#: runexe/frontend/windows/drives.py:71
+msgid "Select Drive Path"
+msgstr "Fren abrid n yimeɣri"
+
+#: runexe/frontend/windows/envvars.py:135
+msgid "No environment variables defined."
+msgstr "Ulac imuttiyen n twennaḍt i yettusbadun."
+
+#: runexe/frontend/windows/exclusionpatterns.py:105
+msgid "No exclusion patterns defined."
+msgstr "Ulac tamudemt n umsufeɣ yettusbadun."
+
+#: runexe/frontend/windows/generic.py:24
+msgid "An error has occurred."
+msgstr "Teḍra-d tuccḍa."
+
+#: runexe/frontend/windows/generic.py:91
+#: runexe/frontend/windows/generic.py:137
+#: runexe/frontend/windows/generic.py:182
+msgid "Copy to clipboard"
+msgstr "Nɣel ɣer tecfawit"
+
+#: runexe/frontend/windows/installer.py:62
+msgid "Select Resource File"
+msgstr "Fren afaylu n uɣbalu"
+
+#: runexe/frontend/windows/installer.py:109
+msgid "Installing Windows dependencies…"
+msgstr "Asbeddi n iḍaraɛen n Windows…"
+
+#: runexe/frontend/windows/installer.py:110
+msgid "Configuring the capsule…"
+msgstr "Aswel n tqerɛet-nni…"
+
+#: runexe/frontend/windows/installer.py:111
+msgid "Processing installer steps…"
+msgstr "Asesfer n yisurifen n umsebded…"
+
+#: runexe/frontend/windows/installer.py:112
+msgid "Installing the {}…"
+msgstr "Asbeddi n {}…"
+
+#: runexe/frontend/windows/installer.py:113
+msgid "Performing final checks…"
+msgstr "Aselkem n yisenqaden ineggura…"
+
+#: runexe/frontend/windows/installer.py:117
+#, python-brace-format
+msgid "Installing {0}…"
+msgstr "Asbeddi n {0}…"
+
+#: runexe/frontend/windows/installer.py:119
+#, python-brace-format
+msgid "{0} is now available in the programs view."
+msgstr "{0} yella tura deg teskant n wahilen."
+
+#: runexe/frontend/windows/installer.py:166
+msgid "Installer failed with unknown error"
+msgstr "Amsebded ur yeddi ara s tuccḍa tarussint"
+
+#: runexe/frontend/windows/launchoptions.py:55
+#, python-brace-format
+msgid "{0} is already disabled for this capsule."
+msgstr "{0} yensa yakan i tqerɛet-a."
+
+#: runexe/frontend/windows/launchoptions.py:56
+msgid "This setting is different from the capsule's default."
+msgstr "Aɣewwaṛ-a yemgarad ɣef tqerɛet tamezwert."
+
+#: runexe/frontend/windows/launchoptions.py:214
+msgid "Select Script"
+msgstr "Fren Askript"
+
+#: runexe/frontend/windows/main_window.py:220
+msgid "Custom Capsules Path not Found"
+msgstr "Abrid yugnen n teqreɛtin ur yettwaf ara"
+
+#: runexe/frontend/windows/main_window.py:221
+msgid ""
+"Falling back to default path. No capsules from the given path will be listed."
+msgstr ""
+"Tuɣalin ɣer ubrid amezwer. Ulac tiqreɛtin seg ubrid-agi ara d-yettwabdaren."
+
+#: data/io.github.runexe.RunExe.desktop.in.in:3
+msgid "@APP_NAME@"
+msgstr "@ISEM_N_USNAS@"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:4
+#: data/io.github.runexe.RunExe.metainfo.xml.in:8
+msgid "Run Windows Software"
+msgstr "Selkem aseɣẓan n Windows"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:13
+msgid "wine;windows;"
+msgstr "wine;windows;"
+
+#: data/io.github.runexe.RunExe.gschema.xml:6
+msgid "Flatpak migration"
+msgstr "Inig Flatpak"
+
+#: data/io.github.runexe.RunExe.gschema.xml:7
+msgid "Toggle the Flatpak migration dialog."
+msgstr "Qluqel tankult n udiwenni n yinig Flatpack."
+
+#: data/io.github.runexe.RunExe.gschema.xml:11
+msgid "Dark theme"
+msgstr "Asentel ubrik"
+
+#: data/io.github.runexe.RunExe.gschema.xml:12
+msgid "Force the use of dark theme."
+msgstr "Ḥettem aseqdec n usentel ubrik."
+
+#: data/io.github.runexe.RunExe.gschema.xml:16
+msgid "Force Offline"
+msgstr "Ḥettem war tuqqna"
+
+#: data/io.github.runexe.RunExe.gschema.xml:17
+msgid ""
+"\"Force disable any network activity even with available network connection."
+"\""
+msgstr "\"Ḥettem asensi n uẓeṭṭa xas akken tuqqna n uẓeṭṭa tella tewjed.\""
+
+#: data/io.github.runexe.RunExe.gschema.xml:21
+msgid "Toggle update date in list"
+msgstr "Qluqel azemz n uleqqem deg tebdart"
+
+#: data/io.github.runexe.RunExe.gschema.xml:22
+msgid "Toggle the update date in list of capsules."
+msgstr "Qluqel azemz n uleqqem deg tebdart n teqreɛtin."
+
+#: data/io.github.runexe.RunExe.gschema.xml:26
+msgid "Steam apps listing"
+msgstr "Tabdart n yisnasen Steam"
+
+#: data/io.github.runexe.RunExe.gschema.xml:27
+msgid "Toggle steam apps listing."
+msgstr "Qluqel tabdart n yisnasen Steam."
+
+#: data/io.github.runexe.RunExe.gschema.xml:31
+msgid "Epic Games listing"
+msgstr "Tabdart n Epic Games"
+
+#: data/io.github.runexe.RunExe.gschema.xml:32
+msgid "Toggle epic games listing."
+msgstr "Qluqel tabdart n Epic Games."
+
+#: data/io.github.runexe.RunExe.gschema.xml:36
+msgid "Ubisoft Connect listing"
+msgstr "Tabdart n Ubisoft Connect"
+
+#: data/io.github.runexe.RunExe.gschema.xml:37
+msgid "Toggle ubisoft connect listing."
+msgstr "Qluqel tabdart n Ubisoft Connect."
+
+#: data/io.github.runexe.RunExe.gschema.xml:41
+msgid "Window width"
+msgstr "Tehri n usfaylu"
+
+#: data/io.github.runexe.RunExe.gschema.xml:42
+msgid "Change the window width."
+msgstr "Snifel tehri n usfaylu."
+
+#: data/io.github.runexe.RunExe.gschema.xml:46
+msgid "Window height"
+msgstr "Teɣzi n usfaylu"
+
+#: data/io.github.runexe.RunExe.gschema.xml:47
+msgid "Change the window height."
+msgstr "Snifel teɣzi n usfaylu."
+
+#: data/io.github.runexe.RunExe.gschema.xml:52
+msgid "Show notifications."
+msgstr "Sken tilɣa."
+
+#: data/io.github.runexe.RunExe.gschema.xml:56
+msgid "Temp cleaning"
+msgstr "Asfeḍ n uskudan"
+
+#: data/io.github.runexe.RunExe.gschema.xml:57
+msgid "Clean the temp path when booting the system."
+msgstr "Sfeḍ abrid askudan deg tnekra n unagraw."
+
+#: data/io.github.runexe.RunExe.gschema.xml:61
+msgid "Release Candidate"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.gschema.xml:62
+msgid "Toggle release candidate for runners."
+msgstr ""
+
+#: data/io.github.runexe.RunExe.gschema.xml:66
+msgid "Startup view"
+msgstr "Taskant n usekker"
+
+#: data/io.github.runexe.RunExe.gschema.xml:67
+msgid "Choose which view the application should be started in."
+msgstr "Fren anta taskant i deg ilaq ad tebduḍ asnas deg-s."
+
+#: data/io.github.runexe.RunExe.gschema.xml:72
+msgid ""
+"Toggle experimental features such as versioning and installers. Release "
+"candidate for runners."
+msgstr ""
+
+#: data/io.github.runexe.RunExe.gschema.xml:76
+msgid "Steam Proton Support"
+msgstr "Asefrek n Steam Pruṭun"
+
+#: data/io.github.runexe.RunExe.gschema.xml:77
+msgid "Toggle Steam Proton prefixes support."
+msgstr ""
+
+#: data/io.github.runexe.RunExe.gschema.xml:81
+msgid "Experiments:sandbox"
+msgstr "Tirmatin: tanaka n ijdi"
+
+#: data/io.github.runexe.RunExe.gschema.xml:82
+msgid "Toggle experimental Sandbox per capsule."
+msgstr "Qluqel Tanaka n ijdi tarmitant i tqerɛet."
+
+#: data/io.github.runexe.RunExe.gschema.xml:86
+msgid "Automatically close RunExe"
+msgstr "Mdel s wudem awurman Tiqreɛtin"
+
+#: data/io.github.runexe.RunExe.gschema.xml:87
+msgid "Close RunExe after starting an executable from the file manager."
+msgstr "Mdel Tiqreɛtin seld asenker n umselkam seg umsefrak n yifuyla."
+
+#: data/io.github.runexe.RunExe.gschema.xml:91
+msgid "Show sandbox warning"
+msgstr "Sken alɣu n tnaka n ijdi"
+
+#: data/io.github.runexe.RunExe.gschema.xml:92
+msgid "Toggle sandbox warning."
+msgstr "Qluqel alɣu n tnaka n ijdi."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:11
+msgid ""
+"RunExe lets you run Windows software on Linux, such as applications and "
+"games. It introduces a workflow that helps you organize by categorizing each "
+"software to your liking. RunExe provides several tools and integrations to "
+"help you manage and optimize your applications."
+msgstr ""
+"Tiqreɛtin ad k·em-yeǧǧen ad tsekkreḍ iseɣẓanen n Windows ɣef Linux, am "
+"yisnasen akked wuraren. Yessekcem-d amahil usuddem ara k-id-imudd tallelt s "
+"usuddes n yal aseɣẓan s wayen tḥemmleḍ. Tiqreɛtin ttmuddunt aṭas n ifecka "
+"iwakken ad k-nɛiwen yerna ad tesferkeḍ u ad sekkeḍ n isnasen-ik·im."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:12
+msgid "Features:"
+msgstr "Timahilin:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:14
+msgid "Use pre-configured environments as a base"
+msgstr "Seqdec tawennaḍt n uzar yettusewlen am uzadur"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:15
+msgid "Change runners for any capsule"
+msgstr "Snifel imseddayen i yal taqerɛet"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:16
+msgid "Various optimizations and options for gaming"
+msgstr "Tuget n isekkayen akked iɣewwaṛen i wuraren"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:17
+msgid "Repair in case software or capsule is broken"
+msgstr "Seggem ticki yella useɣẓan neɣ tqerɛet rreẓen"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:18
+msgid "Install various known dependencies"
+msgstr "Sbedd tuget n iḍaraɛen yettwasnen"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:19
+msgid "Integrated task manager to manage and monitor processes"
+msgstr "Amsefrak n Tiwuriwin yettwaselɣen i usefrak akked uskazal n ikalan"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:20
+msgid "Backup and restore"
+msgstr "Aḥraz akked tririt"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:69
+msgid "Fix runners and components from not showing when prereleases are off"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:70
+msgid "Fix Steam runtime compatibility with Wine runners"
+msgstr "Seɣti amṣada n uselkam Steam akked imseddayen Wine"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:75
+msgid "A few bug fixes"
+msgstr "Kra n iseɣtiyen n ibugen"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:80
+msgid "Support for the double-DLL VKD3D"
+msgstr "Asefrek i VKD3D DLL-usleg"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:81
+msgid "Updated Flatpak runtime"
+msgstr "Yettwaleqqem uselkam Flatpak"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:82
+msgid "Minor improvement and fixes to the library"
+msgstr "Anerni amecṭuḥ akked uṣeggem n temkarḍit"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:83
+msgid "Fix the Steam link not being correct"
+msgstr "Seɣti aseɣwen n Steam ur nelli ara d ameɣtu"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:84
+msgid "Download stable component by default"
+msgstr "Sider isger urkid s wudem amezwer"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:85
+msgid "Make window remember dimensions"
+msgstr "Err asfaylu ad yecfu ɣef tisekta"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:90
+msgid "Update metadata information"
+msgstr "Leqqem talɣut n yiɣefisefka"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:95
+msgid "Add more update information and correct release notes version"
+msgstr "Rnu ugar n telɣut n lqem arnu seɣti tazmilt userreḥ n lqem"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:100
+msgid "Fixed \"Add to Steam\" button"
+msgstr "Seɣti taqeffalt \"Rnu ɣer Steam\""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:101
+msgid "Fixed CapsuleConfig being not serializable"
+msgstr "Yettwaseɣti ugur n CapsuleConfig ur llin ara yettusmizrer"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:102
+msgid "Fixed Patool double extraction failing"
+msgstr "Yettwaseɣti n tuccḍa n tussfa tusligt n Patool"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:107
+msgid "Correct version"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:112
+msgid "Fix crash when creating a capsule"
+msgstr "Seɣti aɣelluy deg usnulfu n tqerɛet"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:117
+msgid "Major change: Redesign New Capsule interface"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:118
+msgid "Quality of life improvements:"
+msgstr "Asnerni n tɣara n tudert:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:120
+msgid "Replace emote-love icon with a library in library page"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:121
+msgid "Add toast for \"Run Executable\""
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:123
+msgid "Bug fixes:"
+msgstr "iseɣtiyen n ibugen:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:125
+msgid "Adding a shortcut to Steam resulted in an error"
+msgstr "Timerna n unegzum ɣer Steam yegla-d s tuccḍa"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:126
+msgid "Importing backups resulted an error"
+msgstr "Akter n yiḥrazen yegla-d s tuccḍa"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:127
+msgid "Steam Runtime automatically enabled when using wine-ge-custom"
+msgstr "Aselkam Steam yetturmed s wudem awurman ticki tesqedceḍ wine-ge-custom"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:128
+msgid ""
+"Various library-related fixes, like empty covers, and crashes related to "
+"missing entries"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:129
+msgid "Fix various issues related to text encoding"
+msgstr "Seɣti tuget n wuguren isɛan assaɣ d usettengel n uḍris"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:136
+msgid "Fix error when downloading if RunExe isn't run from terminal"
+msgstr ""
+"Seɣti tuccḍa mi ara d-tsidreḍ ma llant Tiqreɛtin ur ttwaselkment ara seg "
+"tdiwent"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:143
+msgid "Correct version date"
+msgstr "Seɣti azemz n lqem"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:144
+msgid "Hide NVIDIA-related critical errors on non-NVIDIA systems"
+msgstr "Ffer tuccḍiwin tiqesḥanin icudden ɣer NVIDIA deg igrawen war NVIDIA"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:151
+msgid "Gamescope improvements and fixes"
+msgstr "Iseɣtiyen akked tisnerniyin n Gamescope"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:152
+msgid "Dependency installation is faster and more stable"
+msgstr "Asbeddi n uḍaraɛ d arurad yerna yerked ugar"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:153
+msgid "The health check has more information for faster debugging"
+msgstr "Asenqed n tdawsa yesɛa ugar n telɣut i useɣti arurad"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:154
+msgid "NVAPI has a lot of fixes and is more stable, should now work properly"
+msgstr ""
+"NVAPI yesɛa ugar n iseɣtiyen yerna d urkid ugar, ilaq tura ad yeddu akken "
+"iwata"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:155
+msgid "Fix crash when downloading a component"
+msgstr "Seɣti aɣelluy mi ara d-sidreḍ isger"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:156
+msgid "Backend code improvement by avoiding spin-lock"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:157
+msgid "More variables for installer scripting"
+msgstr "Ugar n imuttiyen i umsebded n uskript"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:158
+msgid "Fix onboard dialog showing \"All ready\" while it was not ready"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:159
+msgid "Improvement to build system"
+msgstr "Asnerni i unagraw n lebni"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:160
+msgid "Enabling VKD3D by default when creating capsules for gaming"
+msgstr "Armad VKD3D s wudem amezwer mi ara d-tesnulfuḍ tiqreɛtin i turarin"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:161
+msgid "Fix crashes when reading Steam files with bad encodings"
+msgstr "Seɣti iɣelluyen mi ara teɣreḍ ifuyla s yar asettengel"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:162
+msgid ""
+"Fix components not updated correctly in the UI after installation/"
+"uninstallation"
+msgstr ""
+"Seɣti isegran ur ttwaleqqemen ara akken iwata deg ugrudem n useqdac seld "
+"asebded/tukksa n usebded"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:163
+msgid "More FSR fixes"
+msgstr "Ugar n iseɣtiyen FSR"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:164
+msgid ""
+"Fix the issue when a program closes after it was launched from \"Run "
+"executable\""
+msgstr ""
+"Seɣti ugur mi ara yemdel wahil deffir ma yettusenkred seg \"Selkem amselkam\""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:165
+msgid "and many, many, many more!"
+msgstr "akked aṭas, aṭas, aṭas ugar!"

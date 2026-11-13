@@ -1,0 +1,3202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the runexe package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: runexe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-27 13:50+0530\n"
+"PO-Revision-Date: 2026-07-23 15:01+0000\n"
+"Last-Translator: Mona Lisa <monalisa@users.noreply.hosted.weblate.org>\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2026.8.dev0\n"
+
+#: runexe/backend/managers/backup.py:48 runexe/backend/managers/backup.py:95
+msgid "No path specified"
+msgstr "Ingen sökväg har angetts"
+
+#: runexe/backend/managers/backup.py:56
+#, python-brace-format
+msgid "Backup {0}"
+msgstr "Säkerhetskopiera {0}"
+
+#: runexe/backend/managers/backup.py:101
+#, python-brace-format
+msgid "Importing backup: {0}"
+msgstr "Importerar säkerhetskopia: {0}"
+
+#: runexe/backend/managers/manager.py:1057
+msgid "Fail to install components, tried 3 times."
+msgstr "Det gick inte att installera komponenterna efter tre försök."
+
+#: runexe/backend/managers/manager.py:1068
+msgid "Missing essential components. Installing…"
+msgstr "Viktiga komponenter saknas. Installerar…"
+
+#: runexe/backend/managers/manager.py:1145
+msgid "Failed to create capsule directory."
+msgstr "Det gick inte att skapa katalogen för buteljen."
+
+#: runexe/backend/managers/manager.py:1157
+msgid "Failed to create placeholder directory/file."
+msgstr "Det gick inte att skapa platshållarkatalogen eller platshållarfilen."
+
+#: runexe/backend/managers/manager.py:1162
+msgid "Generating capsule configuration…"
+msgstr "Genererar buteljkonfiguration…"
+
+#: runexe/backend/managers/manager.py:1185
+msgid "Template found, applying…"
+msgstr "Mallen hittades. Tillämpar…"
+
+#. execute wineboot on the capsule path
+#: runexe/backend/managers/manager.py:1197
+msgid "The Wine config is being updated…"
+msgstr "Wine-konfigurationen uppdateras…"
+
+#: runexe/backend/managers/manager.py:1199
+msgid "Wine config updated!"
+msgstr "Wine-konfigurationen har uppdaterats!"
+
+#: runexe/backend/managers/manager.py:1207
+msgid "Running as Flatpak, sandboxing userdir…"
+msgstr "Körs som Flatpak. Placerar användarkatalogen i sandlådan…"
+
+#: runexe/backend/managers/manager.py:1209
+msgid "Sandboxing userdir…"
+msgstr "Placerar användarkatalogen i sandlådan…"
+
+#: runexe/backend/managers/manager.py:1250
+msgid "Setting Windows version…"
+msgstr "Ställer in Windows-versionen…"
+
+#: runexe/backend/managers/manager.py:1260
+msgid "Apply CMD default settings…"
+msgstr "Tillämpar standardinställningarna för CMD…"
+
+#: runexe/backend/managers/manager.py:1268
+msgid "Optimizing environment…"
+msgstr "Optimerar miljön…"
+
+#: runexe/backend/managers/manager.py:1279
+#, python-brace-format
+msgid "Applying environment: {0}…"
+msgstr "Tillämpar miljön {0}…"
+
+#: runexe/backend/managers/manager.py:1289
+msgid "(!) Using a custom environment recipe…"
+msgstr "(!) Använder ett anpassat miljörecept…"
+
+#: runexe/backend/managers/manager.py:1292
+msgid "(!) Recipe not not found or not valid…"
+msgstr "(!) Receptet hittades inte eller är ogiltigt…"
+
+#: runexe/backend/managers/manager.py:1309
+msgid "Installing DXVK…"
+msgstr "Installerar DXVK…"
+
+#: runexe/backend/managers/manager.py:1317
+msgid "Installing VKD3D…"
+msgstr "Installerar VKD3D…"
+
+#: runexe/backend/managers/manager.py:1326
+msgid "Installing DXVK-NVAPI…"
+msgstr "Installerar DXVK-NVAPI…"
+
+#: runexe/backend/managers/manager.py:1335
+#, python-format
+msgid "Installing dependency: %s …"
+msgstr "Installerar beroendet %s…"
+
+#: runexe/backend/managers/manager.py:1345
+msgid "Creating versioning state 0…"
+msgstr "Skapar versionstillstånd 0…"
+
+#: runexe/backend/managers/manager.py:1353
+msgid "Finalizing…"
+msgstr "Slutför…"
+
+#: runexe/backend/managers/manager.py:1364
+msgid "Caching template…"
+msgstr "Lagrar mallen i cacheminnet…"
+
+#: runexe/backend/managers/versioning.py:83
+msgid "Committing state …"
+msgstr "Sparar tillstånd…"
+
+#: runexe/backend/managers/versioning.py:90
+msgid "Nothing to commit"
+msgstr "Inget att spara"
+
+#: runexe/backend/managers/versioning.py:96
+#, python-brace-format
+msgid "New state [{0}] created successfully!"
+msgstr "Det nya tillståndet [{0}] skapades."
+
+#: runexe/backend/managers/versioning.py:123
+msgid "States list retrieved successfully!"
+msgstr "Tillståndslistan hämtades."
+
+#: runexe/backend/managers/versioning.py:153
+#, python-brace-format
+msgid "State {0} restored successfully!"
+msgstr "Tillståndet {0} återställdes."
+
+#: runexe/backend/managers/versioning.py:155
+msgid "Restoring state {} …"
+msgstr "Återställer tillståndet {}…"
+
+#: runexe/backend/managers/versioning.py:162
+msgid "State not found"
+msgstr "Tillståndet hittades inte"
+
+#: runexe/backend/managers/versioning.py:168
+msgid "State {} is already the active state"
+msgstr "Tillståndet {} är redan aktivt"
+
+#: runexe/frontend/main.py:112
+msgid "Show version"
+msgstr "Visa version"
+
+#: runexe/frontend/main.py:120
+msgid "Executable path"
+msgstr "Sökväg till körbar fil"
+
+#: runexe/frontend/main.py:128
+msgid "lnk path"
+msgstr "Sökväg till .lnk-fil"
+
+#: runexe/frontend/main.py:136 runexe/frontend/ui/library-entry.blp:118
+#: runexe/frontend/ui/list-entry.blp:5
+msgid "Capsule name"
+msgstr "Buteljens namn"
+
+#: runexe/frontend/main.py:144
+msgid "Pass arguments"
+msgstr "Skicka argument"
+
+#: runexe/frontend/main.py:203
+msgid "Invalid URI (syntax: capsules:run/<capsule>/<program>)"
+msgstr "Ogiltig URI (syntax: capsules:run/<capsule>/<program>)"
+
+#: runexe/frontend/main.py:244
+msgid "[Quit] request received."
+msgstr "Begäran [Avsluta] mottagen."
+
+#: runexe/frontend/main.py:253
+msgid "[Help] request received."
+msgstr "Begäran [Hjälp] mottagen."
+
+#: runexe/frontend/main.py:261
+msgid "[Refresh] request received."
+msgstr "Begäran [Uppdatera] mottagen."
+
+#: runexe/frontend/main.py:294
+msgid "Donate"
+msgstr "Donera"
+
+#: runexe/frontend/main.py:299
+msgid "Third-Party Libraries and Special Thanks"
+msgstr "Tredjepartsbibliotek och särskilda tack"
+
+#: runexe/frontend/main.py:325
+msgid "Sponsored and Funded by"
+msgstr "Sponsras och finansieras av"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/about.blp:10
+msgid "RunExe Developers"
+msgstr "RunExe-utvecklarna"
+
+#: runexe/frontend/ui/about.blp:12
+msgid "translator_credits"
+msgstr "Svenska översättare på Weblate"
+
+#: runexe/frontend/ui/component-entry.blp:4
+msgid "Component version"
+msgstr "Komponentversion"
+
+#: runexe/frontend/ui/component-entry.blp:12
+#: runexe/frontend/ui/dependency-entry.blp:29
+#: runexe/frontend/ui/program-entry.blp:77
+msgid "Uninstall"
+msgstr "Avinstallera"
+
+#: runexe/frontend/ui/component-entry.blp:23
+msgid "Browse Files"
+msgstr "Bläddra bland filer"
+
+#: runexe/frontend/ui/component-entry.blp:34
+msgid ""
+"The installation failed. This may be due to a repository error, partial "
+"download or checksum mismatch. Press to try again."
+msgstr ""
+"Installationen misslyckades. Det kan bero på ett fel i programförrådet, en "
+"ofullständig hämtning eller att kontrollsumman inte stämmer. Tryck för att "
+"försöka igen."
+
+#: runexe/frontend/ui/component-entry.blp:45
+msgid "Download & Install"
+msgstr "Hämta och installera"
+
+#: runexe/frontend/ui/component-entry.blp:58
+msgid "0%"
+msgstr "0%"
+
+#: runexe/frontend/ui/dependency-entry.blp:16
+msgid "Show Manifest"
+msgstr "Visa manifestet"
+
+#: runexe/frontend/ui/dependency-entry.blp:20
+msgid "License"
+msgstr "Licens"
+
+#: runexe/frontend/ui/dependency-entry.blp:24
+msgid "Reinstall"
+msgstr "Installera om"
+
+#: runexe/frontend/ui/dependency-entry.blp:36
+#: runexe/frontend/ui/installer-entry.blp:27
+msgid "Report a Bug…"
+msgstr "Rapportera ett fel…"
+
+#: runexe/frontend/ui/dependency-entry.blp:42
+msgid "Dependency name"
+msgstr "Beroendets namn"
+
+#: runexe/frontend/ui/dependency-entry.blp:44
+msgid "Dependency description"
+msgstr "Beskrivning av beroendet"
+
+#: runexe/frontend/ui/dependency-entry.blp:51
+msgid "Category"
+msgstr "Kategori"
+
+#: runexe/frontend/ui/dependency-entry.blp:64
+msgid "Download & Install this Dependency"
+msgstr "Hämta och installera beroendet"
+
+#: runexe/frontend/ui/dependency-entry.blp:79
+msgid ""
+"An installation error occurred. Restart RunExe to read the Crash Report or "
+"run it via terminal to read the output."
+msgstr ""
+"Ett fel inträffade under installationen. Starta om RunExe för att läsa "
+"kraschrapporten eller kör RunExe från terminalen för att se utdata."
+
+#: runexe/frontend/ui/dependency-entry.blp:93
+msgid "Dependency Menu"
+msgstr "Meny för beroenden"
+
+#: runexe/frontend/ui/details-capsule.blp:16
+msgid "Troubleshooting"
+msgstr "Felsökning"
+
+#: runexe/frontend/ui/details-capsule.blp:24
+msgid "Browse Files…"
+msgstr "Bläddra bland filer…"
+
+#: runexe/frontend/ui/details-capsule.blp:28
+msgid "Duplicate Capsule…"
+msgstr "Duplicera butelj…"
+
+#: runexe/frontend/ui/details-capsule.blp:32
+#: runexe/frontend/ui/importer.blp:73
+msgid "This is the complete archive of your capsule, including personal files."
+msgstr ""
+"Det här är ett fullständigt arkiv av buteljen, inklusive personliga filer."
+
+#: runexe/frontend/ui/details-capsule.blp:33
+msgid "Full Backup…"
+msgstr "Fullständig säkerhetskopiering…"
+
+#: runexe/frontend/ui/details-capsule.blp:37
+#: runexe/frontend/ui/importer.blp:68
+msgid ""
+"This is just the capsule configuration, it's perfect if you want to create a "
+"new one but without personal files."
+msgstr ""
+"Det här är endast buteljens konfiguration. Det passar bra om du vill skapa "
+"en ny butelj utan personliga filer."
+
+#: runexe/frontend/ui/details-capsule.blp:38
+msgid "Export Configuration…"
+msgstr "Exportera konfiguration…"
+
+#: runexe/frontend/ui/details-capsule.blp:45
+#: runexe/frontend/views/capsule_details.py:344
+msgid "Show Hidden Programs"
+msgstr "Visa dolda program"
+
+#: runexe/frontend/ui/details-capsule.blp:49
+msgid "Search for new programs"
+msgstr "Sök efter nya program"
+
+#: runexe/frontend/ui/details-capsule.blp:56
+msgid "Delete Capsule…"
+msgstr "Ta bort butelj…"
+
+#: runexe/frontend/ui/details-capsule.blp:73
+#: runexe/frontend/ui/details-dependencies.blp:99
+#: runexe/frontend/ui/details-installers.blp:68
+msgid "Secondary Menu"
+msgstr "Fler alternativ"
+
+#: runexe/frontend/ui/details-capsule.blp:90
+msgid "Force Stop all Processes"
+msgstr "Tvångsavsluta alla processer"
+
+#: runexe/frontend/ui/details-capsule.blp:94
+msgid "Simulate a Windows system shutdown."
+msgstr "Simulerar avstängning av Windows-systemet."
+
+#: runexe/frontend/ui/details-capsule.blp:95
+msgid "Shutdown"
+msgstr "Stäng av"
+
+#: runexe/frontend/ui/details-capsule.blp:99
+msgid "Simulate a Windows system reboot."
+msgstr "Simulerar omstart av Windows-systemet."
+
+#: runexe/frontend/ui/details-capsule.blp:100
+msgid "Reboot"
+msgstr "Starta om"
+
+#: runexe/frontend/ui/details-capsule.blp:118
+#: runexe/frontend/ui/dialog-launch-options.blp:6
+msgid "Launch Options"
+msgstr "Startalternativ"
+
+#: runexe/frontend/ui/details-capsule.blp:135
+msgid "Run in Terminal"
+msgstr "Kör i terminal"
+
+#: runexe/frontend/ui/details-capsule.blp:148
+msgid "Drop files to execute them"
+msgstr "Släpp filer här för att köra dem"
+
+#: runexe/frontend/ui/details-capsule.blp:164
+msgid "My capsule"
+msgstr "Min butelj"
+
+#: runexe/frontend/ui/details-capsule.blp:177
+msgid "Win64"
+msgstr "Win64"
+
+#: runexe/frontend/ui/details-capsule.blp:189
+#: runexe/frontend/ui/list-entry.blp:12 runexe/frontend/ui/new.blp:71
+msgid "Environment"
+msgstr "Miljö"
+
+#: runexe/frontend/ui/details-capsule.blp:201
+#: runexe/frontend/ui/details-preferences.blp:14
+#: runexe/frontend/ui/new.blp:128
+msgid "Runner"
+msgstr "Körprogram"
+
+#: runexe/frontend/ui/details-capsule.blp:213
+#: runexe/frontend/ui/list-entry.blp:21
+msgid "Versioning enabled for this capsule"
+msgstr "Versionshantering är aktiverad för buteljen"
+
+#: runexe/frontend/ui/details-capsule.blp:218
+msgid "Versioning is active for this capsule."
+msgstr "Versionshantering är aktiv i buteljen."
+
+#: runexe/frontend/ui/details-capsule.blp:227
+#: runexe/frontend/ui/list-entry.blp:31
+msgid "0"
+msgstr "0"
+
+#: runexe/frontend/ui/details-capsule.blp:247
+msgid "Run Executable…"
+msgstr "Kör körbar fil…"
+
+#: runexe/frontend/ui/details-capsule.blp:272
+msgid "Programs"
+msgstr "Program"
+
+#: runexe/frontend/ui/details-capsule.blp:275
+msgid ""
+"Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an "
+"executable to the Programs list, or \"Install Programs…\" to install "
+"programs curated by the community."
+msgstr ""
+"Klicka på ”Kör körbar fil…” för att köra en körbar fil, ”Lägg till genvägar…"
+"” för att lägga till en körbar fil i programlistan eller ”Installera program…"
+"” för att installera program som gemenskapen har valt ut."
+
+#: runexe/frontend/ui/details-capsule.blp:298
+msgid "Add Shortcuts…"
+msgstr "Lägg till genvägar…"
+
+#: runexe/frontend/ui/details-capsule.blp:325
+msgid "Install Programs…"
+msgstr "Installera program…"
+
+#: runexe/frontend/ui/details-capsule.blp:346
+msgid "Options"
+msgstr "Alternativ"
+
+#: runexe/frontend/ui/details-capsule.blp:350
+#: runexe/frontend/views/details.py:141
+msgid "Settings"
+msgstr "Inställningar"
+
+#: runexe/frontend/ui/details-capsule.blp:351
+msgid "Configure capsule settings."
+msgstr "Konfigurera buteljens inställningar."
+
+#: runexe/frontend/ui/details-capsule.blp:360
+#: runexe/frontend/views/details.py:145
+msgid "Dependencies"
+msgstr "Beroenden"
+
+#: runexe/frontend/ui/details-capsule.blp:361
+msgid "Install dependencies for programs."
+msgstr "Installera beroenden som program behöver."
+
+#: runexe/frontend/ui/details-capsule.blp:370
+#: runexe/frontend/ui/details-preferences.blp:377
+#: runexe/frontend/views/details.py:149
+msgid "Snapshots"
+msgstr "Ögonblicksbilder"
+
+#: runexe/frontend/ui/details-capsule.blp:371
+msgid "Create and manage capsule states."
+msgstr "Skapa och hantera buteljens tillstånd."
+
+#: runexe/frontend/ui/details-capsule.blp:380
+#: runexe/frontend/ui/details-capsule.blp:426
+#: runexe/frontend/views/details.py:157
+msgid "Task Manager"
+msgstr "Aktivitetshanterare"
+
+#: runexe/frontend/ui/details-capsule.blp:381
+msgid "Manage running programs."
+msgstr "Hantera program som körs."
+
+#: runexe/frontend/ui/details-capsule.blp:390
+msgid "Tools"
+msgstr "Verktyg"
+
+#: runexe/frontend/ui/details-capsule.blp:394
+msgid "Command Line"
+msgstr "Kommandorad"
+
+#: runexe/frontend/ui/details-capsule.blp:395
+msgid "Run commands inside the Capsule."
+msgstr "Kör kommandon i buteljen."
+
+#: runexe/frontend/ui/details-capsule.blp:404
+msgid "Registry Editor"
+msgstr "Registereditorn"
+
+#: runexe/frontend/ui/details-capsule.blp:405
+msgid "Edit the internal registry."
+msgstr "Redigera det interna Windows-registret."
+
+#: runexe/frontend/ui/details-capsule.blp:413
+msgid "Legacy Wine Tools"
+msgstr "Äldre Wine-verktyg"
+
+#: runexe/frontend/ui/details-capsule.blp:417
+msgid "Explorer"
+msgstr "Filutforskaren"
+
+#: runexe/frontend/ui/details-capsule.blp:435
+msgid "Debugger"
+msgstr "Felsökare"
+
+#: runexe/frontend/ui/details-capsule.blp:444
+#: runexe/frontend/ui/importer.blp:69 runexe/frontend/ui/new.blp:145
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: runexe/frontend/ui/details-capsule.blp:453
+msgid "Uninstaller"
+msgstr "Avinstalleraren"
+
+#: runexe/frontend/ui/details-capsule.blp:462
+msgid "Control Panel"
+msgstr "Kontrollpanelen"
+
+#: runexe/frontend/ui/details-dependencies.blp:9
+msgid "Search for dependencies…"
+msgstr "Sök efter beroenden…"
+
+#: runexe/frontend/ui/details-dependencies.blp:22
+#: runexe/frontend/ui/preferences.blp:178
+#: runexe/frontend/ui/preferences.blp:235
+msgid "You're offline :("
+msgstr "Du är offline :("
+
+#: runexe/frontend/ui/details-dependencies.blp:25
+msgid "RunExe is running in offline mode, so dependencies are not available."
+msgstr "RunExe körs i offline-läge, så beroenden är inte tillgängliga."
+
+#: runexe/frontend/ui/details-dependencies.blp:47
+msgid ""
+"Dependencies are resources that improve compatibility of Windows software.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Beroenden är resurser som förbättrar kompatibiliteten med Windows-"
+"programvara.\n"
+"\n"
+"Filerna på den här sidan tillhandahålls av tredje part under en proprietär "
+"licens. Genom att installera dem godkänner du respektive licensvillkor."
+
+#: runexe/frontend/ui/details-dependencies.blp:76
+msgid "Report a problem or a missing dependency."
+msgstr "Rapportera ett problem eller ett beroende som saknas."
+
+#: runexe/frontend/ui/details-dependencies.blp:77
+msgid "Report Missing Dependency"
+msgstr "Rapportera beroende som saknas"
+
+#: runexe/frontend/ui/details-dependencies.blp:81
+msgid "Read Documentation."
+msgstr "Läs dokumentationen."
+
+#: runexe/frontend/ui/details-dependencies.blp:82
+#: runexe/frontend/ui/details-installers.blp:51
+#: runexe/frontend/ui/details-versioning.blp:37
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: runexe/frontend/ui/details-dependencies.blp:92
+#: runexe/frontend/ui/details-installers.blp:61
+#: runexe/frontend/ui/window.blp:46
+msgid "Search"
+msgstr "Sök"
+
+#: runexe/frontend/ui/details-installers.blp:9
+msgid "Search for Programs…"
+msgstr "Sök efter program…"
+
+#: runexe/frontend/ui/details-installers.blp:15
+msgid ""
+"Install programs curated by our community.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Installera program som gemenskapen har valt ut.\n"
+"\n"
+"Filerna på den här sidan tillhandahålls av tredje part under en proprietär "
+"licens. Genom att installera dem godkänner du respektive licensvillkor."
+
+#: runexe/frontend/ui/details-installers.blp:29
+msgid "No Installers Found"
+msgstr "Inga installationsprogram hittades"
+
+#: runexe/frontend/ui/details-installers.blp:32
+msgid ""
+"The repository is unreachable or no installer is compatible with this capsule."
+msgstr ""
+"Programförrådet kan inte nås eller så är inget installationsprogram "
+"kompatibelt med buteljen."
+
+#: runexe/frontend/ui/details-installers.blp:50
+#: runexe/frontend/ui/details-versioning.blp:36
+#: runexe/frontend/ui/preferences.blp:81
+msgid "Read Documentation"
+msgstr "Läs dokumentationen"
+
+#: runexe/frontend/ui/details-preferences.blp:6
+#: runexe/frontend/ui/dialog-duplicate.blp:52
+msgid "Name"
+msgstr "Namn"
+
+#: runexe/frontend/ui/details-preferences.blp:11
+msgid "Components"
+msgstr "Komponenter"
+
+#: runexe/frontend/ui/details-preferences.blp:15
+#: runexe/frontend/ui/new.blp:129
+msgid "The version of the Wine compatibility layer."
+msgstr "Wine-kompatibilitetslagrets version."
+
+#: runexe/frontend/ui/details-preferences.blp:17
+msgid "Updating Runner and components, please wait…"
+msgstr "Uppdaterar körprogrammet och komponenterna…"
+
+#: runexe/frontend/ui/details-preferences.blp:27
+#: runexe/frontend/ui/preferences.blp:262
+msgid "DXVK"
+msgstr "DXVK"
+
+#: runexe/frontend/ui/details-preferences.blp:28
+msgid "Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan."
+msgstr ""
+"Förbättra kompatibiliteten med Direct3D 8/9/10/11 genom att översätta "
+"anropen till Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:30
+msgid "Updating DXVK, please wait…"
+msgstr "Uppdaterar DXVK…"
+
+#: runexe/frontend/ui/details-preferences.blp:40
+#: runexe/frontend/ui/preferences.blp:266
+msgid "VKD3D"
+msgstr "VKD3D"
+
+#: runexe/frontend/ui/details-preferences.blp:41
+msgid "Improve Direct3D 12 compatibility by translating it to Vulkan."
+msgstr ""
+"Förbättra kompatibiliteten med Direct3D 12 genom att översätta anropen till "
+"Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:43
+msgid "Updating VKD3D, please wait…"
+msgstr "Uppdaterar VKD3D…"
+
+#: runexe/frontend/ui/details-preferences.blp:54
+msgid "DXVK NVAPI"
+msgstr "DXVK NVAPI"
+
+#: runexe/frontend/ui/details-preferences.blp:58
+#: runexe/frontend/ui/details-preferences.blp:93
+msgid "Updating DXVK-NVAPI, please wait…"
+msgstr "Uppdaterar DXVK-NVAPI…"
+
+#: runexe/frontend/ui/details-preferences.blp:68
+#: runexe/frontend/ui/preferences.blp:274
+msgid "LatencyFleX"
+msgstr "LatencyFleX"
+
+#: runexe/frontend/ui/details-preferences.blp:69
+msgid "Increase responsiveness. Can be detected by some anti-cheat software."
+msgstr "Minska svarstiden. Kan upptäckas av vissa antifuskprogram."
+
+#: runexe/frontend/ui/details-preferences.blp:71
+msgid "Updating LatencyFleX, please wait…"
+msgstr "Uppdaterar LatencyFleX…"
+
+#: runexe/frontend/ui/details-preferences.blp:84
+msgid "Display"
+msgstr "Grafik"
+
+#: runexe/frontend/ui/details-preferences.blp:88
+msgid "Deep Learning Super Sampling"
+msgstr "Deep Learning Super Sampling (DLSS)"
+
+#: runexe/frontend/ui/details-preferences.blp:89
+msgid ""
+"Increase performance at the expense of visuals using DXVK-NVAPI. Only works "
+"on newer NVIDIA GPUs."
+msgstr ""
+"Öka prestandan på bekostnad av bildkvaliteten med DXVK-NVAPI. Fungerar "
+"endast på nyare NVIDIA-grafikkort."
+
+#: runexe/frontend/ui/details-preferences.blp:105
+msgid "FidelityFX Super Resolution"
+msgstr "FidelityFX Super Resolution (FSR)"
+
+#: runexe/frontend/ui/details-preferences.blp:106
+msgid "Increase performance at the expense of visuals. Only works on Vulkan."
+msgstr ""
+"Öka prestandan på bekostnad av bildkvaliteten. Fungerar endast med Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:108
+msgid "Manage FidelityFX Super Resolution settings"
+msgstr "Hantera inställningarna för FidelityFX Super Resolution"
+
+#: runexe/frontend/ui/details-preferences.blp:125
+msgid "Discrete Graphics"
+msgstr "Dedikerat grafikkort"
+
+#: runexe/frontend/ui/details-preferences.blp:126
+msgid ""
+"Use the discrete graphics card to increase performance at the expense of "
+"power consumption."
+msgstr ""
+"Använd det dedikerade grafikkortet för att öka prestandan på bekostnad av "
+"högre strömförbrukning."
+
+#: runexe/frontend/ui/details-preferences.blp:135
+msgid "Post-Processing Effects"
+msgstr "Efterbehandlingseffekter"
+
+#: runexe/frontend/ui/details-preferences.blp:136
+msgid ""
+"Add various post-processing effects using vkBasalt. Only works on Vulkan."
+msgstr ""
+"Lägg till olika efterbehandlingseffekter med vkBasalt. Fungerar endast med "
+"Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:138
+msgid "Manage Post-Processing Layer settings"
+msgstr "Hantera inställningarna för efterbehandlingslagret"
+
+#: runexe/frontend/ui/details-preferences.blp:154
+msgid "Manage how games should be displayed on the screen using Gamescope."
+msgstr "Hantera hur spel visas på skärmen med Gamescope."
+
+#: runexe/frontend/ui/details-preferences.blp:157
+msgid "Manage Gamescope settings"
+msgstr "Hantera Gamescope-inställningar"
+
+#: runexe/frontend/ui/details-preferences.blp:171
+msgid "Advanced Display Settings"
+msgstr "Avancerade skärminställningar"
+
+#: runexe/frontend/ui/details-preferences.blp:184
+msgid "Performance"
+msgstr "Prestanda"
+
+#: runexe/frontend/ui/details-preferences.blp:188
+msgid "Enable synchronization to increase performance of multicore processors."
+msgstr ""
+"Aktivera synkronisering för att förbättra prestandan på flerkärniga "
+"processorer."
+
+#: runexe/frontend/ui/details-preferences.blp:189
+msgid "Synchronization"
+msgstr "Synkronisering"
+
+#: runexe/frontend/ui/details-preferences.blp:193
+msgid "System"
+msgstr "System"
+
+#: runexe/frontend/ui/details-preferences.blp:194
+msgid "Esync"
+msgstr "Esync"
+
+#: runexe/frontend/ui/details-preferences.blp:195
+msgid "Fsync"
+msgstr "Fsync"
+
+#: runexe/frontend/ui/details-preferences.blp:196
+msgid "Futex2"
+msgstr "Futex2"
+
+#: runexe/frontend/ui/details-preferences.blp:202
+msgid "Monitor Performance"
+msgstr "Prestandaövervakning"
+
+#: runexe/frontend/ui/details-preferences.blp:203
+msgid ""
+"Display monitoring information such as framerate, temperatures, CPU/GPU load "
+"and more on OpenGL and Vulkan using MangoHud."
+msgstr ""
+"Visa övervakningsinformation som bildfrekvens, temperaturer och CPU-/GPU-"
+"belastning för OpenGL och Vulkan med MangoHud."
+
+#: runexe/frontend/ui/details-preferences.blp:211
+msgid "Feral GameMode"
+msgstr "Feral GameMode"
+
+#: runexe/frontend/ui/details-preferences.blp:212
+msgid ""
+"Apply a set of optimizations to your device. Can improve game performance."
+msgstr ""
+"Tillämpa en uppsättning optimeringar på enheten. Det kan förbättra "
+"spelprestandan."
+
+#: runexe/frontend/ui/details-preferences.blp:221
+msgid "Preload Game Files"
+msgstr "Förhandsläs spelfiler"
+
+#: runexe/frontend/ui/details-preferences.blp:222
+msgid ""
+"Improve loading time when launching the game multiple times. The game will "
+"take longer to start for the first time."
+msgstr ""
+"Förbättra inläsningstiden när spelet startas flera gånger. Den första "
+"starten tar längre tid."
+
+#: runexe/frontend/ui/details-preferences.blp:226
+msgid "Manage vmtouch settings"
+msgstr "Hantera vmtouch-inställningar"
+
+#: runexe/frontend/ui/details-preferences.blp:241
+msgid "OBS Game Capture"
+msgstr "OBS Game Capture"
+
+#: runexe/frontend/ui/details-preferences.blp:242
+msgid "Toggle OBS Game Capture for all Vulkan and OpenGL programs."
+msgstr ""
+"Aktivera eller inaktivera OBS Game Capture för alla Vulkan- och OpenGL-"
+"program."
+
+#: runexe/frontend/ui/details-preferences.blp:251
+msgid "Compatibility"
+msgstr "Kompatibilitet"
+
+#: runexe/frontend/ui/details-preferences.blp:254
+msgid "Windows Version"
+msgstr "Windows-version"
+
+#: runexe/frontend/ui/details-preferences.blp:257
+msgid "Updating Windows version, please wait…"
+msgstr "Uppdaterar Windows-versionen…"
+
+#: runexe/frontend/ui/details-preferences.blp:266
+msgid "Language"
+msgstr "Språk"
+
+#: runexe/frontend/ui/details-preferences.blp:267
+msgid "Choose the language to use with programs."
+msgstr "Välj språket som programmen ska använda."
+
+#: runexe/frontend/ui/details-preferences.blp:275
+msgid "Dedicated Sandbox"
+msgstr "Separat sandlåda"
+
+#: runexe/frontend/ui/details-preferences.blp:276
+msgid "Use a restricted/managed environment for this capsule."
+msgstr "Använd en begränsad och hanterad miljö för buteljen."
+
+#: runexe/frontend/ui/details-preferences.blp:279
+msgid "Manage the Sandbox Permissions"
+msgstr "Hantera behörigheter i sandlådan"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/details-preferences.blp:295
+msgid "RunExe Runtime"
+msgstr "RunExe-körmiljö"
+
+#: runexe/frontend/ui/details-preferences.blp:296
+msgid ""
+"Provide a bundle of extra libraries for more compatibility. Disable it if "
+"you run into issues."
+msgstr ""
+"Tillhandahåll ett paket med extra bibliotek för bättre kompatibilitet. "
+"Inaktivera det om problem uppstår."
+
+#: runexe/frontend/ui/details-preferences.blp:306
+msgid "Steam Runtime"
+msgstr "Steam-körmiljö"
+
+#: runexe/frontend/ui/details-preferences.blp:307
+msgid ""
+"Provide a bundle of extra libraries for more compatibility with Steam games. "
+"Disable it if you run into issues."
+msgstr ""
+"Tillhandahåll ett paket med extra bibliotek för bättre kompatibilitet med "
+"Steam-spel. Inaktivera det om problem uppstår."
+
+#: runexe/frontend/ui/details-preferences.blp:315
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Working Directory"
+msgstr "Arbetskatalog"
+
+#: runexe/frontend/ui/details-preferences.blp:318
+#: runexe/frontend/ui/dialog-launch-options.blp:59
+#: runexe/frontend/ui/dialog-launch-options.blp:90
+#: runexe/frontend/ui/new.blp:150 runexe/frontend/ui/new.blp:181
+#: runexe/frontend/ui/preferences.blp:136
+msgid "Reset to Default"
+msgstr "Återställ till standard"
+
+#: runexe/frontend/ui/details-preferences.blp:339
+#: runexe/frontend/ui/preferences.blp:157 runexe/frontend/views/new.py:78
+#: runexe/frontend/views/preferences.py:210
+msgid "(Default)"
+msgstr "(standard)"
+
+#: runexe/frontend/ui/details-preferences.blp:347
+#: runexe/frontend/ui/dialog-dll-overrides.blp:7
+#: runexe/frontend/ui/dialog-dll-overrides.blp:12
+msgid "DLL Overrides"
+msgstr "DLL-åsidosättningar"
+
+#: runexe/frontend/ui/details-preferences.blp:357
+#: runexe/frontend/ui/dialog-env-vars.blp:20
+msgid "Environment Variables"
+msgstr "Miljövariabler"
+
+#: runexe/frontend/ui/details-preferences.blp:367
+msgid "Manage Drives"
+msgstr "Hantera enheter"
+
+#: runexe/frontend/ui/details-preferences.blp:381
+msgid "Automatic Snapshots"
+msgstr "Automatiska ögonblicksbilder"
+
+#: runexe/frontend/ui/details-preferences.blp:382
+msgid ""
+"Automatically create snapshots before installing software or changing "
+"settings."
+msgstr ""
+"Skapa automatiskt ögonblicksbilder innan programvara installeras eller "
+"inställningar ändras."
+
+#: runexe/frontend/ui/details-preferences.blp:391
+msgid "Compression"
+msgstr "Komprimering"
+
+#: runexe/frontend/ui/details-preferences.blp:392
+msgid ""
+"Compress snapshots to reduce space. This will slow down the creation of "
+"snapshots."
+msgstr ""
+"Komprimera ögonblicksbilder för att spara utrymme. Det gör att de tar längre "
+"tid att skapa."
+
+#: runexe/frontend/ui/details-preferences.blp:401
+msgid "Use Exclusion Patterns"
+msgstr "Använd uteslutningsmönster"
+
+#: runexe/frontend/ui/details-preferences.blp:402
+msgid "Exclude paths in snapshots."
+msgstr "Uteslut sökvägar i ögonblicksbilder."
+
+#: runexe/frontend/ui/details-preferences.blp:405
+msgid "Manage Patterns"
+msgstr "Hantera mönster"
+
+#: runexe/frontend/ui/details-taskmanager.blp:17
+msgid "Refresh"
+msgstr "Uppdatera"
+
+#: runexe/frontend/ui/details-taskmanager.blp:22
+msgid "Stop process"
+msgstr "Stoppa processen"
+
+#: runexe/frontend/ui/details-versioning.blp:18
+msgid "No Snapshots Found"
+msgstr "Inga ögonblicksbilder hittades"
+
+#: runexe/frontend/ui/details-versioning.blp:19
+msgid "Create your first snapshot to start saving states of your preferences."
+msgstr ""
+"Skapa din första ögonblicksbild för att börja spara inställningarnas "
+"tillstånd."
+
+#: runexe/frontend/ui/details-versioning.blp:54
+msgid "A short comment"
+msgstr "En kort kommentar"
+
+#: runexe/frontend/ui/details-versioning.blp:58
+msgid "Save the capsule state."
+msgstr "Spara buteljens tillstånd."
+
+#: runexe/frontend/ui/details-versioning.blp:78
+msgid "Create new Snapshot"
+msgstr "Skapa ny ögonblicksbild"
+
+#: runexe/frontend/ui/details.blp:16
+msgid "Details"
+msgstr "Detaljer"
+
+#: runexe/frontend/ui/details.blp:24 runexe/frontend/ui/details.blp:64
+#: runexe/frontend/ui/importer.blp:15
+msgid "Go Back"
+msgstr "Gå tillbaka"
+
+#: runexe/frontend/ui/details.blp:75
+msgid "Operations"
+msgstr "Åtgärder"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:4
+msgid "Select Capsule"
+msgstr "Välj butelj"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:16
+#: runexe/frontend/ui/dialog-proton-alert.blp:16
+#: runexe/frontend/ui/dialog-rename.blp:15
+#: runexe/frontend/ui/dialog-run-args.blp:20
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:21
+msgid "Select"
+msgstr "Välj"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:38
+#: runexe/frontend/ui/new.blp:9 runexe/frontend/ui/new.blp:49
+#: runexe/frontend/ui/window.blp:25
+msgid "Create New Capsule"
+msgstr "Skapa ny butelj"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/dialog-crash-report.blp:8
+msgid "RunExe Crash Report"
+msgstr "RunExe-kraschrapport"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:18
+#: runexe/frontend/ui/dialog-duplicate.blp:22
+#: runexe/frontend/ui/dialog-gamescope.blp:23
+#: runexe/frontend/ui/dialog-launch-options.blp:16
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:22
+#: runexe/frontend/ui/dialog-vkbasalt.blp:27 runexe/frontend/ui/new.blp:26
+#: runexe/frontend/views/capsule_details.py:504
+#: runexe/frontend/views/capsule_details.py:600
+#: runexe/frontend/views/capsule_preferences.py:749
+#: runexe/frontend/views/preferences.py:201
+msgid "_Cancel"
+msgstr "_Avbryt"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:25
+msgid "Send Report"
+msgstr "Skicka rapport"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:44
+msgid ""
+"RunExe crashed last time. Please fill out a report attaching the following "
+"traceback to help us identify the problem preventing it from happening again."
+msgstr ""
+"RunExe kraschade förra gången. Fyll i en rapport och bifoga följande "
+"felspårning så att vi kan identifiera problemet och förhindra att det "
+"inträffar igen."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:74
+msgid ""
+"We found one or more similar (or identical) reports. Please make sure to "
+"check carefully that it has not already been reported before submitting a "
+"new one. Each report requires effort on the part of the developers to "
+"diagnose, please respect their work and make sure you don't post duplicates."
+msgstr ""
+"Vi hittade en eller flera liknande eller identiska rapporter. Kontrollera "
+"noga att problemet inte redan har rapporterats innan du skickar in en ny "
+"rapport. Varje rapport kräver arbete av utvecklarna för att diagnostiseras. "
+"Respektera deras arbete och undvik dubbletter."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:89
+msgid "I still want to report."
+msgstr "Jag vill ändå rapportera felet."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:95
+msgid "Advanced options"
+msgstr "Avancerade alternativ"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:13
+msgid "Incomplete package"
+msgstr "Ofullständigt paket"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:14
+msgid ""
+"This version of RunExe does not seem to provide all the necessary core "
+"dependencies, please contact the package maintainer or use an official "
+"version."
+msgstr ""
+"Den här versionen av RunExe verkar inte innehålla alla nödvändiga "
+"kärnberoenden. Kontakta paketansvarig eller använd en officiell version."
+
+#: runexe/frontend/ui/dialog-deps-check.blp:18
+msgid "Quit"
+msgstr "Avsluta"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:11
+msgid ""
+"Dynamic Link Libraries can be specified to be builtin (provided by Wine) or "
+"native (provided by the program)."
+msgstr ""
+"Dynamiska länkbibliotek kan anges som inbyggda (tillhandahålls av Wine) "
+"eller ursprungliga (tillhandahålls av programmet)."
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:15
+msgid "New Override"
+msgstr "Ny åsidosättning"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:21
+msgid "Overrides"
+msgstr "Åsidosättningar"
+
+#: runexe/frontend/ui/dialog-drives.blp:7
+msgid "Drives"
+msgstr "Enheter"
+
+#: runexe/frontend/ui/dialog-drives.blp:24
+msgid ""
+"These are paths from your host system that are mapped and recognized as "
+"devices by the runner (e.g. C: D:…)."
+msgstr ""
+"Det här är sökvägar från värdsystemet som mappas och identifieras som "
+"enheter av körprogrammet (t.ex. C:, D: …)."
+
+#: runexe/frontend/ui/dialog-drives.blp:27
+msgid "Letter"
+msgstr "Enhetsbeteckning"
+
+#: runexe/frontend/ui/dialog-drives.blp:49
+msgid "Existing Drives"
+msgstr "Befintliga enheter"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:16
+msgid "Duplicate Capsule"
+msgstr "Duplicera butelj"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:38
+msgid "Duplicate"
+msgstr "Duplicera"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:49
+msgid "Enter a name for the duplicate of the Capsule."
+msgstr "Ange ett namn för kopian av buteljen."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:69
+msgid "Duplicating…"
+msgstr "Duplicerar…"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:78
+#: runexe/frontend/ui/dialog-installer.blp:103
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:112
+#: runexe/frontend/views/new.py:177
+msgid "This could take a while."
+msgstr "Det kan ta en stund."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:97
+msgid "Capsule Duplicated"
+msgstr "Buteljen har duplicerats"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:28
+msgid ""
+"Environment variables are dynamic-named value that can affect the way "
+"running processes will behave on your capsule."
+msgstr ""
+"Miljövariabler är dynamiskt namngivna värden som kan påverka hur processer "
+"beter sig i buteljen."
+
+#: runexe/frontend/ui/dialog-env-vars.blp:31
+msgid "Variable Name"
+msgstr "Variabelnamn"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:37
+msgid "Existing Variables"
+msgstr "Befintliga variabler"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:20
+msgid "Exclusion Patterns"
+msgstr "Uteslutningsmönster"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:28
+msgid ""
+"Define patterns that will be used to prevent some directories to being "
+"versioned."
+msgstr "Definiera mönster som förhindrar att vissa kataloger versionshanteras."
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:31
+msgid "Pattern"
+msgstr "Mönster"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:37
+msgid "Existing Patterns"
+msgstr "Befintliga mönster"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:6
+msgid "Gamescope Settings"
+msgstr "Gamescope-inställningar"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:30
+#: runexe/frontend/ui/dialog-launch-options.blp:32
+#: runexe/frontend/ui/dialog-rename.blp:20
+#: runexe/frontend/ui/dialog-vkbasalt.blp:34
+msgid "Save"
+msgstr "Spara"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:40
+msgid "Manage how games should be displayed."
+msgstr "Hantera hur spel ska visas."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:44
+msgid "Game Resolution"
+msgstr "Spelets upplösning"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:45
+msgid "Uses the resolution of the video game as a reference in pixels."
+msgstr "Använder spelets upplösning i pixlar som referens."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:48
+#: runexe/frontend/ui/dialog-gamescope.blp:85
+msgid "Width"
+msgstr "Bredd"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:64
+#: runexe/frontend/ui/dialog-gamescope.blp:101
+msgid "Height"
+msgstr "Höjd"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:81
+msgid "Window Resolution"
+msgstr "Fönsterupplösning"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:82
+msgid ""
+"Upscales the resolution when using a resolution higher than the game "
+"resolution in pixels."
+msgstr ""
+"Skalar upp upplösningen när fönsterupplösningen är högre än spelets "
+"upplösning."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:118
+msgid "Miscellaneous"
+msgstr "Övrigt"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:121
+msgid "Frame Rate Limit"
+msgstr "Gräns för bildfrekvens"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:137
+msgid "Frame Rate Limit When Unfocused"
+msgstr "Gräns för bildfrekvens när fönstret inte är aktivt"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:153
+msgid "Integer Scaling"
+msgstr "Heltalsskalning"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:162
+msgid "Window Type"
+msgstr "Fönstertyp"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:166
+msgid "Borderless"
+msgstr "Kantlöst"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:172
+msgid "Fullscreen"
+msgstr "Fullskärm"
+
+#: runexe/frontend/ui/dialog-installer.blp:40
+msgid "Do you want to proceed with the installation?"
+msgstr "Vill du fortsätta med installationen?"
+
+#: runexe/frontend/ui/dialog-installer.blp:45
+msgid "Start Installation"
+msgstr "Starta installationen"
+
+#: runexe/frontend/ui/dialog-installer.blp:64
+msgid ""
+"This installer requires some local resources which cannot be provided "
+"otherwise."
+msgstr ""
+"Installationsprogrammet kräver lokala resurser som inte kan tillhandahållas "
+"på något annat sätt."
+
+#: runexe/frontend/ui/dialog-installer.blp:68
+msgid "Proceed"
+msgstr "Fortsätt"
+
+#: runexe/frontend/ui/dialog-installer.blp:127
+msgid "Completed!"
+msgstr "Klart!"
+
+#: runexe/frontend/ui/dialog-installer.blp:130
+msgid "Show Programs"
+msgstr "Visa program"
+
+#: runexe/frontend/ui/dialog-installer.blp:148
+msgid "Installation Failed!"
+msgstr "Installationen misslyckades!"
+
+#: runexe/frontend/ui/dialog-installer.blp:149
+msgid "Something went wrong."
+msgstr "Något gick fel."
+
+#: runexe/frontend/ui/dialog-journal.blp:9
+msgid "All messages"
+msgstr "Alla meddelanden"
+
+#: runexe/frontend/ui/dialog-journal.blp:13
+msgid "Critical"
+msgstr "Kritiska"
+
+#: runexe/frontend/ui/dialog-journal.blp:17
+msgid "Errors"
+msgstr "Fel"
+
+#: runexe/frontend/ui/dialog-journal.blp:21
+msgid "Warnings"
+msgstr "Varningar"
+
+#: runexe/frontend/ui/dialog-journal.blp:25
+msgid "Info"
+msgstr "Information"
+
+#: runexe/frontend/ui/dialog-journal.blp:40
+msgid "Journal browser"
+msgstr "Journalvisare"
+
+#: runexe/frontend/ui/dialog-journal.blp:48
+msgid "Journal Browser"
+msgstr "Loggvisare"
+
+#: runexe/frontend/ui/dialog-journal.blp:53
+msgid "Change Logging Level."
+msgstr "Ändra loggnivån."
+
+#: runexe/frontend/ui/dialog-journal.blp:57
+msgid "All"
+msgstr "Alla"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:42
+msgid "Those arguments will be passed at launch."
+msgstr "Dessa argument skickas vid programstart."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:43
+msgid "Custom Arguments"
+msgstr "Anpassade argument"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:46
+msgid "Command Arguments"
+msgstr "Argument för kommandot"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:47
+#, c-format
+msgid "e.g.: VAR=value %command% -example1 -example2 -example3=hello"
+msgstr "t.ex.: VAR=value %command% -example1 -example2 -example3=hello"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:52
+msgid "Post-run Script"
+msgstr "Skript efter körning"
+
+#. endregion
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+#: runexe/frontend/windows/launchoptions.py:54
+msgid "Choose a script which should be executed after run."
+msgstr "Välj ett skript som ska köras efteråt."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:70
+msgid "Choose a Script"
+msgstr "Välj ett skript"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+#: runexe/frontend/windows/launchoptions.py:55
+msgid "Choose from where start the program."
+msgstr "Välj katalogen som programmet ska startas från."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:101
+#: runexe/frontend/ui/drive-entry.blp:22
+msgid "Choose a Directory"
+msgstr "Välj en katalog"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:114
+msgid "These settings will override the default settings for this executable."
+msgstr ""
+"Inställningarna åsidosätter standardinställningarna för den körbara filen."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:115
+msgid "Preferences Overrides"
+msgstr "Åsidosatta inställningar"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:119
+msgid "Reset to Capsule's Defaults"
+msgstr "Återställ till buteljens standardinställningar"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:165
+msgid "Virtual Desktop"
+msgstr "Virtuellt skrivbord"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:4
+msgid "Proton Disclaimer"
+msgstr "Ansvarsfriskrivning för Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:21
+msgid "Use Proton"
+msgstr "Använd Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:35
+msgid ""
+"Beware, using Proton-based runners in non-Steam capsules can cause problems "
+"and prevent them from behaving correctly.\n"
+"\n"
+"We recommend using Wine-GE rather, a version of Proton meant to run outside "
+"of Steam.\n"
+"\n"
+"Proceeding will automatically enable the Steam runtime (if present in the "
+"system and detected by RunExe) in order to allow it to access the necessary "
+"libraries and limit compatibility problems. Be aware that GloriousEggroll, "
+"the runner's provider, is not responsible for any problems and we ask that "
+"you do not report to them."
+msgstr ""
+"Observera att Proton-baserade körprogram i buteljer som inte använder Steam "
+"kan orsaka problem och hindra program från att fungera korrekt.\n"
+"\n"
+"Vi rekommenderar i stället Wine-GE, en Proton-version som är avsedd att "
+"köras utanför Steam.\n"
+"\n"
+"Om du fortsätter aktiveras Steam-körmiljön automatiskt, förutsatt att den "
+"finns på systemet och identifieras av RunExe. Det ger åtkomst till "
+"nödvändiga bibliotek och minskar kompatibilitetsproblem. GloriousEggroll, "
+"som tillhandahåller körprogrammet, ansvarar inte för eventuella problem. "
+"Rapportera därför inte sådana problem dit."
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:43
+msgid "I got it."
+msgstr "Jag förstår."
+
+#: runexe/frontend/ui/dialog-rename.blp:7
+msgid "Rename"
+msgstr "Byt namn"
+
+#: runexe/frontend/ui/dialog-rename.blp:30
+msgid "Choose a new name for the selected program."
+msgstr "Välj ett nytt namn för det valda programmet."
+
+#: runexe/frontend/ui/dialog-rename.blp:33
+msgid "New Name"
+msgstr "Nytt namn"
+
+#: runexe/frontend/ui/dialog-run-args.blp:13
+msgid "Run With Arguments"
+msgstr "Kör med argument"
+
+#: runexe/frontend/ui/dialog-run-args.blp:34
+#: runexe/frontend/views/capsule_details.py:401
+#: runexe/frontend/views/list.py:131
+msgid "Run"
+msgstr "Kör"
+
+#: runexe/frontend/ui/dialog-run-args.blp:44
+msgid "Write below the arguments to be passed to the executable."
+msgstr "Ange nedan vilka argument som ska skickas till den körbara filen."
+
+#: runexe/frontend/ui/dialog-run-args.blp:47
+msgid "e.g.: -opengl -SkipBuildPatchPrereq"
+msgstr "t.ex.: -opengl -SkipBuildPatchPrereq"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:7
+msgid "Sandbox Settings"
+msgstr "Inställningar för sandlåda"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:25
+msgid "Share Network"
+msgstr "Dela nätverksåtkomst"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:34
+msgid "Share Sound"
+msgstr "Dela ljudåtkomst"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:16
+msgid "Upgrade Needed"
+msgstr "Uppgradering krävs"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:38
+#: runexe/frontend/ui/onboard.blp:81
+msgid "Continue"
+msgstr "Fortsätt"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:47
+msgid "Launch upgrade"
+msgstr "Starta uppgraderingen"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:66
+msgid "New Versioning System"
+msgstr "Nytt versionssystem"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:69
+msgid "The new capsule versioning system has landed."
+msgstr "Det nya versionshanteringssystemet är här."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:83
+msgid ""
+"RunExe has a whole new Versioning System that is not backwards compatible.\n"
+"\n"
+"To continue using versioning we need to re-initialize the capsule repository. "
+"This will not delete data from your capsule but will delete all existing "
+"snapshots and create a new one.\n"
+"\n"
+"If you need to go back to a previous snapshot before continuing, close this "
+"window and restore the snapshot, then reopen the capsule to show this window "
+"again.\n"
+"\n"
+"The old system will be discontinued in one of the next releases."
+msgstr ""
+"RunExe har ett helt nytt versionshanteringssystem som inte är "
+"bakåtkompatibelt.\n"
+"\n"
+"För att fortsätta använda versionshanteringen måste buteljens programförråd "
+"initieras på nytt. Inga data i buteljen tas bort, men alla befintliga "
+"ögonblicksbilder raderas och en ny skapas.\n"
+"\n"
+"Om du behöver återgå till en tidigare ögonblicksbild innan du fortsätter "
+"stänger du fönstret, återställer ögonblicksbilden och öppnar sedan buteljen "
+"igen så att fönstret visas på nytt.\n"
+"\n"
+"Det gamla systemet tas bort i en kommande utgåva."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:103
+msgid "Re-initializing Repository…"
+msgstr "Initierar om programförrådet…"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:133
+msgid "Done! Please restart RunExe."
+msgstr "Klart! Starta om RunExe."
+
+#. Translators: vkBasalt is a Vulkan post processing layer for Linux
+#: runexe/frontend/ui/dialog-vkbasalt.blp:10
+msgid "Post-Processing Effects Settings"
+msgstr "Inställningar för efterbehandlingseffekter"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:44
+msgid "Default"
+msgstr "Standard"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:48
+msgid "Default Settings"
+msgstr "Standardinställningar"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:57
+msgid "Effects are applied according to the list order."
+msgstr "Effekterna tillämpas i listans ordning."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:58
+msgid "Effects"
+msgstr "Effekter"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:62
+msgid "Contrast Adaptive Sharpening"
+msgstr "Contrast Adaptive Sharpening (CAS)"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:65
+#: runexe/frontend/ui/dialog-vkbasalt.blp:102
+msgid "Sharpness"
+msgstr "Skärpa"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:69
+#: runexe/frontend/ui/dialog-vkbasalt.blp:106
+#: runexe/frontend/ui/dialog-vkbasalt.blp:134
+#: runexe/frontend/ui/dialog-vkbasalt.blp:167
+#: runexe/frontend/ui/dialog-vkbasalt.blp:195
+#: runexe/frontend/ui/dialog-vkbasalt.blp:223
+#: runexe/frontend/ui/dialog-vkbasalt.blp:256
+#: runexe/frontend/ui/dialog-vkbasalt.blp:288
+#: runexe/frontend/ui/dialog-vkbasalt.blp:316
+#: runexe/frontend/ui/dialog-vkbasalt.blp:343
+#: runexe/frontend/ui/dialog-vkbasalt.blp:370 runexe/frontend/ui/new.blp:58
+msgid "Show Information"
+msgstr "Visa information"
+
+#. Translators: Luma is not translatable
+#: runexe/frontend/ui/dialog-vkbasalt.blp:99
+msgid "Denoised Luma Sharpening"
+msgstr "Brusreducerad luminansskärpa"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:130
+msgid "Denoise"
+msgstr "Brusreducering"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:160
+msgid "Fast Approximate Anti-Aliasing"
+msgstr "Snabb approximativ kantutjämning"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:163
+msgid "Subpixel Quality"
+msgstr "Subpixelkvalitet"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:191
+msgid "Quality Edge Threshold"
+msgstr "Tröskelvärde för kantkvalitet"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:219
+msgid "Quality Edge Threshold Minimum"
+msgstr "Lägsta tröskelvärde för kantkvalitet"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:249
+msgid "Subpixel Morphological Anti-Aliasing"
+msgstr "Morfologisk kantutjämning på subpixelnivå"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:252
+msgid "Edge Detection"
+msgstr "Kantdetektering"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:267
+msgid "Luma"
+msgstr "Luma"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:273
+msgid "Color"
+msgstr "Färg"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:284
+msgid "Threshold"
+msgstr "Tröskelvärde"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:312
+msgid "Max Search Steps"
+msgstr "Högsta antal söksteg"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:339
+msgid "Max Search Steps Diagonal"
+msgstr "Högsta antal diagonala söksteg"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:366
+msgid "Max Corner Rounding"
+msgstr "Högsta hörnavrundning"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:411
+msgid ""
+"CAS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper, whereas values lower than 0 make the frame softer than native."
+msgstr ""
+"CAS-skärpa ökar bildrutans skärpa. Högre värden gör bildrutan skarpare, "
+"medan värden under 0 gör den mjukare än originalet."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:428
+msgid ""
+"DLS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper."
+msgstr "DLS-skärpa ökar bildrutans skärpa. Högre värden gör bildrutan skarpare."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:445
+msgid ""
+"DLS denoise decreases the noise of a frame. Higher values make the frame "
+"softer."
+msgstr ""
+"DLS-brusreducering minskar bruset i bildrutan. Högre värden gör bildrutan "
+"mjukare."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:462
+msgid ""
+"FXAA subpixel quality decreases aliasing at the subpixel level. Higher "
+"values make the frame softer."
+msgstr ""
+"FXAA:s subpixelkvalitet minskar aliasering på subpixelnivå. Högre värden gör "
+"bildrutan mjukare."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:479
+msgid ""
+"FXAA edge threshold is the minimum amount of contrast required to apply the "
+"FXAA algorithm. Higher values make the frame have more contrast."
+msgstr ""
+"FXAA:s kanttröskel är den minsta kontrast som krävs för att tillämpa FXAA-"
+"algoritmen. Högre värden ger bildrutan mer kontrast."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:496
+msgid ""
+"FXAA quality edge threshold minimum is the minimum value of dark pixels that "
+"are ignored by the FXAA algorithm. Higher values make FXAA ignore pixels "
+"below the specified value and can lead to a performance increase."
+msgstr ""
+"FXAA:s lägsta tröskelvärde för kantkvalitet är det lägsta värdet för mörka "
+"pixlar som algoritmen ignorerar. Högre värden gör att FXAA ignorerar pixlar "
+"under det angivna värdet och kan förbättra prestandan."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:513
+msgid ""
+"Luma detects edges from a monochrome perspective, whereas Color detects "
+"edges based on colors. Luma is more performant than Color."
+msgstr ""
+"Luma identifierar kanter ur ett monokromt perspektiv, medan Färg "
+"identifierar kanter utifrån färger. Luma kräver mindre prestanda än Färg."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:530
+msgid ""
+"SMAA threshold specifies the sensitivity of edge detection. Lower values "
+"detect more edges at the expense of performance."
+msgstr ""
+"SMAA-tröskeln anger kantidentifieringens känslighet. Lägre värden "
+"identifierar fler kanter på bekostnad av prestandan."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:547
+msgid ""
+"SMAA max search steps specifies how many horizontal and vertical search "
+"steps are performed when searching for edges."
+msgstr ""
+"SMAA:s högsta antal söksteg anger hur många horisontella och vertikala "
+"söksteg som utförs när kanter söks."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:564
+msgid ""
+"SMAA max diagonal search steps specifies how many diagonal search steps are "
+"performed when searching for edges."
+msgstr ""
+"SMAA:s högsta antal diagonala söksteg anger hur många diagonala söksteg som "
+"utförs när kanter söks."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:581
+msgid "SMAA corner rounding specifies the strength of rounding edge corners."
+msgstr "SMAA:s hörnavrundning anger hur kraftigt kanternas hörn avrundas."
+
+#: runexe/frontend/ui/dll-override-entry.blp:8
+msgid "Builtin (Wine)"
+msgstr "Inbyggt (Wine)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:9
+msgid "Native (Windows)"
+msgstr "Ursprunglig (Windows)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:10
+msgid "Builtin, then Native"
+msgstr "Inbyggd, sedan ursprunglig"
+
+#: runexe/frontend/ui/dll-override-entry.blp:11
+msgid "Native, then Builtin"
+msgstr "Ursprunglig, sedan inbyggd"
+
+#: runexe/frontend/ui/dll-override-entry.blp:12
+msgid "Disabled"
+msgstr "Inaktiverat"
+
+#: runexe/frontend/ui/dll-override-entry.blp:20
+#: runexe/frontend/ui/drive-entry.blp:12
+msgid "Remove"
+msgstr "Ta bort"
+
+#: runexe/frontend/ui/drive-entry.blp:5
+msgid "/point/to/path"
+msgstr "/sökväg/till/plats"
+
+#: runexe/frontend/ui/env-var-entry.blp:4
+#: runexe/frontend/ui/exclusion-pattern-entry.blp:4
+msgid "Value"
+msgstr "Värde"
+
+#: runexe/frontend/ui/importer-entry.blp:13
+msgid "Browse files"
+msgstr "Bläddra bland filer"
+
+#. Translators: A Wine prefix is a separate environment (C:\ drive) for the Wine program
+#: runexe/frontend/ui/importer-entry.blp:21
+msgid "Wine prefix name"
+msgstr "Namn på Wine-prefix"
+
+#: runexe/frontend/ui/importer-entry.blp:28
+msgid "Manager"
+msgstr "Hanterare"
+
+#: runexe/frontend/ui/importer-entry.blp:38
+msgid "This Wine prefix was already imported in RunExe."
+msgstr "Det här Wine-prefixet har redan importerats till RunExe."
+
+#: runexe/frontend/ui/importer.blp:22
+msgid "Import a Capsule backup"
+msgstr "Importera en säkerhetskopia av en butelj"
+
+#: runexe/frontend/ui/importer.blp:28
+msgid "Search again for prefixes"
+msgstr "Sök efter prefix igen"
+
+#: runexe/frontend/ui/importer.blp:38
+msgid "No Prefixes Found"
+msgstr "Inga prefix hittades"
+
+#: runexe/frontend/ui/importer.blp:39
+msgid ""
+"No external prefixes were found. Does RunExe have access to them?\n"
+"Use the icon on the top to import a capsule from a backup."
+msgstr ""
+"Inga externa prefix hittades. Har RunExe åtkomst till dem?\n"
+"Använd ikonen högst upp för att importera en butelj från en säkerhetskopia."
+
+#: runexe/frontend/ui/importer.blp:74
+msgid "Full Archive"
+msgstr "Fullständigt arkiv"
+
+#: runexe/frontend/ui/installer-entry.blp:16
+msgid "Show Manifest…"
+msgstr "Visa manifest…"
+
+#: runexe/frontend/ui/installer-entry.blp:20
+msgid "Read Review…"
+msgstr "Läs recension…"
+
+#: runexe/frontend/ui/installer-entry.blp:34
+msgid "Installer name"
+msgstr "Installationsprogrammets namn"
+
+#: runexe/frontend/ui/installer-entry.blp:35
+msgid "Installer description"
+msgstr "Beskrivning av installationsprogrammet"
+
+#: runexe/frontend/ui/installer-entry.blp:42
+msgid "Unknown"
+msgstr "Okänd"
+
+#: runexe/frontend/ui/installer-entry.blp:51
+msgid "Install this Program"
+msgstr "Installera programmet"
+
+#: runexe/frontend/ui/installer-entry.blp:69
+msgid "Program Menu"
+msgstr "Programmeny"
+
+#: runexe/frontend/ui/library-entry.blp:36
+msgid "No Thumbnail"
+msgstr "Ingen miniatyrbild"
+
+#: runexe/frontend/ui/library-entry.blp:57
+msgid "Launch"
+msgstr "Starta"
+
+#: runexe/frontend/ui/library-entry.blp:70
+#: runexe/frontend/ui/program-entry.blp:89
+msgid "Launch with Steam"
+msgstr "Starta med Steam"
+
+#: runexe/frontend/ui/library-entry.blp:108
+msgid "Item name"
+msgstr "Objektets namn"
+
+#: runexe/frontend/ui/library-entry.blp:132
+msgid "Remove from Library"
+msgstr "Ta bort från biblioteket"
+
+#: runexe/frontend/ui/library-entry.blp:143
+msgid "Stop"
+msgstr "Stoppa"
+
+#: runexe/frontend/ui/library.blp:11
+#: runexe/frontend/windows/main_window.py:196
+msgid "Library"
+msgstr "Bibliotek"
+
+#: runexe/frontend/ui/library.blp:12
+msgid "Add items here from your capsule's program list"
+msgstr "Lägg till objekt här från buteljens programlista"
+
+#: runexe/frontend/ui/list-entry.blp:26
+msgid "Versioning is active in this capsule."
+msgstr "Versionshantering är aktiv i buteljen."
+
+#: runexe/frontend/ui/list-entry.blp:42
+msgid "This capsule looks damaged."
+msgstr "Buteljen verkar vara skadad."
+
+#: runexe/frontend/ui/list-entry.blp:55
+msgid "Execute in this Capsule"
+msgstr "Kör i den här buteljen"
+
+#: runexe/frontend/ui/list-entry.blp:69
+msgid "Run Here"
+msgstr "Kör här"
+
+#: runexe/frontend/ui/list-entry.blp:75
+msgid ""
+"This capsule looks damaged, the configuration file is missing. I can try to "
+"solve by creating a new configuration."
+msgstr ""
+"Buteljen verkar vara skadad eftersom konfigurationsfilen saknas. RunExe kan "
+"försöka lösa problemet genom att skapa en ny konfiguration."
+
+#: runexe/frontend/ui/list.blp:12
+msgid "Search your capsules…"
+msgstr "Sök bland dina buteljer…"
+
+#: runexe/frontend/ui/list.blp:28
+msgid "Steam Proton"
+msgstr "Steam Proton"
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/list.blp:42 runexe/frontend/windows/main_window.py:191
+#: data/io.github.runexe.RunExe.metainfo.xml.in:7
+msgid "RunExe"
+msgstr "RunExe"
+
+#: runexe/frontend/ui/list.blp:49
+msgid "Create New Capsule…"
+msgstr "Skapa ny butelj…"
+
+#: runexe/frontend/ui/list.blp:63
+msgid "No Results Found"
+msgstr "Inga resultat"
+
+#: runexe/frontend/ui/list.blp:64
+msgid "Try a different search."
+msgstr "Prova en annan sökning."
+
+#: runexe/frontend/ui/loading.blp:13
+msgid "Starting up…"
+msgstr "Startar…"
+
+#: runexe/frontend/ui/local-resource-entry.blp:4
+msgid "This resource is missing."
+msgstr "Den här resursen saknas."
+
+#: runexe/frontend/ui/local-resource-entry.blp:8
+msgid "Browse"
+msgstr "Bläddra"
+
+#: runexe/frontend/ui/new.blp:32
+msgid "C_reate"
+msgstr "S_kapa"
+
+#: runexe/frontend/ui/new.blp:53
+#, fuzzy
+msgid "Capsule Name"
+msgstr "Buteljnamn"
+
+#: runexe/frontend/ui/new.blp:75
+msgid "_Application"
+msgstr "_Program"
+
+#: runexe/frontend/ui/new.blp:88
+msgid "_Gaming"
+msgstr "_Spel"
+
+#: runexe/frontend/ui/new.blp:101
+msgid "C_ustom"
+msgstr "A_npassat"
+
+#: runexe/frontend/ui/new.blp:114
+msgid "Custom"
+msgstr "Anpassat"
+
+#: runexe/frontend/ui/new.blp:118
+msgid "Share User Directory"
+msgstr "Dela användarkatalogen"
+
+#: runexe/frontend/ui/new.blp:119
+msgid ""
+"This makes the user directory discoverable in the capsule, at the risk of "
+"sharing personal information to Windows software. This option cannot be "
+"changed after the capsule has been created."
+msgstr ""
+"Det här gör användarkatalogen synlig i buteljen, vilket medför en risk att "
+"personlig information delas med Windows-program. Alternativet kan inte "
+"ändras efter att buteljen har skapats."
+
+#: runexe/frontend/ui/new.blp:136
+msgid "Architecture"
+msgstr "Arkitektur"
+
+#: runexe/frontend/ui/new.blp:137
+msgid "32-bit should only be used if strictly necessary."
+msgstr "32 bitar bör endast användas när det är absolut nödvändigt."
+
+#: runexe/frontend/ui/new.blp:146
+msgid "Import a custom configuration."
+msgstr "Importera en anpassad konfiguration."
+
+#: runexe/frontend/ui/new.blp:176
+msgid "Capsule Directory"
+msgstr "Buteljkatalog"
+
+#: runexe/frontend/ui/new.blp:177
+msgid "Directory that will contain the data of this capsule."
+msgstr "Katalogen som ska innehålla buteljens data."
+
+#: runexe/frontend/ui/new.blp:249
+msgid "_Close"
+msgstr "_Stäng"
+
+#: runexe/frontend/ui/new.blp:281
+msgid "This name is unavailable, please try another."
+msgstr "Namnet är inte tillgängligt. Försök med ett annat."
+
+#: runexe/frontend/ui/onboard.blp:34
+msgid "Previous"
+msgstr "Föregående"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:59
+msgid "Welcome to RunExe"
+msgstr "Välkommen till RunExe"
+
+#: runexe/frontend/ui/onboard.blp:60
+msgid "Run Windows Software on Linux."
+msgstr "Kör Windows-program på Linux."
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/onboard.blp:65
+msgid "Windows in RunExe"
+msgstr "Windows i RunExe"
+
+#: runexe/frontend/ui/onboard.blp:66
+msgid ""
+"RunExe uses compatibility runners to provide isolated containerized Windows-"
+"like environments where programs run."
+msgstr ""
+"RunExe använder kompatibilitetskörprogram för att skapa isolerade, "
+"containerbaserade Windows-liknande miljöer där program kan köras."
+
+#: runexe/frontend/ui/onboard.blp:72
+msgid "Almost Done"
+msgstr "Nästan klart"
+
+#: runexe/frontend/ui/onboard.blp:73
+msgid "We need a few more minutes to set everything up…"
+msgstr "Vi behöver några minuter till för att slutföra konfigurationen…"
+
+#: runexe/frontend/ui/onboard.blp:105
+msgid "All Ready!"
+msgstr "Allt är klart!"
+
+#: runexe/frontend/ui/onboard.blp:114
+msgid "Please Finish the setup first"
+msgstr "Slutför konfigurationen först"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:120
+msgid "Start using RunExe"
+msgstr "Börja använda RunExe"
+
+#: runexe/frontend/ui/onboard.blp:141
+msgid "Next"
+msgstr "Nästa"
+
+#: runexe/frontend/ui/preferences.blp:4 runexe/frontend/ui/window.blp:86
+msgid "Preferences"
+msgstr "Inställningar"
+
+#: runexe/frontend/ui/preferences.blp:11
+#: runexe/frontend/ui/preferences.blp:39
+msgid "General"
+msgstr "Allmänt"
+
+#: runexe/frontend/ui/preferences.blp:14
+msgid "Appearance"
+msgstr "Utseende"
+
+#: runexe/frontend/ui/preferences.blp:17
+msgid "Dark Mode"
+msgstr "Mörkt läge"
+
+#: runexe/frontend/ui/preferences.blp:18
+msgid "Whether RunExe should use the dark color scheme."
+msgstr "Om RunExe ska använda ett mörkt färgschema."
+
+#: runexe/frontend/ui/preferences.blp:28
+msgid "Show Update Date"
+msgstr "Visa uppdateringsdatum"
+
+#: runexe/frontend/ui/preferences.blp:29
+msgid "Whether to show the update date in the capsule list."
+msgstr "Om uppdateringsdatumet ska visas i buteljlistan."
+
+#: runexe/frontend/ui/preferences.blp:42
+#: data/io.github.runexe.RunExe.gschema.xml:46
+msgid "Notifications"
+msgstr "Aviseringar"
+
+#: runexe/frontend/ui/preferences.blp:43
+msgid "Show notifications for downloads and installs."
+msgstr "Visa aviseringar om hämtningar och installationer."
+
+#: runexe/frontend/ui/preferences.blp:52
+msgid "Temp Files"
+msgstr "Temporära filer"
+
+#: runexe/frontend/ui/preferences.blp:53
+msgid "Clean temp files when RunExe launches?"
+msgstr "Rensa temporära filer när RunExe startar?"
+
+#: runexe/frontend/ui/preferences.blp:62
+msgid "Close RunExe After Starting a Program"
+msgstr "Stäng RunExe efter att ett program har startats"
+
+#: runexe/frontend/ui/preferences.blp:63
+msgid "Close RunExe after starting a program from the file manager."
+msgstr "Stäng RunExe efter att ett program har startats från filhanteraren."
+
+#: runexe/frontend/ui/preferences.blp:73
+msgid "Integrations"
+msgstr "Integrationer"
+
+#: runexe/frontend/ui/preferences.blp:76
+msgid "Steam Proton Prefixes"
+msgstr "Steam Proton-prefixer"
+
+#: runexe/frontend/ui/preferences.blp:77
+msgid "List and manage Steam Proton prefixes."
+msgstr "Visa och hantera Steam Proton-prefixer."
+
+#: runexe/frontend/ui/preferences.blp:97
+msgid "List Steam Apps in Programs List"
+msgstr "Visa Steam-appar i programlistan"
+
+#: runexe/frontend/ui/preferences.blp:98
+msgid "Requires Steam for Windows installed in the capsule."
+msgstr "Kräver att Steam för Windows är installerat i buteljen."
+
+#: runexe/frontend/ui/preferences.blp:107
+msgid "List Epic Games in Programs List"
+msgstr "Visa Epic Games i programlistan"
+
+#: runexe/frontend/ui/preferences.blp:108
+msgid "Requires Epic Games Store installed in the capsule."
+msgstr "Kräver att Epic Games Store är installerad i buteljen."
+
+#: runexe/frontend/ui/preferences.blp:117
+msgid "List Ubisoft Games in Programs List"
+msgstr "Visa Ubisoft-spel i programlistan"
+
+#: runexe/frontend/ui/preferences.blp:118
+msgid "Requires Ubisoft Connect installed in the capsule."
+msgstr "Kräver att Ubisoft Connect är installerad i buteljen."
+
+#: runexe/frontend/ui/preferences.blp:128
+msgid "Advanced"
+msgstr "Avancerat"
+
+#: runexe/frontend/ui/preferences.blp:131
+msgid "Capsules Directory"
+msgstr "RunExe-katalog"
+
+#: runexe/frontend/ui/preferences.blp:132
+msgid "Directory that contains the data of your Capsules."
+msgstr "Katalogen som innehåller data för dina buteljer."
+
+#: runexe/frontend/ui/preferences.blp:167
+msgid "Runners"
+msgstr "Körprogram"
+
+#: runexe/frontend/ui/preferences.blp:181
+msgid "RunExe is running in offline mode, so runners are not available."
+msgstr "RunExe körs i offline-läge, så körprogram är inte tillgängliga."
+
+#: runexe/frontend/ui/preferences.blp:208
+msgid "Pre-Release"
+msgstr "Förhandsutgåvor"
+
+#: runexe/frontend/ui/preferences.blp:209
+msgid "Display unstable versions of runners."
+msgstr "Visa instabila versioner av körare."
+
+#: runexe/frontend/ui/preferences.blp:224
+msgid "DLL Components"
+msgstr "DLL-komponenter"
+
+#: runexe/frontend/ui/preferences.blp:238
+msgid "RunExe is running in offline mode, so DLLs are not available."
+msgstr "RunExe körs i offline-läge, så DLL-filer är inte tillgängliga."
+
+#: runexe/frontend/ui/preferences.blp:270
+msgid "DXVK-NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/preferences.blp:283
+msgid "Core"
+msgstr "Kärna"
+
+#: runexe/frontend/ui/preferences.blp:287
+msgid "Runtime"
+msgstr "Körmiljö"
+
+#: runexe/frontend/ui/preferences.blp:291
+msgid "WineBridge"
+msgstr "WineBridge"
+
+#: runexe/frontend/ui/preferences.blp:297
+#: data/io.github.runexe.RunExe.gschema.xml:66
+msgid "Experiments"
+msgstr "Experiment"
+
+#: runexe/frontend/ui/preferences.blp:300
+msgid ""
+"These features are under heavy development and may be unstable, expect bugs "
+"and breakage."
+msgstr ""
+"Funktionerna är under intensiv utveckling och kan vara instabila. Räkna med "
+"fel och funktionsproblem."
+
+#: runexe/frontend/ui/preferences.blp:303
+msgid "Sandbox per capsule"
+msgstr "Sandlåda för varje butelj"
+
+#: runexe/frontend/ui/preferences.blp:304
+msgid "In early development."
+msgstr "Under tidig utveckling."
+
+#: runexe/frontend/ui/program-entry.blp:19
+msgid "Launch with Terminal"
+msgstr "Starta i terminal"
+
+#: runexe/frontend/ui/program-entry.blp:25
+msgid "Browse Path"
+msgstr "Bläddra till sökväg"
+
+#: runexe/frontend/ui/program-entry.blp:39
+msgid "Change Launch Options…"
+msgstr "Ändra startalternativ…"
+
+#: runexe/frontend/ui/program-entry.blp:43
+msgid "Add to Library"
+msgstr "Lägg till i biblioteket"
+
+#: runexe/frontend/ui/program-entry.blp:47
+msgid "Add Desktop Entry"
+msgstr "Lägg till skrivbordspost"
+
+#: runexe/frontend/ui/program-entry.blp:51
+msgid "Add to Steam"
+msgstr "Lägg till i Steam"
+
+#: runexe/frontend/ui/program-entry.blp:55
+msgid "Rename…"
+msgstr "Byt namn…"
+
+#: runexe/frontend/ui/program-entry.blp:62
+msgid "Hide Program"
+msgstr "Dölj programmet"
+
+#: runexe/frontend/ui/program-entry.blp:66
+msgid "Show Program"
+msgstr "Visa programmet"
+
+#: runexe/frontend/ui/program-entry.blp:70
+msgid "Remove from List"
+msgstr "Ta bort från listan"
+
+#: runexe/frontend/ui/program-entry.blp:83
+msgid "Program name"
+msgstr "Programnamn"
+
+#. Translators: id as identification
+#: runexe/frontend/ui/state-entry.blp:8
+msgid "State id"
+msgstr "Tillstånds-ID"
+
+#: runexe/frontend/ui/state-entry.blp:9
+msgid "State comment"
+msgstr "Kommentar till tillståndet"
+
+#: runexe/frontend/ui/state-entry.blp:16
+msgid "Restore this Snapshot"
+msgstr "Återställ ögonblicksbilden"
+
+#: runexe/frontend/ui/task-entry.blp:19
+msgid "Delete message"
+msgstr "Ta bort meddelandet"
+
+#: runexe/frontend/ui/window.blp:40
+msgid "Main Menu"
+msgstr "Huvudmeny"
+
+#: runexe/frontend/ui/window.blp:54
+msgid ""
+"You don't seem connected to the internet. Without it you will not be able to "
+"download essential components. Click this icon when you have reestablished "
+"the connection."
+msgstr ""
+"Du verkar inte vara ansluten till internet. Utan anslutning kan du inte "
+"hämta nödvändiga komponenter. Klicka på ikonen när anslutningen har "
+"återställts."
+
+#: runexe/frontend/ui/window.blp:79
+msgid "Import…"
+msgstr "Importera…"
+
+#: runexe/frontend/ui/window.blp:91
+msgid "Help"
+msgstr "Hjälp"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/window.blp:96
+msgid "About RunExe"
+msgstr "Om RunExe"
+
+#: runexe/frontend/views/capsule_details.py:191
+#, python-brace-format
+msgid "File \"{0}\" is not a .exe or .msi file"
+msgstr "Filen \"{0}\" är inte en .exe- eller .msi-fil"
+
+#: runexe/frontend/views/capsule_details.py:207
+#, python-format
+msgid "Updated: %s"
+msgstr "Uppdaterad: %s"
+
+#: runexe/frontend/views/capsule_details.py:267
+#, python-brace-format
+msgid "\"{0}\" added"
+msgstr "”{0}” har lagts till"
+
+#: runexe/frontend/views/capsule_details.py:270
+#: runexe/frontend/views/capsule_details.py:398
+#: runexe/frontend/views/list.py:128
+msgid "Select Executable"
+msgstr "Välj körbar fil"
+
+#: runexe/frontend/views/capsule_details.py:273
+msgid "Add"
+msgstr "Lägg till"
+
+#: runexe/frontend/views/capsule_details.py:346
+msgid "Hide Hidden Programs"
+msgstr "Dölj dolda program"
+
+#: runexe/frontend/views/capsule_details.py:383
+#: runexe/frontend/widgets/library.py:156
+#: runexe/frontend/widgets/program.py:184
+#, python-brace-format
+msgid "Launching \"{0}\"…"
+msgstr "Startar ”{0}”…"
+
+#: runexe/frontend/views/capsule_details.py:413
+msgid "Be Aware of Sandbox"
+msgstr "Observera sandlådan"
+
+#: runexe/frontend/views/capsule_details.py:414
+msgid ""
+"RunExe is running in a sandbox, a restricted permission environment needed "
+"to keep you safe. If the program won't run, consider moving inside the "
+"capsule (3 dots icon on the top), then launch from there."
+msgstr ""
+"RunExe körs i en sandlåda, en miljö med begränsade behörigheter som skyddar "
+"dig. Om programmet inte startar kan du flytta det till buteljen via "
+"trepunktsmenyn högst upp och sedan starta det därifrån."
+
+#: runexe/frontend/views/capsule_details.py:416
+#: runexe/frontend/views/capsule_details.py:525
+#: runexe/frontend/windows/main_window.py:223
+msgid "_Dismiss"
+msgstr "_Avfärda"
+
+#: runexe/frontend/views/capsule_details.py:429
+msgid "Select the location where to save the backup config"
+msgstr "Välj var säkerhetskopian av konfigurationen ska sparas"
+
+#: runexe/frontend/views/capsule_details.py:431
+msgid "Export"
+msgstr "Exportera"
+
+#: runexe/frontend/views/capsule_details.py:433
+msgid "Select the location where to save the backup archive"
+msgstr "Välj var säkerhetskopieringsarkivet ska sparas"
+
+#: runexe/frontend/views/capsule_details.py:435
+msgid "Backup"
+msgstr "Skapa säkerhetskopia"
+
+#: runexe/frontend/views/capsule_details.py:440
+#, python-brace-format
+msgid "Backup created for \"{0}\""
+msgstr "En säkerhetskopia skapades för ”{0}”"
+
+#: runexe/frontend/views/capsule_details.py:442
+#, python-brace-format
+msgid "Backup failed for \"{0}\""
+msgstr "Det gick inte att skapa en säkerhetskopia för ”{0}”"
+
+#: runexe/frontend/views/capsule_details.py:501
+msgid "Are you sure you want to permanently delete \"{}\"?"
+msgstr "Vill du verkligen ta bort ”{}” permanent?"
+
+#: runexe/frontend/views/capsule_details.py:502
+msgid ""
+"This will permanently delete all programs and settings associated with it."
+msgstr "Alla tillhörande program och inställningar tas bort permanent."
+
+#: runexe/frontend/views/capsule_details.py:505
+#: runexe/frontend/views/capsule_preferences.py:750
+msgid "_Delete"
+msgstr "_Ta bort"
+
+#: runexe/frontend/views/capsule_details.py:521
+msgid "Missing Runner"
+msgstr "Körprogram saknas"
+
+#: runexe/frontend/views/capsule_details.py:522
+msgid ""
+"The runner requested by this capsule is missing. Install it through the "
+"RunExe preferences or choose a new one to run applications."
+msgstr ""
+"Körprogrammet som buteljen kräver saknas. Installera det i RunExe-"
+"inställningarna eller välj ett annat för att köra program."
+
+#: runexe/frontend/views/capsule_details.py:597
+msgid "Are you sure you want to force stop all processes?"
+msgstr "Vill du verkligen tvångsavsluta alla processer?"
+
+#: runexe/frontend/views/capsule_details.py:598
+msgid "This can cause data loss, corruption, and programs to malfunction."
+msgstr "Det kan orsaka dataförlust, skadade data och programfel."
+
+#: runexe/frontend/views/capsule_details.py:601
+msgid "Force _Stop"
+msgstr "Tvångsav_sluta"
+
+#: runexe/frontend/views/capsule_preferences.py:195
+msgid "This feature is unavailable on your system."
+msgstr "Den här funktionen är inte tillgänglig på ditt system."
+
+#: runexe/frontend/views/capsule_preferences.py:196
+msgid "{} To add this feature, please run flatpak install"
+msgstr "{} Kör flatpak install för att lägga till funktionen"
+
+#: runexe/frontend/views/capsule_preferences.py:246
+msgid "This capsule name is already in use."
+msgstr "Buteljnamnet används redan."
+
+#: runexe/frontend/views/capsule_preferences.py:301
+#: runexe/frontend/windows/launchoptions.py:241
+msgid "Select Working Directory"
+msgstr "Välj arbetskatalog"
+
+#: runexe/frontend/views/capsule_preferences.py:423
+msgid "Directory that contains the data of \"{}\"."
+msgstr "Katalogen som innehåller data för ”{}”."
+
+#: runexe/frontend/views/capsule_preferences.py:746
+msgid "Are you sure you want to delete all snapshots?"
+msgstr "Vill du verkligen ta bort alla ögonblicksbilder?"
+
+#: runexe/frontend/views/capsule_preferences.py:747
+msgid "This will delete all snapshots but keep your files."
+msgstr "Alla ögonblicksbilder tas bort, men dina filer behålls."
+
+#: runexe/frontend/views/capsule_versioning.py:90
+msgid "Please migrate to the new Versioning system to create new states."
+msgstr ""
+"Migrera till det nya versionshanteringssystemet för att skapa nya tillstånd."
+
+#: runexe/frontend/views/details.py:153
+msgid "Installers"
+msgstr "Installationsprogram"
+
+#: runexe/frontend/views/details.py:234
+msgid "Operations in progress, please wait."
+msgstr "Åtgärder pågår. Vänta."
+
+#: runexe/frontend/views/details.py:239
+msgid "Return to your capsules."
+msgstr "Återgå till buteljerna."
+
+#: runexe/frontend/views/importer.py:92
+msgid "Backup imported successfully"
+msgstr "Säkerhetskopian har importerats"
+
+#: runexe/frontend/views/importer.py:94
+msgid "Import failed"
+msgstr "Importen misslyckades"
+
+#: runexe/frontend/views/importer.py:108
+#: runexe/frontend/views/importer.py:147
+msgid "Importing backup…"
+msgstr "Importerar säkerhetskopia…"
+
+#: runexe/frontend/views/importer.py:119
+msgid "Select a Backup Archive"
+msgstr "Välj ett säkerhetskopieringsarkiv"
+
+#: runexe/frontend/views/importer.py:122
+#: runexe/frontend/views/importer.py:161
+msgid "Import"
+msgstr "Importera"
+
+#: runexe/frontend/views/importer.py:158 runexe/frontend/views/new.py:136
+msgid "Select a Configuration File"
+msgstr "Välj en konfigurationsfil"
+
+#: runexe/frontend/views/list.py:60 runexe/frontend/views/list.py:66
+msgid "N/A"
+msgstr "Inte tillämpligt"
+
+#. Set tooltip text
+#: runexe/frontend/views/list.py:91
+#, python-brace-format
+msgid "Run executable in \"{self.config.Name}\""
+msgstr "Kör en körbar fil i ”{self.config.Name}”"
+
+#: runexe/frontend/views/list.py:118
+#, python-brace-format
+msgid "Launching \"{0}\" in \"{1}\"…"
+msgstr "Startar ”{0}” i ”{1}”…"
+
+#: runexe/frontend/views/list.py:235
+msgid "Your Capsules"
+msgstr "Dina buteljer"
+
+#: runexe/frontend/views/loading.py:41
+#, python-brace-format
+msgid "Downloading ~{0} of packages…"
+msgstr "Hämtar cirka {0} paket…"
+
+#: runexe/frontend/views/loading.py:42
+#, python-brace-format
+msgid "Fetched {0} of {1} packages"
+msgstr "Har hämtat {0} av {1} paket"
+
+#: runexe/frontend/views/new.py:157
+msgid "Select Capsule Directory"
+msgstr "Välj buteljkatalog"
+
+#: runexe/frontend/views/new.py:176
+msgid "Creating Capsule…"
+msgstr "Skapar butelj…"
+
+#: runexe/frontend/views/new.py:221
+msgid "Unable to Create Capsule"
+msgstr "Det gick inte att skapa buteljen"
+
+#: runexe/frontend/views/new.py:225
+msgid "Capsule failed to create with one or more errors."
+msgstr "Buteljen kunde inte skapas på grund av ett eller flera fel."
+
+#. Show success
+#: runexe/frontend/views/new.py:232
+msgid "Capsule Created"
+msgstr "Buteljen har skapats"
+
+#: runexe/frontend/views/new.py:233
+#, python-brace-format
+msgid "\"{0}\" was created successfully."
+msgstr "”{0}” skapades."
+
+#: runexe/frontend/views/preferences.py:142
+msgid "Steam was not found or RunExe does not have enough permissions."
+msgstr ""
+"Steam hittades inte eller så har RunExe inte tillräckliga behörigheter."
+
+#: runexe/frontend/views/preferences.py:176
+msgid "Select Capsules Path"
+msgstr "Välj sökväg för RunExe"
+
+#: runexe/frontend/views/preferences.py:198
+msgid "Relaunch RunExe?"
+msgstr "Starta om RunExe?"
+
+#: runexe/frontend/views/preferences.py:199
+msgid ""
+"RunExe will need to be relaunched to use this directory.\n"
+"\n"
+"Be sure to close every program launched from RunExe before relaunching "
+"RunExe, as not doing so can cause data loss, corruption and programs to "
+"malfunction."
+msgstr ""
+"RunExe måste startas om för att använda den här katalogen.\n"
+"\n"
+"Stäng alla program som har startats från RunExe innan du startar om appen. "
+"Annars kan data gå förlorade eller skadas och program sluta fungera."
+
+#: runexe/frontend/views/preferences.py:202
+msgid "_Relaunch"
+msgstr "_Starta om"
+
+#: runexe/frontend/views/preferences.py:243
+msgid "Based on Valve's Wine, includes staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:244
+msgid "Based on Wine upstream, includes staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:247
+msgid "Based on Wine upstream, includes staging patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:248
+msgid ""
+"Based on Valve's Wine, includes staging, Proton and Steam-specific patches. "
+"Requires the Steam Runtime turned on."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:250
+msgid "Other"
+msgstr "Övriga"
+
+#: runexe/frontend/widgets/component.py:74
+msgid "Upgrade"
+msgstr "Uppgradera"
+
+#: runexe/frontend/widgets/component.py:140
+msgid "Installing…"
+msgstr "Installerar…"
+
+#: runexe/frontend/widgets/dependency.py:107
+#: runexe/frontend/widgets/installer.py:81
+#, python-brace-format
+msgid "Manifest for {0}"
+msgstr "Manifest för {0}"
+
+#: runexe/frontend/widgets/dependency.py:172
+#, python-brace-format
+msgid "\"{0}\" uninstalled"
+msgstr "”{0}” avinstallerades"
+
+#: runexe/frontend/widgets/dependency.py:174
+#, python-brace-format
+msgid "\"{0}\" installed"
+msgstr "”{0}” installerades"
+
+#: runexe/frontend/widgets/dependency.py:188
+#, python-brace-format
+msgid "\"{0}\" failed to install"
+msgstr "Det gick inte att installera ”{0}”"
+
+#: runexe/frontend/widgets/importer.py:68
+#, python-brace-format
+msgid "\"{0}\" imported"
+msgstr "”{0}” importerades"
+
+#: runexe/frontend/widgets/installer.py:49
+msgid ""
+"This application may work poorly. The installer was configured to provide "
+"the best possible experience, but expect glitches, instability and lack of "
+"working features."
+msgstr ""
+"Programmet kan fungera dåligt. Installationsprogrammet är konfigurerat för "
+"bästa möjliga upplevelse, men räkna med fel, instabilitet och funktioner som "
+"inte fungerar."
+
+#: runexe/frontend/widgets/installer.py:50
+msgid ""
+"This program works with noticeable glitches, but these glitches do not "
+"affect the application's functionality."
+msgstr ""
+"Programmet fungerar trots märkbara fel, men felen påverkar inte "
+"funktionaliteten."
+
+#: runexe/frontend/widgets/installer.py:51
+msgid "This program works with minor glitches."
+msgstr "Programmet fungerar med mindre problem."
+
+#: runexe/frontend/widgets/installer.py:52
+msgid "This program works perfectly."
+msgstr "Detta program fungerar perfekt."
+
+#: runexe/frontend/widgets/installer.py:90
+#, python-brace-format
+msgid "Review for {0}"
+msgstr "Recension av {0}"
+
+#: runexe/frontend/widgets/library.py:169
+#: runexe/frontend/widgets/program.py:194
+#, python-brace-format
+msgid "Stopping \"{0}\"…"
+msgstr "Stoppar ”{0}”…"
+
+#: runexe/frontend/widgets/program.py:190
+#, python-brace-format
+msgid "Launching \"{0}\" with Steam…"
+msgstr "Startar ”{0}” med Steam…"
+
+#: runexe/frontend/widgets/program.py:214
+#, python-brace-format
+msgid "\"{0}\" hidden"
+msgstr "”{0}” har dolts"
+
+#: runexe/frontend/widgets/program.py:216
+#, python-brace-format
+msgid "\"{0}\" showed"
+msgstr "”{0}” visas nu"
+
+#: runexe/frontend/widgets/program.py:242
+#, python-brace-format
+msgid "\"{0}\" removed"
+msgstr "”{0}” har tagits bort"
+
+#: runexe/frontend/widgets/program.py:274
+#, python-brace-format
+msgid "\"{0}\" renamed to \"{1}\""
+msgstr "”{0}” bytte namn till ”{1}”"
+
+#: runexe/frontend/widgets/program.py:297
+#, python-brace-format
+msgid "Desktop Entry created for \"{0}\""
+msgstr "En skrivbordspost skapades för ”{0}”"
+
+#: runexe/frontend/widgets/program.py:313
+#, python-brace-format
+msgid "\"{0}\" added to your library"
+msgstr "”{0}” har lagts till i ditt bibliotek"
+
+#: runexe/frontend/widgets/program.py:331
+#, python-brace-format
+msgid "\"{0}\" added to your Steam library"
+msgstr "”{0}” har lagts till i ditt Steam-bibliotek"
+
+#: runexe/frontend/windows/crash.py:33
+msgid "Show report"
+msgstr "Visa rapporten"
+
+#: runexe/frontend/windows/crash.py:80
+msgid ""
+"            This issue was reported 5 times and cannot be sent again.\n"
+"            Report your feedback in one of the below existing reports."
+msgstr ""
+"            Det här problemet har rapporterats fem gånger och kan inte "
+"skickas igen.\n"
+"            Lämna din återkoppling i någon av de befintliga rapporterna "
+"nedan."
+
+#: runexe/frontend/windows/display.py:102
+msgid "Updating display settings, please wait…"
+msgstr "Uppdaterar skärminställningar…"
+
+#: runexe/frontend/windows/display.py:114
+msgid "Display settings updated"
+msgstr "Skärminställningarna har uppdaterats"
+
+#: runexe/frontend/windows/dlloverrides.py:136
+msgid "No overrides found."
+msgstr "Inga åsidosättningar hittades."
+
+#: runexe/frontend/windows/drives.py:71
+msgid "Select Drive Path"
+msgstr "Välj sökväg för enheten"
+
+#: runexe/frontend/windows/envvars.py:131
+msgid "No environment variables defined."
+msgstr "Inga miljövariabler har definierats."
+
+#: runexe/frontend/windows/exclusionpatterns.py:108
+msgid "No exclusion patterns defined."
+msgstr "Inga uteslutningsmönster har definierats."
+
+#: runexe/frontend/windows/generic.py:24
+msgid "An error has occurred."
+msgstr "Ett fel har inträffat."
+
+#: runexe/frontend/windows/generic.py:91
+#: runexe/frontend/windows/generic.py:137
+#: runexe/frontend/windows/generic.py:182
+msgid "Copy to clipboard"
+msgstr "Kopiera till urklipp"
+
+#: runexe/frontend/windows/installer.py:62
+msgid "Select Resource File"
+msgstr "Välj resursfil"
+
+#: runexe/frontend/windows/installer.py:109
+msgid "Installing Windows dependencies…"
+msgstr "Installerar Windows-beroenden…"
+
+#: runexe/frontend/windows/installer.py:110
+msgid "Configuring the capsule…"
+msgstr "Konfigurerar buteljen…"
+
+#: runexe/frontend/windows/installer.py:111
+msgid "Processing installer steps…"
+msgstr "Bearbetar installationsstegen…"
+
+#: runexe/frontend/windows/installer.py:112
+msgid "Installing the {}…"
+msgstr "Installerar {}…"
+
+#: runexe/frontend/windows/installer.py:113
+msgid "Performing final checks…"
+msgstr "Utför slutkontroller…"
+
+#: runexe/frontend/windows/installer.py:117
+#, python-brace-format
+msgid "Installing {0}…"
+msgstr "Installerar {0}…"
+
+#: runexe/frontend/windows/installer.py:119
+#, python-brace-format
+msgid "{0} is now available in the programs view."
+msgstr "Nu finns {0} i programvyn."
+
+#: runexe/frontend/windows/installer.py:166
+msgid "Installer failed with unknown error"
+msgstr "Installationsprogrammet misslyckades med ett okänt fel"
+
+#: runexe/frontend/windows/launchoptions.py:56
+#, python-brace-format
+msgid "{0} is already disabled for this capsule."
+msgstr "{0} är redan inaktiverad för den här buteljen."
+
+#: runexe/frontend/windows/launchoptions.py:57
+msgid "This setting is different from the capsule's default."
+msgstr "Inställningen skiljer sig från buteljens standardvärde."
+
+#: runexe/frontend/windows/launchoptions.py:215
+msgid "Select Script"
+msgstr "Välj skript"
+
+#: runexe/frontend/windows/main_window.py:220
+msgid "Custom Capsules Path not Found"
+msgstr "Den anpassade RunExe-sökvägen hittades inte"
+
+#: runexe/frontend/windows/main_window.py:221
+msgid ""
+"Falling back to default path. No capsules from the given path will be listed."
+msgstr ""
+"Återgår till standardsökvägen. Inga buteljer från den angivna sökvägen "
+"kommer att visas."
+
+#: data/io.github.runexe.RunExe.desktop.in.in:3
+msgid "@APP_NAME@"
+msgstr "@APP_NAME@"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:4
+#: data/io.github.runexe.RunExe.metainfo.xml.in:8
+msgid "Run Windows Software"
+msgstr "Kör Windows-program"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:13
+msgid "wine;windows;"
+msgstr "wine;windows;"
+
+#: data/io.github.runexe.RunExe.gschema.xml:6
+msgid "Flatpak migration"
+msgstr "Flatpak-migrering"
+
+#: data/io.github.runexe.RunExe.gschema.xml:7
+msgid "Toggle the Flatpak migration dialog."
+msgstr "Visa eller dölj dialogrutan för Flatpak-migrering."
+
+#: data/io.github.runexe.RunExe.gschema.xml:11
+msgid "Dark theme"
+msgstr "Mörkt tema"
+
+#: data/io.github.runexe.RunExe.gschema.xml:12
+msgid "Force the use of dark theme."
+msgstr "Tvinga användning av mörkt tema."
+
+#: data/io.github.runexe.RunExe.gschema.xml:16
+msgid "Toggle update date in list"
+msgstr "Visa uppdateringsdatum i listan"
+
+#: data/io.github.runexe.RunExe.gschema.xml:17
+msgid "Toggle the update date in list of capsules."
+msgstr "Visa eller dölj uppdateringsdatumet i buteljlistan."
+
+#: data/io.github.runexe.RunExe.gschema.xml:21
+msgid "Steam apps listing"
+msgstr "Lista Steam-appar"
+
+#: data/io.github.runexe.RunExe.gschema.xml:22
+msgid "Toggle steam apps listing."
+msgstr "Visa eller dölj Steam-appar."
+
+#: data/io.github.runexe.RunExe.gschema.xml:26
+msgid "Epic Games listing"
+msgstr "Lista Epic Games-spel"
+
+#: data/io.github.runexe.RunExe.gschema.xml:27
+msgid "Toggle epic games listing."
+msgstr "Visa eller dölj Epic Games-spel."
+
+#: data/io.github.runexe.RunExe.gschema.xml:31
+msgid "Ubisoft Connect listing"
+msgstr "Lista Ubisoft Connect-spel"
+
+#: data/io.github.runexe.RunExe.gschema.xml:32
+msgid "Toggle ubisoft connect listing."
+msgstr "Visa eller dölj Ubisoft Connect-spel."
+
+#: data/io.github.runexe.RunExe.gschema.xml:36
+msgid "Window width"
+msgstr "Fönsterbredd"
+
+#: data/io.github.runexe.RunExe.gschema.xml:37
+msgid "Change the window width."
+msgstr "Ändra fönsterbredden."
+
+#: data/io.github.runexe.RunExe.gschema.xml:41
+msgid "Window height"
+msgstr "Fönsterhöjd"
+
+#: data/io.github.runexe.RunExe.gschema.xml:42
+msgid "Change the window height."
+msgstr "Ändra fönsterhöjden."
+
+#: data/io.github.runexe.RunExe.gschema.xml:47
+msgid "Show notifications."
+msgstr "Visa aviseringar."
+
+#: data/io.github.runexe.RunExe.gschema.xml:51
+msgid "Temp cleaning"
+msgstr "Rensning av temporära filer"
+
+#: data/io.github.runexe.RunExe.gschema.xml:52
+msgid "Clean the temp path when booting the system."
+msgstr "Rensa katalogen för temporära filer när systemet startar."
+
+#: data/io.github.runexe.RunExe.gschema.xml:56
+msgid "Release Candidate"
+msgstr "Utgåvekandidat"
+
+#: data/io.github.runexe.RunExe.gschema.xml:57
+msgid "Toggle release candidate for runners."
+msgstr "Visa utgåvekandidater för körprogram."
+
+#: data/io.github.runexe.RunExe.gschema.xml:61
+msgid "Startup view"
+msgstr "Startvy"
+
+#: data/io.github.runexe.RunExe.gschema.xml:62
+msgid "Choose which view the application should be started in."
+msgstr "Välj vilken vy appen ska öppnas i."
+
+#: data/io.github.runexe.RunExe.gschema.xml:67
+msgid ""
+"Toggle experimental features such as versioning and installers. Release "
+"candidate for runners."
+msgstr ""
+"Aktivera eller inaktivera experimentella funktioner som versionshantering "
+"och installationsprogram samt utgåvekandidater för körprogram."
+
+#: data/io.github.runexe.RunExe.gschema.xml:71
+msgid "Steam Proton Support"
+msgstr "Stöd för Steam Proton"
+
+#: data/io.github.runexe.RunExe.gschema.xml:72
+msgid "Toggle Steam Proton prefixes support."
+msgstr "Aktivera eller inaktivera stöd för Steam Proton-prefix."
+
+#: data/io.github.runexe.RunExe.gschema.xml:76
+msgid "Experiments:sandbox"
+msgstr "Experiment:sandlåda"
+
+#: data/io.github.runexe.RunExe.gschema.xml:77
+msgid "Toggle experimental Sandbox per capsule."
+msgstr "Aktivera eller inaktivera experimentell sandlåda per butelj."
+
+#: data/io.github.runexe.RunExe.gschema.xml:81
+msgid "Automatically close RunExe"
+msgstr "Stäng RunExe automatiskt"
+
+#: data/io.github.runexe.RunExe.gschema.xml:82
+msgid "Close RunExe after starting an executable from the file manager."
+msgstr "Stäng RunExe efter att en körbar fil har startats från filhanteraren."
+
+#: data/io.github.runexe.RunExe.gschema.xml:86
+msgid "Show sandbox warning"
+msgstr "Visa sandlådevarningen"
+
+#: data/io.github.runexe.RunExe.gschema.xml:87
+msgid "Toggle sandbox warning."
+msgstr "Visa eller dölj sandlådevarningen."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:11
+msgid "Run Windows software on Linux with RunExe!"
+msgstr "Kör Windows-program på Linux med RunExe!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:12
+msgid "Capsule software and enjoy at your leisure!"
+msgstr "Buteljera programvara och njut på din fritid!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:13
+msgid ""
+"Our built-in dependency installation system grants automatic software "
+"compatibility access. Use the download manager to download the official "
+"components: the runner (Wine, Proton), DXVK, dependencies, etc."
+msgstr ""
+"Vårt inbyggda installationssystem för beroenden ger automatisk åtkomst till "
+"programvarukompatibilitet. Använd nedladdningshanteraren för att ladda ner "
+"de officiella komponenterna: Körprogram (Wine, Proton), DXVK, beroenden etc."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:16
+msgid ""
+"Capsule versioning keeps your work safe now and lets you restore it later!"
+msgstr ""
+"Buteljversionshantering håller ditt arbete säkert nu och låter dig "
+"återställa det senare!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:17
+msgid "Features:"
+msgstr "Funktioner:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:19
+msgid "Create capsules using preconfigured environments or create your own"
+msgstr ""
+"Skapa buteljer med hjälp av förkonfigurerade miljöer eller skapa dina egna"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:20
+msgid ""
+"Run executables (.exe/.msi) in your capsules, directly from the context menu "
+"of your file-manager"
+msgstr ""
+"Kör exekverbara filer (.exe/.msi) i dina buteljer, direkt från kontextmenyn "
+"i din filhanterare"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:21
+msgid "Automated detection of applications installed in your capsules"
+msgstr "Automatisk identifiering av program installerade i dina buteljer"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:22
+msgid "Add environment variables quickly"
+msgstr "Lägg till miljövariabler snabbt"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:23
+msgid "Override DLLs directly from per-capsule preferences"
+msgstr "Åsidosätt DLL-filer direkt från inställningar per butelj"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:24
+msgid "On-the-fly runner change for any Capsule"
+msgstr "Byte av körprogram i farten för vilken butelj som helst"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:25
+msgid ""
+"Various gaming-performance optimizations (esync, fsync, DXVK, cache, shader "
+"compiler, offload … and much more.)"
+msgstr ""
+"Olika prestandaoptimeringar för spel (esync, fsync, DXVK, cache, shader "
+"kompilator, avlastning ... och mycket mer.)"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:26
+msgid "Automatic installation and management of Wine and Proton runners"
+msgstr "Automatisk installation och hantering av körprogrammen Wine och Proton"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:27
+msgid "Automatic capsule repair in case of breakage"
+msgstr "Automatisk buteljreparation vid eventuell skada"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:28
+msgid "Integrated dependency-installer based on a community-driven repository"
+msgstr "Integrerad beroendeinstallatör baserad på ett gemenskapsdrivet förråd"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:29
+msgid "Integrated Task manager for Wine processes"
+msgstr "Integrerad aktivitetshanterare för Wine-processer"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:30
+msgid "Access to ProtonDB and WineHQ for support"
+msgstr "Tillgång till ProtonDB och WineHQ för stöd"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:31
+msgid "System for bringing your configuration to new versions of RunExe"
+msgstr "System för att få med din konfiguration till nya versioner av RunExe"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:32
+msgid "Back up and import runexe"
+msgstr "Säkerhetskopiera och importera buteljer"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:33
+msgid "Import Wine prefixes from other managers"
+msgstr "Importera Wine-prefix från andra hanterare"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:34
+msgid "RunExe versioning"
+msgstr "RunExe versionshantering"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:35
+msgid "... and much more that you can find by installing RunExe!"
+msgstr "... och mycket mer som du hittar genom att installera RunExe!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:84
+msgid "Update metadata information"
+msgstr "Uppdaterade metadatainformationen"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:89
+msgid "Add more update information and correct release notes version"
+msgstr ""
+"Lade till mer uppdateringsinformation och rättade versionsnumret i "
+"utgåvenoteringarna"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:94
+msgid "Fixed \"Add to Steam\" button"
+msgstr "Rättade knappen ”Lägg till i Steam”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:95
+msgid "Fixed CapsuleConfig being not serializable"
+msgstr "Rättade att CapsuleConfig inte kunde serialiseras"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:96
+msgid "Fixed Patool double extraction failing"
+msgstr "Rättade ett fel där Patool misslyckades med dubbel extrahering"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:101
+msgid "Correct version"
+msgstr "Rättade versionen"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:106
+msgid "Fix crash when creating a capsule"
+msgstr "Rättade en krasch när en butelj skapades"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:111
+msgid "Major change: Redesign New Capsule interface"
+msgstr "Större ändring: omdesignat gränssnitt för nya buteljer"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:112
+msgid "Quality of life improvements:"
+msgstr "Användbarhetsförbättringar:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:114
+msgid "Replace emote-love icon with library in library page"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:115
+msgid "Add toast for \"Run Executable\""
+msgstr "Lade till ett popupmeddelande för ”Kör körbar fil”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:117
+msgid "Bug fixes:"
+msgstr "Felrättningar:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:119
+msgid "Adding shortcut to Steam resulted an error"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:120
+msgid "Importing backups resulted an error"
+msgstr "Ett fel uppstod när säkerhetskopior importerades"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:121
+msgid "Steam Runtime automatically enabled when using wine-ge-custom"
+msgstr "Steam-körmiljön aktiveras automatiskt när wine-ge-custom används"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:122
+msgid ""
+"Various library related fixes, like empty covers, and crashes related to "
+"missing entries"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:123
+msgid "Fix various issues related to text encoding"
+msgstr "Rättade flera problem med textkodning"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:130
+msgid "Fix error when downloading if RunExe isn't run from terminal"
+msgstr "Rättade ett hämtningsfel när RunExe inte kördes från terminalen"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:137
+msgid "Correct version date"
+msgstr "Rättade versionsdatumet"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:138
+msgid "Hide NVIDIA-related critical errors on non NVIDIA systems"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:145
+msgid "Gamescope improvements and fixes"
+msgstr "Förbättringar och rättningar för Gamescope"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:146
+msgid "Dependency installation is faster and more stable"
+msgstr "Installationen av beroenden är nu snabbare och stabilare"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:147
+msgid "The health check has more information for faster debugging"
+msgstr "Hälsokontrollen innehåller mer information för snabbare felsökning"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:148
+msgid "NVAPI has a lot of fixes and is more stable, should now work properly"
+msgstr ""
+"NVAPI har fått många rättningar och är stabilare; det bör nu fungera korrekt"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:149
+msgid "Fix crash when downloading a component"
+msgstr "Rättade en krasch vid hämtning av en komponent"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:150
+msgid "Backend code improvement by avoiding spin-lock"
+msgstr "Förbättrade serverdelskoden genom att undvika spinlock"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:151
+msgid "More variables for installer scripting"
+msgstr "Fler variabler för skript i installationsprogram"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:152
+msgid "Fix onboard dialog showing \"All ready\" while it was in fact not ready"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:153
+msgid "Improvement to build system"
+msgstr "Förbättrade byggsystemet"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:154
+msgid "Enabling VKD3D by default when creating capsules for gaming"
+msgstr "Aktiverade VKD3D som standard när spelbuteljer skapas"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:155
+msgid "Fix crashes when reading Steam files with bad encodings"
+msgstr "Rättade krascher vid läsning av Steam-filer med felaktig teckenkodning"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:156
+msgid ""
+"Fix components not updated correctly in the UI after installation/"
+"uninstallation"
+msgstr ""
+"Rättade att komponenter inte uppdaterades korrekt i gränssnittet efter "
+"installation eller avinstallation"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:157
+msgid "More FSR fixes"
+msgstr "Fler FSR-rättningar"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:158
+msgid ""
+"Fix the issue when a program closes after it was launched from \"Run "
+"executable\""
+msgstr ""
+"Rättade problemet där ett program stängdes efter att ha startats via ”Kör "
+"körbar fil”"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:159
+msgid "and many, many, many more!"
+msgstr "och mycket, mycket, mycket mer!"

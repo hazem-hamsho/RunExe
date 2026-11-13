@@ -1,0 +1,3184 @@
+# Tamil translation
+# Copyright (C) 2022 Bottles Contributors
+# This file is distributed under the same license as the runexe package.
+# K.B.Dharun Krishna <kbdharunkrishna@gmail.com>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: runexe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-27 13:50+0530\n"
+"PO-Revision-Date: 2025-10-30 14:47+0000\n"
+"Last-Translator: Anonymous <noreply@weblate.org>\n"
+"Language-Team: Tamil\n"
+"Language: ta\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14.1-dev\n"
+
+#: runexe/backend/managers/backup.py:48 runexe/backend/managers/backup.py:95
+msgid "No path specified"
+msgstr "பாதை எதுவும் குறிப்பிடப்படவில்லை"
+
+#: runexe/backend/managers/backup.py:56
+#, python-brace-format
+msgid "Backup {0}"
+msgstr "காப்புப்பிரதி {0}"
+
+#: runexe/backend/managers/backup.py:101
+#, python-brace-format
+msgid "Importing backup: {0}"
+msgstr "காப்புப்பிரதியை இறக்குமதி செய்கிறது: {0}"
+
+#: runexe/backend/managers/manager.py:1057
+msgid "Fail to install components, tried 3 times."
+msgstr "கூறுகளை நிறுவ முடியவில்லை, 3 முறை முயற்சித்தேன்."
+
+#: runexe/backend/managers/manager.py:1068
+msgid "Missing essential components. Installing…"
+msgstr "அத்தியாவசிய கூறுகளைக் காணவில்லை. நிறுவுகிறது…"
+
+#: runexe/backend/managers/manager.py:1145
+msgid "Failed to create capsule directory."
+msgstr "பாட்டில் கோப்பகத்தை உருவாக்குவதில் தோல்வி."
+
+#: runexe/backend/managers/manager.py:1157
+msgid "Failed to create placeholder directory/file."
+msgstr "ஒதுக்கிட கோப்பகம்/கோப்பை உருவாக்க முடியவில்லை."
+
+#: runexe/backend/managers/manager.py:1162
+msgid "Generating capsule configuration…"
+msgstr "பாட்டில் உள்ளமைவை உருவாக்குகிறது…"
+
+#: runexe/backend/managers/manager.py:1185
+msgid "Template found, applying…"
+msgstr "டெம்ப்ளேட் கிடைத்தது, பயன்படுத்துகிறது…"
+
+#. execute wineboot on the capsule path
+#: runexe/backend/managers/manager.py:1197
+msgid "The Wine config is being updated…"
+msgstr "ஒயின் கட்டமைப்பு புதுப்பிக்கப்படுகிறது…"
+
+#: runexe/backend/managers/manager.py:1199
+msgid "Wine config updated!"
+msgstr "ஒயின் கட்டமைப்பு புதுப்பிக்கப்பட்டது!"
+
+#: runexe/backend/managers/manager.py:1207
+msgid "Running as Flatpak, sandboxing userdir…"
+msgstr "Flatpak ஆக இயங்குகிறது, சாண்ட்பாக்சிங் பயனர்டிர்…"
+
+#: runexe/backend/managers/manager.py:1209
+msgid "Sandboxing userdir…"
+msgstr "சாண்ட்பாக்சிங் பயனர்டிர் …"
+
+#: runexe/backend/managers/manager.py:1250
+msgid "Setting Windows version…"
+msgstr "விண்டோஸ் பதிப்பை அமைக்கிறது…"
+
+#: runexe/backend/managers/manager.py:1260
+msgid "Apply CMD default settings…"
+msgstr "CMD இயல்புநிலை அமைப்புகளைப் பயன்படுத்து…"
+
+#: runexe/backend/managers/manager.py:1268
+msgid "Optimizing environment…"
+msgstr "சூழலை மேம்படுத்துகிறது…"
+
+#: runexe/backend/managers/manager.py:1279
+#, python-brace-format
+msgid "Applying environment: {0}…"
+msgstr "விண்ணப்பிக்கும் சூழல்: {0}…"
+
+#: runexe/backend/managers/manager.py:1289
+msgid "(!) Using a custom environment recipe…"
+msgstr "(!) தனிப்பயன் சூழல் செய்முறையைப் பயன்படுத்துதல்…"
+
+#: runexe/backend/managers/manager.py:1292
+msgid "(!) Recipe not not found or not valid…"
+msgstr "(!) செய்முறை கிடைக்கவில்லை அல்லது செல்லாது…"
+
+#: runexe/backend/managers/manager.py:1309
+msgid "Installing DXVK…"
+msgstr "DXVK ஐ நிறுவுகிறது…"
+
+#: runexe/backend/managers/manager.py:1317
+msgid "Installing VKD3D…"
+msgstr "VKD3D ஐ நிறுவுகிறது…"
+
+#: runexe/backend/managers/manager.py:1326
+msgid "Installing DXVK-NVAPI…"
+msgstr "DXVK-NVAPI ஐ நிறுவுகிறது…"
+
+#: runexe/backend/managers/manager.py:1335
+#, python-format
+msgid "Installing dependency: %s …"
+msgstr "சார்புநிலையை நிறுவுகிறது: %s…"
+
+#: runexe/backend/managers/manager.py:1345
+msgid "Creating versioning state 0…"
+msgstr "பதிப்பு நிலை 0 ஐ உருவாக்குகிறது…"
+
+#: runexe/backend/managers/manager.py:1353
+msgid "Finalizing…"
+msgstr "இறுதி செய்கிறது…"
+
+#: runexe/backend/managers/manager.py:1364
+msgid "Caching template…"
+msgstr "டெம்ப்ளேட்டை தற்காலிகமாக சேமிக்கிறது…"
+
+#: runexe/backend/managers/versioning.py:83
+msgid "Committing state …"
+msgstr "உறுதியளிக்கும் நிலை…"
+
+#: runexe/backend/managers/versioning.py:90
+msgid "Nothing to commit"
+msgstr "கமிட் செய்ய எதுவும் இல்லை"
+
+#: runexe/backend/managers/versioning.py:96
+#, python-brace-format
+msgid "New state [{0}] created successfully!"
+msgstr "புதிய மாநிலம் [{0}] உருவாக்கப்பட்டது!"
+
+#: runexe/backend/managers/versioning.py:123
+msgid "States list retrieved successfully!"
+msgstr "மாநிலங்களின் பட்டியல் வெற்றிகரமாக மீட்டெடுக்கப்பட்டது!"
+
+#: runexe/backend/managers/versioning.py:153
+#, python-brace-format
+msgid "State {0} restored successfully!"
+msgstr "நிலை {0} வெற்றிகரமாக மீட்டெடுக்கப்பட்டது!"
+
+#: runexe/backend/managers/versioning.py:155
+msgid "Restoring state {} …"
+msgstr "நிலையை மீட்டெடுக்கிறது {} …"
+
+#: runexe/backend/managers/versioning.py:162
+msgid "State not found"
+msgstr "மாநிலம் கிடைக்கவில்லை"
+
+#: runexe/backend/managers/versioning.py:168
+msgid "State {} is already the active state"
+msgstr "மாநிலம் {} ஏற்கனவே செயலில் உள்ள நிலை"
+
+#: runexe/frontend/main.py:112
+msgid "Show version"
+msgstr "பதிப்பைக் காட்டு"
+
+#: runexe/frontend/main.py:120
+msgid "Executable path"
+msgstr "இயங்கக்கூடிய பாதை"
+
+#: runexe/frontend/main.py:128
+msgid "lnk path"
+msgstr "இணைப்பு பாதை"
+
+#: runexe/frontend/main.py:136 runexe/frontend/ui/library-entry.blp:118
+#: runexe/frontend/ui/list-entry.blp:5
+msgid "Capsule name"
+msgstr "பாட்டில் பெயர்"
+
+#: runexe/frontend/main.py:144
+msgid "Pass arguments"
+msgstr "வாதங்களை அனுப்பவும்"
+
+#: runexe/frontend/main.py:203
+msgid "Invalid URI (syntax: capsules:run/<capsule>/<program>)"
+msgstr "தவறான URI (தொடரியல்: பாட்டில்கள்:ரன்/<பாட்டில்>/<நிரல்>)"
+
+#: runexe/frontend/main.py:244
+msgid "[Quit] request received."
+msgstr "[வெளியேறு] கோரிக்கை பெறப்பட்டது."
+
+#: runexe/frontend/main.py:253
+msgid "[Help] request received."
+msgstr "[Help] கோரிக்கை பெறப்பட்டது."
+
+#: runexe/frontend/main.py:261
+msgid "[Refresh] request received."
+msgstr "[Refresh] கோரிக்கை பெறப்பட்டது."
+
+#: runexe/frontend/main.py:294
+msgid "Donate"
+msgstr "நன்கொடையளி"
+
+#: runexe/frontend/main.py:299
+msgid "Third-Party Libraries and Special Thanks"
+msgstr "மூன்றாம்-தரப்பு நூலகங்கள் மற்றும் சிறப்பு நன்றி"
+
+#: runexe/frontend/main.py:325
+msgid "Sponsored and Funded by"
+msgstr "நிதியுதவி மற்றும் நிதியளிக்கப்பட்டது இவர்களால்"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/about.blp:10
+msgid "RunExe Developers"
+msgstr "பாட்டில்ஸ் டெவலப்பர்கள்"
+
+#: runexe/frontend/ui/about.blp:12
+msgid "translator_credits"
+msgstr "K.B.Dharun Krishna https://github.com/kbdharun"
+
+#: runexe/frontend/ui/component-entry.blp:4
+msgid "Component version"
+msgstr "கூறு பதிப்பு"
+
+#: runexe/frontend/ui/component-entry.blp:12
+#: runexe/frontend/ui/dependency-entry.blp:29
+#: runexe/frontend/ui/program-entry.blp:77
+msgid "Uninstall"
+msgstr "நிறுவல் நீக்கவும்"
+
+#: runexe/frontend/ui/component-entry.blp:23
+msgid "Browse Files"
+msgstr "கோப்புகளை உலாவவும்"
+
+#: runexe/frontend/ui/component-entry.blp:34
+msgid ""
+"The installation failed. This may be due to a repository error, partial "
+"download or checksum mismatch. Press to try again."
+msgstr ""
+"நிறுவல் தோல்வி அடைந்தது. இது களஞ்சியப் பிழை, பகுதி பதிவிறக்கம் அல்லது செக்சம் பொருத்தமின்மை காரணமாக இருக்கலாம். "
+"மீண்டும் முயற்சிக்க அழுத்தவும்."
+
+#: runexe/frontend/ui/component-entry.blp:45
+msgid "Download & Install"
+msgstr "பதிவிறக்கி நிறுவவும்"
+
+#: runexe/frontend/ui/component-entry.blp:58
+msgid "0%"
+msgstr "0%"
+
+#: runexe/frontend/ui/dependency-entry.blp:16
+msgid "Show Manifest"
+msgstr "மேனிஃபெஸ்டைக் காட்டு"
+
+#: runexe/frontend/ui/dependency-entry.blp:20
+msgid "License"
+msgstr "உரிமம்"
+
+#: runexe/frontend/ui/dependency-entry.blp:24
+msgid "Reinstall"
+msgstr "மீண்டும் நிறுவவும்"
+
+#: runexe/frontend/ui/dependency-entry.blp:36
+#: runexe/frontend/ui/installer-entry.blp:27
+msgid "Report a Bug…"
+msgstr "பிழையைப் புகாரளிக்கவும்…"
+
+#: runexe/frontend/ui/dependency-entry.blp:42
+msgid "Dependency name"
+msgstr "சார்பு பெயர்"
+
+#: runexe/frontend/ui/dependency-entry.blp:44
+msgid "Dependency description"
+msgstr "சார்பு விளக்கம்"
+
+#: runexe/frontend/ui/dependency-entry.blp:51
+msgid "Category"
+msgstr "வகையினம்"
+
+#: runexe/frontend/ui/dependency-entry.blp:64
+msgid "Download & Install this Dependency"
+msgstr "இந்த சார்புநிலையைப் பதிவிறக்கி நிறுவவும்"
+
+#: runexe/frontend/ui/dependency-entry.blp:79
+msgid ""
+"An installation error occurred. Restart RunExe to read the Crash Report or "
+"run it via terminal to read the output."
+msgstr ""
+"நிறுவல் பிழை ஏற்பட்டது. செயலிழப்பு அறிக்கையைப் படிக்க பாட்டில்களை மறுதொடக்கம் செய்யவும் அல்லது வெளியீட்டைப் படிக்க "
+"டெர்மினல் வழியாக இயக்கவும்."
+
+#: runexe/frontend/ui/dependency-entry.blp:93
+msgid "Dependency Menu"
+msgstr "சார்பு மெனு"
+
+#: runexe/frontend/ui/details-capsule.blp:16
+msgid "Troubleshooting"
+msgstr "பழுது நீக்கும்"
+
+#: runexe/frontend/ui/details-capsule.blp:24
+msgid "Browse Files…"
+msgstr "கோப்புகளை உலாவுக…"
+
+#: runexe/frontend/ui/details-capsule.blp:28
+msgid "Duplicate Capsule…"
+msgstr "நகல் பாட்டில்…"
+
+#: runexe/frontend/ui/details-capsule.blp:32
+#: runexe/frontend/ui/importer.blp:73
+msgid "This is the complete archive of your capsule, including personal files."
+msgstr "இது தனிப்பட்ட கோப்புகள் உட்பட உங்கள் பாட்டிலின் முழுமையான காப்பகமாகும்."
+
+#: runexe/frontend/ui/details-capsule.blp:33
+msgid "Full Backup…"
+msgstr "முழு காப்புப்பிரதி…"
+
+#: runexe/frontend/ui/details-capsule.blp:37
+#: runexe/frontend/ui/importer.blp:68
+msgid ""
+"This is just the capsule configuration, it's perfect if you want to create a "
+"new one but without personal files."
+msgstr ""
+"இது பாட்டில் உள்ளமைவு மட்டுமே, நீங்கள் புதிய ஒன்றை உருவாக்க விரும்பினால், ஆனால் தனிப்பட்ட கோப்புகள் இல்லாமல் இருந்தால் "
+"இது சரியானது."
+
+#: runexe/frontend/ui/details-capsule.blp:38
+msgid "Export Configuration…"
+msgstr "ஏற்றுமதி உள்ளமைவு…"
+
+#: runexe/frontend/ui/details-capsule.blp:45
+#: runexe/frontend/views/capsule_details.py:344
+msgid "Show Hidden Programs"
+msgstr "மறைக்கப்பட்ட நிரல்களைக் காட்டு"
+
+#: runexe/frontend/ui/details-capsule.blp:49
+msgid "Search for new programs"
+msgstr "புதிய நிரல்களைத் தேடுங்கள்"
+
+#: runexe/frontend/ui/details-capsule.blp:56
+msgid "Delete Capsule…"
+msgstr "பாட்டிலை நீக்கு…"
+
+#: runexe/frontend/ui/details-capsule.blp:73
+#: runexe/frontend/ui/details-dependencies.blp:99
+#: runexe/frontend/ui/details-installers.blp:68
+msgid "Secondary Menu"
+msgstr "இரண்டாம் நிலை மெனு"
+
+#: runexe/frontend/ui/details-capsule.blp:90
+msgid "Force Stop all Processes"
+msgstr "அனைத்து செயல்முறைகளையும் கட்டாயப்படுத்தி நிறுத்துங்கள்"
+
+#: runexe/frontend/ui/details-capsule.blp:94
+msgid "Simulate a Windows system shutdown."
+msgstr "விண்டோஸ் சிஸ்டம் பணிநிறுத்தத்தை உருவகப்படுத்தவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:95
+msgid "Shutdown"
+msgstr "பணிநிறுத்தம்"
+
+#: runexe/frontend/ui/details-capsule.blp:99
+msgid "Simulate a Windows system reboot."
+msgstr "விண்டோஸ் சிஸ்டம் ரீபூட்டை உருவகப்படுத்தவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:100
+msgid "Reboot"
+msgstr "மறுதொடக்கம்"
+
+#: runexe/frontend/ui/details-capsule.blp:118
+#: runexe/frontend/ui/dialog-launch-options.blp:6
+msgid "Launch Options"
+msgstr "விருப்பங்களைத் திறக்கவும்"
+
+#: runexe/frontend/ui/details-capsule.blp:135
+msgid "Run in Terminal"
+msgstr "டெர்மினலில் இயக்கவும்"
+
+#: runexe/frontend/ui/details-capsule.blp:148
+msgid "Drop files to execute them"
+msgstr "அவற்றை இயக்க கோப்புகளை கைவிடவும்"
+
+#: runexe/frontend/ui/details-capsule.blp:164
+msgid "My capsule"
+msgstr "என் பாட்டில்"
+
+#: runexe/frontend/ui/details-capsule.blp:177
+msgid "Win64"
+msgstr "வின்64"
+
+#: runexe/frontend/ui/details-capsule.blp:189
+#: runexe/frontend/ui/list-entry.blp:12 runexe/frontend/ui/new.blp:71
+msgid "Environment"
+msgstr "சுற்றுச்சூழல்"
+
+#: runexe/frontend/ui/details-capsule.blp:201
+#: runexe/frontend/ui/details-preferences.blp:14
+#: runexe/frontend/ui/new.blp:128
+msgid "Runner"
+msgstr "ஓடுபவர்"
+
+#: runexe/frontend/ui/details-capsule.blp:213
+#: runexe/frontend/ui/list-entry.blp:21
+msgid "Versioning enabled for this capsule"
+msgstr "இந்த பாட்டிலுக்கான பதிப்பு இயக்கப்பட்டது"
+
+#: runexe/frontend/ui/details-capsule.blp:218
+msgid "Versioning is active for this capsule."
+msgstr "இந்த பாட்டிலுக்கான பதிப்பு செயலில் உள்ளது."
+
+#: runexe/frontend/ui/details-capsule.blp:227
+#: runexe/frontend/ui/list-entry.blp:31
+msgid "0"
+msgstr "0"
+
+#: runexe/frontend/ui/details-capsule.blp:247
+msgid "Run Executable…"
+msgstr "இயங்கக்கூடியது…"
+
+#: runexe/frontend/ui/details-capsule.blp:272
+msgid "Programs"
+msgstr "நிகழ்ச்சிகள்"
+
+#: runexe/frontend/ui/details-capsule.blp:275
+msgid ""
+"Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an "
+"executable to the Programs list, or \"Install Programs…\" to install "
+"programs curated by the community."
+msgstr ""
+"இயங்கக்கூடிய ஒன்றை இயக்க \"இயக்கக்கூடியது...\" என்பதைக் கிளிக் செய்யவும், நிரல் பட்டியலில் இயங்கக்கூடிய ஒன்றைச் "
+"சேர்க்க \"குறுக்குவழிகளைச் சேர்...\" அல்லது சமூகத்தால் நிர்வகிக்கப்படும் நிரல்களை நிறுவ \"நிரல்களை நிறுவு...\" "
+"என்பதைக் கிளிக் செய்யவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:298
+msgid "Add Shortcuts…"
+msgstr "குறுக்குவழிகளைச் சேர்…"
+
+#: runexe/frontend/ui/details-capsule.blp:325
+msgid "Install Programs…"
+msgstr "நிரல்களை நிறுவவும்…"
+
+#: runexe/frontend/ui/details-capsule.blp:346
+msgid "Options"
+msgstr "விருப்பங்கள்"
+
+#: runexe/frontend/ui/details-capsule.blp:350
+#: runexe/frontend/views/details.py:141
+msgid "Settings"
+msgstr "அமைப்புகள்"
+
+#: runexe/frontend/ui/details-capsule.blp:351
+msgid "Configure capsule settings."
+msgstr "பாட்டில் அமைப்புகளை உள்ளமைக்கவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:360
+#: runexe/frontend/views/details.py:145
+msgid "Dependencies"
+msgstr "சார்புநிலைகள்"
+
+#: runexe/frontend/ui/details-capsule.blp:361
+msgid "Install dependencies for programs."
+msgstr "நிரல்களுக்கான சார்புகளை நிறுவவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:370
+#: runexe/frontend/ui/details-preferences.blp:377
+#: runexe/frontend/views/details.py:149
+msgid "Snapshots"
+msgstr "ஸ்னாப்ஷாட்கள்"
+
+#: runexe/frontend/ui/details-capsule.blp:371
+msgid "Create and manage capsule states."
+msgstr "பாட்டில் நிலைகளை உருவாக்கி நிர்வகிக்கவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:380
+#: runexe/frontend/ui/details-capsule.blp:426
+#: runexe/frontend/views/details.py:157
+msgid "Task Manager"
+msgstr "பணி மேலாளர்"
+
+#: runexe/frontend/ui/details-capsule.blp:381
+msgid "Manage running programs."
+msgstr "இயங்கும் நிரல்களை நிர்வகிக்கவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:390
+msgid "Tools"
+msgstr "கருவிகள்"
+
+#: runexe/frontend/ui/details-capsule.blp:394
+msgid "Command Line"
+msgstr "கட்டளை வரி"
+
+#: runexe/frontend/ui/details-capsule.blp:395
+msgid "Run commands inside the Capsule."
+msgstr "பாட்டிலின் உள்ளே கட்டளைகளை இயக்கவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:404
+msgid "Registry Editor"
+msgstr "ரெஜிஸ்ட்ரி எடிட்டர்"
+
+#: runexe/frontend/ui/details-capsule.blp:405
+msgid "Edit the internal registry."
+msgstr "உள் பதிவேட்டைத் திருத்தவும்."
+
+#: runexe/frontend/ui/details-capsule.blp:413
+msgid "Legacy Wine Tools"
+msgstr "பாரம்பரிய ஒயின் கருவிகள்"
+
+#: runexe/frontend/ui/details-capsule.blp:417
+msgid "Explorer"
+msgstr "எக்ஸ்ப்ளோரர்"
+
+#: runexe/frontend/ui/details-capsule.blp:435
+msgid "Debugger"
+msgstr "பிழைத்திருத்தி"
+
+#: runexe/frontend/ui/details-capsule.blp:444
+#: runexe/frontend/ui/importer.blp:69 runexe/frontend/ui/new.blp:145
+msgid "Configuration"
+msgstr "உள்ளமைவு"
+
+#: runexe/frontend/ui/details-capsule.blp:453
+msgid "Uninstaller"
+msgstr "நிறுவல் நீக்கி"
+
+#: runexe/frontend/ui/details-capsule.blp:462
+msgid "Control Panel"
+msgstr "கண்ட்ரோல் பேனல்"
+
+#: runexe/frontend/ui/details-dependencies.blp:9
+msgid "Search for dependencies…"
+msgstr "சார்புகளைத் தேடு…"
+
+#: runexe/frontend/ui/details-dependencies.blp:22
+#: runexe/frontend/ui/preferences.blp:178
+#: runexe/frontend/ui/preferences.blp:235
+msgid "You're offline :("
+msgstr "நீங்கள் ஆஃப்லைனில் இருக்கிறீர்கள் :("
+
+#: runexe/frontend/ui/details-dependencies.blp:25
+msgid "RunExe is running in offline mode, so dependencies are not available."
+msgstr "பாட்டில்கள் ஆஃப்லைன் பயன்முறையில் இயங்குவதால் சார்புநிலைகள் கிடைக்காது."
+
+#: runexe/frontend/ui/details-dependencies.blp:47
+msgid ""
+"Dependencies are resources that improve compatibility of Windows software.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"சார்புகள் என்பது விண்டோஸ் மென்பொருளின் இணக்கத்தன்மையை மேம்படுத்தும் ஆதாரங்கள்.\n"
+"\n"
+"இந்தப் பக்கத்தில் உள்ள கோப்புகள் தனியுரிம உரிமத்தின் கீழ் மூன்றாம் தரப்பினரால் வழங்கப்படுகின்றன. அவற்றை நிறுவுவதன் "
+"மூலம், அந்தந்த உரிம விதிமுறைகளை நீங்கள் ஏற்றுக்கொள்கிறீர்கள்."
+
+#: runexe/frontend/ui/details-dependencies.blp:76
+msgid "Report a problem or a missing dependency."
+msgstr "சிக்கல் அல்லது விடுபட்ட சார்புநிலையைப் புகாரளிக்கவும்."
+
+#: runexe/frontend/ui/details-dependencies.blp:77
+msgid "Report Missing Dependency"
+msgstr "விடுபட்ட சார்புநிலையைப் புகாரளிக்கவும்"
+
+#: runexe/frontend/ui/details-dependencies.blp:81
+msgid "Read Documentation."
+msgstr "ஆவணங்களைப் படிக்கவும்."
+
+#: runexe/frontend/ui/details-dependencies.blp:82
+#: runexe/frontend/ui/details-installers.blp:51
+#: runexe/frontend/ui/details-versioning.blp:37
+msgid "Documentation"
+msgstr "ஆவணமாக்கம்"
+
+#: runexe/frontend/ui/details-dependencies.blp:92
+#: runexe/frontend/ui/details-installers.blp:61
+#: runexe/frontend/ui/window.blp:46
+msgid "Search"
+msgstr "தேடு"
+
+#: runexe/frontend/ui/details-installers.blp:9
+msgid "Search for Programs…"
+msgstr "நிரல்களைத் தேடு…"
+
+#: runexe/frontend/ui/details-installers.blp:15
+msgid ""
+"Install programs curated by our community.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"எங்கள் சமூகத்தால் நிர்வகிக்கப்பட்ட நிரல்களை நிறுவவும்.\n"
+"\n"
+"இந்தப் பக்கத்தில் உள்ள கோப்புகள் தனியுரிம உரிமத்தின் கீழ் மூன்றாம் தரப்பினரால் வழங்கப்படுகின்றன. அவற்றை நிறுவுவதன் "
+"மூலம், அந்தந்த உரிம விதிமுறைகளை நீங்கள் ஏற்றுக்கொள்கிறீர்கள்."
+
+#: runexe/frontend/ui/details-installers.blp:29
+msgid "No Installers Found"
+msgstr "நிறுவிகள் எதுவும் இல்லை"
+
+#: runexe/frontend/ui/details-installers.blp:32
+msgid ""
+"The repository is unreachable or no installer is compatible with this capsule."
+msgstr ""
+"களஞ்சியத்தை அணுக முடியவில்லை அல்லது இந்த பாட்டிலுடன் எந்த நிறுவியும் இணக்கமாக இல்லை."
+
+#: runexe/frontend/ui/details-installers.blp:50
+#: runexe/frontend/ui/details-versioning.blp:36
+#: runexe/frontend/ui/preferences.blp:81
+msgid "Read Documentation"
+msgstr "ஆவணங்களைப் படிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:6
+#: runexe/frontend/ui/dialog-duplicate.blp:52
+msgid "Name"
+msgstr "பெயர்"
+
+#: runexe/frontend/ui/details-preferences.blp:11
+msgid "Components"
+msgstr "கூறுகள்"
+
+#: runexe/frontend/ui/details-preferences.blp:15
+#: runexe/frontend/ui/new.blp:129
+msgid "The version of the Wine compatibility layer."
+msgstr "ஒயின் இணக்கத்தன்மை லேயரின் பதிப்பு."
+
+#: runexe/frontend/ui/details-preferences.blp:17
+msgid "Updating Runner and components, please wait…"
+msgstr "ரன்னர் மற்றும் கூறுகளைப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/ui/details-preferences.blp:27
+#: runexe/frontend/ui/preferences.blp:262
+msgid "DXVK"
+msgstr "DXVK"
+
+#: runexe/frontend/ui/details-preferences.blp:28
+msgid "Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan."
+msgstr ""
+"Direct3D 8/9/10/11 இணக்கத்தன்மையை வல்கனுக்கு மொழிபெயர்ப்பதன் மூலம் மேம்படுத்தவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:30
+msgid "Updating DXVK, please wait…"
+msgstr "DXVKஐப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/ui/details-preferences.blp:40
+#: runexe/frontend/ui/preferences.blp:266
+msgid "VKD3D"
+msgstr "VKD3D"
+
+#: runexe/frontend/ui/details-preferences.blp:41
+msgid "Improve Direct3D 12 compatibility by translating it to Vulkan."
+msgstr ""
+"Direct3D 12 இணக்கத்தன்மையை வல்கனுக்கு மொழிபெயர்ப்பதன் மூலம் மேம்படுத்தவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:43
+msgid "Updating VKD3D, please wait…"
+msgstr "VKD3Dஐப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/ui/details-preferences.blp:54
+msgid "DXVK NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/details-preferences.blp:58
+#: runexe/frontend/ui/details-preferences.blp:93
+msgid "Updating DXVK-NVAPI, please wait…"
+msgstr "DXVK-NVAPI ஐப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/ui/details-preferences.blp:68
+#: runexe/frontend/ui/preferences.blp:274
+msgid "LatencyFleX"
+msgstr "லேடென்சிஃப்ளெக்ஸ்"
+
+#: runexe/frontend/ui/details-preferences.blp:69
+msgid "Increase responsiveness. Can be detected by some anti-cheat software."
+msgstr ""
+"பதிலளிக்கும் திறனை அதிகரிக்கவும். சில ஏமாற்று எதிர்ப்பு மென்பொருள் மூலம் கண்டறியபடலாம்."
+
+#: runexe/frontend/ui/details-preferences.blp:71
+msgid "Updating LatencyFleX, please wait…"
+msgstr "LatencyFleXஐப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/ui/details-preferences.blp:84
+msgid "Display"
+msgstr "காட்சி"
+
+#: runexe/frontend/ui/details-preferences.blp:88
+msgid "Deep Learning Super Sampling"
+msgstr "ஆழ்ந்த கற்றல் சூப்பர் மாதிரி"
+
+#: runexe/frontend/ui/details-preferences.blp:89
+msgid ""
+"Increase performance at the expense of visuals using DXVK-NVAPI. Only works "
+"on newer NVIDIA GPUs."
+msgstr ""
+"DXVK-NVAPI ஐப் பயன்படுத்தி காட்சிகளின் செலவில் செயல்திறனை அதிகரிக்கவும். புதிய NVIDIA GPUகளில் மட்டுமே வேலை "
+"செய்யும்."
+
+#: runexe/frontend/ui/details-preferences.blp:105
+msgid "FidelityFX Super Resolution"
+msgstr "FidelityFX சூப்பர் தெளிவுத்திறன்"
+
+#: runexe/frontend/ui/details-preferences.blp:106
+msgid "Increase performance at the expense of visuals. Only works on Vulkan."
+msgstr ""
+"காட்சிகளின் இழப்பில் செயல்திறனை அதிகரிக்கவும். வல்கனில் மட்டுமே வேலை செய்கிறது."
+
+#: runexe/frontend/ui/details-preferences.blp:108
+msgid "Manage FidelityFX Super Resolution settings"
+msgstr "FidelityFX சூப்பர் தெளிவுத்திறன் அமைப்புகளை நிர்வகிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:125
+msgid "Discrete Graphics"
+msgstr "தனித்துவமான கிராபிக்ஸ்"
+
+#: runexe/frontend/ui/details-preferences.blp:126
+msgid ""
+"Use the discrete graphics card to increase performance at the expense of "
+"power consumption."
+msgstr ""
+"ஆற்றல் நுகர்வு செலவில் செயல்திறனை அதிகரிக்க தனித்துவமான கிராபிக்ஸ் அட்டையைப் பயன்படுத்தவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:135
+msgid "Post-Processing Effects"
+msgstr "பிந்தைய செயலாக்க விளைவுகள்"
+
+#: runexe/frontend/ui/details-preferences.blp:136
+msgid ""
+"Add various post-processing effects using vkBasalt. Only works on Vulkan."
+msgstr ""
+"vkBasalt ஐப் பயன்படுத்தி பல்வேறு பிந்தைய செயலாக்க விளைவுகளைச் சேர்க்கவும். வல்கனில் மட்டுமே வேலை செய்கிறது."
+
+#: runexe/frontend/ui/details-preferences.blp:138
+msgid "Manage Post-Processing Layer settings"
+msgstr "பிந்தைய செயலாக்க லேயர் அமைப்புகளை நிர்வகிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:154
+msgid "Manage how games should be displayed on the screen using Gamescope."
+msgstr ""
+"கேம்ஸ்கோப்பைப் பயன்படுத்தி கேம்கள் எப்படி திரையில் காட்டப்பட வேண்டும் என்பதை நிர்வகிக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:157
+msgid "Manage Gamescope settings"
+msgstr "கேம்ஸ்கோப் அமைப்புகளை நிர்வகிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:171
+msgid "Advanced Display Settings"
+msgstr "மேம்பட்ட காட்சி அமைப்புகள்"
+
+#: runexe/frontend/ui/details-preferences.blp:184
+msgid "Performance"
+msgstr "செயல்திறன்"
+
+#: runexe/frontend/ui/details-preferences.blp:188
+msgid "Enable synchronization to increase performance of multicore processors."
+msgstr "மல்டிகோர் செயலிகளின் செயல்திறனை அதிகரிக்க ஒத்திசைவை இயக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:189
+msgid "Synchronization"
+msgstr "ஒத்திசைவு"
+
+#: runexe/frontend/ui/details-preferences.blp:193
+msgid "System"
+msgstr "சிஸ்டம்"
+
+#: runexe/frontend/ui/details-preferences.blp:194
+msgid "Esync"
+msgstr "ஈசின்க்"
+
+#: runexe/frontend/ui/details-preferences.blp:195
+msgid "Fsync"
+msgstr "எப் சின்க்"
+
+#: runexe/frontend/ui/details-preferences.blp:196
+msgid "Futex2"
+msgstr "ஃபியூடெக்ஸ்2"
+
+#: runexe/frontend/ui/details-preferences.blp:202
+msgid "Monitor Performance"
+msgstr "செயல்திறனைக் கண்காணிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:203
+msgid ""
+"Display monitoring information such as framerate, temperatures, CPU/GPU load "
+"and more on OpenGL and Vulkan using MangoHud."
+msgstr ""
+"MangoHud ஐப் பயன்படுத்தி OpenGL மற்றும் Vulkan இல் ஃப்ரேம்ரேட், வெப்பநிலை, CPU/GPU சுமை மற்றும் பல "
+"போன்ற கண்காணிப்புத் தகவலைக் காண்பி."
+
+#: runexe/frontend/ui/details-preferences.blp:211
+msgid "Feral GameMode"
+msgstr "ஃபெரல் கேம்மோட்"
+
+#: runexe/frontend/ui/details-preferences.blp:212
+msgid ""
+"Apply a set of optimizations to your device. Can improve game performance."
+msgstr ""
+"உங்கள் சாதனத்தில் மேம்படுத்தல்களின் தொகுப்பைப் பயன்படுத்தவும். விளையாட்டு செயல்திறனை மேம்படுத்த முடியும்."
+
+#: runexe/frontend/ui/details-preferences.blp:221
+msgid "Preload Game Files"
+msgstr "கேம் கோப்புகளை முன்கூட்டியே ஏற்றவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:222
+msgid ""
+"Improve loading time when launching the game multiple times. The game will "
+"take longer to start for the first time."
+msgstr ""
+"விளையாட்டை பல முறை தொடங்கும் போது ஏற்றுதல் நேரத்தை மேம்படுத்தவும். விளையாட்டு முதல் முறையாக தொடங்குவதற்கு அதிக நேரம் "
+"எடுக்கும்."
+
+#: runexe/frontend/ui/details-preferences.blp:226
+msgid "Manage vmtouch settings"
+msgstr "vmtouch அமைப்புகளை நிர்வகிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:241
+msgid "OBS Game Capture"
+msgstr "OBS கேம் பிடிப்பு"
+
+#: runexe/frontend/ui/details-preferences.blp:242
+msgid "Toggle OBS Game Capture for all Vulkan and OpenGL programs."
+msgstr ""
+"அனைத்து Vulkan மற்றும் OpenGL நிரல்களுக்கும் OBS கேம் கேப்சரை நிலைமாற்று."
+
+#: runexe/frontend/ui/details-preferences.blp:251
+msgid "Compatibility"
+msgstr "இணக்கத்தன்மை"
+
+#: runexe/frontend/ui/details-preferences.blp:254
+msgid "Windows Version"
+msgstr "விண்டோஸ் பதிப்பு"
+
+#: runexe/frontend/ui/details-preferences.blp:257
+msgid "Updating Windows version, please wait…"
+msgstr "விண்டோஸ் பதிப்பைப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/ui/details-preferences.blp:266
+msgid "Language"
+msgstr "மொழி"
+
+#: runexe/frontend/ui/details-preferences.blp:267
+msgid "Choose the language to use with programs."
+msgstr "நிரல்களுடன் பயன்படுத்த மொழியைத் தேர்ந்தெடுக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:275
+msgid "Dedicated Sandbox"
+msgstr "பிரத்யேக சாண்ட்பாக்ஸ்"
+
+#: runexe/frontend/ui/details-preferences.blp:276
+msgid "Use a restricted/managed environment for this capsule."
+msgstr ""
+"இந்த பாட்டிலுக்கு கட்டுப்படுத்தப்பட்ட/நிர்வகிக்கப்பட்ட சூழலைப் பயன்படுத்தவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:279
+msgid "Manage the Sandbox Permissions"
+msgstr "சாண்ட்பாக்ஸ் அனுமதிகளை நிர்வகிக்கவும்"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/details-preferences.blp:295
+msgid "RunExe Runtime"
+msgstr "பாட்டில்கள் இயங்கும் நேரம்"
+
+#: runexe/frontend/ui/details-preferences.blp:296
+msgid ""
+"Provide a bundle of extra libraries for more compatibility. Disable it if "
+"you run into issues."
+msgstr ""
+"மேலும் இணக்கத்தன்மைக்கு கூடுதல் நூலகங்களின் தொகுப்பை வழங்குகிறது, நீங்கள் சிக்கல்களைச் சந்தித்தால் முடக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:306
+msgid "Steam Runtime"
+msgstr "ஸ்டீம் இயக்க நேரம்"
+
+#: runexe/frontend/ui/details-preferences.blp:307
+msgid ""
+"Provide a bundle of extra libraries for more compatibility with Steam games. "
+"Disable it if you run into issues."
+msgstr ""
+"மேலும் இணக்கத்தன்மைக்கு கூடுதல் நூலகங்களின் தொகுப்பை வழங்குகிறது, நீங்கள் சிக்கல்களைச் சந்தித்தால் முடக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:315
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Working Directory"
+msgstr "பணி அடைவு"
+
+#: runexe/frontend/ui/details-preferences.blp:318
+#: runexe/frontend/ui/dialog-launch-options.blp:59
+#: runexe/frontend/ui/dialog-launch-options.blp:90
+#: runexe/frontend/ui/new.blp:150 runexe/frontend/ui/new.blp:181
+#: runexe/frontend/ui/preferences.blp:136
+msgid "Reset to Default"
+msgstr "இயல்புநிலைக்கு மீட்டமைக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:339
+#: runexe/frontend/ui/preferences.blp:157 runexe/frontend/views/new.py:78
+#: runexe/frontend/views/preferences.py:210
+msgid "(Default)"
+msgstr "(இயல்புநிலை)"
+
+#: runexe/frontend/ui/details-preferences.blp:347
+#: runexe/frontend/ui/dialog-dll-overrides.blp:7
+#: runexe/frontend/ui/dialog-dll-overrides.blp:12
+msgid "DLL Overrides"
+msgstr "DLL மேலெழுதுகிறது"
+
+#: runexe/frontend/ui/details-preferences.blp:357
+#: runexe/frontend/ui/dialog-env-vars.blp:20
+msgid "Environment Variables"
+msgstr "சுற்றுச்சூழல் மாறிகள்"
+
+#: runexe/frontend/ui/details-preferences.blp:367
+msgid "Manage Drives"
+msgstr "இயக்ககங்களை நிர்வகிக்கவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:381
+msgid "Automatic Snapshots"
+msgstr "தானியங்கி ஸ்னாப்ஷாட்கள்"
+
+#: runexe/frontend/ui/details-preferences.blp:382
+msgid ""
+"Automatically create snapshots before installing software or changing "
+"settings."
+msgstr ""
+"மென்பொருளை நிறுவும் முன் அல்லது அமைப்புகளை மாற்றும் முன் தானாகவே ஸ்னாப்ஷாட்களை உருவாக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:391
+msgid "Compression"
+msgstr "சுருக்கம்"
+
+#: runexe/frontend/ui/details-preferences.blp:392
+msgid ""
+"Compress snapshots to reduce space. This will slow down the creation of "
+"snapshots."
+msgstr ""
+"இடத்தைக் குறைக்க ஸ்னாப்ஷாட்களை சுருக்கவும். இது ஸ்னாப்ஷாட்களை உருவாக்குவதை மெதுவாக்கும்."
+
+#: runexe/frontend/ui/details-preferences.blp:401
+msgid "Use Exclusion Patterns"
+msgstr "விலக்கு வடிவங்களைப் பயன்படுத்தவும்"
+
+#: runexe/frontend/ui/details-preferences.blp:402
+msgid "Exclude paths in snapshots."
+msgstr "ஸ்னாப்ஷாட்களில் பாதைகளை விலக்கவும்."
+
+#: runexe/frontend/ui/details-preferences.blp:405
+msgid "Manage Patterns"
+msgstr "வடிவங்களை நிர்வகிக்கவும்"
+
+#: runexe/frontend/ui/details-taskmanager.blp:17
+msgid "Refresh"
+msgstr "புதுப்பிப்பு"
+
+#: runexe/frontend/ui/details-taskmanager.blp:22
+msgid "Stop process"
+msgstr "செயல்முறையை நிறுத்து"
+
+#: runexe/frontend/ui/details-versioning.blp:18
+msgid "No Snapshots Found"
+msgstr "ஸ்னாப்ஷாட்கள் எதுவும் கிடைக்கவில்லை"
+
+#: runexe/frontend/ui/details-versioning.blp:19
+msgid "Create your first snapshot to start saving states of your preferences."
+msgstr ""
+"உங்கள் விருப்பங்களின் நிலைகளைச் சேமிக்கத் தொடங்க உங்கள் முதல் ஸ்னாப்ஷாட்டை உருவாக்கவும்."
+
+#: runexe/frontend/ui/details-versioning.blp:54
+msgid "A short comment"
+msgstr "ஒரு சிறு கருத்து"
+
+#: runexe/frontend/ui/details-versioning.blp:58
+msgid "Save the capsule state."
+msgstr "பாட்டில் நிலையை சேமிக்கவும்."
+
+#: runexe/frontend/ui/details-versioning.blp:78
+msgid "Create new Snapshot"
+msgstr "புதிய ஸ்னாப்ஷாட்டை உருவாக்கவும்"
+
+#: runexe/frontend/ui/details.blp:16
+msgid "Details"
+msgstr "விவரங்கள்"
+
+#: runexe/frontend/ui/details.blp:24 runexe/frontend/ui/details.blp:64
+#: runexe/frontend/ui/importer.blp:15
+msgid "Go Back"
+msgstr "திரும்பி செல்"
+
+#: runexe/frontend/ui/details.blp:75
+msgid "Operations"
+msgstr "செயல்பாடுகள்"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:4
+msgid "Select Capsule"
+msgstr "பாட்டிலைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:16
+#: runexe/frontend/ui/dialog-proton-alert.blp:16
+#: runexe/frontend/ui/dialog-rename.blp:15
+#: runexe/frontend/ui/dialog-run-args.blp:20
+msgid "Cancel"
+msgstr "ரத்துசெய்"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:21
+msgid "Select"
+msgstr "தேர்ந்தெடு"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:38
+#: runexe/frontend/ui/new.blp:9 runexe/frontend/ui/new.blp:49
+#: runexe/frontend/ui/window.blp:25
+msgid "Create New Capsule"
+msgstr "புதிய பாட்டிலை உருவாக்கவும்"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/dialog-crash-report.blp:8
+msgid "RunExe Crash Report"
+msgstr "பாட்டில்கள் விபத்து அறிக்கை"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:18
+#: runexe/frontend/ui/dialog-duplicate.blp:22
+#: runexe/frontend/ui/dialog-gamescope.blp:23
+#: runexe/frontend/ui/dialog-launch-options.blp:16
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:22
+#: runexe/frontend/ui/dialog-vkbasalt.blp:27 runexe/frontend/ui/new.blp:26
+#: runexe/frontend/views/capsule_details.py:504
+#: runexe/frontend/views/capsule_details.py:600
+#: runexe/frontend/views/capsule_preferences.py:749
+#: runexe/frontend/views/preferences.py:201
+msgid "_Cancel"
+msgstr "_ரத்துசெய்"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:25
+msgid "Send Report"
+msgstr "அறிக்கையை அனுப்பு"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:44
+msgid ""
+"RunExe crashed last time. Please fill out a report attaching the following "
+"traceback to help us identify the problem preventing it from happening again."
+msgstr ""
+"கடந்த முறை பாட்டில்கள் நொறுங்கின. இது மீண்டும் நிகழாமல் தடுக்கும் சிக்கலைக் கண்டறிய எங்களுக்கு உதவ, பின்வரும் "
+"ட்ரேஸ்பேக்கை இணைக்கும் அறிக்கையை நிரப்பவும்."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:74
+msgid ""
+"We found one or more similar (or identical) reports. Please make sure to "
+"check carefully that it has not already been reported before submitting a "
+"new one. Each report requires effort on the part of the developers to "
+"diagnose, please respect their work and make sure you don't post duplicates."
+msgstr ""
+"ஒன்று அல்லது அதற்கு மேற்பட்ட ஒத்த (அல்லது ஒரே மாதிரியான) அறிக்கைகளைக் கண்டறிந்தோம். புதிய ஒன்றைச் சமர்ப்பிக்கும் முன்"
+", அது ஏற்கனவே புகாரளிக்கப்படவில்லை என்பதை கவனமாகச் சரிபார்க்கவும். ஒவ்வொரு அறிக்கையும் கண்டறிய டெவலப்பர்களின் "
+"தரப்பில் முயற்சி தேவைப்படுகிறது, தயவுசெய்து அவர்களின் வேலையை மதிக்கவும் மற்றும் நீங்கள் நகல்களை இடுகையிடவில்லை என்பதை "
+"உறுதிப்படுத்தவும்."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:89
+msgid "I still want to report."
+msgstr "நான் இன்னும் புகாரளிக்க விரும்புகிறேன்."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:95
+msgid "Advanced options"
+msgstr "மேம்பட்ட விருப்பங்கள்"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:13
+msgid "Incomplete package"
+msgstr "முழுமையற்ற தொகுப்பு"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:14
+msgid ""
+"This version of RunExe does not seem to provide all the necessary core "
+"dependencies, please contact the package maintainer or use an official "
+"version."
+msgstr ""
+"பாட்டில்களின் இந்தப் பதிப்பு தேவையான அனைத்து அடிப்படை சார்புகளையும் வழங்குவதாகத் தெரியவில்லை, தயவுசெய்து தொகுப்பு "
+"பராமரிப்பாளரைத் தொடர்புகொள்ளவும் அல்லது அதிகாரப்பூர்வ பதிப்பைப் பயன்படுத்தவும்."
+
+#: runexe/frontend/ui/dialog-deps-check.blp:18
+msgid "Quit"
+msgstr "வெளியேறு"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:11
+msgid ""
+"Dynamic Link Libraries can be specified to be builtin (provided by Wine) or "
+"native (provided by the program)."
+msgstr ""
+"டைனமிக் லிங்க் லைப்ரரிகள் கட்டமைக்கப்பட்டவையாக (ஒயின் மூலம் வழங்கப்பட்டவை) அல்லது சொந்தமாக "
+"(திட்டத்தால் வழங்கப்பட்டவை) குறிப்பிடப்படலாம்."
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:15
+msgid "New Override"
+msgstr "புதிய மேலெழுதல்"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:21
+msgid "Overrides"
+msgstr "மீறுகிறது"
+
+#: runexe/frontend/ui/dialog-drives.blp:7
+msgid "Drives"
+msgstr "இயக்கிகள்"
+
+#: runexe/frontend/ui/dialog-drives.blp:24
+msgid ""
+"These are paths from your host system that are mapped and recognized as "
+"devices by the runner (e.g. C: D:…)."
+msgstr ""
+"இவை உங்கள் புரவலன் அமைப்பிலிருந்து வரும் பாதைகளாகும் அவை வரைபடமாக்கப்பட்டது ரன்னர் மூலம் சாதனங்களாக "
+"அங்கீகரிக்கப்பட்டது(எ.கா. C: D:...)."
+
+#: runexe/frontend/ui/dialog-drives.blp:27
+msgid "Letter"
+msgstr "எழுத்து"
+
+#: runexe/frontend/ui/dialog-drives.blp:49
+msgid "Existing Drives"
+msgstr "தற்போதுள்ள இயக்கிகள்"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:16
+msgid "Duplicate Capsule"
+msgstr "டூப்ளிகேட் பாட்டில்"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:38
+msgid "Duplicate"
+msgstr "நகல்"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:49
+msgid "Enter a name for the duplicate of the Capsule."
+msgstr "பாட்டிலின் நகலுக்கு ஒரு பெயரை உள்ளிடவும்."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:69
+msgid "Duplicating…"
+msgstr "நகலெடுக்கிறது…"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:78
+#: runexe/frontend/ui/dialog-installer.blp:103
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:112
+#: runexe/frontend/views/new.py:177
+msgid "This could take a while."
+msgstr "இதற்கு சிறிது நேரம் ஆகலாம்."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:97
+msgid "Capsule Duplicated"
+msgstr "பாட்டில் நகல் எடுக்கப்பட்டது"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:28
+msgid ""
+"Environment variables are dynamic-named value that can affect the way "
+"running processes will behave on your capsule."
+msgstr ""
+"சுற்றுச்சூழல் மாறிகள் என்பது டைனமிக்-பெயரிடப்பட்ட மதிப்பாகும், இது உங்கள் பாட்டிலில் இயங்கும் செயல்முறைகள் செயல்படும் "
+"விதத்தை பாதிக்கலாம்."
+
+#: runexe/frontend/ui/dialog-env-vars.blp:31
+msgid "Variable Name"
+msgstr "மாறி பெயர்"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:37
+msgid "Existing Variables"
+msgstr "இருக்கும் மாறிகள்"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:20
+msgid "Exclusion Patterns"
+msgstr "விலக்கு வடிவங்கள்"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:28
+msgid ""
+"Define patterns that will be used to prevent some directories to being "
+"versioned."
+msgstr ""
+"சில கோப்பகங்கள் பதிப்பு செய்யப்படுவதைத் தடுக்கப் பயன்படுத்தப்படும் வடிவங்களை வரையறுக்கவும்."
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:31
+msgid "Pattern"
+msgstr "வடிவம்"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:37
+msgid "Existing Patterns"
+msgstr "தற்போதுள்ள வடிவங்கள்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:6
+msgid "Gamescope Settings"
+msgstr "கேம்ஸ்கோப் அமைப்புகள்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:30
+#: runexe/frontend/ui/dialog-launch-options.blp:32
+#: runexe/frontend/ui/dialog-rename.blp:20
+#: runexe/frontend/ui/dialog-vkbasalt.blp:34
+msgid "Save"
+msgstr "சேமி"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:40
+msgid "Manage how games should be displayed."
+msgstr "கேம்கள் எவ்வாறு காட்டப்பட வேண்டும் என்பதை நிர்வகிக்கவும்."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:44
+msgid "Game Resolution"
+msgstr "விளையாட்டு தீர்மானம்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:45
+msgid "Uses the resolution of the video game as a reference in pixels."
+msgstr ""
+"வீடியோ கேமின் தெளிவுத்திறனை பிக்சல்களில் குறிப்புகளாகப் பயன்படுத்துகிறது."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:48
+#: runexe/frontend/ui/dialog-gamescope.blp:85
+msgid "Width"
+msgstr "அகலம்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:64
+#: runexe/frontend/ui/dialog-gamescope.blp:101
+msgid "Height"
+msgstr "உயரம்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:81
+msgid "Window Resolution"
+msgstr "சாளர தெளிவுத்திறன்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:82
+msgid ""
+"Upscales the resolution when using a resolution higher than the game "
+"resolution in pixels."
+msgstr ""
+"பிக்சல்களில் கேம் தெளிவுத்திறனை விட அதிக தெளிவுத்திறனைப் பயன்படுத்தும் போது தெளிவுத்திறனை மேம்படுத்துகிறது."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:118
+msgid "Miscellaneous"
+msgstr "இதர"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:121
+msgid "Frame Rate Limit"
+msgstr "பிரேம் வீத வரம்பு"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:137
+msgid "Frame Rate Limit When Unfocused"
+msgstr "கவனம் செலுத்தாத போது பிரேம் வீத வரம்பு"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:153
+msgid "Integer Scaling"
+msgstr "முழு எண் அளவிடுதல்"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:162
+msgid "Window Type"
+msgstr "ஜன்னல் வகை"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:166
+msgid "Borderless"
+msgstr "எல்லையற்ற"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:172
+msgid "Fullscreen"
+msgstr "முழுத்திரை"
+
+#: runexe/frontend/ui/dialog-installer.blp:40
+msgid "Do you want to proceed with the installation?"
+msgstr "நிறுவலைத் தொடர விரும்புகிறீர்களா?"
+
+#: runexe/frontend/ui/dialog-installer.blp:45
+msgid "Start Installation"
+msgstr "நிறுவலைத் தொடங்கவும்"
+
+#: runexe/frontend/ui/dialog-installer.blp:64
+msgid ""
+"This installer requires some local resources which cannot be provided "
+"otherwise."
+msgstr "இந்த நிறுவிக்கு சில உள்ளூர் ஆதாரங்கள் தேவை, இல்லையெனில் வழங்க முடியாது."
+
+#: runexe/frontend/ui/dialog-installer.blp:68
+msgid "Proceed"
+msgstr "முன்செல்"
+
+#: runexe/frontend/ui/dialog-installer.blp:127
+msgid "Completed!"
+msgstr "முடிக்கப்பட்டது!"
+
+#: runexe/frontend/ui/dialog-installer.blp:130
+msgid "Show Programs"
+msgstr "நிரல்களைக் காட்டு"
+
+#: runexe/frontend/ui/dialog-installer.blp:148
+msgid "Installation Failed!"
+msgstr "நிறுவல் தோல்வி அடைந்தது!"
+
+#: runexe/frontend/ui/dialog-installer.blp:149
+msgid "Something went wrong."
+msgstr "ஏதோ தவறு நடந்தது."
+
+#: runexe/frontend/ui/dialog-journal.blp:9
+msgid "All messages"
+msgstr "அனைத்து செய்திகளும்"
+
+#: runexe/frontend/ui/dialog-journal.blp:13
+msgid "Critical"
+msgstr "முக்கியமான"
+
+#: runexe/frontend/ui/dialog-journal.blp:17
+msgid "Errors"
+msgstr "பிழைகள்"
+
+#: runexe/frontend/ui/dialog-journal.blp:21
+msgid "Warnings"
+msgstr "எச்சரிக்கைகள்"
+
+#: runexe/frontend/ui/dialog-journal.blp:25
+msgid "Info"
+msgstr "தகவல்"
+
+#: runexe/frontend/ui/dialog-journal.blp:40
+msgid "Journal browser"
+msgstr "ஜர்னல் உலாவி"
+
+#: runexe/frontend/ui/dialog-journal.blp:48
+msgid "Journal Browser"
+msgstr "ஜர்னல் உலாவி"
+
+#: runexe/frontend/ui/dialog-journal.blp:53
+msgid "Change Logging Level."
+msgstr "உள்நுழைவு நிலையை மாற்றவும்."
+
+#: runexe/frontend/ui/dialog-journal.blp:57
+msgid "All"
+msgstr "எல்லா"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:42
+msgid "Those arguments will be passed at launch."
+msgstr "அந்த வாதங்கள் துவக்கத்தில் நிறைவேற்றப்படும்."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:43
+msgid "Custom Arguments"
+msgstr "விருப்ப வாதங்கள்"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:46
+msgid "Command Arguments"
+msgstr "கட்டளை வாதங்கள்"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:47
+#, c-format
+msgid "e.g.: VAR=value %command% -example1 -example2 -example3=hello"
+msgstr "எ.கா.:VAR=மதிப்பு %command% -example1 -example2 -example3=வணக்கம்"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:52
+msgid "Post-run Script"
+msgstr "பிந்தைய-ரன் ஸ்கிரிப்ட்"
+
+#. endregion
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+#: runexe/frontend/windows/launchoptions.py:54
+msgid "Choose a script which should be executed after run."
+msgstr ""
+"இயக்கத்திற்குப் பிறகு செயல்படுத்தப்பட வேண்டிய ஸ்கிரிப்டைத் தேர்ந்தெடுக்கவும்."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:70
+msgid "Choose a Script"
+msgstr "ஸ்கிரிப்டைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+#: runexe/frontend/windows/launchoptions.py:55
+msgid "Choose from where start the program."
+msgstr "நிரலை எங்கிருந்து தொடங்குவது என்பதைத் தேர்ந்தெடுக்கவும்."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:101
+#: runexe/frontend/ui/drive-entry.blp:22
+msgid "Choose a Directory"
+msgstr "ஒரு கோப்பகத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:114
+msgid "These settings will override the default settings for this executable."
+msgstr ""
+"இந்த இயங்குதளத்திற்கான இயல்புநிலை அமைப்புகளை இந்த அமைப்புகள் மேலெழுதும்."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:115
+msgid "Preferences Overrides"
+msgstr "விருப்பத்தேர்வுகள் மேலெழுதப்படுகின்றன"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:119
+msgid "Reset to Capsule's Defaults"
+msgstr "பாட்டிலின் இயல்புநிலைக்கு மீட்டமைக்கவும்"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:165
+msgid "Virtual Desktop"
+msgstr "மெய்நிகர் டெஸ்க்டாப்"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:4
+msgid "Proton Disclaimer"
+msgstr "புரோட்டான் மறுப்பு"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:21
+msgid "Use Proton"
+msgstr "புரோட்டானைப் பயன்படுத்தவும்"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:35
+msgid ""
+"Beware, using Proton-based runners in non-Steam capsules can cause problems "
+"and prevent them from behaving correctly.\n"
+"\n"
+"We recommend using Wine-GE rather, a version of Proton meant to run outside "
+"of Steam.\n"
+"\n"
+"Proceeding will automatically enable the Steam runtime (if present in the "
+"system and detected by RunExe) in order to allow it to access the necessary "
+"libraries and limit compatibility problems. Be aware that GloriousEggroll, "
+"the runner's provider, is not responsible for any problems and we ask that "
+"you do not report to them."
+msgstr ""
+"ஜாக்கிரதை, ஸ்டீம் அல்லாத பாட்டில்களில் புரோட்டான்-அடிப்படையிலான ரன்னர்களைப் பயன்படுத்துவது சிக்கல்களை ஏற்படுத்தலாம் மற்றும்"
+" அவை சரியாக நடந்து கொள்வதைத் தடுக்கலாம்.\n"
+"\n"
+"நீராவிக்கு வெளியே இயங்கும் புரோட்டானின் பதிப்பு Wine-GE ஐப் பயன்படுத்த பரிந்துரைக்கிறோம்.\n"
+"\n"
+"தேவையான நூலகங்களை அணுகவும், இணக்கத்தன்மை சிக்கல்களை வரம்பிடவும், ஸ்டீம் இயக்க நேரத்தை "
+"(கணினியில் இருந்தால் மற்றும் பாட்டில்களால் கண்டறியப்பட்டால்) செயல்முறை தானாகவே செயல்படுத்தும். ரன்னர் வழங்குநரான "
+"GloriousEggroll எந்த பிரச்சனைகளுக்கும் பொறுப்பேற்காது என்பதை அறிந்து கொள்ளுங்கள், மேலும் அவர்களிடம் புகாரளிக்க "
+"வேண்டாம் என்று கேட்டுக்கொள்கிறோம்."
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:43
+msgid "I got it."
+msgstr "எனக்கு கிடைத்துவிட்டது."
+
+#: runexe/frontend/ui/dialog-rename.blp:7
+msgid "Rename"
+msgstr "மறுபெயரிடுங்கள்"
+
+#: runexe/frontend/ui/dialog-rename.blp:30
+msgid "Choose a new name for the selected program."
+msgstr "தேர்ந்தெடுக்கப்பட்ட நிரலுக்கு புதிய பெயரைத் தேர்ந்தெடுக்கவும்."
+
+#: runexe/frontend/ui/dialog-rename.blp:33
+msgid "New Name"
+msgstr "புதிய பெயர்"
+
+#: runexe/frontend/ui/dialog-run-args.blp:13
+msgid "Run With Arguments"
+msgstr "வாதங்களுடன் இயக்கவும்"
+
+#: runexe/frontend/ui/dialog-run-args.blp:34
+#: runexe/frontend/views/capsule_details.py:401
+#: runexe/frontend/views/list.py:131
+msgid "Run"
+msgstr "ஓடு"
+
+#: runexe/frontend/ui/dialog-run-args.blp:44
+msgid "Write below the arguments to be passed to the executable."
+msgstr "எக்ஸிகியூட்டபிள்க்கு அனுப்ப வேண்டிய வாதங்களை கீழே எழுதவும்."
+
+#: runexe/frontend/ui/dialog-run-args.blp:47
+msgid "e.g.: -opengl -SkipBuildPatchPrereq"
+msgstr "எ.கா.: -opengl -SkipBuildPatchPrereq"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:7
+msgid "Sandbox Settings"
+msgstr "சாண்ட்பாக்ஸ் அமைப்புகள்"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:25
+msgid "Share Network"
+msgstr "பகிர்வு பிணையம்"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:34
+msgid "Share Sound"
+msgstr "ஒலியைப் பகிரவும்"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:16
+msgid "Upgrade Needed"
+msgstr "மேம்படுத்தல் தேவை"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:38
+#: runexe/frontend/ui/onboard.blp:81
+msgid "Continue"
+msgstr "தொடரவும்"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:47
+msgid "Launch upgrade"
+msgstr "மேம்படுத்தலை துவக்கவும்"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:66
+msgid "New Versioning System"
+msgstr "புதிய பதிப்பு அமைப்பு"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:69
+msgid "The new capsule versioning system has landed."
+msgstr "புதிய பாட்டில் பதிப்பு அமைப்பு இறங்கியுள்ளது."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:83
+msgid ""
+"RunExe has a whole new Versioning System that is not backwards compatible.\n"
+"\n"
+"To continue using versioning we need to re-initialize the capsule repository. "
+"This will not delete data from your capsule but will delete all existing "
+"snapshots and create a new one.\n"
+"\n"
+"If you need to go back to a previous snapshot before continuing, close this "
+"window and restore the snapshot, then reopen the capsule to show this window "
+"again.\n"
+"\n"
+"The old system will be discontinued in one of the next releases."
+msgstr ""
+"பாட்டில்கள் பின்னோக்கி இணக்கமாக இல்லாத முற்றிலும் புதிய பதிப்பு முறைமையைக் கொண்டுள்ளது.\n"
+"\n"
+"பதிப்பைத் தொடர்ந்து பயன்படுத்த, பாட்டில் களஞ்சியத்தை மீண்டும் தொடங்க வேண்டும். இது உங்கள் பாட்டிலிலிருந்து தரவை நீக்காது, "
+"ஆனால் ஏற்கனவே உள்ள எல்லா நிலைகளையும் நீக்கி புதிய ஒன்றை உருவாக்கும்.\n"
+"\n"
+"தொடர்வதற்கு முன் முந்தைய நிலைக்குச் செல்ல வேண்டும் என்றால், இந்தச் சாளரத்தை மூடிவிட்டு நிலையை மீட்டெடுக்கவும், பின்னர் இந்தச்"
+" சாளரத்தைக் காட்ட பாட்டிலை மீண்டும் திறக்கவும்.\n"
+"\n"
+"பழைய முறை அடுத்த வெளியீடுகளில் ஒன்றில் நிறுத்தப்படும்."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:103
+msgid "Re-initializing Repository…"
+msgstr "களஞ்சியத்தை மீண்டும் துவக்குகிறது…"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:133
+msgid "Done! Please restart RunExe."
+msgstr "முடிந்தது! பாட்டில்களை மீண்டும் தொடங்கவும்."
+
+#. Translators: vkBasalt is a Vulkan post processing layer for Linux
+#: runexe/frontend/ui/dialog-vkbasalt.blp:10
+msgid "Post-Processing Effects Settings"
+msgstr "பிந்தைய செயலாக்க விளைவுகள் அமைப்புகள்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:44
+msgid "Default"
+msgstr "இயல்புநிலை"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:48
+msgid "Default Settings"
+msgstr "இயல்புநிலை அமைப்புகள்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:57
+msgid "Effects are applied according to the list order."
+msgstr "பட்டியல் வரிசையின் படி விளைவுகள் பயன்படுத்தப்படுகின்றன."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:58
+msgid "Effects"
+msgstr "விளைவுகள்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:62
+msgid "Contrast Adaptive Sharpening"
+msgstr "கான்ட்ராஸ்ட் அடாப்டிவ் ஷார்ப்பனிங்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:65
+#: runexe/frontend/ui/dialog-vkbasalt.blp:102
+msgid "Sharpness"
+msgstr "கூர்மை"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:69
+#: runexe/frontend/ui/dialog-vkbasalt.blp:106
+#: runexe/frontend/ui/dialog-vkbasalt.blp:134
+#: runexe/frontend/ui/dialog-vkbasalt.blp:167
+#: runexe/frontend/ui/dialog-vkbasalt.blp:195
+#: runexe/frontend/ui/dialog-vkbasalt.blp:223
+#: runexe/frontend/ui/dialog-vkbasalt.blp:256
+#: runexe/frontend/ui/dialog-vkbasalt.blp:288
+#: runexe/frontend/ui/dialog-vkbasalt.blp:316
+#: runexe/frontend/ui/dialog-vkbasalt.blp:343
+#: runexe/frontend/ui/dialog-vkbasalt.blp:370 runexe/frontend/ui/new.blp:58
+msgid "Show Information"
+msgstr "தகவலைக் காட்டு"
+
+#. Translators: Luma is not translatable
+#: runexe/frontend/ui/dialog-vkbasalt.blp:99
+msgid "Denoised Luma Sharpening"
+msgstr "டினோய்ஸ்ட் லும கூர்மைப்படுத்துதல்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:130
+msgid "Denoise"
+msgstr "டினோய்ஸ்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:160
+msgid "Fast Approximate Anti-Aliasing"
+msgstr "வேகமான தோராயமான எதிர்ப்பு-மாற்றுப்பெயர்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:163
+msgid "Subpixel Quality"
+msgstr "துணைபிக்சல் தரம்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:191
+msgid "Quality Edge Threshold"
+msgstr "தர எட்ஜ் த்ரெஷோல்ட்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:219
+msgid "Quality Edge Threshold Minimum"
+msgstr "தர எட்ஜ் த்ரெஷோல்ட் குறைந்தபட்சம்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:249
+msgid "Subpixel Morphological Anti-Aliasing"
+msgstr "துணை-பிக்சல் உருவவியல் எதிர்ப்பு மாற்றுப்-பெயர்ப்பு"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:252
+msgid "Edge Detection"
+msgstr "விளிம்பு கண்டறிதல்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:267
+msgid "Luma"
+msgstr "லுமா"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:273
+msgid "Color"
+msgstr "நிறம்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:284
+msgid "Threshold"
+msgstr "வாசல்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:312
+msgid "Max Search Steps"
+msgstr "அதிகபட்ச தேடல் படிகள்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:339
+msgid "Max Search Steps Diagonal"
+msgstr "அதிகபட்ச தேடல் படிகள் மூலைவிட்டம்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:366
+msgid "Max Corner Rounding"
+msgstr "மேக்ஸ் கார்னர் ரவுண்டிங்"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:411
+msgid ""
+"CAS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper, whereas values lower than 0 make the frame softer than native."
+msgstr ""
+"சிஏஎஸ் கூர்மை ஒரு சட்டகத்தின் கூர்மையை அதிகரிக்கிறது. அதிக மதிப்புகள் சட்டகத்தை கூர்மையாக்குகின்றன, அதேசமயம் 0 ஐ வி"
+"ட குறைவான மதிப்புகள் சட்டத்தை நேட்டிவ்வை விட மென்மையாக்குகிறது."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:428
+msgid ""
+"DLS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper."
+msgstr ""
+"டிஎல்எஸ் கூர்மை ஒரு சட்டகத்தின் கூர்மையை அதிகரிக்கிறது. அதிக மதிப்புகள் சட்டகத்தை கூர்மையாக்கும்."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:445
+msgid ""
+"DLS denoise decreases the noise of a frame. Higher values make the frame "
+"softer."
+msgstr ""
+"டிஎல்எஸ் டெனோயிஸ் ஒரு சட்டத்தின் இரைச்சலைக் குறைக்கிறது. அதிக மதிப்புகள் சட்டத்தை மென்மையானது."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:462
+msgid ""
+"FXAA subpixel quality decreases aliasing at the subpixel level. Higher "
+"values make the frame softer."
+msgstr ""
+"FXAA துணை பிக்சல் தரம் துணை பிக்சல் மட்டத்தில் மாற்றுப்பெயர் குறைகிறது. அதிக மதிப்புகள் சட்டத்தை மென்மையானது."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:479
+msgid ""
+"FXAA edge threshold is the minimum amount of contrast required to apply the "
+"FXAA algorithm. Higher values make the frame have more contrast."
+msgstr ""
+"FXAA எட்ஜ் த்ரெஷோல்ட் என்பது FXAA அல்காரிதத்தைப் பயன்படுத்துவதற்கு தேவைப்படும் குறைந்தபட்ச அளவு மாறுபாடு ஆகும். அதி"
+"க மதிப்புகள் சட்டகத்தை அதிக மாறுபாட்டைக் கொண்டிருக்கச் செய்கிறது."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:496
+msgid ""
+"FXAA quality edge threshold minimum is the minimum value of dark pixels that "
+"are ignored by the FXAA algorithm. Higher values make FXAA ignore pixels "
+"below the specified value and can lead to a performance increase."
+msgstr ""
+"FXAA தர எட்ஜ் த்ரெஷோல்ட் குறைந்தபட்சம் என்பது FXAA அல்காரிதத்தால் புறக்கணிக்கப்படும் டார்க் பிக்சல்களின் குறைந்தபட்"
+"ச மதிப்பாகும். அதிக மதிப்புகள் FXAA குறிப்பிட்ட மதிப்புக்குக் கீழே உள்ள பிக்சல்களைப் புறக்கணிக்கச் செய்து, செயல்திறன் "
+"அதிகரிப்புக்கு வழிவகுக்கும்."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:513
+msgid ""
+"Luma detects edges from a monochrome perspective, whereas Color detects "
+"edges based on colors. Luma is more performant than Color."
+msgstr ""
+"லுமா ஒரே வண்ணமுடைய கண்ணோட்டத்தில் விளிம்புகளைக் கண்டறிகிறது, அதே சமயம் வண்ணம் வண்ணங்களின் அடிப்படையில் விளிம்புகளைக் "
+"கண்டறிகிறது. லூமா நிறத்தை விட செயல்திறன் மிக்கவர்."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:530
+msgid ""
+"SMAA threshold specifies the sensitivity of edge detection. Lower values "
+"detect more edges at the expense of performance."
+msgstr ""
+"SMAA த்ரெஷோல்ட் விளிம்பு கண்டறிதலின் உணர்திறனைக் குறிப்பிடுகிறது. குறைந்த மதிப்புகள் செயல்திறன் செலவில் அதிக விளிம்புகள் "
+"கண்டறியும்."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:547
+msgid ""
+"SMAA max search steps specifies how many horizontal and vertical search "
+"steps are performed when searching for edges."
+msgstr ""
+"எஸ்எம்ஏஏ அதிகபட்ச தேடல் படிகள் விளிம்புகளைத் தேடும்போது எத்தனை கிடைமட்ட மற்றும் செங்குத்து தேடல் படிகள் செய்யப்படுகின்"
+"றன என்பதைக் குறிப்பிடுகிறது."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:564
+msgid ""
+"SMAA max diagonal search steps specifies how many diagonal search steps are "
+"performed when searching for edges."
+msgstr ""
+"எஸ்எம்ஏஏ அதிகபட்ச மூலைவிட்ட தேடல் படிகள் விளிம்புகளைத் தேடும் போது எத்தனை மூலைவிட்ட தேடல் படிகள் செய்யப்படுகின்றன "
+"என்பதைக் குறிப்பிடுகிறது."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:581
+msgid "SMAA corner rounding specifies the strength of rounding edge corners."
+msgstr ""
+"SMAA கார்னர் ரவுண்டிங் என்பது ரவுண்டிங் எட்ஜ் கார்னர்களின் வலிமையைக் குறிப்பிடுகிறது."
+
+#: runexe/frontend/ui/dll-override-entry.blp:8
+msgid "Builtin (Wine)"
+msgstr "உள்ளமைக்கப்பட்ட (ஒயின்)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:9
+msgid "Native (Windows)"
+msgstr "பூர்வீகம் (விண்டோஸ்)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:10
+msgid "Builtin, then Native"
+msgstr "பில்டின், பின்னர் பூர்வீகம்"
+
+#: runexe/frontend/ui/dll-override-entry.blp:11
+msgid "Native, then Builtin"
+msgstr "பூர்வீகம், பின்னர் பில்டின்"
+
+#: runexe/frontend/ui/dll-override-entry.blp:12
+msgid "Disabled"
+msgstr "முடக்கப்பட்ட"
+
+#: runexe/frontend/ui/dll-override-entry.blp:20
+#: runexe/frontend/ui/drive-entry.blp:12
+msgid "Remove"
+msgstr "அகற்று"
+
+#: runexe/frontend/ui/drive-entry.blp:5
+msgid "/point/to/path"
+msgstr "/புள்ளி/இடு/பாதை"
+
+#: runexe/frontend/ui/env-var-entry.blp:4
+#: runexe/frontend/ui/exclusion-pattern-entry.blp:4
+msgid "Value"
+msgstr "மதிப்பு"
+
+#: runexe/frontend/ui/importer-entry.blp:13
+msgid "Browse files"
+msgstr "கோப்புகளை உலாவவும்"
+
+#. Translators: A Wine prefix is a separate environment (C:\ drive) for the Wine program
+#: runexe/frontend/ui/importer-entry.blp:21
+msgid "Wine prefix name"
+msgstr "ஒயின் முன்னொட்டு பெயர்"
+
+#: runexe/frontend/ui/importer-entry.blp:28
+msgid "Manager"
+msgstr "மேலாளர்"
+
+#: runexe/frontend/ui/importer-entry.blp:38
+msgid "This Wine prefix was already imported in RunExe."
+msgstr "இந்த ஒயின் முன்னொட்டு ஏற்கனவே பாட்டில்களில் இறக்குமதி செய்யப்பட்டது."
+
+#: runexe/frontend/ui/importer.blp:22
+msgid "Import a Capsule backup"
+msgstr "ஒரு பாட்டில் காப்புப்பிரதியை இறக்குமதி செய்யவும்"
+
+#: runexe/frontend/ui/importer.blp:28
+msgid "Search again for prefixes"
+msgstr "முன்னொட்டுகளை மீண்டும் தேடவும்"
+
+#: runexe/frontend/ui/importer.blp:38
+msgid "No Prefixes Found"
+msgstr "முன்னொட்டுகள் எதுவும் இல்லை"
+
+#: runexe/frontend/ui/importer.blp:39
+msgid ""
+"No external prefixes were found. Does RunExe have access to them?\n"
+"Use the icon on the top to import a capsule from a backup."
+msgstr ""
+"வெளிப்புற முன்னொட்டுகள் எதுவும் கண்டறியப்படவில்லை. பாட்டில்களுக்கு அவற்றை அணுக முடியுமா? \n"
+"காப்புப்பிரதியிலிருந்து பாட்டிலை இறக்குமதி செய்ய மேலே உள்ள ஐகானைப் பயன்படுத்தவும்."
+
+#: runexe/frontend/ui/importer.blp:74
+msgid "Full Archive"
+msgstr "முழு காப்பகம்"
+
+#: runexe/frontend/ui/installer-entry.blp:16
+msgid "Show Manifest…"
+msgstr "மேனிஃபெஸ்ட்டைக் காட்டு…"
+
+#: runexe/frontend/ui/installer-entry.blp:20
+msgid "Read Review…"
+msgstr "மதிப்பாய்வைப் படிக்கவும்…"
+
+#: runexe/frontend/ui/installer-entry.blp:34
+msgid "Installer name"
+msgstr "நிறுவி பெயர்"
+
+#: runexe/frontend/ui/installer-entry.blp:35
+msgid "Installer description"
+msgstr "நிறுவி விளக்கம்"
+
+#: runexe/frontend/ui/installer-entry.blp:42
+msgid "Unknown"
+msgstr "அறியப்படாத"
+
+#: runexe/frontend/ui/installer-entry.blp:51
+msgid "Install this Program"
+msgstr "இந்த நிரலை நிறுவவும்"
+
+#: runexe/frontend/ui/installer-entry.blp:69
+msgid "Program Menu"
+msgstr "நிரல் மெனு"
+
+#: runexe/frontend/ui/library-entry.blp:36
+msgid "No Thumbnail"
+msgstr "சிறுபடம் இல்லை"
+
+#: runexe/frontend/ui/library-entry.blp:57
+msgid "Launch"
+msgstr "துவக்கவும்"
+
+#: runexe/frontend/ui/library-entry.blp:70
+#: runexe/frontend/ui/program-entry.blp:89
+msgid "Launch with Steam"
+msgstr "ஸ்டீம் உடன் ஏவவும்"
+
+#: runexe/frontend/ui/library-entry.blp:108
+msgid "Item name"
+msgstr "பொருளின் பெயர்"
+
+#: runexe/frontend/ui/library-entry.blp:132
+msgid "Remove from Library"
+msgstr "நூலகத்திலிருந்து அகற்று"
+
+#: runexe/frontend/ui/library-entry.blp:143
+msgid "Stop"
+msgstr "நிறுத்து"
+
+#: runexe/frontend/ui/library.blp:11
+#: runexe/frontend/windows/main_window.py:196
+msgid "Library"
+msgstr "நூலகம்"
+
+#: runexe/frontend/ui/library.blp:12
+msgid "Add items here from your capsule's program list"
+msgstr "உங்கள் பாட்டிலின் நிரல் பட்டியலிலிருந்து பொருட்களை இங்கே சேர்க்கவும்"
+
+#: runexe/frontend/ui/list-entry.blp:26
+msgid "Versioning is active in this capsule."
+msgstr "இந்த பாட்டில் பதிப்பு செயலில் உள்ளது."
+
+#: runexe/frontend/ui/list-entry.blp:42
+msgid "This capsule looks damaged."
+msgstr "இந்த பாட்டில் சேதமடைந்து காணப்படுகிறது."
+
+#: runexe/frontend/ui/list-entry.blp:55
+msgid "Execute in this Capsule"
+msgstr "இந்த பாட்டிலில் இயக்கவும்"
+
+#: runexe/frontend/ui/list-entry.blp:69
+msgid "Run Here"
+msgstr "இங்கே இயக்கவும்"
+
+#: runexe/frontend/ui/list-entry.blp:75
+msgid ""
+"This capsule looks damaged, the configuration file is missing. I can try to "
+"solve by creating a new configuration."
+msgstr ""
+"இந்த பாட்டில் சேதமடைந்ததாகத் தெரிகிறது, உள்ளமைவு கோப்பு இல்லை. நான் ஒரு புதிய கட்டமைப்பை உருவாக்குவதன் மூலம் தீர்க்க "
+"முயற்சி செய்யலாம்."
+
+#: runexe/frontend/ui/list.blp:12
+msgid "Search your capsules…"
+msgstr "உங்கள் பாட்டில்களைத் தேடுங்கள்…"
+
+#: runexe/frontend/ui/list.blp:28
+msgid "Steam Proton"
+msgstr "ஸ்டீம் புரோட்டான்"
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/list.blp:42 runexe/frontend/windows/main_window.py:191
+#: data/io.github.runexe.RunExe.metainfo.xml.in:7
+msgid "RunExe"
+msgstr "பாட்டில்கள்"
+
+#: runexe/frontend/ui/list.blp:49
+msgid "Create New Capsule…"
+msgstr "புதிய பாட்டிலை உருவாக்கவும்…"
+
+#: runexe/frontend/ui/list.blp:63
+msgid "No Results Found"
+msgstr "முடிவுகள் எதுவும் இல்லை"
+
+#: runexe/frontend/ui/list.blp:64
+msgid "Try a different search."
+msgstr "வேறு தேடலை முயற்சிக்கவும்."
+
+#: runexe/frontend/ui/loading.blp:13
+msgid "Starting up…"
+msgstr "துவங்குகிறது…"
+
+#: runexe/frontend/ui/local-resource-entry.blp:4
+msgid "This resource is missing."
+msgstr "இந்த வளம் காணவில்லை."
+
+#: runexe/frontend/ui/local-resource-entry.blp:8
+msgid "Browse"
+msgstr "உலவ"
+
+#: runexe/frontend/ui/new.blp:32
+msgid "C_reate"
+msgstr "உருவாக்கு (_r)"
+
+#: runexe/frontend/ui/new.blp:53
+msgid "Capsule Name"
+msgstr "பாட்டில்கள் பெயர்"
+
+#: runexe/frontend/ui/new.blp:75
+msgid "_Application"
+msgstr "பயன்பாடு (_A)"
+
+#: runexe/frontend/ui/new.blp:88
+msgid "_Gaming"
+msgstr "விளையாடுவது (_G)"
+
+#: runexe/frontend/ui/new.blp:101
+msgid "C_ustom"
+msgstr "தனிப்பயன் (_u)"
+
+#: runexe/frontend/ui/new.blp:114
+msgid "Custom"
+msgstr "தனிப்பயன்"
+
+#: runexe/frontend/ui/new.blp:118
+msgid "Share User Directory"
+msgstr "பயனர் கோப்பகத்தைப் பகிரவும்"
+
+#: runexe/frontend/ui/new.blp:119
+msgid ""
+"This makes the user directory discoverable in the capsule, at the risk of "
+"sharing personal information to Windows software. This option cannot be "
+"changed after the capsule has been created."
+msgstr ""
+"இது Windows மென்பொருளுடன் தனிப்பட்ட தகவல்களைப் பகிரும் அபாயத்தில் பயனர் கோப்பகத்தை பாட்டிலில் கண்டறியக்கூடியதாக "
+"ஆக்குகிறது. பாட்டில் உருவாக்கப்பட்ட பிறகு இந்த விருப்பத்தை மாற்ற முடியாது."
+
+#: runexe/frontend/ui/new.blp:136
+msgid "Architecture"
+msgstr "கட்டிடக்கலை"
+
+#: runexe/frontend/ui/new.blp:137
+msgid "32-bit should only be used if strictly necessary."
+msgstr "32-பிட் கண்டிப்பாக தேவைப்பட்டால் மட்டுமே பயன்படுத்தப்பட வேண்டும்."
+
+#: runexe/frontend/ui/new.blp:146
+msgid "Import a custom configuration."
+msgstr "தனிப்பயன் உள்ளமைவை இறக்குமதி செய்யவும்."
+
+#: runexe/frontend/ui/new.blp:176
+msgid "Capsule Directory"
+msgstr "பாட்டில் அடைவு"
+
+#: runexe/frontend/ui/new.blp:177
+msgid "Directory that will contain the data of this capsule."
+msgstr "இந்த பாட்டிலின் தரவைக் கொண்டிருக்கும் அடைவு."
+
+#: runexe/frontend/ui/new.blp:249
+msgid "_Close"
+msgstr "மூடு (_C)"
+
+#: runexe/frontend/ui/new.blp:281
+msgid "This name is unavailable, please try another."
+msgstr "இந்தப் பெயர் கிடைக்கவில்லை, வேறொன்றை முயற்சிக்கவும்."
+
+#: runexe/frontend/ui/onboard.blp:34
+msgid "Previous"
+msgstr "முந்தைய"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:59
+msgid "Welcome to RunExe"
+msgstr "பாட்டில்களுக்கு வரவேற்கிறோம்"
+
+#: runexe/frontend/ui/onboard.blp:60
+msgid "Run Windows Software on Linux."
+msgstr "லினக்ஸில் விண்டோஸ் மென்பொருளை இயக்கவும்."
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/onboard.blp:65
+msgid "Windows in RunExe"
+msgstr "பாட்டில்களில் விண்டோஸ்"
+
+#: runexe/frontend/ui/onboard.blp:66
+msgid ""
+"RunExe uses compatibility runners to provide isolated containerized Windows-"
+"like environments where programs run."
+msgstr ""
+"நிரல் இயங்கும் தனிமைப்படுத்தப்பட்ட கன்டெய்னரைஸ் செய்யப்பட்ட விண்டோஸ் போன்ற சூழலை வழங்க பாட்டில்கள் இணக்கத்தன்மை "
+"ரன்னர்களைப் பயன்படுத்துகின்றன."
+
+#: runexe/frontend/ui/onboard.blp:72
+msgid "Almost Done"
+msgstr "கிட்டத்தட்ட முடிந்து விட்டது"
+
+#: runexe/frontend/ui/onboard.blp:73
+msgid "We need a few more minutes to set everything up…"
+msgstr "எல்லாவற்றையும் அமைக்க இன்னும் சில நிமிடங்கள் தேவை…"
+
+#: runexe/frontend/ui/onboard.blp:105
+msgid "All Ready!"
+msgstr "எல்லாம் தயார்!"
+
+#: runexe/frontend/ui/onboard.blp:114
+msgid "Please Finish the setup first"
+msgstr "முதலில் அமைவை முடிக்கவும்"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:120
+msgid "Start using RunExe"
+msgstr "பாட்டில்களைப் பயன்படுத்தத் தொடங்கவும்"
+
+#: runexe/frontend/ui/onboard.blp:141
+msgid "Next"
+msgstr "அடுத்தது"
+
+#: runexe/frontend/ui/preferences.blp:4 runexe/frontend/ui/window.blp:86
+msgid "Preferences"
+msgstr "விருப்பங்கள்"
+
+#: runexe/frontend/ui/preferences.blp:11
+#: runexe/frontend/ui/preferences.blp:39
+msgid "General"
+msgstr "பொது"
+
+#: runexe/frontend/ui/preferences.blp:14
+msgid "Appearance"
+msgstr "தோற்றம்"
+
+#: runexe/frontend/ui/preferences.blp:17
+msgid "Dark Mode"
+msgstr "டார்க் மோடு"
+
+#: runexe/frontend/ui/preferences.blp:18
+msgid "Whether RunExe should use the dark color scheme."
+msgstr "பாட்டில்கள் அடர் வண்ணத் திட்டத்தைப் பயன்படுத்த வேண்டுமா."
+
+#: runexe/frontend/ui/preferences.blp:28
+msgid "Show Update Date"
+msgstr "புதுப்பிப்பு தேதியைக் காட்டு"
+
+#: runexe/frontend/ui/preferences.blp:29
+msgid "Whether to show the update date in the capsule list."
+msgstr "புதுப்பித்த தேதியை பாட்டில் பட்டியலில் காட்ட வேண்டுமா."
+
+#: runexe/frontend/ui/preferences.blp:42
+#: data/io.github.runexe.RunExe.gschema.xml:46
+msgid "Notifications"
+msgstr "அறிவிப்புகள்"
+
+#: runexe/frontend/ui/preferences.blp:43
+msgid "Show notifications for downloads and installs."
+msgstr "பதிவிறக்கங்கள் மற்றும் நிறுவல்களுக்கான அறிவிப்புகளைக் காட்டு."
+
+#: runexe/frontend/ui/preferences.blp:52
+msgid "Temp Files"
+msgstr "தற்காலிக கோப்புகள்"
+
+#: runexe/frontend/ui/preferences.blp:53
+msgid "Clean temp files when RunExe launches?"
+msgstr "பாட்டில்கள் தொடங்கும் போது தற்காலிக கோப்புகளை சுத்தம் செய்யவா?"
+
+#: runexe/frontend/ui/preferences.blp:62
+msgid "Close RunExe After Starting a Program"
+msgstr "ஒரு நிரலைத் தொடங்கிய பிறகு பாட்டில்களை மூடு"
+
+#: runexe/frontend/ui/preferences.blp:63
+msgid "Close RunExe after starting a program from the file manager."
+msgstr "கோப்பு மேலாளரிடமிருந்து ஒரு நிரலைத் தொடங்கிய பிறகு பாட்டில்களை மூடு."
+
+#: runexe/frontend/ui/preferences.blp:73
+msgid "Integrations"
+msgstr "ஒருங்கிணைப்புகள்"
+
+#: runexe/frontend/ui/preferences.blp:76
+msgid "Steam Proton Prefixes"
+msgstr "ஸ்டீம் புரோட்டான் முன்னொட்டுகள்"
+
+#: runexe/frontend/ui/preferences.blp:77
+msgid "List and manage Steam Proton prefixes."
+msgstr "ஸ்டீம் புரோட்டான் முன்னொட்டு களைப் பட்டியலிட்டு நிர்வகிக்கவும்."
+
+#: runexe/frontend/ui/preferences.blp:97
+msgid "List Steam Apps in Programs List"
+msgstr "நிரல் பட்டியலில் ஸ்டீம் பயன்பாடுகளை பட்டியலிடுங்கள்"
+
+#: runexe/frontend/ui/preferences.blp:98
+msgid "Requires Steam for Windows installed in the capsule."
+msgstr "பாட்டிலில் நிறுவப்பட்ட விண்டோஸிற்காக ஸ்டீம் தேவை."
+
+#: runexe/frontend/ui/preferences.blp:107
+msgid "List Epic Games in Programs List"
+msgstr "நிகழ்ச்சிகள் பட்டியலில் எபிக் கேம்களை பட்டியலிடவும்"
+
+#: runexe/frontend/ui/preferences.blp:108
+msgid "Requires Epic Games Store installed in the capsule."
+msgstr "பாட்டிலில் நிறுவப்பட்ட எபிக் கேம்ஸ் ஸ்டோர் தேவை."
+
+#: runexe/frontend/ui/preferences.blp:117
+msgid "List Ubisoft Games in Programs List"
+msgstr "நிரல் பட்டியலில் யுபிசாஃப்ட் கேம்களை பட்டியலிடவும்"
+
+#: runexe/frontend/ui/preferences.blp:118
+msgid "Requires Ubisoft Connect installed in the capsule."
+msgstr "பாட்டிலில் யூபிசாஃப்ட் கனெக்ட் நிறுவப்பட்டிருக்க வேண்டும்."
+
+#: runexe/frontend/ui/preferences.blp:128
+msgid "Advanced"
+msgstr "மேம்பட்ட"
+
+#: runexe/frontend/ui/preferences.blp:131
+msgid "Capsules Directory"
+msgstr "பாட்டில்கள் அடைவு"
+
+#: runexe/frontend/ui/preferences.blp:132
+msgid "Directory that contains the data of your Capsules."
+msgstr "உங்கள் பாட்டில்களின் தரவைக் கொண்டிருக்கும் அடைவு."
+
+#: runexe/frontend/ui/preferences.blp:167
+msgid "Runners"
+msgstr "ரன்னர்ஸ்"
+
+#: runexe/frontend/ui/preferences.blp:181
+msgid "RunExe is running in offline mode, so runners are not available."
+msgstr ""
+"பாட்டில்கள் ஆஃப்லைன் பயன்முறையில் இயங்குவதால், ஓடுபவர்கள் கிடைக்கவில்லை."
+
+#: runexe/frontend/ui/preferences.blp:208
+msgid "Pre-Release"
+msgstr "முன்-வெளியீடு"
+
+#: runexe/frontend/ui/preferences.blp:209
+msgid "Display unstable versions of runners."
+msgstr "ரன்னர்களின் நிலையற்ற பதிப்புகளைக் காண்பி."
+
+#: runexe/frontend/ui/preferences.blp:224
+msgid "DLL Components"
+msgstr "டிஎல்எல் கூறுகள்"
+
+#: runexe/frontend/ui/preferences.blp:238
+msgid "RunExe is running in offline mode, so DLLs are not available."
+msgstr "பாட்டில்கள் ஆஃப்லைன் பயன்முறையில் இயங்குவதால் DLLகள் கிடைக்காது."
+
+#: runexe/frontend/ui/preferences.blp:270
+msgid "DXVK-NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/preferences.blp:283
+msgid "Core"
+msgstr "கோர்"
+
+#: runexe/frontend/ui/preferences.blp:287
+msgid "Runtime"
+msgstr "இயக்க நேரம்"
+
+#: runexe/frontend/ui/preferences.blp:291
+msgid "WineBridge"
+msgstr "ஒயின்பிரிட்ஜ்"
+
+#: runexe/frontend/ui/preferences.blp:297
+#: data/io.github.runexe.RunExe.gschema.xml:66
+msgid "Experiments"
+msgstr "பரிசோதனைகள்"
+
+#: runexe/frontend/ui/preferences.blp:300
+msgid ""
+"These features are under heavy development and may be unstable, expect bugs "
+"and breakage."
+msgstr ""
+"இந்த அம்சங்கள் அதிக வளர்ச்சியில் உள்ளன மற்றும் நிலையற்றதாக இருக்கலாம், பிழைகள் மற்றும் உடைப்புகளை எதிர்பார்க்கலாம்."
+
+#: runexe/frontend/ui/preferences.blp:303
+msgid "Sandbox per capsule"
+msgstr "ஒரு பாட்டிலுக்கு சாண்ட்பாக்ஸ்"
+
+#: runexe/frontend/ui/preferences.blp:304
+msgid "In early development."
+msgstr "ஆரம்ப வளர்ச்சியில்."
+
+#: runexe/frontend/ui/program-entry.blp:19
+msgid "Launch with Terminal"
+msgstr "முனையத்துடன் தொடங்கவும்"
+
+#: runexe/frontend/ui/program-entry.blp:25
+msgid "Browse Path"
+msgstr "பாதையை உலாவவும்"
+
+#: runexe/frontend/ui/program-entry.blp:39
+msgid "Change Launch Options…"
+msgstr "ஏவுதல் விருப்பங்களை மாற்றவும்…"
+
+#: runexe/frontend/ui/program-entry.blp:43
+msgid "Add to Library"
+msgstr "நூலகத்தில் சேர்க்கவும்"
+
+#: runexe/frontend/ui/program-entry.blp:47
+msgid "Add Desktop Entry"
+msgstr "டெஸ்க்டாப் உள்ளீட்டைச் சேர்க்கவும்"
+
+#: runexe/frontend/ui/program-entry.blp:51
+msgid "Add to Steam"
+msgstr "ஸ்டீமில் சேர்க்கவும்"
+
+#: runexe/frontend/ui/program-entry.blp:55
+msgid "Rename…"
+msgstr "மறுபெயரிடுங்கள்…"
+
+#: runexe/frontend/ui/program-entry.blp:62
+msgid "Hide Program"
+msgstr "நிரலை மறை"
+
+#: runexe/frontend/ui/program-entry.blp:66
+msgid "Show Program"
+msgstr "நிரலைக் காட்டு"
+
+#: runexe/frontend/ui/program-entry.blp:70
+msgid "Remove from List"
+msgstr "பட்டியலில் இருந்து நீக்கு"
+
+#: runexe/frontend/ui/program-entry.blp:83
+msgid "Program name"
+msgstr "நிரல் பெயர்"
+
+#. Translators: id as identification
+#: runexe/frontend/ui/state-entry.blp:8
+msgid "State id"
+msgstr "மாநில ஐடி"
+
+#: runexe/frontend/ui/state-entry.blp:9
+msgid "State comment"
+msgstr "மாநில கருத்து"
+
+#: runexe/frontend/ui/state-entry.blp:16
+msgid "Restore this Snapshot"
+msgstr "இந்த ஸ்னாப்ஷாட்டை மீட்டெடுக்கவும்"
+
+#: runexe/frontend/ui/task-entry.blp:19
+msgid "Delete message"
+msgstr "செய்தியை நீக்கு"
+
+#: runexe/frontend/ui/window.blp:40
+msgid "Main Menu"
+msgstr "முதன்மை பட்டியல்"
+
+#: runexe/frontend/ui/window.blp:54
+msgid ""
+"You don't seem connected to the internet. Without it you will not be able to "
+"download essential components. Click this icon when you have reestablished "
+"the connection."
+msgstr ""
+"நீங்கள் இணையத்துடன் இணைக்கப்பட்டதாகத் தெரியவில்லை. இது இல்லாமல் நீங்கள் அத்தியாவசிய கூறுகளை பதிவிறக்க முடியாது. இணைப்பை"
+" மீண்டும் நிறுவியவுடன் இந்த ஐகானைக் கிளிக் செய்யவும்."
+
+#: runexe/frontend/ui/window.blp:79
+msgid "Import…"
+msgstr "இறக்குமதி…"
+
+#: runexe/frontend/ui/window.blp:91
+msgid "Help"
+msgstr "உதவி"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/window.blp:96
+msgid "About RunExe"
+msgstr "பாட்டில்கள் பற்றி"
+
+#: runexe/frontend/views/capsule_details.py:191
+#, python-brace-format
+msgid "File \"{0}\" is not a .exe or .msi file"
+msgstr "\"{0}\" கோப்பு .exe அல்லது .msi கோப்பு அல்ல"
+
+#: runexe/frontend/views/capsule_details.py:207
+#, python-format
+msgid "Updated: %s"
+msgstr "புதுப்பிக்கப்பட்டது: %s"
+
+#: runexe/frontend/views/capsule_details.py:267
+#, python-brace-format
+msgid "\"{0}\" added"
+msgstr "\"{0}\" சேர்க்கப்பட்டது"
+
+#: runexe/frontend/views/capsule_details.py:270
+#: runexe/frontend/views/capsule_details.py:398
+#: runexe/frontend/views/list.py:128
+msgid "Select Executable"
+msgstr "இயங்கக்கூடியதைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/capsule_details.py:273
+msgid "Add"
+msgstr "கூட்டு"
+
+#: runexe/frontend/views/capsule_details.py:346
+msgid "Hide Hidden Programs"
+msgstr "மறைக்கப்பட்ட நிரல்களை மறை"
+
+#: runexe/frontend/views/capsule_details.py:383
+#: runexe/frontend/widgets/library.py:156
+#: runexe/frontend/widgets/program.py:184
+#, python-brace-format
+msgid "Launching \"{0}\"…"
+msgstr "\"{0}\" தொடங்கப்படுகிறது…"
+
+#: runexe/frontend/views/capsule_details.py:413
+msgid "Be Aware of Sandbox"
+msgstr "சாண்ட்பாக்ஸ் பற்றி விழிப்புடன் இருங்கள்"
+
+#: runexe/frontend/views/capsule_details.py:414
+msgid ""
+"RunExe is running in a sandbox, a restricted permission environment needed "
+"to keep you safe. If the program won't run, consider moving inside the "
+"capsule (3 dots icon on the top), then launch from there."
+msgstr ""
+"சாண்ட்பாக்ஸில் பாட்டில்கள் இயங்குகின்றன, உங்களைப் பாதுகாப்பாக வைத்திருக்க தடைசெய்யப்பட்ட அனுமதிச் சூழல் தேவை. நிரல் "
+"இயங்கவில்லை என்றால், பாட்டிலின் உள்ளே நகர்த்துவதைக் கவனியுங்கள் (மேலே உள்ள 3 புள்ளிகள் ஐகான்), பின்னர் அங்கிருந்து "
+"தொடங்கவும்."
+
+#: runexe/frontend/views/capsule_details.py:416
+#: runexe/frontend/views/capsule_details.py:525
+#: runexe/frontend/windows/main_window.py:223
+msgid "_Dismiss"
+msgstr "_ நிராகரி"
+
+#: runexe/frontend/views/capsule_details.py:429
+msgid "Select the location where to save the backup config"
+msgstr "காப்புப்பிரதி கட்டமைப்பைச் சேமிக்கும் இடத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/capsule_details.py:431
+msgid "Export"
+msgstr "ஏற்றுமதி"
+
+#: runexe/frontend/views/capsule_details.py:433
+msgid "Select the location where to save the backup archive"
+msgstr "காப்பு காப்பகத்தை சேமிக்க வேண்டிய இடத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/capsule_details.py:435
+msgid "Backup"
+msgstr "காப்புப்பிரதி"
+
+#: runexe/frontend/views/capsule_details.py:440
+#, python-brace-format
+msgid "Backup created for \"{0}\""
+msgstr "\"{0}\"க்கான காப்புப்பிரதி உருவாக்கப்பட்டது"
+
+#: runexe/frontend/views/capsule_details.py:442
+#, python-brace-format
+msgid "Backup failed for \"{0}\""
+msgstr "\"{0}\"க்கான காப்புப்பிரதி தோல்வியடைந்தது"
+
+#: runexe/frontend/views/capsule_details.py:501
+msgid "Are you sure you want to permanently delete \"{}\"?"
+msgstr "\"{}\" ஐ நிரந்தரமாக நீக்க விரும்புகிறீர்களா?"
+
+#: runexe/frontend/views/capsule_details.py:502
+msgid ""
+"This will permanently delete all programs and settings associated with it."
+msgstr ""
+"இது அதனுடன் தொடர்புடைய அனைத்து நிரல்களையும் அமைப்புகளையும் நிரந்தரமாக நீக்கும்."
+
+#: runexe/frontend/views/capsule_details.py:505
+#: runexe/frontend/views/capsule_preferences.py:750
+msgid "_Delete"
+msgstr "_அழி"
+
+#: runexe/frontend/views/capsule_details.py:521
+msgid "Missing Runner"
+msgstr "ரன்னர் காணவில்லை"
+
+#: runexe/frontend/views/capsule_details.py:522
+msgid ""
+"The runner requested by this capsule is missing. Install it through the "
+"RunExe preferences or choose a new one to run applications."
+msgstr ""
+"இந்த பாட்டில் கோரிய ரன்னர் இல்லை. பாட்டில்கள் விருப்பத்தேர்வுகள் மூலம் அதை நிறுவவும் அல்லது பயன்பாடுகளை இயக்க புதிய "
+"ஒன்றைத் தேர்வு செய்யவும்."
+
+#: runexe/frontend/views/capsule_details.py:597
+msgid "Are you sure you want to force stop all processes?"
+msgstr "எல்லா செயல்முறைகளையும் கட்டாயப்படுத்தி நிறுத்த விரும்புகிறீர்களா?"
+
+#: runexe/frontend/views/capsule_details.py:598
+msgid "This can cause data loss, corruption, and programs to malfunction."
+msgstr "இது தரவு இழப்பு, ஊழல் மற்றும் நிரல்களை செயலிழக்கச் செய்யலாம்."
+
+#: runexe/frontend/views/capsule_details.py:601
+msgid "Force _Stop"
+msgstr "கட்டாயப்படுத்தி _நிறுத்து"
+
+#: runexe/frontend/views/capsule_preferences.py:195
+msgid "This feature is unavailable on your system."
+msgstr "இந்த அம்சம் உங்கள் கணினியில் இல்லை."
+
+#: runexe/frontend/views/capsule_preferences.py:196
+msgid "{} To add this feature, please run flatpak install"
+msgstr "{} இந்த அம்சத்தைச் சேர்க்க, தயவுசெய்து பிளாட்பேக் நிறுவலை இயக்கவும்"
+
+#: runexe/frontend/views/capsule_preferences.py:246
+msgid "This capsule name is already in use."
+msgstr "இந்த பாட்டில் பெயர் ஏற்கனவே பயன்பாட்டில் உள்ளது."
+
+#: runexe/frontend/views/capsule_preferences.py:301
+#: runexe/frontend/windows/launchoptions.py:241
+msgid "Select Working Directory"
+msgstr "பணி அடைவைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/capsule_preferences.py:423
+msgid "Directory that contains the data of \"{}\"."
+msgstr "\"{}\" இன் தரவைக் கொண்ட கோப்பகம்."
+
+#: runexe/frontend/views/capsule_preferences.py:746
+msgid "Are you sure you want to delete all snapshots?"
+msgstr "எல்லா ஸ்னாப்ஷாட்களையும் நிச்சயமாக நீக்க விரும்புகிறீர்களா?"
+
+#: runexe/frontend/views/capsule_preferences.py:747
+msgid "This will delete all snapshots but keep your files."
+msgstr ""
+"இது அனைத்து ஸ்னாப்ஷாட்களையும் நீக்கும், ஆனால் உங்கள் கோப்புகளை வைத்திருக்கும்."
+
+#: runexe/frontend/views/capsule_versioning.py:90
+msgid "Please migrate to the new Versioning system to create new states."
+msgstr "புதிய நிலைகளை உருவாக்க, புதிய பதிப்பு முறைக்கு மாறவும்."
+
+#: runexe/frontend/views/details.py:153
+msgid "Installers"
+msgstr "நிறுவிகள்"
+
+#: runexe/frontend/views/details.py:234
+msgid "Operations in progress, please wait."
+msgstr "செயல்பாடுகள் நடந்து வருகின்றன, காத்திருக்கவும்."
+
+#: runexe/frontend/views/details.py:239
+msgid "Return to your capsules."
+msgstr "உங்கள் பாட்டில்களுக்குத் திரும்பு."
+
+#: runexe/frontend/views/importer.py:92
+msgid "Backup imported successfully"
+msgstr "காப்புப்பிரதி வெற்றிகரமாக இறக்குமதி செய்யப்பட்டது"
+
+#: runexe/frontend/views/importer.py:94
+msgid "Import failed"
+msgstr "இறக்குமதி தோல்வியடைந்தது"
+
+#: runexe/frontend/views/importer.py:108
+#: runexe/frontend/views/importer.py:147
+msgid "Importing backup…"
+msgstr "இறக்குமதி தோல்வியடைந்தது…"
+
+#: runexe/frontend/views/importer.py:119
+msgid "Select a Backup Archive"
+msgstr "காப்புப்பிரதி காப்பகத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/importer.py:122
+#: runexe/frontend/views/importer.py:161
+msgid "Import"
+msgstr "இறக்குமதி"
+
+#: runexe/frontend/views/importer.py:158 runexe/frontend/views/new.py:136
+msgid "Select a Configuration File"
+msgstr "உள்ளமைவு கோப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/list.py:60 runexe/frontend/views/list.py:66
+msgid "N/A"
+msgstr "N/A"
+
+#. Set tooltip text
+#: runexe/frontend/views/list.py:91
+#, python-brace-format
+msgid "Run executable in \"{self.config.Name}\""
+msgstr "\"{self.config.Name}\" இல் இயங்கக்கூடியதாக இயக்கவும்"
+
+#: runexe/frontend/views/list.py:118
+#, python-brace-format
+msgid "Launching \"{0}\" in \"{1}\"…"
+msgstr "\"{1}\" இல் \"{0}\" தொடங்கப்படுகிறது…"
+
+#: runexe/frontend/views/list.py:235
+msgid "Your Capsules"
+msgstr "உங்கள் பாட்டில்கள்"
+
+#: runexe/frontend/views/loading.py:41
+#, python-brace-format
+msgid "Downloading ~{0} of packages…"
+msgstr "~{0} தொகுப்புகளைப் பதிவிறக்குகிறது…"
+
+#: runexe/frontend/views/loading.py:42
+#, python-brace-format
+msgid "Fetched {0} of {1} packages"
+msgstr "{1} தொகுப்புகளில் {0} எடுக்கப்பட்டது"
+
+#: runexe/frontend/views/new.py:157
+msgid "Select Capsule Directory"
+msgstr "பாட்டில் கோப்பகத்தைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/new.py:176
+msgid "Creating Capsule…"
+msgstr "பாட்டிலை உருவாக்குகிறது…"
+
+#: runexe/frontend/views/new.py:221
+msgid "Unable to Create Capsule"
+msgstr "பாட்டிலை உருவாக்க முடியவில்லை"
+
+#: runexe/frontend/views/new.py:225
+msgid "Capsule failed to create with one or more errors."
+msgstr "ஒன்று அல்லது அதற்கு மேற்பட்ட பிழைகளுடன் பாட்டிலை உருவாக்க முடியவில்லை."
+
+#. Show success
+#: runexe/frontend/views/new.py:232
+msgid "Capsule Created"
+msgstr "பாட்டில் உருவாக்கப்பட்டது"
+
+#: runexe/frontend/views/new.py:233
+#, python-brace-format
+msgid "\"{0}\" was created successfully."
+msgstr "\"{0}\" வெற்றிகரமாக உருவாக்கப்பட்டது."
+
+#: runexe/frontend/views/preferences.py:142
+msgid "Steam was not found or RunExe does not have enough permissions."
+msgstr ""
+"ஸ்டீம் கண்டுபிடிக்கப்படவில்லை அல்லது பாட்டில்களுக்கு போதுமான அனுமதிகள் இல்லை."
+
+#: runexe/frontend/views/preferences.py:176
+msgid "Select Capsules Path"
+msgstr "பாட்டில்கள் பாதையைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/views/preferences.py:198
+msgid "Relaunch RunExe?"
+msgstr "பாட்டில்களை மீண்டும் தொடங்கவா?"
+
+#: runexe/frontend/views/preferences.py:199
+msgid ""
+"RunExe will need to be relaunched to use this directory.\n"
+"\n"
+"Be sure to close every program launched from RunExe before relaunching "
+"RunExe, as not doing so can cause data loss, corruption and programs to "
+"malfunction."
+msgstr ""
+"இந்தக் கோப்பகத்தைப் பயன்படுத்த, பாட்டில்களை மீண்டும் தொடங்க வேண்டும். \n"
+" \n"
+"பாட்டில்களை மறுதொடக்கம் செய்வதற்கு முன், பாட்டில்களில் இருந்து தொடங்கப்பட்ட ஒவ்வொரு நிரலையும் மூடுவதை உறுதிப்படுத்திக் "
+"கொள்ளுங்கள், அவ்வாறு செய்யாதது தரவு இழப்பு, ஊழல் மற்றும் திட்டங்கள் செயலிழக்கச் செய்யலாம்."
+
+#: runexe/frontend/views/preferences.py:202
+msgid "_Relaunch"
+msgstr "_மீண்டும் துவக்கவும்"
+
+#: runexe/frontend/views/preferences.py:243
+msgid "Based on Valve's Wine, includes staging and Proton patches."
+msgstr ""
+"வால்வின் ஒயின் அடிப்படையில், ஸ்டேஜிங் மற்றும் புரோட்டான் பேட்ச்கள் அடங்கும்."
+
+#: runexe/frontend/views/preferences.py:244
+msgid "Based on Wine upstream, includes staging and Proton patches."
+msgstr ""
+"ஒயின் அப்ஸ்ட்ரீம் அடிப்படையில், ஸ்டேஜிங் மற்றும் புரோட்டான் பேட்ச்கள் அடங்கும்."
+
+#: runexe/frontend/views/preferences.py:247
+msgid "Based on Wine upstream, includes staging patches."
+msgstr "ஒயின் அப்ஸ்ட்ரீம் அடிப்படையில், ஸ்டேஜிங் பேட்ச்கள் அடங்கும்."
+
+#: runexe/frontend/views/preferences.py:248
+msgid ""
+"Based on Valve's Wine, includes staging, Proton and Steam-specific patches. "
+"Requires the Steam Runtime turned on."
+msgstr ""
+"வால்வின் ஒயின் அடிப்படையில், ஸ்டேஜிங், புரோட்டான் மற்றும் ஸ்டீம்-குறிப்பிட்ட இணைப்புகளை உள்ளடக்கியது. ஸ்டீம் இயக்க நேரம் "
+"இயக்கப்பட்டிருக்க வேண்டும்."
+
+#: runexe/frontend/views/preferences.py:250
+msgid "Other"
+msgstr "வேறு"
+
+#: runexe/frontend/widgets/component.py:74
+msgid "Upgrade"
+msgstr "மேம்படுத்தல்"
+
+#: runexe/frontend/widgets/component.py:140
+msgid "Installing…"
+msgstr "நிறுவுகிறது…"
+
+#: runexe/frontend/widgets/dependency.py:107
+#: runexe/frontend/widgets/installer.py:81
+#, python-brace-format
+msgid "Manifest for {0}"
+msgstr "{0}க்கான மேனிஃபெஸ்ட்"
+
+#: runexe/frontend/widgets/dependency.py:172
+#, python-brace-format
+msgid "\"{0}\" uninstalled"
+msgstr "\"{0}\" நிறுவல் நீக்கப்பட்டது"
+
+#: runexe/frontend/widgets/dependency.py:174
+#, python-brace-format
+msgid "\"{0}\" installed"
+msgstr "\"{0}\" நிறுவப்பட்டது"
+
+#: runexe/frontend/widgets/dependency.py:188
+#, python-brace-format
+msgid "\"{0}\" failed to install"
+msgstr "\"{0}\" ஐ நிறுவ முடியவில்லை"
+
+#: runexe/frontend/widgets/importer.py:68
+#, python-brace-format
+msgid "\"{0}\" imported"
+msgstr "\"{0}\" இறக்குமதி செய்யப்பட்டது"
+
+#: runexe/frontend/widgets/installer.py:49
+msgid ""
+"This application may work poorly. The installer was configured to provide "
+"the best possible experience, but expect glitches, instability and lack of "
+"working features."
+msgstr ""
+"இந்த பயன்பாடு மோசமாக வேலை செய்யக்கூடும். நிறுவி சிறந்த அனுபவத்தை வழங்கும் வகையில் கட்டமைக்கப்பட்டுள்ளது, ஆனால் "
+"குறைபாடுகள், உறுதியற்ற தன்மை மற்றும் வேலை செய்யும் அம்சங்களின் பற்றாக்குறை ஆகியவற்றை எதிர்பார்க்கலாம்."
+
+#: runexe/frontend/widgets/installer.py:50
+msgid ""
+"This program works with noticeable glitches, but these glitches do not "
+"affect the application's functionality."
+msgstr ""
+"இந்த நிரல் குறிப்பிடத்தக்க குறைபாடுகளுடன் செயல்படுகிறது, ஆனால் இந்த குறைபாடுகள் பயன்பாட்டின் செயல்பாட்டை பாதிக்காது."
+
+#: runexe/frontend/widgets/installer.py:51
+msgid "This program works with minor glitches."
+msgstr "இந்த நிரல் சிறிய குறைபாடுகளுடன் வேலை செய்கிறது."
+
+#: runexe/frontend/widgets/installer.py:52
+msgid "This program works perfectly."
+msgstr "இந்த நிரல் சிறப்பாக செயல்படுகிறது."
+
+#: runexe/frontend/widgets/installer.py:90
+#, python-brace-format
+msgid "Review for {0}"
+msgstr "{0} க்கான மதிப்பாய்வு"
+
+#: runexe/frontend/widgets/library.py:169
+#: runexe/frontend/widgets/program.py:194
+#, python-brace-format
+msgid "Stopping \"{0}\"…"
+msgstr "'{0}' தொடங்கப்படுகிறது…"
+
+#: runexe/frontend/widgets/program.py:190
+#, python-brace-format
+msgid "Launching \"{0}\" with Steam…"
+msgstr "ஸ்டீம் மூலம் \"{0}\" ஐத் தொடங்கப்படுகிறது…"
+
+#: runexe/frontend/widgets/program.py:214
+#, python-brace-format
+msgid "\"{0}\" hidden"
+msgstr "\"{0}\" மறைக்கப்பட்டுள்ளது"
+
+#: runexe/frontend/widgets/program.py:216
+#, python-brace-format
+msgid "\"{0}\" showed"
+msgstr "\"{0}\" காட்டப்பட்டது"
+
+#: runexe/frontend/widgets/program.py:242
+#, python-brace-format
+msgid "\"{0}\" removed"
+msgstr "\"{0}\" அகற்றப்பட்டது"
+
+#: runexe/frontend/widgets/program.py:274
+#, python-brace-format
+msgid "\"{0}\" renamed to \"{1}\""
+msgstr "\"{0}\" , \"{1}\" என மறுபெயரிடப்பட்டது"
+
+#: runexe/frontend/widgets/program.py:297
+#, python-brace-format
+msgid "Desktop Entry created for \"{0}\""
+msgstr "\"{0}\" க்காக டெஸ்க்டாப் உள்ளீடு உருவாக்கப்பட்டது"
+
+#: runexe/frontend/widgets/program.py:313
+#, python-brace-format
+msgid "\"{0}\" added to your library"
+msgstr "உங்கள் நூலகத்தில் \"{0}\" சேர்க்கப்பட்டது"
+
+#: runexe/frontend/widgets/program.py:331
+#, python-brace-format
+msgid "\"{0}\" added to your Steam library"
+msgstr "\"{0}\" உங்கள் ஸ்டீம் லைப்ரரியில் சேர்க்கப்பட்டது"
+
+#: runexe/frontend/windows/crash.py:33
+msgid "Show report"
+msgstr "அறிக்கையைக் காட்டு"
+
+#: runexe/frontend/windows/crash.py:80
+msgid ""
+"            This issue was reported 5 times and cannot be sent again.\n"
+"            Report your feedback in one of the below existing reports."
+msgstr ""
+"            இந்தச் சிக்கல் 5 முறை புகாரளிக்கப்பட்டதால் மீண்டும் அனுப்ப முடியாது.\n"
+"               கீழே உள்ள அறிக்கைகளில் ஒன்றில் உங்கள் கருத்தை தெரிவிக்கவும்."
+
+#: runexe/frontend/windows/display.py:102
+msgid "Updating display settings, please wait…"
+msgstr "காட்சி அமைப்புகளைப் புதுப்பிக்கிறது, காத்திருக்கவும்…"
+
+#: runexe/frontend/windows/display.py:114
+msgid "Display settings updated"
+msgstr "காட்சி அமைப்புகள் புதுப்பிக்கப்பட்டன"
+
+#: runexe/frontend/windows/dlloverrides.py:136
+msgid "No overrides found."
+msgstr "மீறல்கள் எதுவும் இல்லை."
+
+#: runexe/frontend/windows/drives.py:71
+msgid "Select Drive Path"
+msgstr "இயக்கி பாதையைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/windows/envvars.py:131
+msgid "No environment variables defined."
+msgstr "சூழல் மாறிகள் எதுவும் வரையறுக்கப்படவில்லை."
+
+#: runexe/frontend/windows/exclusionpatterns.py:108
+msgid "No exclusion patterns defined."
+msgstr "விதிவிலக்கு வடிவங்கள் எதுவும் வரையறுக்கப்படவில்லை."
+
+#: runexe/frontend/windows/generic.py:24
+msgid "An error has occurred."
+msgstr "ஒரு பிழை ஏற்பட்டுள்ளது."
+
+#: runexe/frontend/windows/generic.py:91
+#: runexe/frontend/windows/generic.py:137
+#: runexe/frontend/windows/generic.py:182
+msgid "Copy to clipboard"
+msgstr "கிளிப்போர்டுக்கு நகலெடுக்கவும்"
+
+#: runexe/frontend/windows/installer.py:62
+msgid "Select Resource File"
+msgstr "ஆதாரக் கோப்பைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/windows/installer.py:109
+msgid "Installing Windows dependencies…"
+msgstr "விண்டோஸ் சார்புகளை நிறுவுகிறது…"
+
+#: runexe/frontend/windows/installer.py:110
+msgid "Configuring the capsule…"
+msgstr "பாட்டிலை உள்ளமைக்கிறது…"
+
+#: runexe/frontend/windows/installer.py:111
+msgid "Processing installer steps…"
+msgstr "நிறுவி படிகளை செயலாக்குகிறது…"
+
+#: runexe/frontend/windows/installer.py:112
+msgid "Installing the {}…"
+msgstr "{}ஐ நிறுவுகிறது…"
+
+#: runexe/frontend/windows/installer.py:113
+msgid "Performing final checks…"
+msgstr "இறுதிச் சோதனைகளைச் செய்கிறது…"
+
+#: runexe/frontend/windows/installer.py:117
+#, python-brace-format
+msgid "Installing {0}…"
+msgstr "{0}ஐ நிறுவுகிறது…"
+
+#: runexe/frontend/windows/installer.py:119
+#, python-brace-format
+msgid "{0} is now available in the programs view."
+msgstr "{0} இப்போது நிரல் பார்வையில் கிடைக்கிறது."
+
+#: runexe/frontend/windows/installer.py:166
+msgid "Installer failed with unknown error"
+msgstr "அறியப்படாத பிழையால் நிறுவி தோல்வியடைந்தது"
+
+#: runexe/frontend/windows/launchoptions.py:56
+#, python-brace-format
+msgid "{0} is already disabled for this capsule."
+msgstr "இந்த பாட்டிலுக்கு {0} ஏற்கனவே முடக்கப்பட்டுள்ளது."
+
+#: runexe/frontend/windows/launchoptions.py:57
+msgid "This setting is different from the capsule's default."
+msgstr "இந்த அமைப்பு பாட்டிலின் இயல்புநிலையிலிருந்து வேறுபட்டது."
+
+#: runexe/frontend/windows/launchoptions.py:215
+msgid "Select Script"
+msgstr "ஸ்கிரிப்டைத் தேர்ந்தெடுக்கவும்"
+
+#: runexe/frontend/windows/main_window.py:220
+msgid "Custom Capsules Path not Found"
+msgstr "தனிப்பயன் பாட்டில்கள் பாதை கிடைக்கவில்லை"
+
+#: runexe/frontend/windows/main_window.py:221
+msgid ""
+"Falling back to default path. No capsules from the given path will be listed."
+msgstr ""
+"இயல்புநிலை பாதைக்குத் திரும்புகிறது. கொடுக்கப்பட்ட பாதையிலிருந்து பாட்டில்கள் எதுவும் பட்டியலிடப்படாது."
+
+#: data/io.github.runexe.RunExe.desktop.in.in:3
+msgid "@APP_NAME@"
+msgstr "@APP_NAME@"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:4
+#: data/io.github.runexe.RunExe.metainfo.xml.in:8
+msgid "Run Windows Software"
+msgstr "விண்டோஸ் மென்பொருளை இயக்கவும்"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:13
+msgid "wine;windows;"
+msgstr "ஒயின்;விண்டோஸ்;"
+
+#: data/io.github.runexe.RunExe.gschema.xml:6
+msgid "Flatpak migration"
+msgstr "பிளாட்பாக் இடம்பெயர்வு"
+
+#: data/io.github.runexe.RunExe.gschema.xml:7
+msgid "Toggle the Flatpak migration dialog."
+msgstr "பிளாட்பாக் இடம்பெயர்வு உரையாடலை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.gschema.xml:11
+msgid "Dark theme"
+msgstr "டார்க் தீம்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:12
+msgid "Force the use of dark theme."
+msgstr "டார்க் தீம் பயன்படுத்துவதை கட்டாயப்படுத்தவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:16
+msgid "Toggle update date in list"
+msgstr "பட்டியலில் புதுப்பிப்பு தேதியை நிலைமாற்று"
+
+#: data/io.github.runexe.RunExe.gschema.xml:17
+msgid "Toggle the update date in list of capsules."
+msgstr "பாட்டில்களின் பட்டியலில் புதுப்பிப்பு தேதியை மாற்றவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:21
+msgid "Steam apps listing"
+msgstr "ஸ்டீம் ஆப்ஸ் பட்டியல்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:22
+msgid "Toggle steam apps listing."
+msgstr "ஸ்டீம் ஆப்ஸ் பட்டியலை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.gschema.xml:26
+msgid "Epic Games listing"
+msgstr "எபிக் கேம்களின் பட்டியல்கள்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:27
+msgid "Toggle epic games listing."
+msgstr "எபிக் கேம்கள் பட்டியலை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.gschema.xml:31
+msgid "Ubisoft Connect listing"
+msgstr "யுபிசாஃப்ட் இணைப்பு பட்டியல்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:32
+msgid "Toggle ubisoft connect listing."
+msgstr "யுபிசாஃப்ட் இணைப்பு பட்டியலை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.gschema.xml:36
+msgid "Window width"
+msgstr "ஜன்னல் அகலம்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:37
+msgid "Change the window width."
+msgstr "ஜன்னல் அகலத்தை மாற்றவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:41
+msgid "Window height"
+msgstr "ஜன்னல் உயரம்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:42
+msgid "Change the window height."
+msgstr "ஜன்னல் உயரத்தை மாற்றவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:47
+msgid "Show notifications."
+msgstr "அறிவிப்புகளைக் காட்டு."
+
+#: data/io.github.runexe.RunExe.gschema.xml:51
+msgid "Temp cleaning"
+msgstr "வெப்பநிலை சுத்தம்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:52
+msgid "Clean the temp path when booting the system."
+msgstr "கணினியை துவக்கும் போது தற்காலிக பாதையை சுத்தம் செய்யவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:56
+msgid "Release Candidate"
+msgstr "வெளியிடு வேட்பாளர்"
+
+#: data/io.github.runexe.RunExe.gschema.xml:57
+msgid "Toggle release candidate for runners."
+msgstr "ரன்னர்களுக்கான வெளியீட்டு வேட்பாளரை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.gschema.xml:61
+msgid "Startup view"
+msgstr "தொடக்கக் காட்சி"
+
+#: data/io.github.runexe.RunExe.gschema.xml:62
+msgid "Choose which view the application should be started in."
+msgstr ""
+"எந்தப் பார்வையில் பயன்பாடு தொடங்கப்பட வேண்டும் என்பதைத் தேர்வுசெய்யவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:67
+msgid ""
+"Toggle experimental features such as versioning and installers. Release "
+"candidate for runners."
+msgstr ""
+"பதிப்பு மற்றும் நிறுவிகள் போன்ற சோதனை அம்சங்களை மாற்றவும். ரன்னர்களுக்கான வேட்பாளரை விடுவிக்கவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:71
+msgid "Steam Proton Support"
+msgstr "ஸ்டீம் புரோட்டான் ஆதரவு"
+
+#: data/io.github.runexe.RunExe.gschema.xml:72
+msgid "Toggle Steam Proton prefixes support."
+msgstr "ஸ்டீம் புரோட்டான் முன்னொட்டு ஆதரவை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.gschema.xml:76
+msgid "Experiments:sandbox"
+msgstr "சோதனைகள்:மணல்பெட்டி"
+
+#: data/io.github.runexe.RunExe.gschema.xml:77
+msgid "Toggle experimental Sandbox per capsule."
+msgstr "ஒவ்வொரு பாட்டிலுக்கும் சோதனை சாண்ட்பாக்ஸை மாற்றவும்."
+
+#: data/io.github.runexe.RunExe.gschema.xml:81
+msgid "Automatically close RunExe"
+msgstr "பாட்டில்களை தானாக மூடு"
+
+#: data/io.github.runexe.RunExe.gschema.xml:82
+msgid "Close RunExe after starting an executable from the file manager."
+msgstr ""
+"கோப்பு மேலாளரிடமிருந்து இயங்கக்கூடிய ஒன்றைத் தொடங்கிய பிறகு பாட்டில்களை மூடு."
+
+#: data/io.github.runexe.RunExe.gschema.xml:86
+msgid "Show sandbox warning"
+msgstr "சாண்ட்பாக்ஸ் எச்சரிக்கையைக் காட்டு"
+
+#: data/io.github.runexe.RunExe.gschema.xml:87
+msgid "Toggle sandbox warning."
+msgstr "சாண்ட்பாக்ஸ் எச்சரிக்கையை நிலைமாற்று."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:11
+msgid "Run Windows software on Linux with RunExe!"
+msgstr "விண்டோஸ் மென்பொருளை லினக்ஸில் பாட்டில்களுடன் இயக்கவும்!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:12
+msgid "Capsule software and enjoy at your leisure!"
+msgstr "மென்பொருளை பாட்டில் செய்து உங்கள் ஓய்வு நேரத்தில் மகிழுங்கள்!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:13
+msgid ""
+"Our built-in dependency installation system grants automatic software "
+"compatibility access. Use the download manager to download the official "
+"components: the runner (Wine, Proton), DXVK, dependencies, etc."
+msgstr ""
+"எங்கள் உள்ளமைக்கப்பட்ட சார்பு நிறுவல் அமைப்பு தானியங்கு மென்பொருள் இணக்கத்தன்மை அணுகலை வழங்குகிறது. அதிகாரப்பூர்வ "
+"கூறுகளைப் பதிவிறக்க பதிவிறக்கம் மேலாளரைப் பயன்படுத்தவும்: ரன்னர் (ஒயின், புரோட்டான்), DXVK, சார்புகள், போன்றவை."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:16
+msgid ""
+"Capsule versioning keeps your work safe now and lets you restore it later!"
+msgstr ""
+"பாட்டில் பதிப்பானது இப்போது உங்கள் வேலையைப் பாதுகாப்பாக வைத்திருக்கிறது, பின்னர் அதை மீட்டெடுக்க உங்களை அனுமதிக்கிறது!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:17
+msgid "Features:"
+msgstr "அம்சங்கள்:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:19
+msgid "Create capsules using preconfigured environments or create your own"
+msgstr ""
+"முன் கட்டமைக்கப்பட்ட சூழல்களைப் பயன்படுத்தி பாட்டில்களை உருவாக்கவும் அல்லது சொந்தமாக உருவாக்கவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:20
+msgid ""
+"Run executables (.exe/.msi) in your capsules, directly from the context menu "
+"of your file-manager"
+msgstr ""
+"உங்கள் கோப்பு மேலாளரின் சூழல் மெனுவிலிருந்து நேரடியாக உங்கள் பாட்டில்களில் இயங்கக்கூடியவற்றை (.exe/.msi) இயக்கவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:21
+msgid "Automated detection of applications installed in your capsules"
+msgstr ""
+"உங்கள் பாட்டில்களில் நிறுவப்பட்டுள்ள பயன்பாடுகளை தானியங்கி முறையில் கண்டறிதல்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:22
+msgid "Add environment variables quickly"
+msgstr "சூழல் மாறிகளை விரைவாகச் சேர்க்கவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:23
+msgid "Override DLLs directly from per-capsule preferences"
+msgstr "ஒரு பாட்டில் விருப்பங்களிலிருந்து நேரடியாக DLLகளை மேலெழுதவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:24
+msgid "On-the-fly runner change for any Capsule"
+msgstr "எந்த பாட்டிலுக்கும் பறக்கும் போது ரன்னர் மாற்றம்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:25
+msgid ""
+"Various gaming-performance optimizations (esync, fsync, DXVK, cache, shader "
+"compiler, offload … and much more.)"
+msgstr ""
+"பல்வேறு கேமிங்-செயல்திறன் மேம்படுத்தல்கள் "
+"(esync, fsync, DXVK, கேச், ஷேடர் கம்பைலர், ஆஃப்லோட் ... மற்றும் பல.)"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:26
+msgid "Automatic installation and management of Wine and Proton runners"
+msgstr "ஒயின் மற்றும் புரோட்டான் ரன்னர்களின் தானியங்கி நிறுவல் மற்றும் மேலாண்மை"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:27
+msgid "Automatic capsule repair in case of breakage"
+msgstr "பாட்டில் உடைந்தால் தானாக பழுதுபார்க்கும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:28
+msgid "Integrated dependency-installer based on a community-driven repository"
+msgstr ""
+"சமூகத்தால் இயக்கப்படும் களஞ்சியத்தை அடிப்படையாகக் கொண்ட ஒருங்கிணைந்த சார்பு நிறுவி"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:29
+msgid "Integrated Task manager for Wine processes"
+msgstr "ஒயின் செயல்முறைகளுக்கான ஒருங்கிணைந்த பணி மேலாளர்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:30
+msgid "Access to ProtonDB and WineHQ for support"
+msgstr "ஆதரவுக்காக ProtonDB மற்றும் WineHQ ஐ அணுகவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:31
+msgid "System for bringing your configuration to new versions of RunExe"
+msgstr ""
+"பாட்டில்களின் புதிய பதிப்பிற்கு உங்கள் உள்ளமைவைக் கொண்டுவருவதற்கான அமைப்பு"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:32
+msgid "Back up and import runexe"
+msgstr "காப்பு மற்றும் இறக்குமதி பாட்டில்கள்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:33
+msgid "Import Wine prefixes from other managers"
+msgstr "மற்ற மேலாளர்களிடமிருந்து ஒயின் முன்னொட்டுகளை இறக்குமதி செய்யவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:34
+msgid "RunExe versioning"
+msgstr "பாட்டில்கள் பதிப்பு"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:35
+msgid "... and much more that you can find by installing RunExe!"
+msgstr "... மேலும் பாட்டில்களை நிறுவுவதன் மூலம் நீங்கள் கண்டுபிடிக்கக்கூடிய பல!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:84
+msgid "Update metadata information"
+msgstr "மீத்தரவு தகவலைப் புதுப்பிக்கவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:89
+msgid "Add more update information and correct release notes version"
+msgstr ""
+"மேலும் புதுப்பிப்புத் தகவல் மற்றும் சரியான வெளியீட்டு குறிப்புகளின் பதிப்பைச் சேர்க்கவும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:94
+msgid "Fixed \"Add to Steam\" button"
+msgstr "\"ஸ்டீமில் சேர்\" பொத்தான் சரி செய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:95
+msgid "Fixed CapsuleConfig being not serializable"
+msgstr "நிலையான CapsuleConfig வரிசைப்படுத்த முடியாதது சரி செய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:96
+msgid "Fixed Patool double extraction failing"
+msgstr "நிலையான படூல் இரட்டை பிரித்தெடுத்தல் தோல்வி"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:101
+msgid "Correct version"
+msgstr "சரியான பதிப்பு"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:106
+msgid "Fix crash when creating a capsule"
+msgstr "பாட்டிலை உருவாக்கும் போது செயலிழப்பு சரிசெய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:111
+msgid "Major change: Redesign New Capsule interface"
+msgstr "பெரிய மாற்றம்: புதிய பாட்டில் இடைமுகத்தை மறுவடிவமைப்பு"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:112
+msgid "Quality of life improvements:"
+msgstr "வாழ்க்கைத் தர மேம்பாடுகள்:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:114
+msgid "Replace emote-love icon with library in library page"
+msgstr "எமோட்-லவ் ஐகானை நூலகப் பக்கத்தில் நூலகமாக மாற்றப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:115
+msgid "Add toast for \"Run Executable\""
+msgstr "\"இயக்கு இயங்கக்கூடியது\" க்கு டோஸ்ட் சேர்க்கப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:117
+msgid "Bug fixes:"
+msgstr "பிழை திருத்தங்கள்:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:119
+msgid "Adding shortcut to Steam resulted an error"
+msgstr "ஸ்டீமில் (Steam) குறுக்குவழியைச் சேர்ப்பதில் பிழை ஏற்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:120
+msgid "Importing backups resulted an error"
+msgstr "காப்புப்பிரதிகளை இறக்குமதி செய்வதில் பிழை ஏற்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:121
+msgid "Steam Runtime automatically enabled when using wine-ge-custom"
+msgstr ""
+"wine-ge-custom பயன்படுத்தும் போது ஸ்டீம் (Steam) இயக்க நேரம் தானாகவே இயக்கப்படும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:122
+msgid ""
+"Various library related fixes, like empty covers, and crashes related to "
+"missing entries"
+msgstr ""
+"வெற்று அட்டைகள் மற்றும் விடுபட்ட உள்ளீடுகள் தொடர்பான செயலிழப்புகள் போன்ற பல்வேறு நூலகம் தொடர்பான திருத்தங்கள்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:123
+msgid "Fix various issues related to text encoding"
+msgstr "உரை குறியாக்கம் தொடர்பான பல்வேறு சிக்கல்கள் சரிசெய்யப்பட்டன"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:130
+msgid "Fix error when downloading if RunExe isn't run from terminal"
+msgstr ""
+"டெர்மினலில் இருந்து பாட்டில்கள் இயக்கப்படாவிட்டால் பதிவிறக்கும் போது பிழை சரி செய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:137
+msgid "Correct version date"
+msgstr "சரியான பதிப்பு தேதி"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:138
+msgid "Hide NVIDIA-related critical errors on non NVIDIA systems"
+msgstr "NVIDIA அல்லாத கணினிகளில் NVIDIA தொடர்பான முக்கியமான பிழைகளை மறை"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:145
+msgid "Gamescope improvements and fixes"
+msgstr "கேம்ஸ்கோப் மேம்பாடுகள் மற்றும் திருத்தங்கள்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:146
+msgid "Dependency installation is faster and more stable"
+msgstr "சார்பு நிறுவல் வேகமானது மற்றும் நிலையானது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:147
+msgid "The health check has more information for faster debugging"
+msgstr ""
+"விரைவான பிழைத்திருத்தத்திற்கான கூடுதல் தகவல்கள் சுகாதாரச் சோதனையில் உள்ளன"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:148
+msgid "NVAPI has a lot of fixes and is more stable, should now work properly"
+msgstr ""
+"NVAPI ஆனது நிறைய திருத்தங்களைக் கொண்டுள்ளது மற்றும் மிகவும் நிலையானது, இப்போது சரியாக வேலை செய்ய வேண்டும்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:149
+msgid "Fix crash when downloading a component"
+msgstr "ஒரு கூறுகளைப் பதிவிறக்கும் போது நிலையான செயலிழப்பு சரி செய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:150
+msgid "Backend code improvement by avoiding spin-lock"
+msgstr "ஸ்பின்-லாக்கைத் தவிர்ப்பதன் மூலம் பின்தள குறியீடு மேம்பாடு"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:151
+msgid "More variables for installer scripting"
+msgstr "நிறுவி ஸ்கிரிப்டிங்கிற்கான கூடுதல் மாறிகள்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:152
+msgid "Fix onboard dialog showing \"All ready\" while it was in fact not ready"
+msgstr ""
+"\"அனைத்தும் தயார்\" எனக் காட்டும் நிலையான உள் உரையாடல் உண்மையில் தயாராக இல்லை நிலையிலும் காட்டுவது செரிசெய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:153
+msgid "Improvement to build system"
+msgstr "கட்டமைப்பு மேம்படுத்துதல்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:154
+msgid "Enabling VKD3D by default when creating capsules for gaming"
+msgstr ""
+"விளையாட்டிற்காக பாட்டில்களை உருவாக்கும் போது இயல்பாக VKD3D ஐ இயக்குகிறது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:155
+msgid "Fix crashes when reading Steam files with bad encodings"
+msgstr ""
+"மோசமான குறியாக்கங்களைக் கொண்ட ஸ்டீம் (Steam) கோப்புகளைப் படிக்கும்போது செயலிழப்புகள் சரி செய்யப்பட்டன"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:156
+msgid ""
+"Fix components not updated correctly in the UI after installation/"
+"uninstallation"
+msgstr ""
+"நிறுவல்/நிறுவலுக்குப் பிறகு UI இல் சரியாகப் புதுப்பிக்கப்படாத கூறுகளைச் செரிசெய்யப்பட்டன"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:157
+msgid "More FSR fixes"
+msgstr "மேலும் FSR திருத்தங்கள்"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:158
+msgid ""
+"Fix the issue when a program closes after it was launched from \"Run "
+"executable\""
+msgstr ""
+"\" இயக்கு செயல்படுத்தக்கூடியவை\" இலிருந்து தொடங்கப்பட்ட பிறகு ஒரு நிரல் மூடப்படும் போது சிக்கல் சரி செய்யப்பட்டது"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:159
+msgid "and many, many, many more!"
+msgstr "மற்றும் பல, பல, பல!"

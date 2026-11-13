@@ -1,0 +1,3203 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the runexe package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: runexe\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-27 13:50+0530\n"
+"PO-Revision-Date: 2025-12-11 12:00+0000\n"
+"Last-Translator: Loc Huynh <huynhloc.contact@gmail.com>\n"
+"Language-Team: Vietnamese\n"
+"Language: vi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.15-dev\n"
+
+#: runexe/backend/managers/backup.py:48 runexe/backend/managers/backup.py:95
+msgid "No path specified"
+msgstr "Không có đường dẫn cụ thể"
+
+#: runexe/backend/managers/backup.py:56
+#, python-brace-format
+msgid "Backup {0}"
+msgstr "Sao lưu {0}"
+
+#: runexe/backend/managers/backup.py:101
+#, python-brace-format
+msgid "Importing backup: {0}"
+msgstr "Nhập bản sao lưu: {0}"
+
+#: runexe/backend/managers/manager.py:1057
+msgid "Fail to install components, tried 3 times."
+msgstr "Không cài đặt được các thành phần, đã thử 3 lần."
+
+#: runexe/backend/managers/manager.py:1068
+msgid "Missing essential components. Installing…"
+msgstr "Thiếu các thành phần thiết yếu. Đang cài đặt …"
+
+#: runexe/backend/managers/manager.py:1145
+msgid "Failed to create capsule directory."
+msgstr "Không thể tạo thư mục capsule."
+
+#: runexe/backend/managers/manager.py:1157
+msgid "Failed to create placeholder directory/file."
+msgstr "Không thể tạo thư mục/tệp giữ chỗ."
+
+#: runexe/backend/managers/manager.py:1162
+msgid "Generating capsule configuration…"
+msgstr "Đang tạo cấu hình capsule…"
+
+#: runexe/backend/managers/manager.py:1185
+msgid "Template found, applying…"
+msgstr "Đã tìm thấy mẫu, đang áp dụng…"
+
+#. execute wineboot on the capsule path
+#: runexe/backend/managers/manager.py:1197
+msgid "The Wine config is being updated…"
+msgstr "Cấu hình Wine đang được cập nhật …"
+
+#: runexe/backend/managers/manager.py:1199
+msgid "Wine config updated!"
+msgstr "Cấu hình Wine đã cập nhật!"
+
+#: runexe/backend/managers/manager.py:1207
+msgid "Running as Flatpak, sandboxing userdir…"
+msgstr "Chạy qua Flatpak, sandboxing thư mục người dùng…"
+
+#: runexe/backend/managers/manager.py:1209
+msgid "Sandboxing userdir…"
+msgstr "Sandboxing thư mục người dùng…"
+
+#: runexe/backend/managers/manager.py:1250
+msgid "Setting Windows version…"
+msgstr "Đang đặt phiên bản Windows …"
+
+#: runexe/backend/managers/manager.py:1260
+msgid "Apply CMD default settings…"
+msgstr "Áp dụng cài đặt mặc định CMD…"
+
+#: runexe/backend/managers/manager.py:1268
+msgid "Optimizing environment…"
+msgstr "Tối ưu hóa môi trường…"
+
+#: runexe/backend/managers/manager.py:1279
+#, python-brace-format
+msgid "Applying environment: {0}…"
+msgstr "Áp dụng môi trường: {0}…"
+
+#: runexe/backend/managers/manager.py:1289
+msgid "(!) Using a custom environment recipe…"
+msgstr "(!) Sử dụng công thức môi trường tùy chỉnh…"
+
+#: runexe/backend/managers/manager.py:1292
+msgid "(!) Recipe not not found or not valid…"
+msgstr "(!) Công thức không tìm thấy hoặc không hợp lệ…"
+
+#: runexe/backend/managers/manager.py:1309
+msgid "Installing DXVK…"
+msgstr "Đang cài đặt DXVK…"
+
+#: runexe/backend/managers/manager.py:1317
+msgid "Installing VKD3D…"
+msgstr "Đang cài đặt VKD3D…"
+
+#: runexe/backend/managers/manager.py:1326
+msgid "Installing DXVK-NVAPI…"
+msgstr "Đang cài đặt DXVK-NVAPI…"
+
+#: runexe/backend/managers/manager.py:1335
+#, python-format
+msgid "Installing dependency: %s …"
+msgstr "Đang cài đặt phụ thuộc: %s…"
+
+#: runexe/backend/managers/manager.py:1345
+msgid "Creating versioning state 0…"
+msgstr "Đang tạo trạng thái phiên bản 0…"
+
+#: runexe/backend/managers/manager.py:1353
+msgid "Finalizing…"
+msgstr "Đang hoàn tất…"
+
+#: runexe/backend/managers/manager.py:1364
+msgid "Caching template…"
+msgstr "Đang caching bản mẫu …"
+
+#: runexe/backend/managers/versioning.py:83
+msgid "Committing state …"
+msgstr "Đang cập nhật trạng thái…"
+
+#: runexe/backend/managers/versioning.py:90
+msgid "Nothing to commit"
+msgstr "Không có gì để cập nhật"
+
+#: runexe/backend/managers/versioning.py:96
+#, python-brace-format
+msgid "New state [{0}] created successfully!"
+msgstr "Trạng thái mới [{0}] đã được tạo thành công!"
+
+#: runexe/backend/managers/versioning.py:123
+msgid "States list retrieved successfully!"
+msgstr "Đã truy xuất thành công danh sách trạng thái!"
+
+#: runexe/backend/managers/versioning.py:153
+#, python-brace-format
+msgid "State {0} restored successfully!"
+msgstr "Trạng thái {0} đã được khôi phục thành công!"
+
+#: runexe/backend/managers/versioning.py:155
+msgid "Restoring state {} …"
+msgstr "Đang khôi phục trạng thái…"
+
+#: runexe/backend/managers/versioning.py:162
+msgid "State not found"
+msgstr "Không tìm thấy trạng thái"
+
+#: runexe/backend/managers/versioning.py:168
+msgid "State {} is already the active state"
+msgstr "Trạng thái {} đã được kích hoạt"
+
+#: runexe/frontend/main.py:112
+msgid "Show version"
+msgstr "Hiển thị phiên bản"
+
+#: runexe/frontend/main.py:120
+msgid "Executable path"
+msgstr "Đường dẫn thực thi"
+
+#: runexe/frontend/main.py:128
+msgid "lnk path"
+msgstr "đường dẫn lnk"
+
+#: runexe/frontend/main.py:136 runexe/frontend/ui/library-entry.blp:118
+#: runexe/frontend/ui/list-entry.blp:5
+msgid "Capsule name"
+msgstr "Tên capsule"
+
+#: runexe/frontend/main.py:144
+msgid "Pass arguments"
+msgstr "Truyền đối số"
+
+#: runexe/frontend/main.py:203
+msgid "Invalid URI (syntax: capsules:run/<capsule>/<program>)"
+msgstr "URI không hợp lệ (cú pháp: capsules:run/<capsule>/<chương trình>)"
+
+#: runexe/frontend/main.py:244
+msgid "[Quit] request received."
+msgstr "[Thoát] Yêu cầu đã nhận."
+
+#: runexe/frontend/main.py:253
+msgid "[Help] request received."
+msgstr "[Trợ giúp] yêu cầu đã nhận."
+
+#: runexe/frontend/main.py:261
+msgid "[Refresh] request received."
+msgstr "[Làm mới] yêu cầu đã nhận."
+
+#: runexe/frontend/main.py:294
+msgid "Donate"
+msgstr "Quyên góp"
+
+#: runexe/frontend/main.py:299
+msgid "Third-Party Libraries and Special Thanks"
+msgstr "Thư viện bên thứ ba và Lời cảm ơn đặc biệt"
+
+#: runexe/frontend/main.py:325
+msgid "Sponsored and Funded by"
+msgstr "Được tài trợ và tài trợ bởi"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/about.blp:10
+msgid "RunExe Developers"
+msgstr "Nhà phát triển RunExe"
+
+#: runexe/frontend/ui/about.blp:12
+msgid "translator_credits"
+msgstr ""
+"Vietnam Linux L10n <https://github.com/linux-l10n-vi>\n"
+"Loc Huynh <https://github.com/hthienloc>\n"
+"Ky Nguyen <https://github.com/nhktmdzhg>"
+
+#: runexe/frontend/ui/component-entry.blp:4
+msgid "Component version"
+msgstr "Phiên bản của thành phần"
+
+#: runexe/frontend/ui/component-entry.blp:12
+#: runexe/frontend/ui/dependency-entry.blp:29
+#: runexe/frontend/ui/program-entry.blp:77
+msgid "Uninstall"
+msgstr "Gỡ cài đặt"
+
+#: runexe/frontend/ui/component-entry.blp:23
+msgid "Browse Files"
+msgstr "Duyệt tập tin"
+
+#: runexe/frontend/ui/component-entry.blp:34
+msgid ""
+"The installation failed. This may be due to a repository error, partial "
+"download or checksum mismatch. Press to try again."
+msgstr ""
+"Việc cài đặt thất bại. Điều này có thể là do lỗi kho lưu trữ, tải về bị phân "
+"mảnh hoặc checksum không khớp. Nhấn để thử lại."
+
+#: runexe/frontend/ui/component-entry.blp:45
+msgid "Download & Install"
+msgstr "Tải xuống và cài đặt"
+
+#: runexe/frontend/ui/component-entry.blp:58
+msgid "0%"
+msgstr "0%"
+
+#: runexe/frontend/ui/dependency-entry.blp:16
+msgid "Show Manifest"
+msgstr "Xem Manifest"
+
+#: runexe/frontend/ui/dependency-entry.blp:20
+msgid "License"
+msgstr "Giấy phép"
+
+#: runexe/frontend/ui/dependency-entry.blp:24
+msgid "Reinstall"
+msgstr "Cài đặt lại"
+
+#: runexe/frontend/ui/dependency-entry.blp:36
+#: runexe/frontend/ui/installer-entry.blp:27
+msgid "Report a Bug…"
+msgstr "Báo cáo lỗi…"
+
+#: runexe/frontend/ui/dependency-entry.blp:42
+msgid "Dependency name"
+msgstr "Tên gói phụ thuộc"
+
+#: runexe/frontend/ui/dependency-entry.blp:44
+msgid "Dependency description"
+msgstr "Mô tả gói phụ thuộc"
+
+#: runexe/frontend/ui/dependency-entry.blp:51
+msgid "Category"
+msgstr "Thể loại"
+
+#: runexe/frontend/ui/dependency-entry.blp:64
+msgid "Download & Install this Dependency"
+msgstr "Tải xuống & Cài đặt gói phụ thuộc này"
+
+#: runexe/frontend/ui/dependency-entry.blp:79
+msgid ""
+"An installation error occurred. Restart RunExe to read the Crash Report or "
+"run it via terminal to read the output."
+msgstr ""
+"Xảy ra lỗi cài đặt. Khởi động lại RunExe để đọc Báo cáo sự cố hoặc chạy nó "
+"qua terminal để đọc đầu ra."
+
+#: runexe/frontend/ui/dependency-entry.blp:93
+msgid "Dependency Menu"
+msgstr "Danh mục gói phụ thuộc"
+
+#: runexe/frontend/ui/details-capsule.blp:16
+msgid "Troubleshooting"
+msgstr "Xử lý sự cố"
+
+#: runexe/frontend/ui/details-capsule.blp:24
+msgid "Browse Files…"
+msgstr "Duyệt tập tin…"
+
+#: runexe/frontend/ui/details-capsule.blp:28
+msgid "Duplicate Capsule…"
+msgstr "Nhân bản Capsule…"
+
+#: runexe/frontend/ui/details-capsule.blp:32
+#: runexe/frontend/ui/importer.blp:73
+msgid "This is the complete archive of your capsule, including personal files."
+msgstr "Đây là nén đầy đủ của capsule của bạn, bao gồm cả các tệp cá nhân."
+
+#: runexe/frontend/ui/details-capsule.blp:33
+msgid "Full Backup…"
+msgstr "Sao lưu đầy đủ…"
+
+#: runexe/frontend/ui/details-capsule.blp:37
+#: runexe/frontend/ui/importer.blp:68
+msgid ""
+"This is just the capsule configuration, it's perfect if you want to create a "
+"new one but without personal files."
+msgstr ""
+"Đây chỉ là cấu hình capsule, nó hoàn hảo nếu bạn muốn tạo một cái mới nhưng "
+"không có tệp cá nhân."
+
+#: runexe/frontend/ui/details-capsule.blp:38
+msgid "Export Configuration…"
+msgstr "Xuất Cấu hình…"
+
+#: runexe/frontend/ui/details-capsule.blp:45
+#: runexe/frontend/views/capsule_details.py:344
+msgid "Show Hidden Programs"
+msgstr "Hiện Chương trình ẩn"
+
+#: runexe/frontend/ui/details-capsule.blp:49
+msgid "Search for new programs"
+msgstr "Tìm kiếm các chương trình mới"
+
+#: runexe/frontend/ui/details-capsule.blp:56
+msgid "Delete Capsule…"
+msgstr "Xóa Capsule…"
+
+#: runexe/frontend/ui/details-capsule.blp:73
+#: runexe/frontend/ui/details-dependencies.blp:99
+#: runexe/frontend/ui/details-installers.blp:68
+msgid "Secondary Menu"
+msgstr "Danh mục cấp hai"
+
+#: runexe/frontend/ui/details-capsule.blp:90
+msgid "Force Stop all Processes"
+msgstr "Cưỡng ép đóng tất cả tiến trình của Wine"
+
+#: runexe/frontend/ui/details-capsule.blp:94
+msgid "Simulate a Windows system shutdown."
+msgstr "Giả lập một lệnh tắt cấp hệ thống."
+
+#: runexe/frontend/ui/details-capsule.blp:95
+msgid "Shutdown"
+msgstr "Tắt nguồn"
+
+#: runexe/frontend/ui/details-capsule.blp:99
+msgid "Simulate a Windows system reboot."
+msgstr "Giả lập một lệnh khởi động lại cấp hệ thống."
+
+#: runexe/frontend/ui/details-capsule.blp:100
+msgid "Reboot"
+msgstr "Khởi động lại"
+
+#: runexe/frontend/ui/details-capsule.blp:118
+#: runexe/frontend/ui/dialog-launch-options.blp:6
+msgid "Launch Options"
+msgstr "Khởi chạy Tùy chọn"
+
+#: runexe/frontend/ui/details-capsule.blp:135
+msgid "Run in Terminal"
+msgstr "Mở trong Terminal"
+
+#: runexe/frontend/ui/details-capsule.blp:148
+msgid "Drop files to execute them"
+msgstr "Kéo thả các tệp để thực thi chúng"
+
+#: runexe/frontend/ui/details-capsule.blp:164
+msgid "My capsule"
+msgstr "Capsule của tôi"
+
+#: runexe/frontend/ui/details-capsule.blp:177
+msgid "Win64"
+msgstr "Win64"
+
+#: runexe/frontend/ui/details-capsule.blp:189
+#: runexe/frontend/ui/list-entry.blp:12 runexe/frontend/ui/new.blp:71
+msgid "Environment"
+msgstr "Môi trường"
+
+#: runexe/frontend/ui/details-capsule.blp:201
+#: runexe/frontend/ui/details-preferences.blp:14
+#: runexe/frontend/ui/new.blp:128
+msgid "Runner"
+msgstr "Trình chạy"
+
+#: runexe/frontend/ui/details-capsule.blp:213
+#: runexe/frontend/ui/list-entry.blp:21
+msgid "Versioning enabled for this capsule"
+msgstr "Phiên bản đã bật cho capsule này"
+
+#: runexe/frontend/ui/details-capsule.blp:218
+msgid "Versioning is active for this capsule."
+msgstr "Phiên bản đã kích hoạt cho capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:227
+#: runexe/frontend/ui/list-entry.blp:31
+msgid "0"
+msgstr "0"
+
+#: runexe/frontend/ui/details-capsule.blp:247
+msgid "Run Executable…"
+msgstr "Thực thi chương trình…"
+
+#: runexe/frontend/ui/details-capsule.blp:272
+msgid "Programs"
+msgstr "Chương trình"
+
+#: runexe/frontend/ui/details-capsule.blp:275
+msgid ""
+"Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an "
+"executable to the Programs list, or \"Install Programs…\" to install "
+"programs curated by the community."
+msgstr ""
+"Nhấp vào \"Thực thi chương trình…\" để chạy tệp thực thi, \"Thêm lối "
+"tắt...\" để thêm tệp thực thi vào Danh sách chương trình hoặc \"Cài đặt "
+"chương trình…\" để cài đặt các chương trình do cộng đồng quản lý."
+
+#: runexe/frontend/ui/details-capsule.blp:298
+msgid "Add Shortcuts…"
+msgstr "Thêm lối tắt…"
+
+#: runexe/frontend/ui/details-capsule.blp:325
+msgid "Install Programs…"
+msgstr "Cài đặt chương trình…"
+
+#: runexe/frontend/ui/details-capsule.blp:346
+msgid "Options"
+msgstr "Tùy chọn"
+
+#: runexe/frontend/ui/details-capsule.blp:350
+#: runexe/frontend/views/details.py:141
+msgid "Settings"
+msgstr "Cài đặt"
+
+#: runexe/frontend/ui/details-capsule.blp:351
+msgid "Configure capsule settings."
+msgstr "Cấu hình cài đặt capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:360
+#: runexe/frontend/views/details.py:145
+msgid "Dependencies"
+msgstr "Gói phụ thuộc"
+
+#: runexe/frontend/ui/details-capsule.blp:361
+msgid "Install dependencies for programs."
+msgstr "Cài đặt gói phụ thuộc cho chương trình."
+
+#: runexe/frontend/ui/details-capsule.blp:370
+#: runexe/frontend/ui/details-preferences.blp:377
+#: runexe/frontend/views/details.py:149
+msgid "Snapshots"
+msgstr "Snapshots"
+
+#: runexe/frontend/ui/details-capsule.blp:371
+msgid "Create and manage capsule states."
+msgstr "Tạo và quản lý trạng thái capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:380
+#: runexe/frontend/ui/details-capsule.blp:426
+#: runexe/frontend/views/details.py:157
+msgid "Task Manager"
+msgstr "Trình quản lý tác vụ"
+
+#: runexe/frontend/ui/details-capsule.blp:381
+msgid "Manage running programs."
+msgstr "Quản lý các chương trình đang chạy."
+
+#: runexe/frontend/ui/details-capsule.blp:390
+msgid "Tools"
+msgstr "Công cụ"
+
+#: runexe/frontend/ui/details-capsule.blp:394
+msgid "Command Line"
+msgstr "Dòng lệnh"
+
+#: runexe/frontend/ui/details-capsule.blp:395
+msgid "Run commands inside the Capsule."
+msgstr "Chạy lệnh trong capsule."
+
+#: runexe/frontend/ui/details-capsule.blp:404
+msgid "Registry Editor"
+msgstr "Trình chỉnh sửa Registry"
+
+#: runexe/frontend/ui/details-capsule.blp:405
+msgid "Edit the internal registry."
+msgstr "Chỉnh sửa registry nội bộ."
+
+#: runexe/frontend/ui/details-capsule.blp:413
+msgid "Legacy Wine Tools"
+msgstr "Các công cụ cũ của Wine"
+
+#: runexe/frontend/ui/details-capsule.blp:417
+msgid "Explorer"
+msgstr "Explorer"
+
+#: runexe/frontend/ui/details-capsule.blp:435
+msgid "Debugger"
+msgstr "Trình gỡ lỗi"
+
+#: runexe/frontend/ui/details-capsule.blp:444
+#: runexe/frontend/ui/importer.blp:69 runexe/frontend/ui/new.blp:145
+msgid "Configuration"
+msgstr "Cấu hình"
+
+#: runexe/frontend/ui/details-capsule.blp:453
+msgid "Uninstaller"
+msgstr "Trình gỡ cài đặt"
+
+#: runexe/frontend/ui/details-capsule.blp:462
+msgid "Control Panel"
+msgstr "Control Panel"
+
+#: runexe/frontend/ui/details-dependencies.blp:9
+msgid "Search for dependencies…"
+msgstr "Tìm kiếm các gói phụ thuộc…"
+
+#: runexe/frontend/ui/details-dependencies.blp:22
+#: runexe/frontend/ui/preferences.blp:178
+#: runexe/frontend/ui/preferences.blp:235
+msgid "You're offline :("
+msgstr "Bạn hiện đang offline :("
+
+#: runexe/frontend/ui/details-dependencies.blp:25
+msgid "RunExe is running in offline mode, so dependencies are not available."
+msgstr ""
+"RunExe đang chạy ở chế độ ngoại tuyến, nên không có sẵn các phần phụ thuộc."
+
+#: runexe/frontend/ui/details-dependencies.blp:47
+msgid ""
+"Dependencies are resources that improve compatibility of Windows software.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Các phần phụ thuộc là tài nguyên giúp cải thiện khả năng tương thích của "
+"phần mềm Windows.\n"
+"\n"
+"Các tệp trên trang này được cung cấp bởi bên thứ ba theo giấy phép độc quyền "
+". Bằng cách cài đặt chúng, bạn đồng ý với các điều khoản cấp phép tương ứng "
+"của họ."
+
+#: runexe/frontend/ui/details-dependencies.blp:76
+msgid "Report a problem or a missing dependency."
+msgstr "Báo cáo một vấn đề hoặc thiếu phần phụ thuộc."
+
+#: runexe/frontend/ui/details-dependencies.blp:77
+msgid "Report Missing Dependency"
+msgstr "Báo cáo phần phụ thuộc bị thiếu"
+
+#: runexe/frontend/ui/details-dependencies.blp:81
+msgid "Read Documentation."
+msgstr "Đọc tài liệu."
+
+#: runexe/frontend/ui/details-dependencies.blp:82
+#: runexe/frontend/ui/details-installers.blp:51
+#: runexe/frontend/ui/details-versioning.blp:37
+msgid "Documentation"
+msgstr "Tài liệu"
+
+#: runexe/frontend/ui/details-dependencies.blp:92
+#: runexe/frontend/ui/details-installers.blp:61
+#: runexe/frontend/ui/window.blp:46
+msgid "Search"
+msgstr "Tìm"
+
+#: runexe/frontend/ui/details-installers.blp:9
+msgid "Search for Programs…"
+msgstr "Tìm kiếm chương trình…"
+
+#: runexe/frontend/ui/details-installers.blp:15
+msgid ""
+"Install programs curated by our community.\n"
+"\n"
+"Files on this page are provided by third parties under a proprietary "
+"license. By installing them, you agree with their respective licensing terms."
+msgstr ""
+"Cài đặt các chương trình được cộng đồng chúng tôi chọn lựa.\n"
+"\n"
+"Các tệp trên trang này được cung cấp bởi bên thứ ba theo giấy phép độc "
+"quyền. Bằng cách cài đặt chúng, bạn đồng ý với các điều khoản cấp phép tương "
+"ứng của họ."
+
+#: runexe/frontend/ui/details-installers.blp:29
+msgid "No Installers Found"
+msgstr "Không tìm thấy trình cài đặt"
+
+#: runexe/frontend/ui/details-installers.blp:32
+msgid ""
+"The repository is unreachable or no installer is compatible with this capsule."
+msgstr ""
+"Không thể truy cập kho lưu trữ hoặc không có trình cài đặt nào tương thích "
+"với capsule."
+
+#: runexe/frontend/ui/details-installers.blp:50
+#: runexe/frontend/ui/details-versioning.blp:36
+#: runexe/frontend/ui/preferences.blp:81
+msgid "Read Documentation"
+msgstr "Đọc tài liệu"
+
+#: runexe/frontend/ui/details-preferences.blp:6
+#: runexe/frontend/ui/dialog-duplicate.blp:52
+msgid "Name"
+msgstr "Tên"
+
+#: runexe/frontend/ui/details-preferences.blp:11
+msgid "Components"
+msgstr "Thành phần"
+
+#: runexe/frontend/ui/details-preferences.blp:15
+#: runexe/frontend/ui/new.blp:129
+msgid "The version of the Wine compatibility layer."
+msgstr "Phiên bản của lớp tương thích Wine."
+
+#: runexe/frontend/ui/details-preferences.blp:17
+msgid "Updating Runner and components, please wait…"
+msgstr "Đang cập nhật Trình chạy và các thành phần, vui lòng đợi…"
+
+#: runexe/frontend/ui/details-preferences.blp:27
+#: runexe/frontend/ui/preferences.blp:262
+msgid "DXVK"
+msgstr "DXVK"
+
+#: runexe/frontend/ui/details-preferences.blp:28
+msgid "Improve Direct3D 8/9/10/11 compatibility by translating it to Vulkan."
+msgstr ""
+"Cải thiện độ tương thích Direct3D 8/9/10/11 bằng cách phiên dịch nó sang "
+"Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:30
+msgid "Updating DXVK, please wait…"
+msgstr "Đang cập nhật DXVK, vui lòng đợi…"
+
+#: runexe/frontend/ui/details-preferences.blp:40
+#: runexe/frontend/ui/preferences.blp:266
+msgid "VKD3D"
+msgstr "VKD3D"
+
+#: runexe/frontend/ui/details-preferences.blp:41
+msgid "Improve Direct3D 12 compatibility by translating it to Vulkan."
+msgstr ""
+"Cải thiện khả năng tương thích với Direct3D 12 bằng cách phiên dịch nó sang "
+"Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:43
+msgid "Updating VKD3D, please wait…"
+msgstr "Đang cập nhật VKD3D, vui lòng đợi…"
+
+#: runexe/frontend/ui/details-preferences.blp:54
+msgid "DXVK NVAPI"
+msgstr "DXVK NVAPI"
+
+#: runexe/frontend/ui/details-preferences.blp:58
+#: runexe/frontend/ui/details-preferences.blp:93
+msgid "Updating DXVK-NVAPI, please wait…"
+msgstr "Đang cập nhật DXVK-NVAPI, vui lòng đợi…"
+
+#: runexe/frontend/ui/details-preferences.blp:68
+#: runexe/frontend/ui/preferences.blp:274
+msgid "LatencyFleX"
+msgstr "LatencyFleX"
+
+#: runexe/frontend/ui/details-preferences.blp:69
+msgid "Increase responsiveness. Can be detected by some anti-cheat software."
+msgstr ""
+"Tăng khả năng phản hồi. Có thể bị phát hiện bởi một số phần mềm chống gian "
+"lận."
+
+#: runexe/frontend/ui/details-preferences.blp:71
+msgid "Updating LatencyFleX, please wait…"
+msgstr "Đang cập nhật LatencyFleX, vui lòng đợi…"
+
+#: runexe/frontend/ui/details-preferences.blp:84
+msgid "Display"
+msgstr "Màn hình"
+
+#: runexe/frontend/ui/details-preferences.blp:88
+msgid "Deep Learning Super Sampling"
+msgstr "Deep Learning Super Sampling"
+
+#: runexe/frontend/ui/details-preferences.blp:89
+msgid ""
+"Increase performance at the expense of visuals using DXVK-NVAPI. Only works "
+"on newer NVIDIA GPUs."
+msgstr ""
+"Tăng hiệu suất bằng cách giảm hiệu ứng hình ảnh sử dụng DXVK-NVAPI. Chỉ hoạt "
+"động trên GPU NVIDIA đời mới."
+
+#: runexe/frontend/ui/details-preferences.blp:105
+msgid "FidelityFX Super Resolution"
+msgstr "Độ phân giải siêu tốt của FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:106
+msgid "Increase performance at the expense of visuals. Only works on Vulkan."
+msgstr ""
+"Tăng hiệu suất bằng cách giảm hiệu ứng hình ảnh. Chỉ hoạt động trên Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:108
+msgid "Manage FidelityFX Super Resolution settings"
+msgstr "Quản lý cài đặt cho độ phân giải siêu tốt FidelityFX"
+
+#: runexe/frontend/ui/details-preferences.blp:125
+msgid "Discrete Graphics"
+msgstr "Card đồ họa rời"
+
+#: runexe/frontend/ui/details-preferences.blp:126
+msgid ""
+"Use the discrete graphics card to increase performance at the expense of "
+"power consumption."
+msgstr ""
+"Sử dụng card đồ họa rời để tăng hiệu suất nhưng sẽ tiêu thụ nhiều điện năng "
+"hơn."
+
+#: runexe/frontend/ui/details-preferences.blp:135
+msgid "Post-Processing Effects"
+msgstr "Hiệu ứng xử lý hậu kỳ"
+
+#: runexe/frontend/ui/details-preferences.blp:136
+msgid ""
+"Add various post-processing effects using vkBasalt. Only works on Vulkan."
+msgstr "Thêm hiệu ứng xử lý hậu kỳ với vkBasalt. Chỉ hoạt động trên Vulkan."
+
+#: runexe/frontend/ui/details-preferences.blp:138
+msgid "Manage Post-Processing Layer settings"
+msgstr "Quản lý thiết đặt lớp xử lý hậu kỳ"
+
+#: runexe/frontend/ui/details-preferences.blp:154
+msgid "Manage how games should be displayed on the screen using Gamescope."
+msgstr "Quản lý cách hiện thị trò chơi trên màn hình bằng Gamescope."
+
+#: runexe/frontend/ui/details-preferences.blp:157
+msgid "Manage Gamescope settings"
+msgstr "Quản lý thiết đặt Gamescope"
+
+#: runexe/frontend/ui/details-preferences.blp:171
+msgid "Advanced Display Settings"
+msgstr "Cài đặt hiện thị nâng cao"
+
+#: runexe/frontend/ui/details-preferences.blp:184
+msgid "Performance"
+msgstr "Hiệu suất"
+
+#: runexe/frontend/ui/details-preferences.blp:188
+msgid "Enable synchronization to increase performance of multicore processors."
+msgstr "Cho phép đồng bộ hóa để tăng hiệu suất của bộ xử lý đa lõi."
+
+#: runexe/frontend/ui/details-preferences.blp:189
+msgid "Synchronization"
+msgstr "Đồng bộ hóa"
+
+#: runexe/frontend/ui/details-preferences.blp:193
+msgid "System"
+msgstr "Hệ thống"
+
+#: runexe/frontend/ui/details-preferences.blp:194
+msgid "Esync"
+msgstr "Esync"
+
+#: runexe/frontend/ui/details-preferences.blp:195
+msgid "Fsync"
+msgstr "Fsync"
+
+#: runexe/frontend/ui/details-preferences.blp:196
+msgid "Futex2"
+msgstr "Futex 2"
+
+#: runexe/frontend/ui/details-preferences.blp:202
+msgid "Monitor Performance"
+msgstr "Giám sát hiệu suất"
+
+#: runexe/frontend/ui/details-preferences.blp:203
+msgid ""
+"Display monitoring information such as framerate, temperatures, CPU/GPU load "
+"and more on OpenGL and Vulkan using MangoHud."
+msgstr ""
+"Hiển thị thông tin giám sát như tốc độ khung hình, nhiệt độ, CPU/GPU và "
+"nhiều thông tin khác trên OpenGL và Vulkan bằng MangoHud."
+
+#: runexe/frontend/ui/details-preferences.blp:211
+msgid "Feral GameMode"
+msgstr "Sử dụng GameMode"
+
+#: runexe/frontend/ui/details-preferences.blp:212
+msgid ""
+"Apply a set of optimizations to your device. Can improve game performance."
+msgstr ""
+"Áp dụng một bộ tối ưu hóa cho thiết bị của bạn. Có thể cải thiện hiệu suất "
+"trò chơi."
+
+#: runexe/frontend/ui/details-preferences.blp:221
+msgid "Preload Game Files"
+msgstr "Tải trước các file trò chơi"
+
+#: runexe/frontend/ui/details-preferences.blp:222
+msgid ""
+"Improve loading time when launching the game multiple times. The game will "
+"take longer to start for the first time."
+msgstr ""
+"Cải thiện thời gian tải khi khởi chạy trò chơi nhiều lần. Trò chơi sẽ mất "
+"nhiều thời gian hơn để khởi động lần đầu tiên."
+
+#: runexe/frontend/ui/details-preferences.blp:226
+msgid "Manage vmtouch settings"
+msgstr "Quản lý cài đặt vmtouch"
+
+#: runexe/frontend/ui/details-preferences.blp:241
+msgid "OBS Game Capture"
+msgstr "Ghi hình trò chơi bằng OBS"
+
+#: runexe/frontend/ui/details-preferences.blp:242
+msgid "Toggle OBS Game Capture for all Vulkan and OpenGL programs."
+msgstr ""
+"Bật/Tắt ghi hình trò chơi bằng OBS cho toàn bộ chương trình Vulkan và OpenGL."
+
+#: runexe/frontend/ui/details-preferences.blp:251
+msgid "Compatibility"
+msgstr "Tương thích"
+
+#: runexe/frontend/ui/details-preferences.blp:254
+msgid "Windows Version"
+msgstr "Phiên bản Windows"
+
+#: runexe/frontend/ui/details-preferences.blp:257
+msgid "Updating Windows version, please wait…"
+msgstr "Đang cập nhật phiên bản Windows, vui lòng đợi…"
+
+#: runexe/frontend/ui/details-preferences.blp:266
+msgid "Language"
+msgstr "Ngôn ngữ"
+
+#: runexe/frontend/ui/details-preferences.blp:267
+msgid "Choose the language to use with programs."
+msgstr "Chọn ngôn ngữ sẽ được dùng với các chương trình."
+
+#: runexe/frontend/ui/details-preferences.blp:275
+msgid "Dedicated Sandbox"
+msgstr "Trình chuyên về Sandbox"
+
+#: runexe/frontend/ui/details-preferences.blp:276
+msgid "Use a restricted/managed environment for this capsule."
+msgstr "Sử dụng môi trường hạn chế/được quản lý cho capsule."
+
+#: runexe/frontend/ui/details-preferences.blp:279
+msgid "Manage the Sandbox Permissions"
+msgstr "Quản lý quyền cho Sandbox"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/details-preferences.blp:295
+msgid "RunExe Runtime"
+msgstr "Trình thực thi RunExe"
+
+#: runexe/frontend/ui/details-preferences.blp:296
+msgid ""
+"Provide a bundle of extra libraries for more compatibility. Disable it if "
+"you run into issues."
+msgstr ""
+"Cung cấp một loạt các thư viện bổ sung để có khả năng tương thích tốt hơn. "
+"Tắt nó nếu bạn gặp sự cố."
+
+#: runexe/frontend/ui/details-preferences.blp:306
+msgid "Steam Runtime"
+msgstr "Trình thực thi Steam"
+
+#: runexe/frontend/ui/details-preferences.blp:307
+msgid ""
+"Provide a bundle of extra libraries for more compatibility with Steam games. "
+"Disable it if you run into issues."
+msgstr ""
+"Cung cấp một gói thư viện bổ sung để tương thích hơn với các trò chơi Steam. "
+"Tắt nó nếu bạn gặp sự cố."
+
+#: runexe/frontend/ui/details-preferences.blp:315
+#: runexe/frontend/ui/dialog-launch-options.blp:83
+msgid "Working Directory"
+msgstr "Thư mục làm việc"
+
+#: runexe/frontend/ui/details-preferences.blp:318
+#: runexe/frontend/ui/dialog-launch-options.blp:59
+#: runexe/frontend/ui/dialog-launch-options.blp:90
+#: runexe/frontend/ui/new.blp:150 runexe/frontend/ui/new.blp:181
+#: runexe/frontend/ui/preferences.blp:136
+msgid "Reset to Default"
+msgstr "Đặt lại về mặc định"
+
+#: runexe/frontend/ui/details-preferences.blp:339
+#: runexe/frontend/ui/preferences.blp:157 runexe/frontend/views/new.py:78
+#: runexe/frontend/views/preferences.py:210
+msgid "(Default)"
+msgstr "(Mặc định)"
+
+#: runexe/frontend/ui/details-preferences.blp:347
+#: runexe/frontend/ui/dialog-dll-overrides.blp:7
+#: runexe/frontend/ui/dialog-dll-overrides.blp:12
+msgid "DLL Overrides"
+msgstr "Ghi đè DLL"
+
+#: runexe/frontend/ui/details-preferences.blp:357
+#: runexe/frontend/ui/dialog-env-vars.blp:20
+msgid "Environment Variables"
+msgstr "Biến môi trường"
+
+#: runexe/frontend/ui/details-preferences.blp:367
+msgid "Manage Drives"
+msgstr "Quản lý ổ đĩa"
+
+#: runexe/frontend/ui/details-preferences.blp:381
+msgid "Automatic Snapshots"
+msgstr "Tự động Snapshots"
+
+#: runexe/frontend/ui/details-preferences.blp:382
+msgid ""
+"Automatically create snapshots before installing software or changing "
+"settings."
+msgstr "Tự động tạo snapshots trước khi cài đặt phần mềm hoặc thay đổi cài đặt."
+
+#: runexe/frontend/ui/details-preferences.blp:391
+msgid "Compression"
+msgstr "Nén"
+
+#: runexe/frontend/ui/details-preferences.blp:392
+msgid ""
+"Compress snapshots to reduce space. This will slow down the creation of "
+"snapshots."
+msgstr ""
+"Nén snapshots để giảm dung lượng. Điều này sẽ làm chậm quá trình tạo "
+"snapshots."
+
+#: runexe/frontend/ui/details-preferences.blp:401
+msgid "Use Exclusion Patterns"
+msgstr "Sử dụng các mẫu loại trừ"
+
+#: runexe/frontend/ui/details-preferences.blp:402
+msgid "Exclude paths in snapshots."
+msgstr "Loại trừ các đường dẫn trong snapshots."
+
+#: runexe/frontend/ui/details-preferences.blp:405
+msgid "Manage Patterns"
+msgstr "Quản lý mẫu"
+
+#: runexe/frontend/ui/details-taskmanager.blp:17
+msgid "Refresh"
+msgstr "Làm mới"
+
+#: runexe/frontend/ui/details-taskmanager.blp:22
+msgid "Stop process"
+msgstr "Dừng tiến trình"
+
+#: runexe/frontend/ui/details-versioning.blp:18
+msgid "No Snapshots Found"
+msgstr "Không tìm thấy Snapshots nào"
+
+#: runexe/frontend/ui/details-versioning.blp:19
+msgid "Create your first snapshot to start saving states of your preferences."
+msgstr "Tạo snapshots đầu tiên để bắt đầu lưu trạng thái tùy chọn của bạn."
+
+#: runexe/frontend/ui/details-versioning.blp:54
+msgid "A short comment"
+msgstr "Một bình luận ngắn"
+
+#: runexe/frontend/ui/details-versioning.blp:58
+msgid "Save the capsule state."
+msgstr "Lưu trạng thái capsule."
+
+#: runexe/frontend/ui/details-versioning.blp:78
+msgid "Create new Snapshot"
+msgstr "Tạo Snapshots mới"
+
+#: runexe/frontend/ui/details.blp:16
+msgid "Details"
+msgstr "Chi tiết"
+
+#: runexe/frontend/ui/details.blp:24 runexe/frontend/ui/details.blp:64
+#: runexe/frontend/ui/importer.blp:15
+msgid "Go Back"
+msgstr "Quay lại"
+
+#: runexe/frontend/ui/details.blp:75
+msgid "Operations"
+msgstr "Vận hành"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:4
+msgid "Select Capsule"
+msgstr "Chọn một Capsule"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:16
+#: runexe/frontend/ui/dialog-proton-alert.blp:16
+#: runexe/frontend/ui/dialog-rename.blp:15
+#: runexe/frontend/ui/dialog-run-args.blp:20
+msgid "Cancel"
+msgstr "Hủy bỏ"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:21
+msgid "Select"
+msgstr "Chọn"
+
+#: runexe/frontend/ui/dialog-capsule-picker.blp:38
+#: runexe/frontend/ui/new.blp:9 runexe/frontend/ui/new.blp:49
+#: runexe/frontend/ui/window.blp:25
+msgid "Create New Capsule"
+msgstr "Tạo Capsule mới"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/dialog-crash-report.blp:8
+msgid "RunExe Crash Report"
+msgstr "Báo cáo sự cố RunExe"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:18
+#: runexe/frontend/ui/dialog-duplicate.blp:22
+#: runexe/frontend/ui/dialog-gamescope.blp:23
+#: runexe/frontend/ui/dialog-launch-options.blp:16
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:22
+#: runexe/frontend/ui/dialog-vkbasalt.blp:27 runexe/frontend/ui/new.blp:26
+#: runexe/frontend/views/capsule_details.py:504
+#: runexe/frontend/views/capsule_details.py:600
+#: runexe/frontend/views/capsule_preferences.py:749
+#: runexe/frontend/views/preferences.py:201
+msgid "_Cancel"
+msgstr "_Hủy bỏ"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:25
+msgid "Send Report"
+msgstr "Gửi báo cáo"
+
+#: runexe/frontend/ui/dialog-crash-report.blp:44
+msgid ""
+"RunExe crashed last time. Please fill out a report attaching the following "
+"traceback to help us identify the problem preventing it from happening again."
+msgstr ""
+"RunExe bị sự cố lần trước. Vui lòng điền vào báo cáo, cùng đính kèm báo cáo "
+"theo dõi, để giúp chúng tôi xác định sự cố và ngăn sự cố xảy ra lần nữa."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:74
+msgid ""
+"We found one or more similar (or identical) reports. Please make sure to "
+"check carefully that it has not already been reported before submitting a "
+"new one. Each report requires effort on the part of the developers to "
+"diagnose, please respect their work and make sure you don't post duplicates."
+msgstr ""
+"Chúng tôi tìm thấy một hoặc nhiều báo cáo tương tự (hoặc giống hệt). Vui "
+"lòng đảm bảo kiểm tra cẩn thận rằng nó chưa được báo cáo trước khi gửi một "
+"bản mới. Mỗi báo cáo đòi hỏi nỗ lực từ phía các nhà phát triển để chẩn đoán, "
+"vui lòng tôn trọng công việc của họ và đảm bảo bạn không đăng bản sao."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:89
+msgid "I still want to report."
+msgstr "Tôi vẫn muốn báo cáo."
+
+#: runexe/frontend/ui/dialog-crash-report.blp:95
+msgid "Advanced options"
+msgstr "Tùy chọn nâng cao"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:13
+msgid "Incomplete package"
+msgstr "Gói không đầy đủ"
+
+#: runexe/frontend/ui/dialog-deps-check.blp:14
+msgid ""
+"This version of RunExe does not seem to provide all the necessary core "
+"dependencies, please contact the package maintainer or use an official "
+"version."
+msgstr ""
+"Có vẻ như phiên bản RunExe này không cung cấp toàn bộ phần mềm lõi phụ "
+"thuộc cần thiết, vui lòng liên hệ tới người bảo trì gói hoặc dùng một phiên "
+"bản chính thức."
+
+#: runexe/frontend/ui/dialog-deps-check.blp:18
+msgid "Quit"
+msgstr "Thoát"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:11
+msgid ""
+"Dynamic Link Libraries can be specified to be builtin (provided by Wine) or "
+"native (provided by the program)."
+msgstr ""
+"Thư Viện Liên Kết Động có thể được chỉ định ở dạng dựng sẵn "
+"(do Wine cung cấp) hoặc gốc (do chương trình cung cấp)."
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:15
+msgid "New Override"
+msgstr "Ghi đè mới"
+
+#: runexe/frontend/ui/dialog-dll-overrides.blp:21
+msgid "Overrides"
+msgstr "Ghi đè"
+
+#: runexe/frontend/ui/dialog-drives.blp:7
+msgid "Drives"
+msgstr "Các ổ đĩa"
+
+#: runexe/frontend/ui/dialog-drives.blp:24
+msgid ""
+"These are paths from your host system that are mapped and recognized as "
+"devices by the runner (e.g. C: D:…)."
+msgstr ""
+"Hệ thống chủ của bạn có các đường dẫn được trỏ và nhận dạng như thiết bị bởi "
+"Trình chạy (Ví dụ. C: D:...)."
+
+#: runexe/frontend/ui/dialog-drives.blp:27
+msgid "Letter"
+msgstr "Chữ cái"
+
+#: runexe/frontend/ui/dialog-drives.blp:49
+msgid "Existing Drives"
+msgstr "Ổ đĩa hiện có"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:16
+msgid "Duplicate Capsule"
+msgstr "Nhân bản Capsule"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:38
+msgid "Duplicate"
+msgstr "Nhân bản"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:49
+msgid "Enter a name for the duplicate of the Capsule."
+msgstr "Nhập tên cho bản sao của Capsule."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:69
+msgid "Duplicating…"
+msgstr "Đang nhân bản…"
+
+#: runexe/frontend/ui/dialog-duplicate.blp:78
+#: runexe/frontend/ui/dialog-installer.blp:103
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:112
+#: runexe/frontend/views/new.py:177
+msgid "This could take a while."
+msgstr "Điều này sẽ tốn kha khá thời gian."
+
+#: runexe/frontend/ui/dialog-duplicate.blp:97
+msgid "Capsule Duplicated"
+msgstr "Capsule đã được nhân bản"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:28
+msgid ""
+"Environment variables are dynamic-named value that can affect the way "
+"running processes will behave on your capsule."
+msgstr ""
+"Các biến môi trường có giá trị động, nó có thể ảnh hưởng đến cách các trình "
+"đang hoạt động trên capsule của bạn."
+
+#: runexe/frontend/ui/dialog-env-vars.blp:31
+msgid "Variable Name"
+msgstr "Tên biến"
+
+#: runexe/frontend/ui/dialog-env-vars.blp:37
+msgid "Existing Variables"
+msgstr "Biến hiện có"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:20
+msgid "Exclusion Patterns"
+msgstr "Mẫu loại trừ"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:28
+msgid ""
+"Define patterns that will be used to prevent some directories to being "
+"versioned."
+msgstr ""
+"Xác định các mẫu sẽ được sử dụng để ngăn một số thư mục được phiên bản hóa."
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:31
+msgid "Pattern"
+msgstr "Mẫu"
+
+#: runexe/frontend/ui/dialog-exclusion-patterns.blp:37
+msgid "Existing Patterns"
+msgstr "Mẫu Hiện Có"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:6
+msgid "Gamescope Settings"
+msgstr "Cài Đặt Gamescope"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:30
+#: runexe/frontend/ui/dialog-launch-options.blp:32
+#: runexe/frontend/ui/dialog-rename.blp:20
+#: runexe/frontend/ui/dialog-vkbasalt.blp:34
+msgid "Save"
+msgstr "Lưu"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:40
+msgid "Manage how games should be displayed."
+msgstr "Quản lý cách game nên được hiển thị."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:44
+msgid "Game Resolution"
+msgstr "Độ Phân Giải Trò Chơi"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:45
+msgid "Uses the resolution of the video game as a reference in pixels."
+msgstr "Sử dụng độ phân giải của trò chơi điện tử làm tham chiếu bằng pixel."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:48
+#: runexe/frontend/ui/dialog-gamescope.blp:85
+msgid "Width"
+msgstr "Chiều rộng"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:64
+#: runexe/frontend/ui/dialog-gamescope.blp:101
+msgid "Height"
+msgstr "Chiều cao"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:81
+msgid "Window Resolution"
+msgstr "Độ Phân Giải Cửa Sổ"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:82
+msgid ""
+"Upscales the resolution when using a resolution higher than the game "
+"resolution in pixels."
+msgstr ""
+"Nâng cấp độ phân giải khi sử dụng độ phân giải cao hơn của game với đơn vị "
+"pixel."
+
+#: runexe/frontend/ui/dialog-gamescope.blp:118
+msgid "Miscellaneous"
+msgstr "Linh Tinh"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:121
+msgid "Frame Rate Limit"
+msgstr "Giới hạn khung hình"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:137
+msgid "Frame Rate Limit When Unfocused"
+msgstr "Giới Hạn Tốc Độ Khung Hình Khi Không tập trung"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:153
+msgid "Integer Scaling"
+msgstr "Chia Tỷ Lệ Số Nguyên"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:162
+msgid "Window Type"
+msgstr "Loại Cửa Sổ"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:166
+msgid "Borderless"
+msgstr "Không viền"
+
+#: runexe/frontend/ui/dialog-gamescope.blp:172
+msgid "Fullscreen"
+msgstr "Toàn màn hình"
+
+#: runexe/frontend/ui/dialog-installer.blp:40
+msgid "Do you want to proceed with the installation?"
+msgstr "Bạn có muốn tiếp tục cài đặt không?"
+
+#: runexe/frontend/ui/dialog-installer.blp:45
+msgid "Start Installation"
+msgstr "Bắt đầu cài đặt"
+
+#: runexe/frontend/ui/dialog-installer.blp:64
+msgid ""
+"This installer requires some local resources which cannot be provided "
+"otherwise."
+msgstr ""
+"Trình cài đặt này yêu cầu một số tài nguyên cục bộ không thể được cung cấp "
+"theo cách khác."
+
+#: runexe/frontend/ui/dialog-installer.blp:68
+msgid "Proceed"
+msgstr "Đã chạy"
+
+#: runexe/frontend/ui/dialog-installer.blp:127
+msgid "Completed!"
+msgstr "Hoàn thành!"
+
+#: runexe/frontend/ui/dialog-installer.blp:130
+msgid "Show Programs"
+msgstr "Hiện chương trình"
+
+#: runexe/frontend/ui/dialog-installer.blp:148
+msgid "Installation Failed!"
+msgstr "Cài đặt không thành công!"
+
+#: runexe/frontend/ui/dialog-installer.blp:149
+msgid "Something went wrong."
+msgstr "Đã xảy ra lỗi."
+
+#: runexe/frontend/ui/dialog-journal.blp:9
+msgid "All messages"
+msgstr "Toàn bộ tin nhắn"
+
+#: runexe/frontend/ui/dialog-journal.blp:13
+msgid "Critical"
+msgstr "Nghiêm trọng"
+
+#: runexe/frontend/ui/dialog-journal.blp:17
+msgid "Errors"
+msgstr "Lỗi"
+
+#: runexe/frontend/ui/dialog-journal.blp:21
+msgid "Warnings"
+msgstr "Cảnh báo"
+
+#: runexe/frontend/ui/dialog-journal.blp:25
+msgid "Info"
+msgstr "Thông tin"
+
+#: runexe/frontend/ui/dialog-journal.blp:40
+msgid "Journal browser"
+msgstr ""
+
+#: runexe/frontend/ui/dialog-journal.blp:48
+msgid "Journal Browser"
+msgstr "Trình duyệt nhật ký"
+
+#: runexe/frontend/ui/dialog-journal.blp:53
+msgid "Change Logging Level."
+msgstr "Thay đổi cấp độ ghi nhật ký."
+
+#: runexe/frontend/ui/dialog-journal.blp:57
+msgid "All"
+msgstr "Tất cả"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:42
+msgid "Those arguments will be passed at launch."
+msgstr "Những đối số này được truyền khi khởi chạy."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:43
+msgid "Custom Arguments"
+msgstr "Đối số tùy chỉnh"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:46
+msgid "Command Arguments"
+msgstr "Đối số lệnh"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:47
+#, c-format
+msgid "e.g.: VAR=value %command% -example1 -example2 -example3=hello"
+msgstr "ví dụ: VAR=value %command% -example1 -example2 -example3=hello"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:52
+msgid "Post-run Script"
+msgstr "Lệnh sau khi chạy"
+
+#. endregion
+#: runexe/frontend/ui/dialog-launch-options.blp:53
+#: runexe/frontend/windows/launchoptions.py:54
+msgid "Choose a script which should be executed after run."
+msgstr "Chọn một đoạn mã sẽ được thực thi sau khi chạy."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:70
+msgid "Choose a Script"
+msgstr "Chọn một lệnh"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:84
+#: runexe/frontend/windows/launchoptions.py:55
+msgid "Choose from where start the program."
+msgstr "Chọn thư mục để chạy chương trình."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:101
+#: runexe/frontend/ui/drive-entry.blp:22
+msgid "Choose a Directory"
+msgstr "Chọn một thư mục"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:114
+msgid "These settings will override the default settings for this executable."
+msgstr "Các cài đặt này sẽ ghi đè cài đặt mặc định cho tệp thực thi này."
+
+#: runexe/frontend/ui/dialog-launch-options.blp:115
+msgid "Preferences Overrides"
+msgstr "Ghi đè tùy chọn"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:119
+msgid "Reset to Capsule's Defaults"
+msgstr "Đặt lại về mặc định của Capsule"
+
+#: runexe/frontend/ui/dialog-launch-options.blp:165
+msgid "Virtual Desktop"
+msgstr "Sử dụng desktop ảo"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:4
+msgid "Proton Disclaimer"
+msgstr "Tuyên bố miễn trừ trách nhiệm Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:21
+msgid "Use Proton"
+msgstr "Dùng Proton"
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:35
+msgid ""
+"Beware, using Proton-based runners in non-Steam capsules can cause problems "
+"and prevent them from behaving correctly.\n"
+"\n"
+"We recommend using Wine-GE rather, a version of Proton meant to run outside "
+"of Steam.\n"
+"\n"
+"Proceeding will automatically enable the Steam runtime (if present in the "
+"system and detected by RunExe) in order to allow it to access the necessary "
+"libraries and limit compatibility problems. Be aware that GloriousEggroll, "
+"the runner's provider, is not responsible for any problems and we ask that "
+"you do not report to them."
+msgstr ""
+"Cẩn trọng khi sử dụng trình thực thi dựa trên Proton với các capsule không "
+"thuộc Steam, bởi chúng có thể gây ra vấn đề và ngăn chặn chúng hoạt động "
+"bình thường.\n"
+"\n"
+"Chúng tôi khuyên bạn nên sử dụng Wine-GE, một phiên bản Proton được thiết kế "
+"để chạy bên ngoài Steam.\n"
+"\n"
+"Việc tiếp tục sẽ tự động kích hoạt trình thực thi Steam (nếu có sẵn trong hệ "
+"thống và được RunExe phát hiện) để có thể cho phép nó truy cập vào các thư "
+"viện cần thiết và giới hạn các vấn đề về khả năng tương thích. Hãy cảnh giác "
+"rằng GloriousEggroll, nhà cung cấp trình thực thi, không chịu trách nhiệm "
+"cho bất cứ vấn đề nào và chúng tôi mong bạn không báo cáo vấn đề này cho họ."
+
+#: runexe/frontend/ui/dialog-proton-alert.blp:43
+msgid "I got it."
+msgstr "Tôi hiểu rồi."
+
+#: runexe/frontend/ui/dialog-rename.blp:7
+msgid "Rename"
+msgstr "Đổi tên"
+
+#: runexe/frontend/ui/dialog-rename.blp:30
+msgid "Choose a new name for the selected program."
+msgstr "Nhập tên mới cho chương trình đang chọn."
+
+#: runexe/frontend/ui/dialog-rename.blp:33
+msgid "New Name"
+msgstr "Tên mới"
+
+#: runexe/frontend/ui/dialog-run-args.blp:13
+msgid "Run With Arguments"
+msgstr "Chạy với đối số"
+
+#: runexe/frontend/ui/dialog-run-args.blp:34
+#: runexe/frontend/views/capsule_details.py:401
+#: runexe/frontend/views/list.py:131
+msgid "Run"
+msgstr "Chạy"
+
+#: runexe/frontend/ui/dialog-run-args.blp:44
+msgid "Write below the arguments to be passed to the executable."
+msgstr "Viết các đối số sẽ được truyền vào tệp thực thi."
+
+#: runexe/frontend/ui/dialog-run-args.blp:47
+msgid "e.g.: -opengl -SkipBuildPatchPrereq"
+msgstr "vd: -opengl -SkipBuildPatchPrereq"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:7
+msgid "Sandbox Settings"
+msgstr "Thiết lập sandbox"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:25
+msgid "Share Network"
+msgstr "Chia sẻ mạng"
+
+#: runexe/frontend/ui/dialog-sandbox.blp:34
+msgid "Share Sound"
+msgstr "Chia sẻ âm thanh"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:16
+msgid "Upgrade Needed"
+msgstr "Cần nâng cấp"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:38
+#: runexe/frontend/ui/onboard.blp:81
+msgid "Continue"
+msgstr "Tiếp tục"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:47
+msgid "Launch upgrade"
+msgstr "Khởi chạy nâng cấp"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:66
+msgid "New Versioning System"
+msgstr "Hệ thống phiên bản mới"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:69
+msgid "The new capsule versioning system has landed."
+msgstr "Hệ thống phiên bản capsule mới đã ra mắt."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:83
+msgid ""
+"RunExe has a whole new Versioning System that is not backwards compatible.\n"
+"\n"
+"To continue using versioning we need to re-initialize the capsule repository. "
+"This will not delete data from your capsule but will delete all existing "
+"snapshots and create a new one.\n"
+"\n"
+"If you need to go back to a previous snapshot before continuing, close this "
+"window and restore the snapshot, then reopen the capsule to show this window "
+"again.\n"
+"\n"
+"The old system will be discontinued in one of the next releases."
+msgstr ""
+"RunExe có Hệ thống phiên bản mới hoàn toàn không tương thích ngược.\n"
+"\n"
+"Để tiếp tục sử dụng phiên bản, chúng ta cần khởi tạo lại kho lưu trữ capsule. "
+"Thao tác này sẽ không xóa dữ liệu khỏi capsule của bạn nhưng sẽ xóa tất cả "
+"snapshot hiện có và tạo một snapshot mới.\n"
+"\n"
+"Nếu bạn cần quay lại snapshot trước đó trước khi tiếp tục, hãy đóng cửa sổ "
+"này và khôi phục snapshot, sau đó mở lại capsule để hiển thị lại cửa sổ này.\n"
+"\n"
+"Hệ thống cũ sẽ ngừng hoạt động ở một trong những phiên bản tiếp theo."
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:103
+msgid "Re-initializing Repository…"
+msgstr "Đang khởi tạo lại kho lưu trữ…"
+
+#: runexe/frontend/ui/dialog-upgrade-versioning.blp:133
+msgid "Done! Please restart RunExe."
+msgstr "Xong! Vui lòng khởi động lại RunExe."
+
+#. Translators: vkBasalt is a Vulkan post processing layer for Linux
+#: runexe/frontend/ui/dialog-vkbasalt.blp:10
+msgid "Post-Processing Effects Settings"
+msgstr "Cài đặt hiệu ứng hậu kỳ"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:44
+msgid "Default"
+msgstr "Mặc định"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:48
+msgid "Default Settings"
+msgstr "Cài đặt mặc định"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:57
+msgid "Effects are applied according to the list order."
+msgstr "Các hiệu ứng được áp dụng theo thứ tự danh sách."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:58
+msgid "Effects"
+msgstr "Hiệu ứng"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:62
+msgid "Contrast Adaptive Sharpening"
+msgstr "Làm sắc nét thích ứng tương phản"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:65
+#: runexe/frontend/ui/dialog-vkbasalt.blp:102
+msgid "Sharpness"
+msgstr "Độ sắc nét"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:69
+#: runexe/frontend/ui/dialog-vkbasalt.blp:106
+#: runexe/frontend/ui/dialog-vkbasalt.blp:134
+#: runexe/frontend/ui/dialog-vkbasalt.blp:167
+#: runexe/frontend/ui/dialog-vkbasalt.blp:195
+#: runexe/frontend/ui/dialog-vkbasalt.blp:223
+#: runexe/frontend/ui/dialog-vkbasalt.blp:256
+#: runexe/frontend/ui/dialog-vkbasalt.blp:288
+#: runexe/frontend/ui/dialog-vkbasalt.blp:316
+#: runexe/frontend/ui/dialog-vkbasalt.blp:343
+#: runexe/frontend/ui/dialog-vkbasalt.blp:370 runexe/frontend/ui/new.blp:58
+msgid "Show Information"
+msgstr "Hiển thị thông tin"
+
+#. Translators: Luma is not translatable
+#: runexe/frontend/ui/dialog-vkbasalt.blp:99
+msgid "Denoised Luma Sharpening"
+msgstr "Làm sắc nét Luma khử nhiễu"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:130
+msgid "Denoise"
+msgstr "Khử nhiễu"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:160
+msgid "Fast Approximate Anti-Aliasing"
+msgstr "Khử răng cưa gần đúng nhanh"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:163
+msgid "Subpixel Quality"
+msgstr "Chất lượng pixel phụ"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:191
+msgid "Quality Edge Threshold"
+msgstr "Ngưỡng cạnh chất lượng"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:219
+msgid "Quality Edge Threshold Minimum"
+msgstr "Ngưỡng cạnh chất lượng tối thiểu"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:249
+msgid "Subpixel Morphological Anti-Aliasing"
+msgstr "Khử răng cưa hình thái Subpixel"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:252
+msgid "Edge Detection"
+msgstr "Phát hiện cạnh"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:267
+msgid "Luma"
+msgstr "Luma"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:273
+msgid "Color"
+msgstr "Màu sắc"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:284
+msgid "Threshold"
+msgstr "Ngưỡng"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:312
+msgid "Max Search Steps"
+msgstr "Các bước tìm kiếm tối đa"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:339
+msgid "Max Search Steps Diagonal"
+msgstr "Đường chéo các bước tìm kiếm tối đa"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:366
+msgid "Max Corner Rounding"
+msgstr "Làm tròn góc tối đa"
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:411
+msgid ""
+"CAS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper, whereas values lower than 0 make the frame softer than native."
+msgstr ""
+"Độ sắc nét CAS làm tăng độ sắc nét của khung hình. Giá trị cao hơn làm cho "
+"khung hình sắc nét hơn, trong khi giá trị thấp hơn 0 làm cho khung hình mềm "
+"hơn gốc."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:428
+msgid ""
+"DLS sharpness increases the sharpness of a frame. Higher values make the "
+"frame sharper."
+msgstr ""
+"Độ sắc nét DLS làm tăng độ sắc nét của khung hình. Giá trị cao hơn làm cho "
+"khung hình sắc nét hơn."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:445
+msgid ""
+"DLS denoise decreases the noise of a frame. Higher values make the frame "
+"softer."
+msgstr ""
+"Khử nhiễu DLS làm giảm nhiễu của khung. Giá trị cao hơn làm cho khung hình "
+"mềm mại hơn."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:462
+msgid ""
+"FXAA subpixel quality decreases aliasing at the subpixel level. Higher "
+"values make the frame softer."
+msgstr ""
+"Chất lượng pixel phụ FXAA giảm hiện tượng răng cưa ở cấp độ pixel phụ. Giá "
+"trị cao hơn làm cho khung hình mềm mại hơn."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:479
+msgid ""
+"FXAA edge threshold is the minimum amount of contrast required to apply the "
+"FXAA algorithm. Higher values make the frame have more contrast."
+msgstr ""
+"Ngưỡng cạnh FXAA là mức độ tương phản tối thiểu cần thiết để áp dụng thuật "
+"toán FXAA. Giá trị cao hơn làm cho khung hình có độ tương phản cao hơn."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:496
+msgid ""
+"FXAA quality edge threshold minimum is the minimum value of dark pixels that "
+"are ignored by the FXAA algorithm. Higher values make FXAA ignore pixels "
+"below the specified value and can lead to a performance increase."
+msgstr ""
+"Ngưỡng tối thiểu của chất lượng FXAA là giá trị tối thiểu của các pixel tối "
+"bị thuật toán FXAA bỏ qua. Giá trị cao hơn khiến FXAA bỏ qua các pixel dưới "
+"giá trị được chỉ định và có thể dẫn đến tăng hiệu suất."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:513
+msgid ""
+"Luma detects edges from a monochrome perspective, whereas Color detects "
+"edges based on colors. Luma is more performant than Color."
+msgstr ""
+"Luma phát hiện các cạnh từ phối cảnh đơn sắc, trong khi Màu Sắc phát hiện "
+"các cạnh dựa trên màu sắc. Luma có hiệu suất cao hơn Màu Sắc."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:530
+msgid ""
+"SMAA threshold specifies the sensitivity of edge detection. Lower values "
+"detect more edges at the expense of performance."
+msgstr ""
+"Ngưỡng SMAA chỉ định độ nhạy của việc phát hiện cạnh. Giá trị thấp hơn sẽ "
+"phát hiện nhiều cạnh hơn nhưng lại làm giảm hiệu suất."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:547
+msgid ""
+"SMAA max search steps specifies how many horizontal and vertical search "
+"steps are performed when searching for edges."
+msgstr ""
+"Các bước tìm kiếm tối đa SMAA chỉ định số lượng bước tìm kiếm theo chiều "
+"ngang và chiều dọc được thực hiện khi tìm kiếm các cạnh."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:564
+msgid ""
+"SMAA max diagonal search steps specifies how many diagonal search steps are "
+"performed when searching for edges."
+msgstr ""
+"Các bước tìm kiếm đường chéo tối đa SMAA chỉ định số bước tìm kiếm theo "
+"đường chéo được thực hiện khi tìm kiếm các cạnh."
+
+#: runexe/frontend/ui/dialog-vkbasalt.blp:581
+msgid "SMAA corner rounding specifies the strength of rounding edge corners."
+msgstr "Làm tròn góc SMAA chỉ định độ bền của việc làm tròn các góc cạnh."
+
+#: runexe/frontend/ui/dll-override-entry.blp:8
+msgid "Builtin (Wine)"
+msgstr "Tích hợp (Wine)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:9
+msgid "Native (Windows)"
+msgstr "Có sẵn (Windows)"
+
+#: runexe/frontend/ui/dll-override-entry.blp:10
+msgid "Builtin, then Native"
+msgstr "Tích hợp sau đó mới là Có sẵn"
+
+#: runexe/frontend/ui/dll-override-entry.blp:11
+msgid "Native, then Builtin"
+msgstr "Có sẵn sau đó mới là Tích hợp"
+
+#: runexe/frontend/ui/dll-override-entry.blp:12
+msgid "Disabled"
+msgstr "Tắt"
+
+#: runexe/frontend/ui/dll-override-entry.blp:20
+#: runexe/frontend/ui/drive-entry.blp:12
+msgid "Remove"
+msgstr "Xóa"
+
+#: runexe/frontend/ui/drive-entry.blp:5
+msgid "/point/to/path"
+msgstr "/trỏ/đến/đường dẫn"
+
+#: runexe/frontend/ui/env-var-entry.blp:4
+#: runexe/frontend/ui/exclusion-pattern-entry.blp:4
+msgid "Value"
+msgstr "Giá trị"
+
+#: runexe/frontend/ui/importer-entry.blp:13
+msgid "Browse files"
+msgstr "Duyệt các tập tin"
+
+#. Translators: A Wine prefix is a separate environment (C:\ drive) for the Wine program
+#: runexe/frontend/ui/importer-entry.blp:21
+msgid "Wine prefix name"
+msgstr "Tên tiền tố wine"
+
+#: runexe/frontend/ui/importer-entry.blp:28
+msgid "Manager"
+msgstr "Trình Quản Lý"
+
+#: runexe/frontend/ui/importer-entry.blp:38
+msgid "This Wine prefix was already imported in RunExe."
+msgstr "Tiền tố Wine này đã được nhập vào RunExe."
+
+#: runexe/frontend/ui/importer.blp:22
+msgid "Import a Capsule backup"
+msgstr "Nhập bản sao lưu Capsule"
+
+#: runexe/frontend/ui/importer.blp:28
+msgid "Search again for prefixes"
+msgstr "Tìm kiếm lại tiền tố"
+
+#: runexe/frontend/ui/importer.blp:38
+msgid "No Prefixes Found"
+msgstr "Không tìm thấy tiền tố"
+
+#: runexe/frontend/ui/importer.blp:39
+msgid ""
+"No external prefixes were found. Does RunExe have access to them?\n"
+"Use the icon on the top to import a capsule from a backup."
+msgstr ""
+"Không tìm thấy tiền tố bên ngoài. RunExe có quyền truy cập vào chúng không?"
+"\n"
+"Sử dụng biểu tượng ở trên cùng để nhập capsule từ bản sao lưu."
+
+#: runexe/frontend/ui/importer.blp:74
+msgid "Full Archive"
+msgstr "Lưu trữ đầy đủ"
+
+#: runexe/frontend/ui/installer-entry.blp:16
+msgid "Show Manifest…"
+msgstr "Hiển thị bản kê khai…"
+
+#: runexe/frontend/ui/installer-entry.blp:20
+msgid "Read Review…"
+msgstr "Đọc đánh giá…"
+
+#: runexe/frontend/ui/installer-entry.blp:34
+msgid "Installer name"
+msgstr "Tên trình cài đặt"
+
+#: runexe/frontend/ui/installer-entry.blp:35
+msgid "Installer description"
+msgstr "Mô tả trình cài đặt"
+
+#: runexe/frontend/ui/installer-entry.blp:42
+msgid "Unknown"
+msgstr "Không xác định"
+
+#: runexe/frontend/ui/installer-entry.blp:51
+msgid "Install this Program"
+msgstr "Cài đặt chương trình này"
+
+#: runexe/frontend/ui/installer-entry.blp:69
+msgid "Program Menu"
+msgstr "Menu chương trình"
+
+#: runexe/frontend/ui/library-entry.blp:36
+msgid "No Thumbnail"
+msgstr "Không có hình thu nhỏ"
+
+#: runexe/frontend/ui/library-entry.blp:57
+msgid "Launch"
+msgstr "Khởi chạy"
+
+#: runexe/frontend/ui/library-entry.blp:70
+#: runexe/frontend/ui/program-entry.blp:89
+msgid "Launch with Steam"
+msgstr "Khởi chạy bằng Steam"
+
+#: runexe/frontend/ui/library-entry.blp:108
+msgid "Item name"
+msgstr "Tên mục"
+
+#: runexe/frontend/ui/library-entry.blp:132
+msgid "Remove from Library"
+msgstr "Xóa khỏi Thư viện"
+
+#: runexe/frontend/ui/library-entry.blp:143
+msgid "Stop"
+msgstr "Dừng"
+
+#: runexe/frontend/ui/library.blp:11
+#: runexe/frontend/windows/main_window.py:196
+msgid "Library"
+msgstr "Thư viện"
+
+#: runexe/frontend/ui/library.blp:12
+msgid "Add items here from your capsule's program list"
+msgstr "Thêm các mục ở đây từ danh sách chương trình capsule của bạn"
+
+#: runexe/frontend/ui/list-entry.blp:26
+msgid "Versioning is active in this capsule."
+msgstr "Phiên bản đang hoạt động trong capsule này."
+
+#: runexe/frontend/ui/list-entry.blp:42
+msgid "This capsule looks damaged."
+msgstr "Capsule này dường như bị hư hại."
+
+#: runexe/frontend/ui/list-entry.blp:55
+msgid "Execute in this Capsule"
+msgstr "Thực thi trong Capsule này"
+
+#: runexe/frontend/ui/list-entry.blp:69
+msgid "Run Here"
+msgstr "Chạy tại đây"
+
+#: runexe/frontend/ui/list-entry.blp:75
+msgid ""
+"This capsule looks damaged, the configuration file is missing. I can try to "
+"solve by creating a new configuration."
+msgstr ""
+"Capsule này có vẻ bị hỏng, tệp cấu hình bị thiếu. Tôi có thể cố gắng giải "
+"quyết bằng cách tạo một cấu hình mới."
+
+#: runexe/frontend/ui/list.blp:12
+msgid "Search your capsules…"
+msgstr "Tìm kiếm capsules của bạn…"
+
+#: runexe/frontend/ui/list.blp:28
+msgid "Steam Proton"
+msgstr "Steam Proton"
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/list.blp:42 runexe/frontend/windows/main_window.py:191
+#: data/io.github.runexe.RunExe.metainfo.xml.in:7
+msgid "RunExe"
+msgstr "RunExe"
+
+#: runexe/frontend/ui/list.blp:49
+msgid "Create New Capsule…"
+msgstr "Tạo Capsule mới…"
+
+#: runexe/frontend/ui/list.blp:63
+msgid "No Results Found"
+msgstr "Không tìm thấy kết quả"
+
+#: runexe/frontend/ui/list.blp:64
+msgid "Try a different search."
+msgstr "Hãy thử tìm kiếm khác."
+
+#: runexe/frontend/ui/loading.blp:13
+msgid "Starting up…"
+msgstr "Đang khởi động…"
+
+#: runexe/frontend/ui/local-resource-entry.blp:4
+msgid "This resource is missing."
+msgstr "Tài nguyên này bị thiếu."
+
+#: runexe/frontend/ui/local-resource-entry.blp:8
+msgid "Browse"
+msgstr "Duyệt"
+
+#: runexe/frontend/ui/new.blp:32
+msgid "C_reate"
+msgstr "_Tạo"
+
+#: runexe/frontend/ui/new.blp:53
+#, fuzzy
+msgid "Capsule Name"
+msgstr "Tên chai"
+
+#: runexe/frontend/ui/new.blp:75
+msgid "_Application"
+msgstr "Ứng _dụng"
+
+#: runexe/frontend/ui/new.blp:88
+msgid "_Gaming"
+msgstr "_Gaming"
+
+#: runexe/frontend/ui/new.blp:101
+msgid "C_ustom"
+msgstr "Tùy_chỉnh"
+
+#: runexe/frontend/ui/new.blp:114
+msgid "Custom"
+msgstr "Tùy chỉnh"
+
+#: runexe/frontend/ui/new.blp:118
+msgid "Share User Directory"
+msgstr "Chia sẻ thư mục người dùng"
+
+#: runexe/frontend/ui/new.blp:119
+msgid ""
+"This makes the user directory discoverable in the capsule, at the risk of "
+"sharing personal information to Windows software. This option cannot be "
+"changed after the capsule has been created."
+msgstr ""
+"Điều này khiến thư mục người dùng có thể bị phát hiện trong capsule, có nguy "
+"cơ chia sẻ thông tin cá nhân với phần mềm Windows. Tùy chọn này không thể "
+"thay đổi sau khi capsule đã được tạo."
+
+#: runexe/frontend/ui/new.blp:136
+msgid "Architecture"
+msgstr "Kiến trúc"
+
+#: runexe/frontend/ui/new.blp:137
+msgid "32-bit should only be used if strictly necessary."
+msgstr "32-bit chỉ nên được sử dụng nếu thực sự cần thiết."
+
+#: runexe/frontend/ui/new.blp:146
+msgid "Import a custom configuration."
+msgstr "Nhập cấu hình tùy chỉnh."
+
+#: runexe/frontend/ui/new.blp:176
+msgid "Capsule Directory"
+msgstr "Thư mục Capsule"
+
+#: runexe/frontend/ui/new.blp:177
+msgid "Directory that will contain the data of this capsule."
+msgstr "Thư mục sẽ chứa dữ liệu của capsule này."
+
+#: runexe/frontend/ui/new.blp:249
+msgid "_Close"
+msgstr "Đó_ng"
+
+#: runexe/frontend/ui/new.blp:281
+msgid "This name is unavailable, please try another."
+msgstr "Tên này không có sẵn, vui lòng thử tên khác."
+
+#: runexe/frontend/ui/onboard.blp:34
+msgid "Previous"
+msgstr "Trước"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:59
+msgid "Welcome to RunExe"
+msgstr "Chào mừng bạn đến với RunExe"
+
+#: runexe/frontend/ui/onboard.blp:60
+msgid "Run Windows Software on Linux."
+msgstr "Chạy phần mềm Windows trên Linux."
+
+# Translators: RunExe is a generic noun here, referring to wine prefixes and is to be translated
+#: runexe/frontend/ui/onboard.blp:65
+msgid "Windows in RunExe"
+msgstr "Windows trong RunExe"
+
+#: runexe/frontend/ui/onboard.blp:66
+msgid ""
+"RunExe uses compatibility runners to provide isolated containerized Windows-"
+"like environments where programs run."
+msgstr ""
+"RunExe sử dụng các trình chạy tương thích để cung cấp các môi trường giống "
+"như Windows được đóng gói riêng biệt nơi các chương trình chạy."
+
+#: runexe/frontend/ui/onboard.blp:72
+msgid "Almost Done"
+msgstr "Gần xong"
+
+#: runexe/frontend/ui/onboard.blp:73
+msgid "We need a few more minutes to set everything up…"
+msgstr "Chúng ta cần thêm vài phút để thiết lập mọi thứ…"
+
+#: runexe/frontend/ui/onboard.blp:105
+msgid "All Ready!"
+msgstr "Tất cả đã sẵn sàng!"
+
+#: runexe/frontend/ui/onboard.blp:114
+msgid "Please Finish the setup first"
+msgstr "Vui lòng hoàn tất thiết lập trước"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/onboard.blp:120
+msgid "Start using RunExe"
+msgstr "Bắt đầu sử dụng RunExe"
+
+#: runexe/frontend/ui/onboard.blp:141
+msgid "Next"
+msgstr "Kế tiếp"
+
+#: runexe/frontend/ui/preferences.blp:4 runexe/frontend/ui/window.blp:86
+msgid "Preferences"
+msgstr "Tùy chọn"
+
+#: runexe/frontend/ui/preferences.blp:11
+#: runexe/frontend/ui/preferences.blp:39
+msgid "General"
+msgstr "Tổng quan"
+
+#: runexe/frontend/ui/preferences.blp:14
+msgid "Appearance"
+msgstr "Giao diện"
+
+#: runexe/frontend/ui/preferences.blp:17
+msgid "Dark Mode"
+msgstr "Chế độ tối"
+
+#: runexe/frontend/ui/preferences.blp:18
+msgid "Whether RunExe should use the dark color scheme."
+msgstr "RunExe có nên sử dụng gam màu tối hay không."
+
+#: runexe/frontend/ui/preferences.blp:28
+msgid "Show Update Date"
+msgstr "Hiện ngày cập nhật"
+
+#: runexe/frontend/ui/preferences.blp:29
+msgid "Whether to show the update date in the capsule list."
+msgstr "Hiện ngày cập nhật trong danh sách capsule hay không."
+
+#: runexe/frontend/ui/preferences.blp:42
+#: data/io.github.runexe.RunExe.gschema.xml:46
+msgid "Notifications"
+msgstr "Thông báo"
+
+#: runexe/frontend/ui/preferences.blp:43
+msgid "Show notifications for downloads and installs."
+msgstr "Hiển thị thông báo để tải xuống và cài đặt."
+
+#: runexe/frontend/ui/preferences.blp:52
+msgid "Temp Files"
+msgstr "Tệp tạm thời"
+
+#: runexe/frontend/ui/preferences.blp:53
+msgid "Clean temp files when RunExe launches?"
+msgstr "Làm sạch các tệp tạm thời khi khởi chạy RunExe?"
+
+#: runexe/frontend/ui/preferences.blp:62
+msgid "Close RunExe After Starting a Program"
+msgstr "Đóng RunExe sau khi bắt đầu một chương trình"
+
+#: runexe/frontend/ui/preferences.blp:63
+msgid "Close RunExe after starting a program from the file manager."
+msgstr "Đóng RunExe sau khi bắt đầu chương trình từ trình quản lý tệp."
+
+#: runexe/frontend/ui/preferences.blp:73
+msgid "Integrations"
+msgstr "Tích hợp"
+
+#: runexe/frontend/ui/preferences.blp:76
+msgid "Steam Proton Prefixes"
+msgstr "Tiền tố Proton Steam"
+
+#: runexe/frontend/ui/preferences.blp:77
+msgid "List and manage Steam Proton prefixes."
+msgstr "Liệt kê và quản lý tiền tố Steam Proton."
+
+#: runexe/frontend/ui/preferences.blp:97
+msgid "List Steam Apps in Programs List"
+msgstr "Liệt kê các ứng dụng Steam trong Danh sách chương trình"
+
+#: runexe/frontend/ui/preferences.blp:98
+msgid "Requires Steam for Windows installed in the capsule."
+msgstr "Yêu cầu cài đặt Steam cho Windows trong capsule."
+
+#: runexe/frontend/ui/preferences.blp:107
+msgid "List Epic Games in Programs List"
+msgstr "Liệt kê Epic Games trong Danh sách chương trình"
+
+#: runexe/frontend/ui/preferences.blp:108
+msgid "Requires Epic Games Store installed in the capsule."
+msgstr "Yêu cầu cài đặt Epic Games Store trong capsule."
+
+#: runexe/frontend/ui/preferences.blp:117
+msgid "List Ubisoft Games in Programs List"
+msgstr "Liệt Kê Các Trò Chơi Ubisoft trong Danh Sách Chương Trình"
+
+#: runexe/frontend/ui/preferences.blp:118
+msgid "Requires Ubisoft Connect installed in the capsule."
+msgstr "Yêu cầu cài đặt Ubisoft Connect trong capsule."
+
+#: runexe/frontend/ui/preferences.blp:128
+msgid "Advanced"
+msgstr "Nâng cao"
+
+#: runexe/frontend/ui/preferences.blp:131
+msgid "Capsules Directory"
+msgstr "Thư mục RunExe"
+
+#: runexe/frontend/ui/preferences.blp:132
+msgid "Directory that contains the data of your Capsules."
+msgstr "Thư mục chứa dữ liệu về RunExe của bạn."
+
+#: runexe/frontend/ui/preferences.blp:167
+msgid "Runners"
+msgstr "Trình thực thi"
+
+#: runexe/frontend/ui/preferences.blp:181
+msgid "RunExe is running in offline mode, so runners are not available."
+msgstr "RunExe đang chạy ở chế độ ngoại tuyến nên không có trình thực thi."
+
+#: runexe/frontend/ui/preferences.blp:208
+msgid "Pre-Release"
+msgstr "Trước khi phát hành"
+
+#: runexe/frontend/ui/preferences.blp:209
+msgid "Display unstable versions of runners."
+msgstr ""
+
+#: runexe/frontend/ui/preferences.blp:224
+msgid "DLL Components"
+msgstr "Thành phần DLL"
+
+#: runexe/frontend/ui/preferences.blp:238
+msgid "RunExe is running in offline mode, so DLLs are not available."
+msgstr "RunExe đang chạy ở chế độ ngoại tuyến nên không có DLL."
+
+#: runexe/frontend/ui/preferences.blp:270
+msgid "DXVK-NVAPI"
+msgstr "DXVK-NVAPI"
+
+#: runexe/frontend/ui/preferences.blp:283
+msgid "Core"
+msgstr "Cốt lõi"
+
+#: runexe/frontend/ui/preferences.blp:287
+msgid "Runtime"
+msgstr "Trình thực thi"
+
+#: runexe/frontend/ui/preferences.blp:291
+msgid "WineBridge"
+msgstr "WineBridge"
+
+#: runexe/frontend/ui/preferences.blp:297
+#: data/io.github.runexe.RunExe.gschema.xml:66
+msgid "Experiments"
+msgstr "Thử nghiệm"
+
+#: runexe/frontend/ui/preferences.blp:300
+msgid ""
+"These features are under heavy development and may be unstable, expect bugs "
+"and breakage."
+msgstr ""
+"Các tính năng này đang được phát triển mạnh mẽ và có thể không ổn định, có "
+"thể xảy ra lỗi và hỏng hóc."
+
+#: runexe/frontend/ui/preferences.blp:303
+msgid "Sandbox per capsule"
+msgstr "Sanbox mỗi capsule"
+
+#: runexe/frontend/ui/preferences.blp:304
+msgid "In early development."
+msgstr "Trong quá trình phát triển ban đầu."
+
+#: runexe/frontend/ui/program-entry.blp:19
+msgid "Launch with Terminal"
+msgstr "Khởi chạy với Terminal"
+
+#: runexe/frontend/ui/program-entry.blp:25
+msgid "Browse Path"
+msgstr "Duyệt đường dẫn"
+
+#: runexe/frontend/ui/program-entry.blp:39
+msgid "Change Launch Options…"
+msgstr "Thay đổi tùy chọn khởi chạy…"
+
+#: runexe/frontend/ui/program-entry.blp:43
+msgid "Add to Library"
+msgstr "Thêm vào Thư viện"
+
+#: runexe/frontend/ui/program-entry.blp:47
+msgid "Add Desktop Entry"
+msgstr "Thêm mục nhập trên Desktop"
+
+#: runexe/frontend/ui/program-entry.blp:51
+msgid "Add to Steam"
+msgstr "Thêm vào Steam"
+
+#: runexe/frontend/ui/program-entry.blp:55
+msgid "Rename…"
+msgstr "Đổi tên…"
+
+#: runexe/frontend/ui/program-entry.blp:62
+msgid "Hide Program"
+msgstr "Ẩn chương trình"
+
+#: runexe/frontend/ui/program-entry.blp:66
+msgid "Show Program"
+msgstr "Hiện chương trình"
+
+#: runexe/frontend/ui/program-entry.blp:70
+msgid "Remove from List"
+msgstr "Xóa khỏi Danh sách"
+
+#: runexe/frontend/ui/program-entry.blp:83
+msgid "Program name"
+msgstr "Tên chương trình"
+
+#. Translators: id as identification
+#: runexe/frontend/ui/state-entry.blp:8
+msgid "State id"
+msgstr "Mã trạng thái"
+
+#: runexe/frontend/ui/state-entry.blp:9
+msgid "State comment"
+msgstr "Bình luận trạng thái"
+
+#: runexe/frontend/ui/state-entry.blp:16
+msgid "Restore this Snapshot"
+msgstr "Khôi phục Snapshot này"
+
+#: runexe/frontend/ui/task-entry.blp:19
+msgid "Delete message"
+msgstr "Xóa tin nhắn"
+
+#: runexe/frontend/ui/window.blp:40
+msgid "Main Menu"
+msgstr "Menu chính"
+
+#: runexe/frontend/ui/window.blp:54
+msgid ""
+"You don't seem connected to the internet. Without it you will not be able to "
+"download essential components. Click this icon when you have reestablished "
+"the connection."
+msgstr ""
+"Bạn hình như không kết nối với internet. Nếu không kết nối, bạn sẽ không thể "
+"tải xuống các thành phần thiết yếu. Nhấp vào biểu tượng này khi bạn đã thiết "
+"lập lại kết nối."
+
+#: runexe/frontend/ui/window.blp:79
+msgid "Import…"
+msgstr "Nhập…"
+
+#: runexe/frontend/ui/window.blp:91
+msgid "Help"
+msgstr "Trợ giúp"
+
+# Translators: RunExe is a proper noun referring to the app
+#: runexe/frontend/ui/window.blp:96
+msgid "About RunExe"
+msgstr "Giới thiệu về RunExe"
+
+#: runexe/frontend/views/capsule_details.py:191
+#, python-brace-format
+msgid "File \"{0}\" is not a .exe or .msi file"
+msgstr "Tệp \"{0}\" không phải là tệp .exe hoặc .msi"
+
+#: runexe/frontend/views/capsule_details.py:207
+#, python-format
+msgid "Updated: %s"
+msgstr "Cập nhật: %s"
+
+#: runexe/frontend/views/capsule_details.py:267
+#, python-brace-format
+msgid "\"{0}\" added"
+msgstr "\"{0}\" đã thêm"
+
+#: runexe/frontend/views/capsule_details.py:270
+#: runexe/frontend/views/capsule_details.py:398
+#: runexe/frontend/views/list.py:128
+msgid "Select Executable"
+msgstr "Chọn tệp có thể thực thi"
+
+#: runexe/frontend/views/capsule_details.py:273
+msgid "Add"
+msgstr "Thêm"
+
+#: runexe/frontend/views/capsule_details.py:346
+msgid "Hide Hidden Programs"
+msgstr "Ẩn chương trình bị ẩn"
+
+#: runexe/frontend/views/capsule_details.py:383
+#: runexe/frontend/widgets/library.py:156
+#: runexe/frontend/widgets/program.py:184
+#, python-brace-format
+msgid "Launching \"{0}\"…"
+msgstr "Đang khởi chạy \"{0}\"…"
+
+#: runexe/frontend/views/capsule_details.py:413
+msgid "Be Aware of Sandbox"
+msgstr "Hãy cảnh giác với Sandbox"
+
+#: runexe/frontend/views/capsule_details.py:414
+msgid ""
+"RunExe is running in a sandbox, a restricted permission environment needed "
+"to keep you safe. If the program won't run, consider moving inside the "
+"capsule (3 dots icon on the top), then launch from there."
+msgstr ""
+"RunExe đang chạy trong sandbox, cần có môi trường cấp phép hạn chế để giữ "
+"an toàn cho bạn. Nếu chương trình không chạy, hãy cân nhắc việc di chuyển "
+"vào bên trong capsule (biểu tượng 3 dấu chấm ở trên cùng), sau đó khởi chạy "
+"từ đó."
+
+#: runexe/frontend/views/capsule_details.py:416
+#: runexe/frontend/views/capsule_details.py:525
+#: runexe/frontend/windows/main_window.py:223
+msgid "_Dismiss"
+msgstr "_Bỏ qua"
+
+#: runexe/frontend/views/capsule_details.py:429
+msgid "Select the location where to save the backup config"
+msgstr "Chọn vị trí để lưu cấu hình sao lưu"
+
+#: runexe/frontend/views/capsule_details.py:431
+msgid "Export"
+msgstr "Xuất"
+
+#: runexe/frontend/views/capsule_details.py:433
+msgid "Select the location where to save the backup archive"
+msgstr "Chọn vị trí để lưu tệp nén sao lưu"
+
+#: runexe/frontend/views/capsule_details.py:435
+msgid "Backup"
+msgstr "Sao lưu"
+
+#: runexe/frontend/views/capsule_details.py:440
+#, python-brace-format
+msgid "Backup created for \"{0}\""
+msgstr "Đã tạo bản sao lưu cho \"{0}\""
+
+#: runexe/frontend/views/capsule_details.py:442
+#, python-brace-format
+msgid "Backup failed for \"{0}\""
+msgstr "Sao lưu \"{0}\" không thành công"
+
+#: runexe/frontend/views/capsule_details.py:501
+msgid "Are you sure you want to permanently delete \"{}\"?"
+msgstr "Bạn có chắc chắn muốn xóa vĩnh viễn \"{}\" không?"
+
+#: runexe/frontend/views/capsule_details.py:502
+msgid ""
+"This will permanently delete all programs and settings associated with it."
+msgstr ""
+"Thao tác này sẽ xóa vĩnh viễn tất cả các chương trình và cài đặt được liên "
+"kết với nó."
+
+#: runexe/frontend/views/capsule_details.py:505
+#: runexe/frontend/views/capsule_preferences.py:750
+msgid "_Delete"
+msgstr "_Xóa"
+
+#: runexe/frontend/views/capsule_details.py:521
+msgid "Missing Runner"
+msgstr "Thiếu trình thực thi"
+
+#: runexe/frontend/views/capsule_details.py:522
+msgid ""
+"The runner requested by this capsule is missing. Install it through the "
+"RunExe preferences or choose a new one to run applications."
+msgstr ""
+"Trình thực thi mà capsule này yêu cầu đã bị mất. Cài đặt nó thông qua tùy "
+"chọn RunExe hoặc chọn một cái mới để chạy ứng dụng."
+
+#: runexe/frontend/views/capsule_details.py:597
+msgid "Are you sure you want to force stop all processes?"
+msgstr "Bạn có chắc chắn muốn buộc dừng tất cả các quá trình không?"
+
+#: runexe/frontend/views/capsule_details.py:598
+msgid "This can cause data loss, corruption, and programs to malfunction."
+msgstr "Điều này có thể gây mất dữ liệu, hỏng hóc và chương trình bị trục trặc."
+
+#: runexe/frontend/views/capsule_details.py:601
+msgid "Force _Stop"
+msgstr "Buộc _dừng"
+
+#: runexe/frontend/views/capsule_preferences.py:195
+msgid "This feature is unavailable on your system."
+msgstr "Tính năng này không có sẵn trên hệ thống của bạn."
+
+#: runexe/frontend/views/capsule_preferences.py:196
+msgid "{} To add this feature, please run flatpak install"
+msgstr "{} Để thêm tính năng này, vui lòng chạy flatpak install"
+
+#: runexe/frontend/views/capsule_preferences.py:246
+msgid "This capsule name is already in use."
+msgstr "Tên capsule này đã được sử dụng."
+
+#: runexe/frontend/views/capsule_preferences.py:301
+#: runexe/frontend/windows/launchoptions.py:241
+msgid "Select Working Directory"
+msgstr "Chọn thư mục làm việc"
+
+#: runexe/frontend/views/capsule_preferences.py:423
+msgid "Directory that contains the data of \"{}\"."
+msgstr "Thư mục chứa dữ liệu của \"{}\"."
+
+#: runexe/frontend/views/capsule_preferences.py:746
+msgid "Are you sure you want to delete all snapshots?"
+msgstr "Bạn có chắc chắn muốn xóa tất cả snapshot không?"
+
+#: runexe/frontend/views/capsule_preferences.py:747
+msgid "This will delete all snapshots but keep your files."
+msgstr ""
+"Thao tác này sẽ xóa tất cả snapshot nhưng vẫn giữ lại các tập tin của bạn."
+
+#: runexe/frontend/views/capsule_versioning.py:90
+msgid "Please migrate to the new Versioning system to create new states."
+msgstr "Vui lòng di chuyển sang hệ thống Phiên bản mới để tạo trạng thái mới."
+
+#: runexe/frontend/views/details.py:153
+msgid "Installers"
+msgstr "Trình cài đặt"
+
+#: runexe/frontend/views/details.py:234
+msgid "Operations in progress, please wait."
+msgstr "Hoạt động đang diễn ra, vui lòng đợi."
+
+#: runexe/frontend/views/details.py:239
+msgid "Return to your capsules."
+msgstr "Quay trở lại capsules của bạn."
+
+#: runexe/frontend/views/importer.py:92
+msgid "Backup imported successfully"
+msgstr "Sao lưu được nhập thành công"
+
+#: runexe/frontend/views/importer.py:94
+msgid "Import failed"
+msgstr "Nhập không thành công"
+
+#: runexe/frontend/views/importer.py:108
+#: runexe/frontend/views/importer.py:147
+msgid "Importing backup…"
+msgstr "Đang nhập bản sao lưu…"
+
+#: runexe/frontend/views/importer.py:119
+msgid "Select a Backup Archive"
+msgstr "Chọn một kho lưu trữ sao lưu"
+
+#: runexe/frontend/views/importer.py:122
+#: runexe/frontend/views/importer.py:161
+msgid "Import"
+msgstr "Nhập"
+
+#: runexe/frontend/views/importer.py:158 runexe/frontend/views/new.py:136
+msgid "Select a Configuration File"
+msgstr "Chọn một Tệp cấu hình"
+
+#: runexe/frontend/views/list.py:60 runexe/frontend/views/list.py:66
+msgid "N/A"
+msgstr "N/A"
+
+#. Set tooltip text
+#: runexe/frontend/views/list.py:91
+#, python-brace-format
+msgid "Run executable in \"{self.config.Name}\""
+msgstr "Chạy tệp thực thi trong \"{self.config.Name}\""
+
+#: runexe/frontend/views/list.py:118
+#, python-brace-format
+msgid "Launching \"{0}\" in \"{1}\"…"
+msgstr "Đang khởi chạy \"{0}\" trong \"{1}\"…"
+
+#: runexe/frontend/views/list.py:235
+msgid "Your Capsules"
+msgstr "RunExe của bạn"
+
+#: runexe/frontend/views/loading.py:41
+#, python-brace-format
+msgid "Downloading ~{0} of packages…"
+msgstr "Đang tải xuống ~{0} gói…"
+
+#: runexe/frontend/views/loading.py:42
+#, python-brace-format
+msgid "Fetched {0} of {1} packages"
+msgstr "Đã tìm nạp {0} trong số {1} gói"
+
+#: runexe/frontend/views/new.py:157
+msgid "Select Capsule Directory"
+msgstr "Chọn thư mục Capsule"
+
+#: runexe/frontend/views/new.py:176
+msgid "Creating Capsule…"
+msgstr "Đang tạo Capsule…"
+
+#: runexe/frontend/views/new.py:221
+msgid "Unable to Create Capsule"
+msgstr "Không thể tạo Capsule"
+
+#: runexe/frontend/views/new.py:225
+msgid "Capsule failed to create with one or more errors."
+msgstr "Không thể tạo capsule do một hoặc nhiều lỗi."
+
+#. Show success
+#: runexe/frontend/views/new.py:232
+msgid "Capsule Created"
+msgstr "Capsule được tạo"
+
+#: runexe/frontend/views/new.py:233
+#, python-brace-format
+msgid "\"{0}\" was created successfully."
+msgstr "\"{0}\" đã được tạo thành công."
+
+#: runexe/frontend/views/preferences.py:142
+msgid "Steam was not found or RunExe does not have enough permissions."
+msgstr "Không tìm thấy Steam hoặc RunExe không có đủ quyền."
+
+#: runexe/frontend/views/preferences.py:176
+msgid "Select Capsules Path"
+msgstr "Chọn đường dẫn RunExe"
+
+#: runexe/frontend/views/preferences.py:198
+msgid "Relaunch RunExe?"
+msgstr "Khởi động lại RunExe?"
+
+#: runexe/frontend/views/preferences.py:199
+msgid ""
+"RunExe will need to be relaunched to use this directory.\n"
+"\n"
+"Be sure to close every program launched from RunExe before relaunching "
+"RunExe, as not doing so can cause data loss, corruption and programs to "
+"malfunction."
+msgstr ""
+"RunExe sẽ cần phải được khởi chạy lại để sử dụng thư mục này.\n"
+"\n"
+"Đảm bảo đóng mọi chương trình được khởi chạy từ RunExe trước khi khởi chạy "
+"lại RunExe, vì không làm như vậy có thể gây mất dữ liệu, hỏng và chương "
+"trình gặp trục trặc."
+
+#: runexe/frontend/views/preferences.py:202
+msgid "_Relaunch"
+msgstr "_Khởi chạy lại"
+
+#: runexe/frontend/views/preferences.py:243
+msgid "Based on Valve's Wine, includes staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:244
+msgid "Based on Wine upstream, includes staging and Proton patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:247
+msgid "Based on Wine upstream, includes staging patches."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:248
+msgid ""
+"Based on Valve's Wine, includes staging, Proton and Steam-specific patches. "
+"Requires the Steam Runtime turned on."
+msgstr ""
+
+#: runexe/frontend/views/preferences.py:250
+msgid "Other"
+msgstr "Khác"
+
+#: runexe/frontend/widgets/component.py:74
+msgid "Upgrade"
+msgstr "Nâng cấp"
+
+#: runexe/frontend/widgets/component.py:140
+msgid "Installing…"
+msgstr "Đang cài đặt…"
+
+#: runexe/frontend/widgets/dependency.py:107
+#: runexe/frontend/widgets/installer.py:81
+#, python-brace-format
+msgid "Manifest for {0}"
+msgstr "Biểu hiện cho {0}"
+
+#: runexe/frontend/widgets/dependency.py:172
+#, python-brace-format
+msgid "\"{0}\" uninstalled"
+msgstr "\"{0}\" đã được gỡ cài đặt"
+
+#: runexe/frontend/widgets/dependency.py:174
+#, python-brace-format
+msgid "\"{0}\" installed"
+msgstr "\"{0}\" đã được cài đặt"
+
+#: runexe/frontend/widgets/dependency.py:188
+#, python-brace-format
+msgid "\"{0}\" failed to install"
+msgstr "\"{0}\" không cài đặt được"
+
+#: runexe/frontend/widgets/importer.py:68
+#, python-brace-format
+msgid "\"{0}\" imported"
+msgstr "\"{0}\" đã được nhập"
+
+#: runexe/frontend/widgets/installer.py:49
+msgid ""
+"This application may work poorly. The installer was configured to provide "
+"the best possible experience, but expect glitches, instability and lack of "
+"working features."
+msgstr ""
+"Ứng dụng này có thể hoạt động kém. Trình cài đặt đã được định cấu hình để "
+"mang lại trải nghiệm tốt nhất có thể nhưng có thể gặp trục trặc, không ổn "
+"định và thiếu các tính năng hoạt động."
+
+#: runexe/frontend/widgets/installer.py:50
+msgid ""
+"This program works with noticeable glitches, but these glitches do not "
+"affect the application's functionality."
+msgstr ""
+"Chương trình này hoạt động với những trục trặc đáng chú ý nhưng những trục "
+"trặc này không ảnh hưởng đến chức năng của ứng dụng."
+
+#: runexe/frontend/widgets/installer.py:51
+msgid "This program works with minor glitches."
+msgstr "Chương trình này hoạt động với những trục trặc nhỏ."
+
+#: runexe/frontend/widgets/installer.py:52
+msgid "This program works perfectly."
+msgstr "Chương trình này hoạt động hoàn hảo."
+
+#: runexe/frontend/widgets/installer.py:90
+#, python-brace-format
+msgid "Review for {0}"
+msgstr "Đánh giá cho {0}"
+
+#: runexe/frontend/widgets/library.py:169
+#: runexe/frontend/widgets/program.py:194
+#, python-brace-format
+msgid "Stopping \"{0}\"…"
+msgstr "Đang dừng \"{0}\"…"
+
+#: runexe/frontend/widgets/program.py:190
+#, python-brace-format
+msgid "Launching \"{0}\" with Steam…"
+msgstr "Đang khởi chạy \"{0}\" bằng Steam…"
+
+#: runexe/frontend/widgets/program.py:214
+#, python-brace-format
+msgid "\"{0}\" hidden"
+msgstr "\"{0}\" bị ẩn"
+
+#: runexe/frontend/widgets/program.py:216
+#, python-brace-format
+msgid "\"{0}\" showed"
+msgstr "\"{0}\" đã hiển thị"
+
+#: runexe/frontend/widgets/program.py:242
+#, python-brace-format
+msgid "\"{0}\" removed"
+msgstr "\"{0}\" đã bị xóa"
+
+#: runexe/frontend/widgets/program.py:274
+#, python-brace-format
+msgid "\"{0}\" renamed to \"{1}\""
+msgstr "\"{0}\" được đổi tên thành \"{1}\""
+
+#: runexe/frontend/widgets/program.py:297
+#, python-brace-format
+msgid "Desktop Entry created for \"{0}\""
+msgstr "Mục nhập trên Desktop được tạo cho \"{0}\""
+
+#: runexe/frontend/widgets/program.py:313
+#, python-brace-format
+msgid "\"{0}\" added to your library"
+msgstr "\"{0}\" đã được thêm vào thư viện của bạn"
+
+#: runexe/frontend/widgets/program.py:331
+#, python-brace-format
+msgid "\"{0}\" added to your Steam library"
+msgstr "\"{0}\" đã được thêm vào thư viện Steam của bạn"
+
+#: runexe/frontend/windows/crash.py:33
+msgid "Show report"
+msgstr "Hiển thị báo cáo"
+
+#: runexe/frontend/windows/crash.py:80
+msgid ""
+"            This issue was reported 5 times and cannot be sent again.\n"
+"            Report your feedback in one of the below existing reports."
+msgstr ""
+"            Vấn đề này đã được báo cáo 5 lần và không thể được gửi lại.\n"
+"             Báo cáo phản hồi của bạn bằng một trong các báo cáo hiện có "
+"dưới đây."
+
+#: runexe/frontend/windows/display.py:102
+msgid "Updating display settings, please wait…"
+msgstr "Đang cập nhật cài đặt hiển thị, vui lòng đợi…"
+
+#: runexe/frontend/windows/display.py:114
+msgid "Display settings updated"
+msgstr "Đã cập nhật cài đặt hiển thị"
+
+#: runexe/frontend/windows/dlloverrides.py:136
+msgid "No overrides found."
+msgstr "Không tìm thấy ghi đè."
+
+#: runexe/frontend/windows/drives.py:71
+msgid "Select Drive Path"
+msgstr "Chọn đường dẫn ổ đĩa"
+
+#: runexe/frontend/windows/envvars.py:131
+msgid "No environment variables defined."
+msgstr "Không có biến môi trường được định nghĩa."
+
+#: runexe/frontend/windows/exclusionpatterns.py:108
+msgid "No exclusion patterns defined."
+msgstr "Không có mẫu loại trừ nào được định nghĩa."
+
+#: runexe/frontend/windows/generic.py:24
+msgid "An error has occurred."
+msgstr "Một lỗi đã xảy ra."
+
+#: runexe/frontend/windows/generic.py:91
+#: runexe/frontend/windows/generic.py:137
+#: runexe/frontend/windows/generic.py:182
+msgid "Copy to clipboard"
+msgstr "Sao chép vào bộ nhớ tạm"
+
+#: runexe/frontend/windows/installer.py:62
+msgid "Select Resource File"
+msgstr "Chọn tệp tài nguyên"
+
+#: runexe/frontend/windows/installer.py:109
+msgid "Installing Windows dependencies…"
+msgstr "Đang cài đặt các phần phụ thuộc của Windows…"
+
+#: runexe/frontend/windows/installer.py:110
+msgid "Configuring the capsule…"
+msgstr "Đang cấu hình capsule…"
+
+#: runexe/frontend/windows/installer.py:111
+msgid "Processing installer steps…"
+msgstr "Đang xử lý các bước cài đặt…"
+
+#: runexe/frontend/windows/installer.py:112
+msgid "Installing the {}…"
+msgstr "Đang cài đặt {}…"
+
+#: runexe/frontend/windows/installer.py:113
+msgid "Performing final checks…"
+msgstr "Đang thực hiện kiểm tra lần cuối…"
+
+#: runexe/frontend/windows/installer.py:117
+#, python-brace-format
+msgid "Installing {0}…"
+msgstr "Đang cài đặt {0}…"
+
+#: runexe/frontend/windows/installer.py:119
+#, python-brace-format
+msgid "{0} is now available in the programs view."
+msgstr "{0} hiện có sẵn trong chế độ xem chương trình."
+
+#: runexe/frontend/windows/installer.py:166
+msgid "Installer failed with unknown error"
+msgstr "Trình cài đặt không thành công với lỗi không xác định"
+
+#: runexe/frontend/windows/launchoptions.py:56
+#, python-brace-format
+msgid "{0} is already disabled for this capsule."
+msgstr "{0} đã tắt cho capsule này."
+
+#: runexe/frontend/windows/launchoptions.py:57
+msgid "This setting is different from the capsule's default."
+msgstr "Cài đặt này khác với cài đặt mặc định của capsule này."
+
+#: runexe/frontend/windows/launchoptions.py:215
+msgid "Select Script"
+msgstr "Chọn Lệnh"
+
+#: runexe/frontend/windows/main_window.py:220
+msgid "Custom Capsules Path not Found"
+msgstr "Không tìm thấy đường dẫn RunExe tùy chỉnh"
+
+#: runexe/frontend/windows/main_window.py:221
+msgid ""
+"Falling back to default path. No capsules from the given path will be listed."
+msgstr ""
+"Rơi trở lại đường dẫn mặc định. Không có capsules nào từ đường dẫn nhất định "
+"sẽ được liệt kê."
+
+#: data/io.github.runexe.RunExe.desktop.in.in:3
+msgid "@APP_NAME@"
+msgstr "@APP_NAME@"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:4
+#: data/io.github.runexe.RunExe.metainfo.xml.in:8
+msgid "Run Windows Software"
+msgstr "Chạy phần mềm Windows"
+
+#: data/io.github.runexe.RunExe.desktop.in.in:13
+msgid "wine;windows;"
+msgstr "wine;windows;"
+
+#: data/io.github.runexe.RunExe.gschema.xml:6
+msgid "Flatpak migration"
+msgstr "Di chuyển sang Flatpak"
+
+#: data/io.github.runexe.RunExe.gschema.xml:7
+msgid "Toggle the Flatpak migration dialog."
+msgstr "Bật/Tắt hộp thoại di chuyển sang Flatpak."
+
+#: data/io.github.runexe.RunExe.gschema.xml:11
+msgid "Dark theme"
+msgstr "Chế độ tối"
+
+#: data/io.github.runexe.RunExe.gschema.xml:12
+msgid "Force the use of dark theme."
+msgstr "Buộc sử dụng chủ đề tối."
+
+#: data/io.github.runexe.RunExe.gschema.xml:16
+msgid "Toggle update date in list"
+msgstr "Bật/Tắt ngày cập nhật trong danh sách"
+
+#: data/io.github.runexe.RunExe.gschema.xml:17
+msgid "Toggle the update date in list of capsules."
+msgstr "Bật/Tắt ngày cập nhật trong danh sách capsules."
+
+#: data/io.github.runexe.RunExe.gschema.xml:21
+msgid "Steam apps listing"
+msgstr "Danh sách ứng dụng Steam"
+
+#: data/io.github.runexe.RunExe.gschema.xml:22
+msgid "Toggle steam apps listing."
+msgstr "Chuyển đổi danh sách ứng dụng Steam."
+
+#: data/io.github.runexe.RunExe.gschema.xml:26
+msgid "Epic Games listing"
+msgstr "Danh sách Epic Games"
+
+#: data/io.github.runexe.RunExe.gschema.xml:27
+msgid "Toggle epic games listing."
+msgstr "Bật/tắt danh sách Epic Games."
+
+#: data/io.github.runexe.RunExe.gschema.xml:31
+msgid "Ubisoft Connect listing"
+msgstr "Danh sách Ubisoft Connect"
+
+#: data/io.github.runexe.RunExe.gschema.xml:32
+msgid "Toggle ubisoft connect listing."
+msgstr "Bật/tắt danh sách Ubisoft Connect."
+
+#: data/io.github.runexe.RunExe.gschema.xml:36
+msgid "Window width"
+msgstr "Độ rộng của cửa sổ"
+
+#: data/io.github.runexe.RunExe.gschema.xml:37
+msgid "Change the window width."
+msgstr "Thay đổi độ rộng cửa sổ."
+
+#: data/io.github.runexe.RunExe.gschema.xml:41
+msgid "Window height"
+msgstr "Chiều cao cửa sổ"
+
+#: data/io.github.runexe.RunExe.gschema.xml:42
+msgid "Change the window height."
+msgstr "Thay đổi chiều cao cửa sổ."
+
+#: data/io.github.runexe.RunExe.gschema.xml:47
+msgid "Show notifications."
+msgstr "Hiển thị thông báo."
+
+#: data/io.github.runexe.RunExe.gschema.xml:51
+msgid "Temp cleaning"
+msgstr "Dọn tệp tin tạm"
+
+#: data/io.github.runexe.RunExe.gschema.xml:52
+msgid "Clean the temp path when booting the system."
+msgstr "Làm sạch đường dẫn tạm thời khi khởi động hệ thống."
+
+#: data/io.github.runexe.RunExe.gschema.xml:56
+msgid "Release Candidate"
+msgstr "Bản phát hành Ứng viên"
+
+#: data/io.github.runexe.RunExe.gschema.xml:57
+msgid "Toggle release candidate for runners."
+msgstr "Kích hoạt / Vô hiệu hóa bản phát hành ứng viên cho trình thực thi."
+
+#: data/io.github.runexe.RunExe.gschema.xml:61
+msgid "Startup view"
+msgstr "Khung nhìn khởi động"
+
+#: data/io.github.runexe.RunExe.gschema.xml:62
+msgid "Choose which view the application should be started in."
+msgstr "Chọn chế độ xem phải được tải khi bắt đầu ứng dụng."
+
+#: data/io.github.runexe.RunExe.gschema.xml:67
+msgid ""
+"Toggle experimental features such as versioning and installers. Release "
+"candidate for runners."
+msgstr ""
+"Bật/Tắt các tính năng thử nghiệm như quản lý hoặc trình cài đặt phiên bản. "
+"Phát hành ứng viên cho trình thực thi."
+
+#: data/io.github.runexe.RunExe.gschema.xml:71
+msgid "Steam Proton Support"
+msgstr "Hỗ trợ Steam Proton"
+
+#: data/io.github.runexe.RunExe.gschema.xml:72
+msgid "Toggle Steam Proton prefixes support."
+msgstr "Kích hoạt / Hủy kích hoạt các tính năng thử nghiệm của Steam Proton."
+
+#: data/io.github.runexe.RunExe.gschema.xml:76
+msgid "Experiments:sandbox"
+msgstr "Thí nghiệm: sandbox"
+
+#: data/io.github.runexe.RunExe.gschema.xml:77
+msgid "Toggle experimental Sandbox per capsule."
+msgstr "Bật/tắt Sandbox thử nghiệm trên mỗi capsule."
+
+#: data/io.github.runexe.RunExe.gschema.xml:81
+msgid "Automatically close RunExe"
+msgstr "Tự động đóng RunExe"
+
+#: data/io.github.runexe.RunExe.gschema.xml:82
+msgid "Close RunExe after starting an executable from the file manager."
+msgstr "Đóng RunExe sau khi khởi động một tệp thực thi từ trình quản lý tệp."
+
+#: data/io.github.runexe.RunExe.gschema.xml:86
+msgid "Show sandbox warning"
+msgstr "Hiển thị cảnh báo sandbox"
+
+#: data/io.github.runexe.RunExe.gschema.xml:87
+msgid "Toggle sandbox warning."
+msgstr "Bật/tắt cảnh báo sandbox."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:11
+msgid "Run Windows software on Linux with RunExe!"
+msgstr "Chạy phần mềm Windows trên Linux với RunExe!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:12
+msgid "Capsule software and enjoy at your leisure!"
+msgstr "Mở Capsule và tận hưởng lúc rảnh rỗi!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:13
+msgid ""
+"Our built-in dependency installation system grants automatic software "
+"compatibility access. Use the download manager to download the official "
+"components: the runner (Wine, Proton), DXVK, dependencies, etc."
+msgstr ""
+"Hệ thống cài đặt phụ thuộc tích hợp cấp quyền truy cập tương thích phần mềm "
+"tự động. Sử dụng trình quản lý tải xuống để tải xuống các thành phần chính "
+"thức như: chạy phần mềm (Wine, Proton), DXVK, các phụ thuộc, v.v."
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:16
+msgid ""
+"Capsule versioning keeps your work safe now and lets you restore it later!"
+msgstr ""
+"Phiên bản các capsule giữ cho công việc của bạn an toàn và cho phép bạn khôi "
+"phục nó!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:17
+msgid "Features:"
+msgstr "Các tính năng:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:19
+msgid "Create capsules using preconfigured environments or create your own"
+msgstr ""
+"Tạo chai bằng cách sử dụng môi trường được cấu hình sẵn hoặc tạo môi trường "
+"của riêng bạn"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:20
+msgid ""
+"Run executables (.exe/.msi) in your capsules, directly from the context menu "
+"of your file-manager"
+msgstr ""
+"Chạy phần mềm (.exe / .msi) trong capsule của bạn, trực tiếp từ menu ngữ cảnh "
+"của trình quản lý tệp"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:21
+msgid "Automated detection of applications installed in your capsules"
+msgstr "Phát hiện tự động các ứng dụng được cài đặt trong capsule của bạn"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:22
+msgid "Add environment variables quickly"
+msgstr "Thêm biến môi trường một cách nhanh chóng"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:23
+msgid "Override DLLs directly from per-capsule preferences"
+msgstr "Ghi đè DLL trực tiếp từ tùy chọn mỗi chai"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:24
+msgid "On-the-fly runner change for any Capsule"
+msgstr "Thay đổi bản thực thi khi nhanh chóng cho bất kỳ chai nào"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:25
+msgid ""
+"Various gaming-performance optimizations (esync, fsync, DXVK, cache, shader "
+"compiler, offload … and much more.)"
+msgstr ""
+"Nhiều tối ưu hóa khác nhau để có hiệu suất chơi tốt hơn (esync, fsync, dxvk, "
+"bộ nhớ cache, trình biên dịch shaders, giảm tải ... và nhiều hơn nữa.)"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:26
+msgid "Automatic installation and management of Wine and Proton runners"
+msgstr "Tự động lắp đặt và quản lý Wine và Proton"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:27
+msgid "Automatic capsule repair in case of breakage"
+msgstr "Sửa Capsule tự động trong trường hợp bị vỡ"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:28
+msgid "Integrated dependency-installer based on a community-driven repository"
+msgstr "Trình cài đặt phụ thuộc tích hợp dựa trên kho lưu trữ cộng đồng"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:29
+msgid "Integrated Task manager for Wine processes"
+msgstr "Trình quản lý tác vụ tích hợp Wine"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:30
+msgid "Access to ProtonDB and WineHQ for support"
+msgstr "Truy cập vào ProtonDB và WineHQ để được hỗ trợ"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:31
+msgid "System for bringing your configuration to new versions of RunExe"
+msgstr "Hệ thống chuyển cấu hình của bạn thành các phiên bản mới hơn của Chai"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:32
+msgid "Back up and import runexe"
+msgstr "Sao lưu và nhập Chai"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:33
+msgid "Import Wine prefixes from other managers"
+msgstr "Nhập các tiền tố Wine từ các trình quản lý khác"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:34
+msgid "RunExe versioning"
+msgstr "Lập phiên bản RunExe"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:35
+msgid "... and much more that you can find by installing RunExe!"
+msgstr "... và bạn có thể tìm thấy nhiều hơn nữa bằng cách cài đặt Chai!"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:84
+msgid "Update metadata information"
+msgstr "Cập nhật thông tin siêu dữ liệu"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:89
+msgid "Add more update information and correct release notes version"
+msgstr ""
+"Bổ sung thêm thông tin cập nhật và phiên bản ghi chú phát hành chính xác"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:94
+msgid "Fixed \"Add to Steam\" button"
+msgstr "Đã sửa nút \"Thêm vào Steam\""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:95
+msgid "Fixed CapsuleConfig being not serializable"
+msgstr "Đã sửa lỗi CapsuleConfig không thể tuần tự hóa được"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:96
+msgid "Fixed Patool double extraction failing"
+msgstr "Đã sửa lỗi trích xuất kép Patool không thành công"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:101
+msgid "Correct version"
+msgstr "Phiên bản chính xác"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:106
+msgid "Fix crash when creating a capsule"
+msgstr "Khắc phục sự cố khi tạo capsule"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:111
+msgid "Major change: Redesign New Capsule interface"
+msgstr "Thay đổi lớn: Thiết kế lại giao diện Capsule mới"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:112
+msgid "Quality of life improvements:"
+msgstr "Cải tiến cho trải nghiệm người dùng:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:114
+msgid "Replace emote-love icon with library in library page"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:115
+msgid "Add toast for \"Run Executable\""
+msgstr "Thêm toast cho \"Chạy thực thi\""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:117
+msgid "Bug fixes:"
+msgstr "Sửa lỗi:"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:119
+msgid "Adding shortcut to Steam resulted an error"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:120
+msgid "Importing backups resulted an error"
+msgstr "Nhập bản sao lưu đã xảy ra lỗi"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:121
+msgid "Steam Runtime automatically enabled when using wine-ge-custom"
+msgstr "Trình thực thi Steam tự động được bật khi sử dụng wine-ge-custom"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:122
+msgid ""
+"Various library related fixes, like empty covers, and crashes related to "
+"missing entries"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:123
+msgid "Fix various issues related to text encoding"
+msgstr "Khắc phục các sự cố khác nhau liên quan đến mã hóa văn bản"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:130
+msgid "Fix error when downloading if RunExe isn't run from terminal"
+msgstr "Sửa lỗi khi tải xuống nếu RunExe không chạy từ terminal"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:137
+msgid "Correct version date"
+msgstr "Ngày phiên bản chính xác"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:138
+msgid "Hide NVIDIA-related critical errors on non NVIDIA systems"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:145
+msgid "Gamescope improvements and fixes"
+msgstr "Cải tiến và sửa lỗi Gamescope"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:146
+msgid "Dependency installation is faster and more stable"
+msgstr "Cài đặt phụ thuộc nhanh hơn và ổn định hơn"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:147
+msgid "The health check has more information for faster debugging"
+msgstr "Kiểm tra tình trạng có nhiều thông tin hơn để gỡ lỗi nhanh hơn"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:148
+msgid "NVAPI has a lot of fixes and is more stable, should now work properly"
+msgstr "NVAPI có nhiều bản sửa lỗi và ổn định hơn, giờ đã hoạt động bình thường"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:149
+msgid "Fix crash when downloading a component"
+msgstr "Khắc phục sự cố khi tải xuống một thành phần"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:150
+msgid "Backend code improvement by avoiding spin-lock"
+msgstr "Cải thiện code backend bằng cách tránh spin-lock"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:151
+msgid "More variables for installer scripting"
+msgstr "Nhiều biến hơn cho tập lệnh cài đặt"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:152
+msgid "Fix onboard dialog showing \"All ready\" while it was in fact not ready"
+msgstr ""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:153
+msgid "Improvement to build system"
+msgstr "Cải tiến để xây dựng hệ thống"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:154
+msgid "Enabling VKD3D by default when creating capsules for gaming"
+msgstr "Bật VKD3D mặc định khi tạo capsules để chơi game"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:155
+msgid "Fix crashes when reading Steam files with bad encodings"
+msgstr "Khắc phục sự cố khi đọc tệp Steam có mã hóa xấu"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:156
+msgid ""
+"Fix components not updated correctly in the UI after installation/"
+"uninstallation"
+msgstr ""
+"Sửa các thành phần không được cập nhật chính xác trong giao diện người dùng "
+"sau khi cài đặt/gỡ cài đặt"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:157
+msgid "More FSR fixes"
+msgstr "Các bản sửa lỗi FSR khác"
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:158
+msgid ""
+"Fix the issue when a program closes after it was launched from \"Run "
+"executable\""
+msgstr ""
+"Khắc phục sự cố khi chương trình đóng sau khi được khởi chạy từ "
+"\"Chạy tệp thực thi\""
+
+#: data/io.github.runexe.RunExe.metainfo.xml.in:159
+msgid "and many, many, many more!"
+msgstr "và nhiều, rất nhiều, nhiều hơn nữa!"

@@ -1,0 +1,457 @@
+import json
+import os
+import shlex
+import tempfile
+from typing import Optional
+
+from runexe.backend.logger import Logger
+from runexe.backend.models.config import CapsuleConfig
+from runexe.backend.models.result import Result
+from runexe.backend.models.enum import Arch
+from runexe.backend.wine.catalogs import win_versions
+from runexe.backend.wine.reg import Reg
+from runexe.backend.wine.wineboot import WineBoot
+from runexe.backend.wine.winecfg import WineCfg
+from runexe.backend.utils.manager import ManagerUtils
+
+logging = Logger()
+
+
+class RegKeys:
+    def __init__(self, config: CapsuleConfig):
+        self.config = config
+        self.reg = Reg(self.config)
+
+    def lg_set_windows(self, version: str):
+        """
+        Legacy method to change Windows version in a capsule using
+        the Wine Configuration tool.
+        """
+        if version == "winxp" and self.config.Arch == Arch.WIN64:
+            version = "winxp64"
+
+        winecfg = WineCfg(self.config)
+        res = winecfg.set_windows_version(version)
+        if not res.ok:
+            raise ValueError(f"Failed to set Windows version to {version}")
+
+    def set_windows(self, version: str):
+        """
+        Change Windows version in a capsule from the given
+        configuration.
+        ----------
+        supported versions:
+            - win10 (Microsoft Windows 10)
+            - win81 (Microsoft Windows 8.1)
+            - win8 (Microsoft Windows 8)
+            - win7 (Microsoft Windows 7)
+            - vista (Microsoft Windows Vista)
+            - win2008r2 (Microsoft Windows 2008 R1)
+            - win2008 (Microsoft Windows 2008)
+            - winxp (Microsoft Windows XP)
+        ------
+        raises: ValueError
+            If the given version is invalid.
+        """
+
+        if version == "winxp" and self.config.Arch == Arch.WIN64:
+            version = "winxp64"
+
+        win_version = win_versions.get(version)
+        if win_version is None:
+            raise ValueError("Given version is not supported.")
+
+        wineboot = WineBoot(self.config)
+        del_keys = {
+            "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion": [
+                "SubVersionNumber",
+                "VersionNumber",
+            ],
+            "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion": [
+                "CSDVersion",
+                "CurrentBuildNumber",
+                "CurrentVersion",
+            ],
+            "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\ProductOptions": "ProductType",
+            "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\ServiceCurrent": "OS",
+            "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows": "CSDVersion",
+            "HKEY_CURRENT_USER\\Software\\Wine": "Version",
+        }
+        for d in del_keys:
+            _val = del_keys.get(d)
+            if isinstance(_val, list):
+                for v in _val:
+                    self.reg.remove(d, v)
+            else:
+                self.reg.remove(d, _val)
+
+        if version not in ["win98", "win95"]:
+            bundle = {
+                "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion": [
+                    {"value": "CSDVersion", "data": win_version["CSDVersion"]},
+                    {"value": "CurrentBuild", "data": win_version["CurrentBuild"]},
+                    {
+                        "value": "CurrentBuildNumber",
+                        "data": win_version["CurrentBuildNumber"],
+                    },
+                    {"value": "CurrentVersion", "data": win_version["CurrentVersion"]},
+                    {"value": "ProductName", "data": win_version["ProductName"]},
+                    {
+                        "value": "CurrentMinorVersionNumber",
+                        "data": win_version["CurrentMinorVersionNumber"],
+                        "key_type": "dword",
+                    },
+                    {
+                        "value": "CurrentMajorVersionNumber",
+                        "data": win_version["CurrentMajorVersionNumber"],
+                        "key_type": "dword",
+                    },
+                ],
+                "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\Windows": [
+                    {
+                        "value": "CSDVersion",
+                        "data": win_version["CSDVersionHex"],
+                        "key_type": "dword",
+                    }
+                ],
+            }
+        else:
+            bundle = {
+                "HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows\\CurrentVersion": [
+                    {"value": "ProductName", "data": win_version["ProductName"]},
+                    {
+                        "value": "SubVersionNumber",
+                        "data": win_version["SubVersionNumber"],
+                    },
+                    {"value": "VersionNumber", "data": win_version["VersionNumber"]},
+                ]
+            }
+
+        if self.config.Arch == Arch.WIN64:
+            bundle[
+                "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Microsoft\\Windows NT\\CurrentVersion"
+            ] = [
+                {"value": "CSDVersion", "data": win_version["CSDVersion"]},
+                {"value": "CurrentBuild", "data": win_version["CurrentBuild"]},
+                {
+                    "value": "CurrentBuildNumber",
+                    "data": win_version["CurrentBuildNumber"],
+                },
+                {"value": "CurrentVersion", "data": win_version["CurrentVersion"]},
+                {"value": "ProductName", "data": win_version["ProductName"]},
+                {
+                    "value": "CurrentMinorVersionNumber",
+                    "data": win_version["CurrentMinorVersionNumber"],
+                    "key_type": "dword",
+                },
+                {
+                    "value": "CurrentMajorVersionNumber",
+                    "data": win_version["CurrentMajorVersionNumber"],
+                    "key_type": "dword",
+                },
+            ]
+
+        if "ProductType" in win_version:
+            """windows xp 32 doesn't have ProductOptions/ProductType key"""
+            bundle[
+                "HKEY_LOCAL_MACHINE\\System\\CurrentControlSet\\Control\\ProductOptions"
+            ] = [{"value": "ProductType", "data": win_version["ProductType"]}]
+
+        self.reg.import_bundle(bundle)
+
+        wineboot.restart()
+        wineboot.update()
+
+    def set_app_default(self, version: str, executable: str):
+        """
+        Change default Windows version per application in a capsule
+        from the given configuration.
+        """
+        if version not in win_versions:
+            raise ValueError("Given version is not supported.")
+
+        if version == "winxp" and self.config.Arch == Arch.WIN64:
+            version = "winxp64"
+
+        self.reg.add(
+            key=f"HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\{executable}",
+            value="Version",
+            data=version,
+        )
+
+    def toggle_virtual_desktop(self, state: bool, resolution: str = "800x600"):
+        """
+        This function toggles the virtual desktop for a capsule, updating
+        the Desktop's registry key.
+        """
+        wineboot = WineBoot(self.config)
+
+        if state:
+            self.reg.add(
+                key="HKEY_CURRENT_USER\\Software\\Wine\\Explorer",
+                value="Desktop",
+                data="Default",
+            )
+            self.reg.add(
+                key="HKEY_CURRENT_USER\\Software\\Wine\\Explorer\\Desktops",
+                value="Default",
+                data=resolution,
+            )
+        else:
+            self.reg.remove(
+                key="HKEY_CURRENT_USER\\Software\\Wine\\Explorer", value="Desktop"
+            )
+        wineboot.update()
+
+    def toggle_wayland_driver(self, state: bool):
+        key = "HKEY_CURRENT_USER\\Software\\Wine\\Drivers"
+        value = "Graphics"
+        if state:
+            self.reg.add(key=key, value=value, data="x11,wayland")
+        else:
+            self.reg.remove(key=key, value=value)
+
+    def apply_cmd_settings(self, scheme=None):
+        """
+        Change settings for the wine command line in a capsule.
+        This method can also be used to apply the default settings, part
+        of the RunExe experience, these are meant to improve the
+        readability and usability.
+        """
+        if scheme is None:
+            scheme = {}
+        self.reg.import_bundle(
+            {
+                "HKEY_CURRENT_USER\\Console\\C:_windows_system32_wineconsole.exe": [
+                    {"value": "ColorTable00", "data": "2368548"},
+                    {"value": "CursorSize", "data": "25"},
+                    {"value": "CursorVisible", "data": "1"},
+                    {"value": "EditionMode", "data": "0"},
+                    {"value": "FaceName", "data": "Monospace", "key_type": "dword"},
+                    {"value": "FontPitchFamily", "data": "1"},
+                    {"value": "FontSize", "data": "1248584"},
+                    {"value": "FontWeight", "data": "400"},
+                    {"value": "HistoryBufferSize", "data": "50"},
+                    {"value": "HistoryNoDup", "data": "0"},
+                    {"value": "InsertMode", "data": "1"},
+                    {"value": "MenuMask", "data": "0"},
+                    {"value": "PopupColors", "data": "245"},
+                    {"value": "QuickEdit", "data": "1"},
+                    {"value": "ScreenBufferSize", "data": "9830480"},
+                    {"value": "ScreenColors", "data": "11"},
+                    {"value": "WindowSize", "data": "1638480"},
+                ]
+            }
+        )
+
+    def apply_font_smoothing(self, mode: str = "rgb"):
+        """Enable Wine font smoothing using a predefined mode."""
+
+        modes = {
+            "disable": {"smoothing": "0", "orientation": 1, "type": 0},
+            "gray": {"smoothing": "2", "orientation": 1, "type": 1},
+            "bgr": {"smoothing": "2", "orientation": 0, "type": 2},
+            "rgb": {"smoothing": "2", "orientation": 1, "type": 2},
+        }
+
+        if mode not in modes:
+            raise ValueError("Given font smoothing mode is not supported.")
+
+        selected = modes[mode]
+
+        self.reg.import_bundle(
+            {
+                "HKEY_CURRENT_USER\\Control Panel\\Desktop": [
+                    {"value": "FontSmoothing", "data": selected["smoothing"]},
+                    {
+                        "value": "FontSmoothingGamma",
+                        "data": "00000578",
+                        "key_type": "dword",
+                    },
+                    {
+                        "value": "FontSmoothingOrientation",
+                        "data": f"{selected['orientation']:08x}",
+                        "key_type": "dword",
+                    },
+                    {
+                        "value": "FontSmoothingType",
+                        "data": f"{selected['type']:08x}",
+                        "key_type": "dword",
+                    },
+                ]
+            }
+        )
+
+    def set_renderer(self, value: str):
+        """
+        Set what backend to use for wined3d.
+        """
+        if value not in ["gl", "gdi", "vulkan"]:
+            raise ValueError(f"{value} is not a valid renderer (gl, gdi, vulkan)")
+
+        self.reg.add(
+            key="HKEY_CURRENT_USER\\Software\\Wine\\Direct3D",
+            value="renderer",
+            data=value,
+            value_type="REG_SZ",
+        )
+
+    def set_audio_driver(self, driver: Optional[str]):
+        """
+        Set the Wine audio driver for the capsule.
+        Pass None or "default" to remove the override and restore the default driver.
+        """
+
+        key = "HKEY_CURRENT_USER\\Software\\Wine\\Drivers"
+        if driver in (None, "", "default"):
+            try:
+                self.reg.remove(key=key, value="Audio")
+            except Exception as exc:  # noqa: BLE001 - backend logger handles errors
+                logging.debug(f"Failed to remove audio driver override: {exc}")
+            return
+
+        value = driver.lower()
+        valid = {"pulse", "alsa", "oss", "disabled"}
+        if value not in valid:
+            raise ValueError(
+                f"{driver} is not a valid audio driver ({', '.join(sorted(valid))} or default)"
+            )
+
+        self.reg.add(
+            key=key,
+            value="Audio",
+            data=value,
+            value_type="REG_SZ",
+        )
+
+    def set_dpi(self, value: int):
+        """
+        Set the DPI for a capsule.
+        """
+        self.reg.add(
+            key="HKEY_CURRENT_USER\\Control Panel\\Desktop",
+            value="LogPixels",
+            data=str(value),
+            value_type="REG_DWORD",
+        )
+
+    def set_dpi_scaling(self, mode: str) -> Result:
+        if mode is None:
+            return Result(False, message="Unknown DPI scaling mode.")
+        return self._dpi_scaling(mode)
+
+    def get_dpi_scaling(self) -> Result:
+        return self._dpi_scaling()
+
+    def _dpi_scaling(self, mode: Optional[str] = None) -> Result:
+        flags = {"default": "", "application": "HIGHDPIAWARE", "system": "DPIUNAWARE"}
+        if mode is not None and mode not in flags:
+            return Result(False, message="Unknown DPI scaling mode.")
+        key = r"HKEY_CURRENT_USER\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"
+        directory = os.path.join(ManagerUtils.get_capsule_path(self.config), "drive_c")
+        path = None
+        try:
+            descriptor, path = tempfile.mkstemp(prefix=".runexe-dpi-", suffix=".reg", dir=directory)
+            os.close(descriptor)
+            windows_path = shlex.quote("C:\\" + os.path.basename(path))
+            with open(path, "w", encoding="utf-16") as stream:
+                stream.write(f"Windows Registry Editor Version 5.00\n\n[{key}]\n")
+            created = self.reg.launch(f"import {windows_path}", communicate=True)
+            if not created.ok:
+                return created
+            exported = self.reg.launch(f"export {shlex.quote(key)} {windows_path} /y", communicate=True)
+            if not exported.ok:
+                return exported
+            current = ""
+            in_key = False
+            found_key = False
+            with open(path, encoding="utf-16") as stream:
+                if stream.readline().strip() != "Windows Registry Editor Version 5.00":
+                    return Result(False, message="The registry export could not be read.")
+                for line in stream:
+                    line = line.strip()
+                    if line.startswith("["):
+                        in_key = line.casefold() == f"[{key}]".casefold()
+                        found_key = found_key or in_key
+                    elif in_key and line.startswith("@="):
+                        current = json.loads(line[2:])
+                        if not isinstance(current, str):
+                            return Result(False, message="The DPI compatibility value is not a string.")
+            if not found_key:
+                return Result(False, message="The compatibility registry key was not exported.")
+            if mode is None:
+                layers = {item.upper() for item in current.split()}
+                selected = "system" if "DPIUNAWARE" in layers else "application" if "HIGHDPIAWARE" in layers else "default"
+                return Result(True, data=selected)
+            layers = [item for item in current.split() if item.upper() not in (
+                "HIGHDPIAWARE", "DPIUNAWARE", "GDIDPISCALING",
+            )]
+            if flags[mode]:
+                if not layers:
+                    layers.append("~")
+                layers.append(flags[mode])
+            if layers == ["~"]:
+                layers = []
+            value = json.dumps(" ".join(layers), ensure_ascii=False) if layers else "-"
+            with open(path, "w", encoding="utf-16") as stream:
+                stream.write(f"Windows Registry Editor Version 5.00\n\n[{key}]\n@={value}\n")
+            return self.reg.launch(f"import {windows_path}", communicate=True)
+        except (OSError, UnicodeError, ValueError) as error:
+            return Result(False, message=str(error))
+        finally:
+            if path is not None:
+                try:
+                    os.remove(path)
+                except FileNotFoundError:
+                    pass
+
+    def set_grab_fullscreen(self, state: bool):
+        """
+        Set the grab fullscreen setting for a capsule.
+        """
+        value = "Y" if state else "N"
+        self.reg.add(
+            key="HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver",
+            value="GrabFullscreen",
+            data=value,
+        )
+
+    def set_take_focus(self, state: bool):
+        """
+        Set the take focus setting for a capsule.
+        """
+        value = "Y" if state else "N"
+        self.reg.add(
+            key="HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver",
+            value="UseTakeFocus",
+            data=value,
+        )
+
+    def set_decorated(self, state: bool):
+        """
+        Set the decorated setting for a capsule.
+        """
+        value = "Y" if state else "N"
+        self.reg.add(
+            key="HKEY_CURRENT_USER\\Software\\Wine\\X11 Driver",
+            value="Decorated",
+            data=value,
+        )
+
+    def set_mouse_warp(self, state: int, executable: str = ""):
+        """
+        Set the mouse warp setting for a capsule or a specific executable.
+        Values:
+            0: Disabled
+            1: Enabled
+            2: Forced
+        """
+        values = {0: "disable", 1: "enable", 2: "force"}
+        if state not in values.keys():
+            raise ValueError(f"{state} is not a valid mouse warp setting (0, 1, 2)")
+
+        key = "HKEY_CURRENT_USER\\Software\\Wine\\DirectInput"
+        if executable:
+            key = f"HKEY_CURRENT_USER\\Software\\Wine\\AppDefaults\\{executable}\\DirectInput"
+
+        self.reg.add(key=key, value="MouseWarpOverride", data=values[state])

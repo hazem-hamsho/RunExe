@@ -1,0 +1,133 @@
+# duplicate.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+from gettext import gettext as _
+
+from gi.repository import Adw, Gio, GLib, Gtk
+
+from runexe.backend.managers.backup import BackupManager
+from runexe.backend.globals import Paths
+from runexe.backend.utils.threading import RunAsync
+from runexe.frontend.utils.gtk import GtkUtils
+
+
+@Gtk.Template(resource_path="/io/github/runexe/RunExe/dialog-duplicate.ui")
+class DuplicateDialog(Adw.Window):
+    __gtype_name__ = "DuplicateDialog"
+
+    # region Widgets
+    entry_name = Gtk.Template.Child()
+    row_destination = Gtk.Template.Child()
+    btn_destination = Gtk.Template.Child()
+    btn_cancel = Gtk.Template.Child()
+    btn_duplicate = Gtk.Template.Child()
+    stack_switcher = Gtk.Template.Child()
+    progressbar = Gtk.Template.Child()
+    page_failed = Gtk.Template.Child()
+
+    # endregion
+
+    def __init__(self, parent, **kwargs):
+        super().__init__(**kwargs)
+        self.set_transient_for(parent.window)
+
+        # common variables and references
+        self.parent = parent
+        self.config = parent.config
+        self.pulse_id = None
+        self.destination = None
+        self.row_destination.set_subtitle(Paths.capsules)
+        self.btn_destination.connect("clicked", self.__choose_destination)
+
+        self.entry_name.connect("changed", self.__check_entry_name)
+
+        # connect signals
+        self.btn_duplicate.connect("clicked", self.__duplicate_capsule)
+        self.connect("destroy", self.__on_destroy)
+
+    def __on_destroy(self, widget):
+        if self.pulse_id:
+            GLib.source_remove(self.pulse_id)
+            self.pulse_id = None
+
+    def __check_entry_name(self, *_args):
+        name = self.entry_name.get_text()
+        is_invalid = not name.strip() or name in self.parent.manager.local_capsules
+        if is_invalid:
+            self.entry_name.add_css_class("error")
+            self.btn_duplicate.set_sensitive(False)
+        else:
+            self.entry_name.remove_css_class("error")
+            self.btn_duplicate.set_sensitive(True)
+
+    def __choose_destination(self, _button):
+        def selected(dialog, result):
+            try:
+                folder = dialog.select_folder_finish(result)
+            except GLib.Error:
+                return
+            if folder is not None and folder.get_path():
+                self.destination = folder.get_path()
+                self.row_destination.set_subtitle(self.destination)
+
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title(_("Choose Destination"))
+        dialog.set_initial_folder(Gio.File.new_for_path(self.destination or Paths.capsules))
+        dialog.select_folder(self, callback=selected)
+
+    def __duplicate_capsule(self, widget):
+        """
+        This function take the new capsule name from the entry
+        and create a new duplicate of the capsule. It also change the
+        stack_switcher page when the process is finished.
+        """
+        self.stack_switcher.set_visible_child_name("page_duplicating")
+        self.btn_duplicate.set_visible(False)
+        self.btn_cancel.set_label("Close")
+
+        self.pulse_id = GLib.timeout_add(500, self.pulse)
+        name = self.entry_name.get_text()
+
+        RunAsync(
+            task_func=BackupManager.duplicate_capsule,
+            callback=self.finish,
+            config=self.config,
+            name=name,
+            destination=self.destination,
+        )
+
+    @GtkUtils.run_in_main_loop
+    def finish(self, result, error=None):
+        if self.pulse_id:
+            GLib.source_remove(self.pulse_id)
+            self.pulse_id = None
+
+        if error or result is None or not result.status:
+            message = str(error) if error else result.message if result else ""
+            self.page_failed.set_description(
+                message or _("The capsule could not be duplicated.")
+            )
+            self.stack_switcher.set_visible_child_name("page_failed")
+            return
+
+        self.parent.manager.update_capsules()
+        self.stack_switcher.set_visible_child_name("page_duplicated")
+
+    def pulse(self):
+        # This function update the progress bar every half second.
+        self.progressbar.pulse()
+        return True

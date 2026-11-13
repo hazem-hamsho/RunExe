@@ -1,0 +1,707 @@
+import os
+import re
+import shlex
+import time
+import uuid
+from typing import ClassVar, Collection, Optional, Pattern
+
+from runexe.backend.dlls.dxvk import DXVKComponent
+from runexe.backend.dlls.vkd3d import VKD3DComponent
+from runexe.backend.logger import Logger
+from runexe.backend.models.config import CapsuleConfig
+from runexe.backend.models.process import (
+    ProcessFinishedPayload,
+    ProcessStartedPayload,
+)
+from runexe.backend.models.result import Result
+from runexe.backend.state import SignalManager, Signals
+from runexe.backend.utils.manager import ManagerUtils
+from runexe.backend.wine.adaptive import (
+    PROFILE_ENV,
+    TRACE_ENV,
+    AdaptiveLaunchProfile,
+    is_supported_runner,
+    is_v2_runner,
+)
+from runexe.backend.wine.cmd import CMD
+from runexe.backend.wine.explorer import Explorer
+from runexe.backend.wine.msiexec import MsiExec
+from runexe.backend.wine.start import Start
+from runexe.backend.wine.winebridge import WineBridge
+from runexe.backend.wine.winecommand import WineCommand
+from runexe.backend.wine.winedbg import WineDbg
+from runexe.backend.wine.winepath import WinePath
+
+logging = Logger()
+
+
+class WineExecutor:
+    _PROGRAM_ENVIRONMENT_DENYLIST: ClassVar[set[str]] = {
+        "WINEARCH",
+        "WINEPREFIX",
+    }
+    _PROGRAM_BOOLEAN_OVERRIDES: ClassVar[set[str]] = {
+        "discrete_gpu",
+    }
+    _PROGRAM_DIRECT_WINE_OVERRIDES: ClassVar[set[str]] = {
+        "dxvk",
+        "virtual_desktop",
+        "vkd3d",
+    }
+    _PROGRAM_SYNC_OVERRIDES: ClassVar[set[str]] = {
+        "wine",
+        "esync",
+        "fsync",
+        "ntsync",
+    }
+    success_codes: Optional[Collection[int]] = None
+    _PLACEHOLDER_PATTERN: Pattern[str] = re.compile(r"%([A-Z_]+)%")
+    _KNOWN_PLACEHOLDERS: set[str] = {
+        "PROGRAM_NAME",
+        "PROGRAM_PATH",
+        "PROGRAM_DIR",
+        "CAPSULE_NAME",
+        "CAPSULE_PATH",
+    }
+
+    def __init__(
+        self,
+        config: CapsuleConfig,
+        exec_path: str,
+        args: str = "",
+        terminal: bool = False,
+        environment: Optional[dict] = None,
+        move_file: bool = False,
+        move_upd_fn: callable = None,
+        pre_script: Optional[str] = None,
+        post_script: Optional[str] = None,
+        pre_script_args: Optional[str] = None,
+        post_script_args: Optional[str] = None,
+        cwd: Optional[str] = None,
+        monitoring: Optional[list] = None,
+        program_dxvk: Optional[bool] = None,
+        program_vkd3d: Optional[bool] = None,
+        program_virt_desktop: Optional[bool] = None,
+        program_winebridge: Optional[bool] = None,
+        program_hide_console: bool = False,
+        sandbox_override: Optional[str] = None,
+        success_codes: Optional[Collection[int]] = None,
+    ):
+        logging.info("Launching an executable…")
+        self.config = config
+        # None keeps the historical behaviour, where a launch counts as
+        # successful as soon as the process was started. A collection makes the
+        # result follow the process exit status, accepting the listed codes in
+        # addition to 0 (see is_success_exit_code).
+        self.success_codes = success_codes
+        # Per-launch dedicated sandbox override (None / "off" / "legacy"); see
+        # WineCommand for the meaning of each value.
+        self.sandbox_override = sandbox_override
+        self.__validate_path(exec_path)
+
+        if monitoring is None:
+            monitoring = []
+
+        if environment is None:
+            environment = {}
+
+        if move_file:
+            exec_path = self.__move_file(exec_path, move_upd_fn)
+
+        self.exec_type = self.__get_exec_type(exec_path)
+        self._raw_exec_path = exec_path
+        self.exec_path = shlex.quote(exec_path)
+        self.args = args
+        self.terminal = terminal
+        self.environment = environment.copy()
+        if self.config.Parameters.adaptive_launch and is_supported_runner(
+            self.config.Runner
+        ):
+            profile = AdaptiveLaunchProfile(self.config, exec_path)
+            prepared = profile.prepare()
+            if is_v2_runner(self.config.Runner):
+                if profile.trace_dir is not None:
+                    self.environment[TRACE_ENV] = str(profile.trace_dir)
+            else:
+                self.environment[PROFILE_ENV] = str(profile.path)
+            if prepared:
+                logging.info(f"Adaptive launch prepared {prepared} files")
+        self.pre_script = pre_script
+        self.post_script = post_script
+        self.pre_script_args = pre_script_args
+        self.post_script_args = post_script_args
+        self.cwd = self.__get_cwd(cwd)
+        self.monitoring = monitoring
+        self.use_virt_desktop = program_virt_desktop
+        self.hide_console = program_hide_console
+        self.use_winebridge = (
+            program_winebridge
+            if program_winebridge is not None
+            else getattr(self.config.Parameters, "winebridge", True)
+        )
+        if self.config.Parameters.eagle_tracing:
+            from runexe.backend.managers.eagletracing import tracing_supported
+            if tracing_supported(self.config):
+                self.use_winebridge = False
+        self._play_session_id = -1
+
+        env_dll_overrides = []
+
+        # None = use global DXVK value
+        dxvk_enabled = (
+            self.config.Parameters.dxvk
+            if program_dxvk is None
+            else program_dxvk
+        )
+        if not dxvk_enabled:
+            override_dxvk = DXVKComponent.get_override_keys() + "=b"
+            env_dll_overrides.append(override_dxvk)
+
+        if program_vkd3d is not None:
+            if not program_vkd3d and self.config.Parameters.vkd3d:
+                override_vkd3d = VKD3DComponent.get_override_keys() + "=b"
+                env_dll_overrides.append(override_vkd3d)
+
+        if env_dll_overrides:
+            if "WINEDLLOVERRIDES" in self.environment:
+                self.environment["WINEDLLOVERRIDES"] += ";" + ";".join(
+                    env_dll_overrides
+                )
+            else:
+                self.environment["WINEDLLOVERRIDES"] = ";".join(env_dll_overrides)
+
+    @staticmethod
+    def is_unreachable_in_sandbox(path: Optional[str]) -> bool:
+        """A document portal path (/run/user/<uid>/doc/<id>/...) lives outside
+        the capsule and is not carried into the dedicated sandbox, so a program
+        stored there cannot be opened while the sandbox is active. Detect it so
+        the frontend can warn before launching."""
+        if not path:
+            return False
+        return "/run/user/" in path and "/doc/" in path
+
+    @staticmethod
+    def is_success_exit_code(returncode: Optional[int], codes: Collection[int]) -> bool:
+        """Whether a non-zero exit status is one of the accepted codes.
+
+        Wine hands the exit status to the host as a single byte, so Windows
+        codes above 255 arrive truncated (3010 is seen as 194). Both sides are
+        compared on their low byte, like the installer manager does.
+        """
+        if type(returncode) is not int or returncode <= 0:
+            return False
+        return any(
+            type(code) is int and code > 0
+            and (returncode == code or returncode <= 255 and returncode == code & 0xFF)
+            for code in codes
+        )
+
+    def __exit_result(self, res: Result, returncode: Optional[int]) -> Result:
+        """Build the result of a launch that waited for the process to exit."""
+        status = res.ok or self.is_success_exit_code(returncode, self.success_codes)
+        return Result(
+            status=status,
+            data={"output": res, "returncode": returncode},
+            message="" if status else res.message,
+        )
+
+    @classmethod
+    def run_program(
+        cls,
+        config: CapsuleConfig,
+        program: dict,
+        terminal: bool = False,
+        sandbox_override: Optional[str] = None,
+    ):
+        if program is None:
+            logging.warning("The program entry is not well formatted.")
+
+        placeholders = cls._build_placeholder_map(config, program or {})
+
+        def _resolve(field: str):
+            return cls._replace_placeholders((program or {}).get(field), placeholders)
+
+        arguments = _resolve("arguments")
+        if not (program or {}).get("arguments_enabled", True):
+            arguments = ""
+
+        environment = (program or {}).get("environment")
+        if not isinstance(environment, dict):
+            environment = {}
+        else:
+            environment = {
+                key: value
+                for key, value in environment.items()
+                if isinstance(key, str)
+                and isinstance(value, str)
+                and key not in cls._PROGRAM_ENVIRONMENT_DENYLIST
+            }
+
+        parameter_overrides = {}
+        for key in cls._PROGRAM_BOOLEAN_OVERRIDES:
+            if key in program and isinstance(program[key], bool):
+                parameter_overrides[key] = program[key]
+        if program.get("sync") in cls._PROGRAM_SYNC_OVERRIDES:
+            parameter_overrides["sync"] = program["sync"]
+        if parameter_overrides:
+            config = config.copy()
+            config.Parameters = config.Parameters.copy()
+            for key, value in parameter_overrides.items():
+                config.Parameters[key] = value
+        backup = program.get("automatic_backup")
+        automatic_backup_enabled = isinstance(backup, dict) and backup.get(
+            "enabled"
+        )
+        direct_wine_override = (
+            any(
+                program.get(key) is not None
+                for key in cls._PROGRAM_DIRECT_WINE_OVERRIDES
+            )
+            or program.get("hide_console") is True
+            or automatic_backup_enabled
+        )
+
+        executor = cls(
+            config=config,
+            exec_path=program.get("path"),
+            args=arguments,
+            environment=environment,
+            pre_script=cls._replace_placeholders(
+                program.get("pre_script"), placeholders
+            ),
+            post_script=cls._replace_placeholders(
+                program.get("post_script"), placeholders
+            ),
+            pre_script_args=_resolve("pre_script_args"),
+            post_script_args=_resolve("post_script_args"),
+            cwd=_resolve("folder"),
+            terminal=terminal,
+            program_dxvk=program.get("dxvk"),
+            program_vkd3d=program.get("vkd3d"),
+            program_virt_desktop=program.get("virtual_desktop"),
+            program_winebridge=program.get("winebridge"),
+            program_hide_console=program.get("hide_console") is True,
+            sandbox_override=sandbox_override,
+        )
+        if (
+            executor.use_winebridge
+            and (
+                arguments
+                or environment
+                or parameter_overrides
+                or direct_wine_override
+            )
+        ):
+            logging.info(
+                "Using Wine directly because this program requires process tracking."
+            )
+            executor.use_winebridge = False
+        result = executor.run()
+        if automatic_backup_enabled:
+            try:
+                from runexe.backend.managers.backup import BackupManager
+
+                backup_result = BackupManager.create_program_backup(config, program)
+                if not backup_result.status:
+                    logging.warning(
+                        f"Automatic backup failed: {backup_result.message}"
+                    )
+            except Exception as error:
+                logging.error(f"Automatic backup failed: {error}")
+        return result
+
+    @staticmethod
+    def _build_placeholder_map(config: CapsuleConfig, program: dict) -> dict[str, str]:
+        program_path = program.get("path", "") or ""
+        program_dir_raw = program.get("folder")
+        program_dir = program_dir_raw or ""
+        if isinstance(program_dir_raw, str):
+            matches = WineExecutor._PLACEHOLDER_PATTERN.findall(program_dir_raw)
+            if any(match in WineExecutor._KNOWN_PLACEHOLDERS for match in matches):
+                # ignore unresolved placeholders that reference known tokens
+                program_dir = ""
+        if not program_dir and isinstance(program_path, str) and program_path:
+            program_dir = os.path.dirname(program_path)
+
+        capsule_path = ""
+        if config:
+            try:
+                capsule_path = ManagerUtils.get_capsule_path(config)
+            except Exception:
+                capsule_path = ""
+
+        placeholders = {
+            "PROGRAM_NAME": program.get("name", ""),
+            "PROGRAM_PATH": program_path,
+            "PROGRAM_DIR": program_dir,
+            "CAPSULE_NAME": getattr(config, "Name", "") or "",
+            "CAPSULE_PATH": capsule_path,
+        }
+        return {
+            key: value for key, value in placeholders.items() if isinstance(value, str)
+        }
+
+    @classmethod
+    def _replace_placeholders(
+        cls, value: Optional[str], placeholders: dict[str, str]
+    ) -> Optional[str]:
+        if not isinstance(value, str) or not value:
+            return value
+
+        def _sub(match: re.Match[str]) -> str:
+            key = match.group(1)
+            return placeholders.get(key, match.group(0))
+
+        return cls._PLACEHOLDER_PATTERN.sub(_sub, value)
+
+    def __get_cwd(self, cwd: str) -> str | None:
+        winepath = WinePath(self.config)
+        if cwd in [None, ""]:
+            path = self._raw_exec_path
+            if winepath.is_windows(path):
+                windows_parent = "\\".join(path.split("\\")[:-1])
+                return winepath.to_unix(windows_parent, native=True)
+            return os.path.dirname(path)
+        return cwd  # will be set by WineCommand if None
+
+    @staticmethod
+    def __validate_path(exec_path):
+        if exec_path in [None, ""]:
+            logging.error("No executable file path provided.")
+            return False
+
+        if ":\\" in exec_path:
+            logging.warning("Windows path detected. Avoiding validation.")
+            return True
+
+        if not os.path.isfile(exec_path):
+            _msg = f"Executable file path does not exist: {exec_path}"
+            if "FLATPAK_ID" in os.environ:
+                _msg = f"Executable file path does not exist or is not accessible by the Flatpak: {exec_path}"
+            logging.error(
+                _msg,
+            )
+            return False
+
+    def __move_file(self, exec_path, move_upd_fn):
+        new_path = ManagerUtils.move_file_to_capsule(
+            file_path=exec_path, config=self.config, fn_update=move_upd_fn
+        )
+        if new_path:
+            exec_path = new_path
+
+        self.__validate_path(exec_path)
+
+        return exec_path
+
+    @staticmethod
+    def __get_exec_type(exec_path):
+        _exec = exec_path.lower()
+        if _exec.endswith(".exe"):
+            return "exe"
+        if _exec.endswith(".msi"):
+            return "msi"
+        if _exec.endswith(".bat"):
+            return "batch"
+        if _exec.endswith(".lnk"):
+            return "lnk"
+        if _exec.endswith(".dll"):
+            return "dll"
+
+        logging.warning("Not a common executable type, trying to launch it anyway.")
+        return "unsupported"
+
+    def run_cli(self):
+        """
+        We need to launch the application and then exit,
+        so we use Wine Starter, which will exit as soon
+        as the program is launched
+        """
+        winepath = WinePath(self.config)
+        start = Start(self.config)
+
+        if winepath.is_unix(self.exec_path):
+            return self.__launch_with_bridge()
+
+        res = start.run(
+            file=self.exec_path,
+            terminal=self.terminal,
+            args=self.args,
+            environment=self.environment,
+            pre_script=self.pre_script,
+            post_script=self.post_script,
+            pre_script_args=self.pre_script_args,
+            post_script_args=self.post_script_args,
+            cwd=self.cwd,
+            background=self.hide_console,
+            sandbox_override=self.sandbox_override,
+        )
+        return Result(status=True, data={"output": res})
+
+    def run(self) -> Result:
+        # Emit ProgramStarted (best-effort)
+        launch_id = f"{self.config.Name}:{int(time.time() * 1000)}:{os.getpid()}"
+        capsule_id = self.config.Name
+        capsule_name = self.config.Name
+        capsule_path = ManagerUtils.get_capsule_path(self.config)
+        program_name = (
+            os.path.basename(self._raw_exec_path) if self._raw_exec_path else "unknown"
+        )
+        program_path = self._raw_exec_path or self.exec_path
+        
+        try:
+            fonts_dir = os.path.join(ManagerUtils.get_capsule_path(self.config), "drive_c", "windows", "Fonts")
+            stamp_file = os.path.join(ManagerUtils.get_capsule_path(self.config), ".fonts_stamp")
+            if os.path.exists(fonts_dir):
+                fonts_mtime = os.path.getmtime(fonts_dir)
+                stamp_mtime = 0.0
+                if os.path.exists(stamp_file):
+                    with open(stamp_file, "r") as f:
+                        stamp_mtime = float(f.read().strip() or 0)
+                
+                if fonts_mtime > stamp_mtime:
+                    logging.info("Fonts directory modified manually, running wineboot to update fonts registry.")
+                    from runexe.backend.wine.wineboot import WineBoot
+                    if WineBoot(self.config).update().ok:
+                        with open(stamp_file, "w") as f:
+                            f.write(str(fonts_mtime))
+        except Exception as e:
+            logging.debug(f"Failed to check and update fonts: {e}")
+
+        try:
+            SignalManager.send(
+                Signals.ProgramStarted,
+                Result(
+                    True,
+                    ProcessStartedPayload(
+                        launch_id=launch_id,
+                        capsule_id=capsule_id,
+                        capsule_name=capsule_name,
+                        capsule_path=capsule_path,
+                        program_name=program_name,
+                        program_path=program_path,
+                    ),
+                ),
+            )
+        except Exception:
+            pass
+
+        try:
+            match self.exec_type:
+                case "exe" | "msi":
+                    res = self.__launch_with_bridge()
+                case "batch":
+                    res = self.__launch_batch()
+                case "lnk" | "unsupported":
+                    res = self.__launch_with_starter()
+                case "dll":
+                    res = self.__launch_dll()
+                case _:
+                    res = Result(
+                        status=False, data={"message": "Unknown executable type."}
+                    )
+        except Exception as e:
+            try:
+                SignalManager.send(
+                    Signals.ProgramFinished,
+                    Result(
+                        True,
+                        ProcessFinishedPayload(
+                            launch_id=launch_id,
+                            status="unknown",
+                            ended_at=int(time.time()),
+                        ),
+                    ),
+                )
+            except Exception:
+                pass
+            raise e
+
+        # Finalize session
+        try:
+            SignalManager.send(
+                Signals.ProgramFinished,
+                Result(
+                    True,
+                    ProcessFinishedPayload(
+                        launch_id=launch_id,
+                        status="success" if res.status else "unknown",
+                        ended_at=int(time.time()),
+                    ),
+                ),
+            )
+        except Exception:
+            pass
+
+        return res
+
+    def __launch_with_bridge(self):
+        winepath = WinePath(self.config)
+        is_unix_path = winepath.is_unix(self._raw_exec_path)
+        is_in_capsule = False
+        raw_path = self._raw_exec_path
+        if is_unix_path:
+            raw_path = os.path.realpath(self._raw_exec_path)
+            capsule_path = os.path.realpath(
+                ManagerUtils.get_capsule_path(self.config)
+            )
+            try:
+                is_in_capsule = (
+                    os.path.commonpath((raw_path, capsule_path)) == capsule_path
+                )
+            except ValueError:
+                pass
+
+        if self.use_winebridge and self.exec_type == "exe":
+            winebridge = WineBridge(self.config)
+            if winebridge.is_available() and (
+                not is_unix_path or is_in_capsule
+            ):
+                exec_path = (
+                    winepath.to_windows(self._raw_exec_path, native=True)
+                    if is_unix_path
+                    else self._raw_exec_path
+                )
+                res = winebridge.run_exe(
+                    exec_path,
+                    terminal=self.terminal,
+                    environment=self.environment,
+                    cwd=self.cwd,
+                    sandbox_override=self.sandbox_override,
+                )
+                return Result(status=True, data={"output": res})
+        if self.use_virt_desktop:
+            if is_unix_path:
+                windows_path = winepath.to_windows(
+                    raw_path if is_in_capsule else self._raw_exec_path,
+                    native=is_in_capsule,
+                    sandbox_override=self.sandbox_override,
+                )
+                self.exec_path = shlex.quote(windows_path)
+            return self.__launch_with_explorer()
+        if is_unix_path and not is_in_capsule and self.exec_type == "exe":
+            return self.__launch_with_starter(host_cwd=True)
+        if winepath.is_windows(self.exec_path) or (
+            self.hide_console and self.exec_type == "exe"
+        ):
+            return self.__launch_with_starter()
+
+        match self.exec_type:
+            case "exe":
+                return self.__launch_exe()
+            case "msi":
+                return self.__launch_msi()
+            case "batch":
+                return self.__launch_batch()
+            case _:
+                logging.error(f"exec_type {self.exec_type} is not valid")
+                return Result(
+                    status=False, data={"message": "Unknown executable type."}
+                )
+
+    def __launch_exe(self):
+        # winebridge = WineBridge(self.config)
+        # if winebridge.is_available():
+        #     res = winebridge.run_exe(self.exec_path)
+        #     return Result(
+        #         status=True,
+        #         data={"output": res}
+        #     )
+
+        winecmd = WineCommand(
+            self.config,
+            command=self.exec_path,
+            arguments=self.args,
+            terminal=self.terminal,
+            environment=self.environment,
+            communicate=True,
+            pre_script=self.pre_script,
+            post_script=self.post_script,
+            pre_script_args=self.pre_script_args,
+            post_script_args=self.post_script_args,
+            cwd=self.cwd,
+            sandbox_override=self.sandbox_override,
+        )
+        res = winecmd.run()
+        self.__set_monitors()
+        if self.success_codes is not None:
+            return self.__exit_result(res, winecmd.returncode)
+        return Result(status=res.ok, data={"output": res}, message=res.message)
+
+    def __launch_msi(self):
+        msiexec = MsiExec(self.config)
+        res = msiexec.install(
+            pkg_path=self.exec_path,
+            args=self.args,
+            terminal=self.terminal,
+            cwd=self.cwd,
+            environment=self.environment,
+        )
+        self.__set_monitors()
+        if self.success_codes is not None:
+            return self.__exit_result(res, msiexec.returncode)
+        return Result(True)
+
+    def __launch_batch(self):
+        cmd = CMD(self.config)
+        res = cmd.run_batch(
+            batch=self.exec_path,
+            terminal=self.terminal,
+            args=self.args,
+            environment=self.environment,
+            cwd=self.cwd,
+        )
+        return Result(status=True, data={"output": res})
+
+    def __launch_with_starter(self, host_cwd: bool = False):
+        start = Start(self.config)
+        res = start.run(
+            file=self.exec_path,
+            terminal=self.terminal,
+            args=self.args,
+            environment=self.environment,
+            pre_script=self.pre_script,
+            post_script=self.post_script,
+            pre_script_args=self.pre_script_args,
+            post_script_args=self.post_script_args,
+            cwd=self.cwd,
+            background=self.hide_console,
+            sandbox_override=self.sandbox_override,
+            host_cwd=host_cwd,
+        )
+        self.__set_monitors()
+        if self.success_codes is not None:
+            return self.__exit_result(res, start.returncode)
+        return Result(status=True, data={"output": res})
+
+    def __launch_with_explorer(self):
+        w, h = self.config.Parameters.virtual_desktop_res.split("x")
+        start = Explorer(self.config)
+        res = start.launch_desktop(
+            desktop=str(uuid.uuid4()),
+            width=w,
+            height=h,
+            program=self.exec_path,
+            args=self.args,
+            environment=self.environment,
+            cwd=self.cwd,
+            background=self.hide_console,
+            sandbox_override=self.sandbox_override,
+        )
+        self.__set_monitors()
+        return Result(status=res.status, data={"output": res.data})
+
+    @staticmethod
+    def __launch_dll():
+        logging.warning("DLLs are not supported yet.")
+        return Result(status=False, data={"error": "DLLs are not supported yet."})
+
+    def __set_monitors(self):
+        if not self.monitoring:
+            return
+
+        logging.info("Starting {} monitors".format(len(self.monitoring)))
+
+        winedbg = WineDbg(self.config, silent=True)
+        for m in self.monitoring:
+            winedbg.wait_for_process(name=m)

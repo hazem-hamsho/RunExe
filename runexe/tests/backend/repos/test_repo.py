@@ -1,0 +1,120 @@
+from types import SimpleNamespace
+
+import pytest
+
+from runexe.backend.managers.component import ComponentManager
+from runexe.backend.managers.dependency import DependencyManager
+from runexe.backend.managers.installer import InstallerManager
+from runexe.backend.repos import repo as repo_module
+from runexe.backend.repos.component import ComponentRepo
+
+
+@pytest.mark.parametrize("callback_in_main_loop", [True, False])
+def test_catalog_callback_mode_is_configurable(monkeypatch, callback_in_main_loop):
+    callback_modes = []
+
+    class ImmediateRunAsync:
+        def __init__(
+            self,
+            task_func,
+            callback=None,
+            callback_in_main_loop=True,
+            **kwargs,
+        ):
+            callback_modes.append(callback_in_main_loop)
+            callback(task_func(**kwargs), None)
+
+    monkeypatch.setattr(repo_module, "RunAsync", ImmediateRunAsync)
+
+    repository = ComponentRepo(
+        "file:///missing",
+        "",
+        offline=True,
+        callback_in_main_loop=callback_in_main_loop,
+    )
+
+    assert repository.catalog == {}
+    assert callback_modes == [callback_in_main_loop]
+
+
+def test_repository_refresh_reloads_the_current_index(monkeypatch):
+    repository = object.__new__(ComponentRepo)
+    repository.index = "https://repo.example.test/index.yml"
+    repository.offline = False
+    repository.catalog = {"old": {}}
+    calls = []
+
+    def get_catalog(_repository, index, offline=False):
+        calls.append((index, offline))
+        return {"new": {}}
+
+    monkeypatch.setattr(repo_module.Repo, "_Repo__get_catalog", get_catalog)
+
+    assert repository.refresh() == {"new": {}}
+    assert repository.catalog == {"new": {}}
+    assert calls == [(repository.index, False)]
+
+
+@pytest.mark.parametrize(
+    ("manager_type", "repository_name"),
+    [
+        (ComponentManager, "components"),
+        (DependencyManager, "dependencies"),
+        (InstallerManager, "installers"),
+    ],
+)
+@pytest.mark.parametrize(
+    ("is_cli", "callback_in_main_loop"), [(True, False), (False, True)]
+)
+def test_repository_callbacks_leave_the_main_loop_only_for_cli(
+    manager_type,
+    repository_name,
+    is_cli,
+    callback_in_main_loop,
+):
+    calls = []
+    repository_manager = SimpleNamespace(
+        get_repo=lambda *args, **kwargs: calls.append((args, kwargs)) or object()
+    )
+    manager = SimpleNamespace(
+        repository_manager=repository_manager,
+        is_cli=is_cli,
+        utils_conn=object(),
+        component_manager=object(),
+    )
+
+    manager_type(manager)
+
+    assert calls == [
+        (
+            (repository_name, False),
+            {"callback_in_main_loop": callback_in_main_loop},
+        )
+    ]
+
+
+@pytest.mark.parametrize("plain", [True, False])
+def test_dependency_retries_missing_manifest_and_caches_success(mocker, plain):
+    manager = mocker.Mock()
+    repository = manager.repository_manager.get_repo.return_value
+    manifest = "Steps: []" if plain else {"Steps": []}
+    repository.get.side_effect = [False, manifest]
+    dependencies = DependencyManager(manager)
+
+    assert dependencies.get_dependency("runtime", plain=plain) is False
+    assert dependencies.get_dependency("runtime", plain=plain) == manifest
+    assert dependencies.get_dependency("runtime", plain=plain) == manifest
+    assert repository.get.call_count == 2
+
+
+@pytest.mark.parametrize("initial_catalog", [None, {}])
+def test_dependency_catalog_recovers_when_repository_becomes_ready(mocker, initial_catalog):
+    manager = mocker.Mock()
+    repository = manager.repository_manager.get_repo.return_value
+    repository.catalog = initial_catalog
+    dependencies = DependencyManager(manager)
+    manifest = {"Category": "Essentials", "Description": "Runtime"}
+
+    assert dependencies.fetch_catalog() == {}
+    repository.catalog = {"runtime": manifest}
+    assert dependencies.fetch_catalog() == {"runtime": manifest}

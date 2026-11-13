@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="495" height="249" viewBox="0 0 495 249">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#99c1f1"/>
+      <stop offset="1" stop-color="#62a0ea"/>
+    </linearGradient>
+    <linearGradient id="win" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f6f5f4"/>
+    </linearGradient>
+    <clipPath id="l"><rect x="-200" y="-200" width="200" height="400"/></clipPath>
+    <clipPath id="r"><rect x="0" y="-200" width="200" height="400"/></clipPath>
+  </defs>
+  <rect x="20" y="24" width="455" height="200" rx="100" fill="url(#bg)"/>
+  <circle cx="420" cy="58" r="16" fill="#f8e45c"/>
+  <!-- app window -->
+  <g transform="translate(268 44)">
+    <rect x="0" y="6" width="176" height="128" rx="12" fill="#000000" opacity="0.12"/>
+    <rect x="0" y="0" width="176" height="128" rx="12" fill="url(#win)"/>
+    <path d="M 12 0 H 164 A 12 12 0 0 1 176 12 V 24 H 0 V 12 A 12 12 0 0 1 12 0 Z" fill="#deddda"/>
+    <circle cx="158" cy="12" r="5" fill="#9a9996"/>
+    <circle cx="88" cy="76" r="30" fill="#3584e4"/>
+    <path d="M 78 62 L 78 90 L 101 76 Z" fill="#ffffff" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  <!-- shelf -->
+  <rect x="58" y="196" width="390" height="16" rx="8" fill="#000000" opacity="0.15"/>
+  <rect x="58" y="190" width="390" height="16" rx="8" fill="#986a44"/>
+  <!-- capsules -->
+  <g transform="translate(110 150) rotate(-90)">
+    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#2ec27e" clip-path="url(#l)"/>
+    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#ffffff" clip-path="url(#r)"/>
+    <rect x="-36" y="10" width="72" height="6" rx="3" fill="#000000" opacity="0.08"/>
+  </g>
+  <g transform="translate(162 150) rotate(-90)">
+    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#3584e4" clip-path="url(#l)"/>
+    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#ffffff" clip-path="url(#r)"/>
+    <rect x="-36" y="10" width="72" height="6" rx="3" fill="#000000" opacity="0.08"/>
+  </g>
+  <g transform="translate(222 170)">
+    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#e66100" clip-path="url(#l)"/>
+    <rect x="-40" y="-20" width="80" height="40" rx="20" fill="#ffffff" clip-path="url(#r)"/>
+    <rect x="-36" y="10" width="72" height="6" rx="3" fill="#000000" opacity="0.08"/>
+  </g>
+</svg>

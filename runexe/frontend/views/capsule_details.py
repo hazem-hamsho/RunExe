@@ -1,0 +1,1041 @@
+# capsule_details.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import os
+import uuid
+from datetime import datetime
+from gettext import gettext as _
+from typing import Dict, List, Optional
+
+from gi.repository import Adw, Gdk, Gio, GLib, Gtk, Xdp
+
+from runexe.backend.managers.backup import BackupManager
+from runexe.backend.models.config import CapsuleConfig
+from runexe.backend.models.result import Result
+from runexe.backend.state import SignalManager, Signals, TaskManager
+from runexe.backend.utils.manager import ManagerUtils
+from runexe.backend.utils.terminal import TerminalUtils
+from runexe.backend.utils.threading import RunAsync
+from runexe.backend.wine.cmd import CMD
+from runexe.backend.wine.control import Control
+from runexe.backend.wine.executor import WineExecutor
+from runexe.backend.wine.explorer import Explorer
+from runexe.backend.wine.regedit import Regedit
+from runexe.backend.wine.taskmgr import Taskmgr
+from runexe.backend.wine.uninstaller import Uninstaller
+from runexe.backend.wine.wineboot import WineBoot
+from runexe.backend.wine.winecfg import WineCfg
+from runexe.backend.wine.winedbg import WineDbg
+from runexe.backend.wine.wineserver import WineServer
+from runexe.frontend.utils.common import (
+    format_runner_name,
+    get_runner_icon_name,
+    open_doc_url,
+)
+from runexe.frontend.utils.filters import add_all_filters, add_executable_filters
+from runexe.frontend.utils.gtk import GtkUtils
+from runexe.frontend.utils.playtime import PlaytimeService
+from runexe.frontend.utils.sandbox_guard import guard_sandbox_launch
+from runexe.frontend.widgets.program import ProgramEntry
+from runexe.frontend.windows.duplicate import DuplicateDialog
+from runexe.frontend.windows.upgradeversioning import UpgradeVersioningDialog
+from runexe.frontend.windows.versioning_settings import VersioningSettingsDialog
+from runexe.fvs.repo import FVSRepo
+
+
+@Gtk.Template(resource_path="/io/github/runexe/RunExe/details-capsule.ui")
+class CapsuleView(Adw.PreferencesPage):
+    __gtype_name__ = "DetailsCapsule"
+    __registry = []
+
+    # region Widgets
+    label_runner = Gtk.Template.Child()
+    img_runner = Gtk.Template.Child()
+    label_state = Gtk.Template.Child()
+    label_environment = Gtk.Template.Child()
+    label_arch = Gtk.Template.Child()
+    install_programs = Gtk.Template.Child()
+    add_shortcuts = Gtk.Template.Child()
+    btn_execute = Gtk.Template.Child()
+    btn_eagle = Gtk.Template.Child()
+    popover_exec_settings = Gtk.Template.Child()
+    exec_arguments = Gtk.Template.Child()
+    exec_terminal = Gtk.Template.Child()
+    exec_winebridge = Gtk.Template.Child()
+    row_winecfg = Gtk.Template.Child()
+    row_preferences = Gtk.Template.Child()
+    row_dependencies = Gtk.Template.Child()
+    row_snapshots = Gtk.Template.Child()
+    row_taskmanager = Gtk.Template.Child()
+    row_debug = Gtk.Template.Child()
+    row_explorer = Gtk.Template.Child()
+    row_cmd = Gtk.Template.Child()
+    row_taskmanager_legacy = Gtk.Template.Child()
+    row_controlpanel = Gtk.Template.Child()
+    row_uninstaller = Gtk.Template.Child()
+    row_regedit = Gtk.Template.Child()
+    row_registry_rules = Gtk.Template.Child()
+    btn_shutdown = Gtk.Template.Child()
+    btn_reboot = Gtk.Template.Child()
+    btn_browse = Gtk.Template.Child()
+    btn_forcestop = Gtk.Template.Child()
+    btn_nv_forcestop = Gtk.Template.Child()
+    btn_update = Gtk.Template.Child()
+    btn_toggle_removed = Gtk.Template.Child()
+    btn_backup_config = Gtk.Template.Child()
+    btn_backup_full = Gtk.Template.Child()
+    btn_duplicate = Gtk.Template.Child()
+    btn_move = Gtk.Template.Child()
+    btn_delete = Gtk.Template.Child()
+    btn_flatpak_doc = Gtk.Template.Child()
+    label_name = Gtk.Template.Child()
+    dot_versioning = Gtk.Template.Child()
+    btn_versioning_badge = Gtk.Template.Child()
+    group_programs = Gtk.Template.Child()
+    group_updates = Gtk.Template.Child()
+    actions = Gtk.Template.Child()
+    row_no_programs = Gtk.Template.Child()
+    bottom_bar = Gtk.Template.Child()
+    drop_overlay = Gtk.Template.Child()
+    box_backup_progress = Gtk.Template.Child()
+    spinner_backup = Gtk.Template.Child()
+    label_backup_progress = Gtk.Template.Child()
+    btn_snapshots_settings = Gtk.Template.Child()
+    # endregion
+
+    content = Gdk.ContentFormats.new_for_gtype(Gdk.FileList)
+    target = Gtk.DropTarget(formats=content, actions=Gdk.DragAction.COPY)
+
+    style_provider = Gtk.CssProvider()
+
+    def set_runner_identity(self, runner: str):
+        self.label_runner.set_text(format_runner_name(runner))
+        icon_name = get_runner_icon_name(runner)
+        self.img_runner.set_visible(icon_name is not None)
+        if icon_name:
+            self.img_runner.set_from_resource(
+                f"/io/github/runexe/RunExe/icons/scalable/apps/{icon_name}.svg"
+            )
+
+    def __init__(self, details, config, **kwargs):
+        super().__init__(**kwargs)
+
+        # common variables and references
+        self.window = details.window
+        self.manager = details.window.manager
+        self.stack_capsule = details.stack_capsule
+        self.leaflet = details.leaflet
+        self.details = details
+        self.config = config
+        self.show_hidden = False
+        self.__update_rows = []
+
+        # Initialize playtime service
+        self.playtime_service = PlaytimeService(self.manager)
+
+        # Playtime signal handling
+        self._playtime_refresh_pending = False
+        self._playtime_refresh_timeout_id = None
+        SignalManager.connect(Signals.ProgramFinished, self._on_program_finished)
+
+        # Backup progress tracking
+        self._backup_task_id = None
+        SignalManager.connect(Signals.TaskAdded, self._on_task_added)
+        SignalManager.connect(Signals.TaskRemoved, self._on_task_removed)
+        SignalManager.connect(Signals.TaskUpdated, self._on_task_updated)
+
+        self.target.connect("drop", self.on_drop)
+        self.add_controller(self.target)
+        self.target.connect("enter", self.on_enter)
+        self.target.connect("leave", self.on_leave)
+
+        self.add_shortcuts.connect("clicked", self.add)
+        self.install_programs.connect("clicked", self.__change_page, "installers")
+        self.btn_execute.connect("clicked", self.run_executable)
+        self.btn_eagle.connect("clicked", self.run_eagle)
+        self.popover_exec_settings.connect("closed", self.__run_executable_with_args)
+        self.row_preferences.connect("activated", self.__change_page, "preferences")
+        self.row_dependencies.connect("activated", self.__change_page, "dependencies")
+        self.row_snapshots.connect("activated", self.__change_page, "versioning")
+        self.btn_snapshots_settings.connect("clicked", self.__show_versioning_settings)
+        self.btn_versioning_badge.connect("clicked", self.__change_page, "versioning")
+        self.row_taskmanager.connect("activated", self.__change_page, "taskmanager")
+        self.row_winecfg.connect("activated", self.run_winecfg)
+        self.row_debug.connect("activated", self.run_debug)
+        self.row_explorer.connect("activated", self.run_explorer)
+        self.row_cmd.connect("activated", self.run_cmd)
+        self.row_taskmanager_legacy.connect("activated", self.run_taskmanager)
+        self.row_controlpanel.connect("activated", self.run_controlpanel)
+        self.row_uninstaller.connect("activated", self.run_uninstaller)
+        self.row_regedit.connect("activated", self.run_regedit)
+        self.row_registry_rules.connect(
+            "activated", self.__change_page, "registry_rules"
+        )
+        self.btn_browse.connect("clicked", self.run_browse)
+        self.btn_delete.connect("clicked", self.__confirm_delete)
+        self.btn_shutdown.connect("clicked", self.wineboot, 2)
+        self.btn_reboot.connect("clicked", self.wineboot, 1)
+        self.btn_forcestop.connect("clicked", self.wineboot, 0)
+        self.btn_nv_forcestop.connect("clicked", self.wineboot, -2)
+        self.btn_update.connect("clicked", self.__scan_programs)
+        self.btn_toggle_removed.connect("clicked", self.__toggle_removed)
+        self.btn_backup_config.connect("clicked", self.__backup, "config")
+        self.btn_backup_full.connect("clicked", self.__backup, "full")
+        self.btn_duplicate.connect("clicked", self.__duplicate)
+        self.btn_move.connect("clicked", self.__move)
+        self.btn_flatpak_doc.connect(
+            "clicked", open_doc_url, "flatpak/black-screen-or-silent-crash"
+        )
+
+        if "FLATPAK_ID" in os.environ:
+            """
+            If Flatpak, show the btn_flatpak_doc widget to reach
+            the documentation on how to expose directories
+            """
+            self.btn_flatpak_doc.set_visible(True)
+
+        self.exec_winebridge.set_active(self.config.Winebridge)
+        self.populate_updates()
+
+    def __change_page(self, _widget, page_name):
+        """
+        This function try to change the page based on user choice, if
+        the page is not available, it will show the "capsule" page.
+        """
+        if page_name == "taskmanager":
+            self.details.view_taskmanager.update(config=self.config)
+        try:
+            self.stack_capsule.set_visible_child_name(page_name)
+            self.leaflet.navigate(Adw.NavigationDirection.FORWARD)
+        except:  # pylint: disable=bare-except
+            pass
+
+    def __show_versioning_settings(self, widget):
+        """Open the Versioning settings dialog."""
+        dialog = VersioningSettingsDialog(window=self.window, config=self.config)
+        dialog.present()
+
+    def __update_fvs2_badge(self, capsule_path):
+        def _fetch():
+            try:
+                repo = FVSRepo(repo_path=capsule_path, no_init=True)
+                branch = repo.active_branch or "main"
+                commit = (repo.active_state_id or "")[:7]
+                return f"{branch}:{commit}" if commit else branch
+            except Exception:
+                return ""
+
+        @GtkUtils.run_in_main_loop
+        def _apply(result, error):
+            if result and not error:
+                self.label_state.set_text(result)
+
+        RunAsync(_fetch, _apply)
+
+    def on_drop(self, drop_target, value: Gdk.FileList, x, y, user_data=None):
+        self.drop_overlay.set_visible(False)
+        files: List[Gio.File] = value.get_files()
+        if not files:
+            return False
+        args = ""
+        file = files[0]
+        if file.get_basename().casefold().endswith((".exe", ".msi")):
+            def callback(a, b):
+                self.update_programs(force_update=True)
+
+            def proceed(sandbox_override, exec_path):
+                executor = WineExecutor(
+                    self.config,
+                    exec_path=exec_path,
+                    args=args,
+                    terminal=self.config.run_in_terminal,
+                    sandbox_override=sandbox_override,
+                )
+                RunAsync(executor.run, callback)
+
+            guard_sandbox_launch(
+                self.window, self.config, file.get_path(), proceed
+            )
+            return True
+
+        else:
+            self.window.show_toast(
+                _('File "{0}" is not a .exe or .msi file').format(
+                    file.get_basename().split("/")[-1]
+                )
+            )
+            return False
+
+    def on_enter(self, drop_target, x, y):
+        self.drop_overlay.set_visible(True)
+        return Gdk.DragAction.COPY
+
+    def on_leave(self, drop_target):
+        self.drop_overlay.set_visible(False)
+
+    def set_config(self, config: CapsuleConfig):
+        self.config = config
+        self.__update_by_env()
+
+        # set update_date
+        update_date = datetime.strptime(self.config.Update_Date, "%Y-%m-%d %H:%M:%S.%f")
+        update_date = update_date.strftime("%b %d %Y %H:%M:%S")
+        self.label_name.set_tooltip_text(_("Updated: %s" % update_date))
+
+        # set arch
+        self.label_arch.set_text((self.config.Arch or "n/a").capitalize())
+
+        # set name and runner
+        self.label_name.set_text(self.config.Name)
+        self.set_runner_identity(self.config.Runner)
+
+        # set environment
+        self.label_environment.set_text(_(self.config.Environment))
+
+        # set versioning badge
+        has_old_versioning = self.config.Versioning
+        capsule_path = ManagerUtils.get_capsule_path(config)
+        has_fvs2 = os.path.exists(os.path.join(capsule_path, ".fvs2"))
+        show_badge = has_old_versioning or has_fvs2
+        self.dot_versioning.set_visible(show_badge)
+        self.btn_versioning_badge.set_visible(show_badge)
+
+        if has_old_versioning:
+            self.label_state.set_text(str(self.config.State))
+        elif has_fvs2:
+            self.label_state.set_text("…")
+            self.__update_fvs2_badge(capsule_path)
+
+        missing_runner = config.Runner not in self.manager.runners_available
+
+        # check for old versioning system enabled
+        if self.manager.versioning_manager.needs_migration(config):
+            on_close = self.__alert_missing_runner if missing_runner else None
+            self.__upgrade_versioning(on_close)
+        elif missing_runner:
+            self.__alert_missing_runner()
+
+        # update programs list
+        self.update_programs()
+        self.populate_updates()
+
+    def add(self, widget=False):
+        """
+        This function popup the add program dialog to the user. It
+        will also update the capsule configuration, appending the
+        path to the program picked by the user.
+        The file chooser path is set to the capsule path by default.
+        """
+
+        def set_path(_dialog, response):
+            if response != Gtk.ResponseType.ACCEPT:
+                return
+
+            path = ManagerUtils.resolve_portal_path(dialog.get_file().get_path())
+            basename = dialog.get_file().get_basename()
+
+            _uuid = str(uuid.uuid4())
+            _program = {
+                "executable": basename,
+                "name": basename[:-4],
+                "path": path,
+                "id": _uuid,
+                "folder": ManagerUtils.get_exe_parent_dir(self.config, path),
+            }
+            self.config = self.manager.update_config(
+                config=self.config,
+                key=_uuid,
+                value=_program,
+                scope="External_Programs",
+                fallback=True,
+            ).data["config"]
+            self.update_programs(config=self.config, force_add=_program)
+            self.window.show_toast(_('"{0}" added').format(basename[:-4]))
+
+        dialog = Gtk.FileChooserNative.new(
+            title=_("Select Executable"),
+            action=Gtk.FileChooserAction.OPEN,
+            parent=self.window,
+            accept_label=_("Add"),
+        )
+
+        add_executable_filters(dialog)
+        add_all_filters(dialog)
+        dialog.set_modal(True)
+        dialog.set_current_folder(
+            Gio.File.new_for_path(ManagerUtils.get_capsule_path(self.config))
+        )
+        dialog.connect("response", set_path)
+        dialog.show()
+
+    def update_programs(
+        self,
+        config: Optional[CapsuleConfig] = None,
+        force_add: dict = None,
+        force_update: bool = False,
+    ):
+        """
+        This function update the programs lists.
+        """
+        if config:
+            if not isinstance(config, CapsuleConfig):
+                raise TypeError(
+                    "config param need CapsuleConfig type, but it was %s" % type(config)
+                )
+            self.config = config
+
+        if not force_add:
+            GLib.idle_add(self.empty_list)
+
+        def new_program(
+            _program, check_boot=None, wineserver_status=False
+        ):
+            if check_boot is None:
+                check_boot = wineserver_status
+
+            program_widget = ProgramEntry(
+                self.window,
+                self.config,
+                _program,
+                check_boot=check_boot,
+            )
+
+            program_widget.update_playtime(self.playtime_service)
+
+            self.add_program(program_widget)
+
+        if force_add:
+            wineserver_status = WineServer(self.config).is_alive()
+            new_program(force_add, None, wineserver_status)
+            return
+
+        def process_programs():
+            wineserver_status = WineServer(self.config).is_alive()
+            programs = self.manager.get_programs(
+                self.config, force_update=force_update
+            )
+            programs = sorted(programs, key=lambda p: p.get("name", "").lower())
+            handled = 0
+
+            for program in programs:
+                if program.get("removed"):
+                    if self.show_hidden:
+                        GLib.idle_add(
+                            new_program, program, None, wineserver_status
+                        )
+                        handled += 1
+                    continue
+                GLib.idle_add(new_program, program, None, wineserver_status)
+                handled += 1
+
+            self.row_no_programs.set_visible(handled == 0)
+
+        process_programs()
+
+    def add_program(self, widget):
+        self.__registry.append(widget)
+        self.group_programs.remove(self.bottom_bar)  # Remove the bottom_bar
+        self.group_programs.add(widget)
+        self.group_programs.add(
+            self.bottom_bar
+        )  # Add the bottom_bar back to the bottom
+
+    def __toggle_removed(self, widget=False):
+        """
+        This function toggle the show_hidden variable.
+        """
+        if self.show_hidden:
+            self.btn_toggle_removed.set_property("text", _("Show Hidden Programs"))
+        else:
+            self.btn_toggle_removed.set_property("text", _("Hide Hidden Programs"))
+        self.show_hidden = not self.show_hidden
+        self.update_programs(config=self.config)
+
+    def __scan_programs(self, widget=False):
+        self.update_programs(config=self.config, force_update=True)
+
+    def empty_list(self):
+        """
+        This function empty the programs list.
+        """
+        for r in self.__registry:
+            self.group_programs.remove(r)
+        self.__registry = []
+
+    def _on_program_finished(self, data=None):
+        """
+        Signal handler for ProgramFinished events.
+        Refreshes playtime display with debouncing.
+        """
+        if not data or not isinstance(data, Result) or not data.data:
+            return
+
+        # Note: We refresh all programs regardless of which one finished
+        # because the payload doesn't include capsule_id and we want to
+        # keep all displays up to date
+
+        # Cancel any pending refresh
+        if self._playtime_refresh_timeout_id is not None:
+            GLib.source_remove(self._playtime_refresh_timeout_id)
+            self._playtime_refresh_timeout_id = None
+
+        # Debounce: wait 500ms before refreshing
+        def do_refresh():
+            self._playtime_refresh_timeout_id = None
+            self._playtime_refresh_pending = False
+
+            # Invalidate cache and refresh all program widgets
+            self.playtime_service.invalidate_cache()
+            for widget in self.__registry:
+                if hasattr(widget, "update_playtime"):
+                    widget.update_playtime(self.playtime_service)
+
+            return False
+
+        self._playtime_refresh_pending = True
+        self._playtime_refresh_timeout_id = GLib.timeout_add(500, do_refresh)
+
+    def _on_task_added(self, data=None):
+        """Signal handler for TaskAdded events. Shows spinner if backup task starts."""
+        if not data or not data.data:
+            return
+
+        task_id = data.data
+        task = TaskManager.get(task_id)
+        if not task:
+            return
+
+        # Check if this is a backup task for our capsule
+        backup_title = _("Backup {0}").format(self.config.Name)
+        if task.title == backup_title:
+            self._backup_task_id = task_id
+            GLib.idle_add(self._show_backup_progress)
+
+    def _on_task_removed(self, data=None):
+        """Signal handler for TaskRemoved events. Hides spinner if backup task."""
+        if not data or not data.data:
+            return
+
+        task_id = data.data
+        if task_id == self._backup_task_id:
+            self._backup_task_id = None
+            GLib.idle_add(self._hide_backup_progress)
+
+    def _on_task_updated(self, data=None):
+        """Signal handler for TaskUpdated events. Updates progress label."""
+        if not data or not data.data:
+            return
+
+        task_id = data.data
+        if task_id == self._backup_task_id:
+            task = TaskManager.get(task_id)
+            if task and task.subtitle:
+                GLib.idle_add(self._update_backup_progress, task.subtitle)
+
+    def _show_backup_progress(self):
+        """Show the backup progress indicator."""
+        self.label_backup_progress.set_text("")
+        self.box_backup_progress.set_visible(True)
+        self.spinner_backup.start()
+
+    def _hide_backup_progress(self):
+        """Hide the backup progress indicator."""
+        self.spinner_backup.stop()
+        self.box_backup_progress.set_visible(False)
+
+    def _update_backup_progress(self, text: str):
+        """Update the backup progress label."""
+        self.label_backup_progress.set_text(text)
+
+    def populate_updates(self):
+        for row in self.__update_rows:
+            self.group_updates.remove(row)
+        self.__update_rows = []
+
+        show_updates = self.manager.settings.get_boolean("show-component-updates")
+        if not show_updates:
+            self.group_updates.set_visible(False)
+            return
+
+        updates = self.manager.get_component_updates(self.config)
+        self.group_updates.set_visible(bool(updates))
+
+        for update in updates:
+            row = self.__build_update_row(update)
+            self.group_updates.add(row)
+            self.__update_rows.append(row)
+
+    def __build_update_row(self, update: Dict[str, object]) -> Adw.ActionRow:
+        row = Adw.ActionRow()
+        row.set_title(update["title"])
+        row.set_subtitle(
+            _("Current: {current} · Latest: {latest}").format(
+                current=update["current"], latest=update["latest"]
+            )
+        )
+        row.set_activatable(False)
+
+        spinner = Gtk.Spinner()
+        spinner.set_visible(False)
+        row.add_suffix(spinner)
+        spinner.set_valign(Gtk.Align.CENTER)
+
+        button = Gtk.Button.new_with_label(_("Update"))
+        row.add_suffix(button)
+        button.set_valign(Gtk.Align.CENTER)
+        button.connect("clicked", self.__run_update, spinner, update)
+
+        return row
+
+    def __run_update(self, button, spinner, update):
+        spinner.set_visible(True)
+        spinner.start()
+        button.set_sensitive(False)
+
+        def handle_response(result, error=False):
+            spinner.stop()
+            spinner.set_visible(False)
+            button.set_sensitive(True)
+
+            success = isinstance(result, Result) and result.ok
+            if success and isinstance(result.data, dict):
+                if result.data.get("config"):
+                    self.config = result.data["config"]
+                if update["id"] == "runner" and hasattr(
+                    self.details, "update_runner_label"
+                ):
+                    self.details.update_runner_label(self.config.Runner)
+                    self.details.view_preferences.update_combo_components()
+                    self.details.view_preferences.set_config(self.config)
+
+            if success:
+                self.window.show_toast(
+                    _("Updated {component} to {version}").format(
+                        component=update["title"],
+                        version=update["latest"],
+                    )
+                )
+                self.populate_updates()
+                return
+
+            message = None
+            if isinstance(result, Result):
+                message = result.message
+                if not message and isinstance(result.data, dict):
+                    message = result.data.get("message")
+            if not message:
+                message = _("Failed to update {component}").format(
+                    component=update["title"]
+                )
+            self.window.show_toast(message)
+
+        RunAsync(
+            task_func=self.manager.apply_component_update,
+            callback=handle_response,
+            config=self.config,
+            update=update,
+        )
+
+    def __run_executable_with_args(self, widget):
+        """
+        This function saves updates the run arguments for the current session.
+        """
+        args = self.exec_arguments.get_text()
+        self.config.session_arguments = args
+        self.config.run_in_terminal = self.exec_terminal.get_active()
+
+    def run_executable(self, widget, args=False):
+        """
+        This function pop up the dialog to run an executable.
+        The file will be executed by the runner after the
+        user confirmation.
+        """
+
+        def show_chooser(*_args):
+            self.window.settings.set_boolean("show-sandbox-warning", False)
+
+            def execute(_dialog, response):
+                if response != Gtk.ResponseType.ACCEPT:
+                    return
+
+                exec_path = dialog.get_file().get_path()
+
+                def callback(a, b):
+                    self.update_programs(force_update=True)
+
+                def proceed(sandbox_override, run_path):
+                    self.window.show_toast(
+                        _('Launching "{0}"…').format(
+                            dialog.get_file().get_basename()
+                        )
+                    )
+                    executor = WineExecutor(
+                        self.config,
+                        exec_path=run_path,
+                        args=self.config.get("session_arguments"),
+                        terminal=self.config.run_in_terminal,
+                        sandbox_override=sandbox_override,
+                    )
+                    RunAsync(executor.run, callback)
+
+                guard_sandbox_launch(self.window, self.config, exec_path, proceed)
+
+            dialog = Gtk.FileChooserNative.new(
+                title=_("Select Executable"),
+                action=Gtk.FileChooserAction.OPEN,
+                parent=self.window,
+                accept_label=_("Run"),
+            )
+
+            add_executable_filters(dialog)
+            add_all_filters(dialog)
+            dialog.set_modal(True)
+            dialog.set_current_folder(
+                Gio.File.new_for_path(ManagerUtils.get_capsule_path(self.config))
+            )
+            dialog.connect("response", execute)
+            dialog.show()
+
+        if Xdp.Portal.running_under_sandbox():
+            if self.window.settings.get_boolean("show-sandbox-warning"):
+                dialog = Adw.MessageDialog.new(
+                    self.window,
+                    _("Be Aware of Sandbox"),
+                    _(
+                        "RunExe is running in a sandbox, a restricted permission environment needed to keep you safe. If the program won't run, consider moving inside the capsule (3 dots icon on the top), then launch from there."
+                    ),
+                )
+                dialog.add_response("dismiss", _("_Dismiss"))
+                dialog.connect("response", lambda *args: show_chooser())
+                dialog.present()
+            else:
+                show_chooser()
+        else:
+            show_chooser()
+
+    def analyze_with_eagle(self, path):
+        """Open the Eagle analysis view and scan the given executable."""
+        self.details.view_eagle.analyze(path)
+        self.__change_page(None, "eagle")
+
+    def run_eagle(self, _widget):
+        """
+        Pops up a dialog to select an executable for Eagle analysis.
+        """
+
+        def set_path(_dialog, response):
+            try:
+                if response == Gtk.ResponseType.ACCEPT:
+                    path = _dialog.get_file().get_path()
+                    self.analyze_with_eagle(path)
+            finally:
+                self._eagle_dialog = None
+                _dialog.destroy()
+
+        dialog = Gtk.FileChooserNative.new(
+            title=_("Select Executable for Eagle Analysis"),
+            action=Gtk.FileChooserAction.OPEN,
+            parent=self.window,
+            accept_label=_("Analyse"),
+        )
+
+        add_executable_filters(dialog)
+        add_all_filters(dialog)
+        dialog.set_modal(True)
+        dialog.set_current_folder(
+            Gio.File.new_for_path(ManagerUtils.get_capsule_path(self.config))
+        )
+        dialog.connect("response", set_path)
+        self._eagle_dialog = dialog
+        dialog.show()
+
+    def __backup(self, widget, backup_type):
+        """
+        This function pop up the file chooser where the user
+        can select the path where to export the capsule backup.
+        Use the backup_type param to export config or full.
+        """
+        if backup_type == "config":
+            title = _("Select the location where to save the backup config")
+            hint = f"backup_{self.config.Path}.yml"
+            accept_label = _("Export")
+        else:
+            title = _("Select the location where to save the backup archive")
+            hint = f"backup_{self.config.Path}.tar.gz"
+            accept_label = _("Backup")
+
+        @GtkUtils.run_in_main_loop
+        def finish(result, error=False):
+            if result.message == "cancelled":
+                self.window.show_toast(
+                    _('Backup cancelled for "{0}"').format(self.config.Name)
+                )
+                return
+            if result.ok:
+                self.window.show_toast(
+                    _('Backup created for "{0}"').format(self.config.Name)
+                )
+            else:
+                self.window.show_toast(
+                    _('Backup failed for "{0}"').format(self.config.Name)
+                )
+
+        def set_path(_dialog, response):
+            if response != Gtk.ResponseType.ACCEPT:
+                return
+
+            selected_file = _dialog.get_file()
+            if selected_file is None:
+                return
+
+            path = selected_file.get_path()
+            if path is None:
+                return
+
+            RunAsync(
+                task_func=BackupManager.export_backup,
+                callback=finish,
+                config=self.config,
+                scope=backup_type,
+                path=path,
+            )
+
+        dialog = Gtk.FileChooserNative.new(
+            title=title,
+            action=Gtk.FileChooserAction.SAVE,
+            parent=self.window,
+            accept_label=accept_label,
+        )
+
+        dialog.set_modal(True)
+        dialog.connect("response", set_path)
+        dialog.set_current_name(hint)
+        dialog.show()
+
+    def __duplicate(self, widget):
+        """
+        This function pop up the duplicate dialog, so the user can
+        choose the new capsule name and perform duplication.
+        """
+        new_window = DuplicateDialog(self)
+        new_window.present()
+
+    def __move(self, _widget):
+        def finish(result, error):
+            self.window.set_sensitive(True)
+            if error or result is None or not result.ok:
+                message = str(error) if error else result.message if result else ""
+                self.window.show_toast(message or _("The capsule could not be moved."))
+                return
+            self.manager.update_capsules()
+            self.set_config(result.data)
+            self.window.show_toast(result.message or _("Capsule moved."))
+
+        def confirmed(dialog, response, destination):
+            dialog.destroy()
+            if response != "move":
+                return
+            self.window.set_sensitive(False)
+            RunAsync(
+                BackupManager.move_capsule, finish,
+                config=self.config, destination=destination,
+            )
+
+        def selected(dialog, result):
+            try:
+                folder = dialog.select_folder_finish(result)
+            except GLib.Error:
+                return
+            if folder is None or not folder.get_path():
+                return
+            destination = folder.get_path()
+            confirmation = Adw.MessageDialog.new(
+                self.window, _("Move Capsule?"),
+                _("Close all programs in this capsule first. Its files will be moved to {0}.").format(destination),
+            )
+            confirmation.add_response("cancel", _("_Cancel"))
+            confirmation.add_response("move", _("_Move"))
+            confirmation.set_response_appearance("move", Adw.ResponseAppearance.SUGGESTED)
+            confirmation.connect("response", confirmed, destination)
+            confirmation.present()
+
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title(_("Choose Destination"))
+        dialog.select_folder(self.window, callback=selected)
+
+    def __upgrade_versioning(self, on_close=None):
+        """
+        This function pop up the upgrade versioning dialog, so the user can
+        upgrade the versioning system from old RunExe built-in to FVS.
+        """
+
+        def handle_close(_dialog):
+            GLib.idle_add(on_close)
+            return False
+
+        new_window = UpgradeVersioningDialog(self)
+        if on_close:
+            new_window.connect("close-request", handle_close)
+        new_window.present()
+
+    def __confirm_delete(self, widget):
+        """
+        This function pop up to delete confirm dialog. If user confirm
+        it will ask the manager to delete the capsule and will return
+        to the capsules list.
+        """
+
+        def handle_response(_widget, response_id):
+            _widget.destroy()
+
+            if response_id != "ok":
+                return
+
+            def _on_deleted(_result=False, _error=False):
+                # refresh on the main loop so the list (and its empty state
+                # when the last capsule is gone) repaints correctly
+                self.window.page_list.update_capsules_list()
+
+            def _delete_capsule():
+                RunAsync(
+                    self.manager.delete_capsule,
+                    callback=_on_deleted,
+                    config=self.config,
+                )
+                self.window.page_list.disable_capsule(self.config)
+                return False
+
+            GLib.idle_add(_delete_capsule)
+
+        dialog = Adw.MessageDialog.new(
+            self.window,
+            _(
+                'Are you sure you want to permanently delete "{}"?'.format(
+                    self.config["Name"]
+                )
+            ),
+            _(
+                "This will permanently delete all programs and settings associated with it."
+            ),
+        )
+        dialog.add_response("cancel", _("_Cancel"))
+        dialog.add_response("ok", _("_Delete"))
+        dialog.set_response_appearance("ok", Adw.ResponseAppearance.DESTRUCTIVE)
+        dialog.connect("response", handle_response)
+        dialog.present()
+
+    def __alert_missing_runner(self):
+        """
+        This function pop up a dialog which alert the user that the runner
+        specified in the capsule configuration is missing.
+        """
+
+        def handle_response(_widget, response_id):
+            _widget.destroy()
+
+        dialog = Adw.MessageDialog.new(
+            self.window,
+            _("Missing Runner"),
+            _(
+                "The runner requested by this capsule is missing. Install it through \
+the RunExe preferences or choose a new one to run applications."
+            ),
+        )
+        dialog.add_response("ok", _("_Dismiss"))
+        dialog.connect("response", handle_response)
+        dialog.present()
+
+    def __update_by_env(self):
+        widgets = [self.row_uninstaller, self.row_regedit]
+        for widget in widgets:
+            widget.set_visible(True)
+
+    """
+    The following functions are used like wrappers for the
+    runner utilities.
+    """
+
+    def run_winecfg(self, widget):
+        program = WineCfg(self.config)
+        RunAsync(program.launch)
+
+    def run_debug(self, widget):
+        program = WineDbg(self.config)
+        RunAsync(program.launch_terminal)
+
+    def run_browse(self, widget):
+        ManagerUtils.open_filemanager(self.config)
+
+    def run_explorer(self, widget):
+        program = Explorer(self.config)
+        RunAsync(program.launch)
+
+    def run_cmd(self, widget):
+        program = CMD(self.config)
+        RunAsync(program.launch_terminal)
+
+    @staticmethod
+    def run_snake(widget, event):
+        if event.button == 2:
+            RunAsync(TerminalUtils().launch_snake)
+
+    def run_taskmanager(self, widget):
+        program = Taskmgr(self.config)
+        RunAsync(program.launch)
+
+    def run_controlpanel(self, widget):
+        program = Control(self.config)
+        RunAsync(program.launch)
+
+    def run_uninstaller(self, widget):
+        program = Uninstaller(self.config)
+        RunAsync(program.launch)
+
+    def run_regedit(self, widget):
+        program = Regedit(self.config)
+        RunAsync(program.launch)
+
+    def wineboot(self, widget, status):
+        @GtkUtils.run_in_main_loop
+        def reset(result=None, error=False):
+            widget.set_sensitive(True)
+
+        def handle_response(_widget, response_id):
+            if response_id == "ok":
+                RunAsync(wineboot.send_status, callback=reset, status=status)
+            else:
+                reset()
+            _widget.destroy()
+
+        wineboot = WineBoot(self.config)
+        widget.set_sensitive(False)
+
+        if status in [-2, 0]:
+            dialog = Adw.MessageDialog.new(
+                self.window,
+                _("Are you sure you want to force stop all processes?"),
+                _("This can cause data loss, corruption, and programs to malfunction."),
+            )
+            dialog.add_response("cancel", _("_Cancel"))
+            dialog.add_response("ok", _("Force _Stop"))
+            dialog.set_response_appearance("ok", Adw.ResponseAppearance.DESTRUCTIVE)
+            dialog.connect("response", handle_response)
+            dialog.present()
+        elif status in (1, 2):
+            graceful_status = {1: 11, 2: 12}[status]
+            RunAsync(wineboot.send_status, callback=reset, status=graceful_status)
+

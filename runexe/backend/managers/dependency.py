@@ -1,0 +1,1140 @@
+# dependency.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import os
+import shutil
+import tempfile
+import traceback
+from glob import glob
+from typing import Callable, Optional
+
+from gettext import gettext as _
+
+import patoolib  # type: ignore [import-untyped]
+
+from runexe.backend.cabextract import CabExtract
+from runexe.backend.globals import Paths
+from runexe.backend.logger import Logger
+from runexe.backend.managers.component import is_cached_file
+from runexe.backend.managers.registry_rule import RegistryRuleManager
+from runexe.backend.models.config import CapsuleConfig
+from runexe.backend.models.enum import Arch
+from runexe.backend.models.result import Result
+from runexe.backend.state import Status, Task, TaskManager
+from runexe.backend.utils.generic import validate_url
+from runexe.backend.utils.manager import ManagerUtils
+from runexe.backend.wine.executor import WineExecutor
+from runexe.backend.wine.reg import Reg, RegItem
+from runexe.backend.wine.regkeys import RegKeys
+from runexe.backend.wine.regsvr32 import Regsvr32
+from runexe.backend.wine.uninstaller import Uninstaller
+from runexe.backend.wine.winedbg import WineDbg
+from runexe.backend.wine.winecfg import WineCfg
+from runexe.backend.wine.winepath import WinePath
+
+logging = Logger()
+
+
+# Non-zero exit codes that still mean the installer did its job: 1638 (another
+# version is already installed), 1641, 3010 and 3011 (done, restart needed).
+# A step can accept more through the optional `success_codes` list.
+INSTALLER_SUCCESS_CODES = (1638, 1641, 3010, 3011)
+
+
+class DependencyManager:
+    def __init__(self, manager, offline: bool = False):
+        self.__manager = manager
+        self.__repo = manager.repository_manager.get_repo(
+            "dependencies",
+            offline,
+            callback_in_main_loop=not manager.is_cli,
+        )
+        self.__offline = offline
+        self.__checksum_cache = {}
+        self.__manifests = {}
+
+    def get_dependency(self, name: str, plain: bool = False) -> str | dict | bool:
+        key = (name, plain)
+        if key not in self.__manifests:
+            manifest = self.__repo.get(name, plain)
+            if manifest:
+                self.__manifests[key] = manifest
+            return manifest
+        return self.__manifests[key]
+
+    def fetch_catalog(self) -> dict:
+        """
+        Fetch all dependencies from the RunExe repository
+        and return these as a dictionary. It also returns an empty dictionary
+        if there are no dependencies or fails to fetch them.
+        """
+        catalog = {}
+        index = self.__repo.catalog
+        if not isinstance(index, dict):
+            return catalog
+
+        for dependency in index.items():
+            if not isinstance(dependency[0], str) or not dependency[0]:
+                continue
+            if not isinstance(dependency[1], dict):
+                continue
+            category = dependency[1].get("Category")
+            description = dependency[1].get("Description")
+            arch = dependency[1].get("Arch", "win64_win32")
+            if (
+                not isinstance(category, str)
+                or not category
+                or not isinstance(description, str)
+                or not (
+                    isinstance(arch, str)
+                    or isinstance(arch, list)
+                    and all(isinstance(item, str) for item in arch)
+                )
+            ):
+                continue
+            catalog[dependency[0]] = dependency[1]
+
+        catalog = dict(sorted(catalog.items()))
+        if getattr(self, "_DependencyManager__offline", False):
+            for name, dependency in catalog.items():
+                dependency["Cached"] = {
+                    Arch.WIN32: self.is_dependency_cached(name, Arch.WIN32),
+                    Arch.WIN64: self.is_dependency_cached(name, Arch.WIN64),
+                }
+        return catalog
+
+    def is_dependency_cached(
+        self,
+        name: str,
+        arch: Optional[str] = None,
+        installed: Optional[list] = None,
+        checked: Optional[set] = None,
+        resolved: Optional[set] = None,
+    ) -> bool:
+        if installed is None:
+            installed = []
+        if checked is None:
+            checked = set()
+        if resolved is None:
+            resolved = set()
+        if name in installed or name in resolved:
+            return True
+        if name in checked:
+            return False
+        checked.add(name)
+
+        manifest = self.get_dependency(name)
+        if not isinstance(manifest, dict):
+            checked.discard(name)
+            return False
+
+        dependencies = manifest.get("Dependencies", [])
+        steps = manifest.get("Steps")
+        if not isinstance(dependencies, list) or not isinstance(steps, list):
+            checked.discard(name)
+            return False
+
+        for dependency in dependencies:
+            if not isinstance(dependency, str):
+                checked.discard(name)
+                return False
+            if not self.is_dependency_cached(
+                dependency,
+                arch=arch,
+                installed=installed,
+                checked=checked,
+                resolved=resolved,
+            ):
+                checked.discard(name)
+                return False
+
+        for step in steps:
+            if (
+                not isinstance(step, dict)
+                or not isinstance(step.get("action"), str)
+                or not isinstance(step.get("file_checksum", ""), str)
+            ):
+                checked.discard(name)
+                return False
+            step_arch = step.get("for", "win64_win32")
+            if not (
+                isinstance(step_arch, str)
+                or isinstance(step_arch, list)
+                and all(isinstance(item, str) for item in step_arch)
+            ):
+                checked.discard(name)
+                return False
+            if arch and arch not in step_arch:
+                continue
+
+            url = step.get("url")
+            if not url:
+                continue
+            if not isinstance(url, str):
+                checked.discard(name)
+                return False
+            if url.startswith("temp/"):
+                continue
+
+            file = step.get("rename") or step.get("file_name")
+            if not file or not is_cached_file(
+                file,
+                step.get("file_checksum", ""),
+                getattr(self, "_DependencyManager__checksum_cache", None),
+            ):
+                checked.discard(name)
+                return False
+
+        checked.discard(name)
+        resolved.add(name)
+        return True
+
+    def __dependency_has_cycle(
+        self,
+        name: str,
+        installed: Optional[list] = None,
+        visiting: Optional[set] = None,
+        resolved: Optional[set] = None,
+    ) -> bool:
+        if installed is None:
+            installed = []
+        if name in installed:
+            return False
+        if visiting is None:
+            visiting = set()
+        if resolved is None:
+            resolved = set()
+        if name in visiting:
+            return True
+        if name in resolved:
+            return False
+
+        manifest = self.get_dependency(name)
+        if not isinstance(manifest, dict):
+            return False
+        dependencies = manifest.get("Dependencies", [])
+        if not isinstance(dependencies, list):
+            return False
+
+        visiting.add(name)
+        for dependency in dependencies:
+            if isinstance(dependency, str) and self.__dependency_has_cycle(
+                dependency, installed, visiting, resolved
+            ):
+                visiting.discard(name)
+                return True
+        visiting.discard(name)
+        resolved.add(name)
+        return False
+
+    @staticmethod
+    def __notify_progress(
+        callback: Optional[Callable[[str], None]],
+        message: str,
+        task: Optional[Task] = None,
+    ) -> None:
+        if not message:
+            return
+
+        if task is not None:
+            task.subtitle = message
+
+        if callback:
+            callback(message)
+
+    @staticmethod
+    def __notify_progress_fraction(
+        callback: Optional[Callable[[Optional[float]], None]], fraction: Optional[float]
+    ) -> None:
+        if callback:
+            callback(fraction)
+
+    @staticmethod
+    def __build_progress_handler(
+        task: Optional[Task],
+        progress_cb: Optional[Callable[[Optional[float]], None]],
+    ) -> Callable[[int, int, Optional[Status]], None]:
+        def handler(
+            received_size: int = 0,
+            total_size: int = 0,
+            status: Optional[Status] = None,
+        ) -> None:
+            if task is not None:
+                task.stream_update(received_size, total_size, status)
+
+            if progress_cb is None:
+                return
+
+            if status in [Status.DONE, Status.FAILED, Status.CANCELLED]:
+                progress_cb(None)
+                return
+
+            if total_size:
+                progress_cb(received_size / total_size)
+
+        return handler
+
+    @staticmethod
+    def __describe_step(step: dict) -> str:
+        action = step.get("action", "step")
+        file_name = step.get("rename") or step.get("file_name")
+
+        descriptions = {
+            "download_archive": _("Downloading {0}...").format(
+                file_name or _("archive")
+            ),
+            "install_exe": _("Running {0}…").format(file_name or _("installer")),
+            "install_msi": _("Running {0}…").format(file_name or _("installer")),
+            "install_cab_fonts": _("Installing fonts…"),
+            "install_fonts": _("Installing fonts…"),
+            "cab_extract": _("Extracting {0}…").format(file_name or _("package")),
+            "get_from_cab": _("Extracting {0} from cabinet…").format(
+                file_name or _("files")
+            ),
+            "archive_extract": _("Unpacking archive…"),
+            "copy_dll": _("Copying files…"),
+            "copy_file": _("Copying files…"),
+            "delete_dlls": _("Cleaning previous files…"),
+            "register_dll": _("Registering libraries…"),
+            "override_dll": _("Updating DLL overrides…"),
+            "set_register_key": _("Writing registry keys…"),
+            "register_font": _("Registering fonts…"),
+            "replace_font": _("Replacing fonts…"),
+            "set_windows": _("Adjusting Windows version…"),
+            "use_windows": _("Applying Windows version…"),
+            "uninstall": _("Running uninstaller ({0})...").format(
+                file_name or _("unknown")
+            ),
+        }
+
+        return descriptions.get(
+            action, _("Running {0}...").format(action.replace("_", " "))
+        )
+
+    def install(
+        self,
+        config: CapsuleConfig,
+        dependency: list,
+        progress_cb: Optional[Callable[[str], None]] = None,
+        progress_progress_cb: Optional[Callable[[Optional[float]], None]] = None,
+    ) -> Result:
+        """
+        Install a given dependency in a capsule. It will
+        return True if the installation was successful.
+        """
+        uninstaller = True
+        installed_new = False
+        manifest = self.get_dependency(dependency[0])
+        if not isinstance(manifest, dict):
+            return Result(
+                status=False, message=f"Cannot find manifest for {dependency[0]}."
+            )
+
+        dependencies = manifest.get("Dependencies", [])
+        steps = manifest.get("Steps")
+        if (
+            not isinstance(dependencies, list)
+            or not all(isinstance(name, str) for name in dependencies)
+            or not isinstance(steps, list)
+            or not all(
+                isinstance(step, dict)
+                and isinstance(step.get("action"), str)
+                and (
+                    isinstance(step.get("for", "win64_win32"), str)
+                    or isinstance(step.get("for"), list)
+                    and all(isinstance(item, str) for item in step["for"])
+                )
+                and isinstance(step.get("url", ""), str)
+                and isinstance(step.get("file_name", ""), str)
+                and isinstance(step.get("rename", ""), str)
+                and isinstance(step.get("file_checksum", ""), str)
+                for step in steps
+            )
+        ):
+            return Result(
+                status=False, message=f"Invalid manifest for {dependency[0]}."
+            )
+
+        if self.__dependency_has_cycle(
+            dependency[0], installed=config.Installed_Dependencies
+        ):
+            return Result(
+                status=False,
+                message=f"Cyclic dependency chain for {dependency[0]}.",
+            )
+
+        if getattr(
+            self, "_DependencyManager__offline", False
+        ) and not self.is_dependency_cached(
+            dependency[0],
+            arch=config.Arch,
+            installed=config.Installed_Dependencies,
+        ):
+            return Result(
+                status=False,
+                message=f"Files for {dependency[0]} are not available in offline mode.",
+            )
+
+        if config.Parameters.versioning_automatic:
+            """
+            If the capsule has the versioning system enabled, we need
+            to create a new version of the capsule, before installing
+            the dependency.
+            """
+            self.__manager.versioning_manager.create_state(
+                config=config, message=f"Before installing {dependency[0]}"
+            )
+
+        task_id = TaskManager.add(Task(title=dependency[0]))
+        task = TaskManager.get(task_id)
+
+        self.__notify_progress(progress_cb, _("Preparing installation..."), task=task)
+
+        logging.info(
+            "Installing dependency [%s] in capsule [%s]." % (dependency[0], config.Name),
+        )
+
+        if dependencies:
+            """
+            If the manifest has dependencies, we need to install them
+            before installing the current one.
+            """
+            for _ext_dep in dependencies:
+                if _ext_dep in config.Installed_Dependencies:
+                    continue
+                if _ext_dep in self.__manager.supported_dependencies:
+                    _dep = self.__manager.supported_dependencies[_ext_dep]
+                    self.__notify_progress(
+                        progress_cb,
+                        _('Installing prerequisite "{0}"...').format(
+                            _dep.get("Description") or _ext_dep
+                        ),
+                        task=task,
+                    )
+                    _res = self.install(
+                        config,
+                        [_ext_dep, _dep],
+                        progress_cb=progress_cb,
+                        progress_progress_cb=progress_progress_cb,
+                    )
+                    if not _res.status:
+                        TaskManager.remove(task_id)
+                        return _res
+
+        original_windows = None
+        windows_changed = False
+        try:
+            try:
+                for step in steps:
+                    """
+                    Here we execute all steps in the manifest.
+                    Steps are the actions performed to install the dependency.
+                    """
+                    arch = step.get("for", "win64_win32")
+                    if config.Arch not in arch:
+                        continue
+
+                    if step["action"] == "set_windows" and not windows_changed:
+                        version = WineCfg(config).get_windows_version()
+                        if not version.ok:
+                            TaskManager.remove(task_id)
+                            return version
+                        original_windows = version.data
+                        windows_changed = True
+
+                    description = self.__describe_step(step)
+                    if step["action"] != "uninstall":
+                        self.__notify_progress(progress_cb, description, task=task)
+                    self.__notify_progress_fraction(progress_progress_cb, None)
+
+                    res = self.__perform_steps(
+                        config,
+                        step,
+                        task=task,
+                        progress_cb=progress_cb,
+                        progress_progress_cb=progress_progress_cb,
+                    )
+                    if not res.ok:
+                        TaskManager.remove(task_id)
+                        message = f"One or more steps failed for {dependency[0]}."
+                        if res.message:
+                            message += f" {res.message}"
+                        return Result(status=False, message=message)
+                    if not res.data.get("uninstaller"):
+                        uninstaller = False
+            finally:
+                if windows_changed:
+                    RegKeys(config).lg_set_windows(original_windows)
+        except (OSError, ValueError) as error:
+            TaskManager.remove(task_id)
+            return Result(False, message=str(error))
+
+        if dependency[0] not in config.Installed_Dependencies:
+            """
+            If the dependency is not already listed in the installed
+            dependencies list of the capsule, add it.
+            """
+            dependencies = [dependency[0]]
+
+            if config.Installed_Dependencies:
+                dependencies = config.Installed_Dependencies + [dependency[0]]
+
+            self.__manager.update_config(
+                config=config, key="Installed_Dependencies", value=dependencies
+            )
+            installed_new = True
+
+        if manifest.get("Uninstallers") or manifest.get("Uninstaller"):
+            """
+            If the manifest has an uninstaller, add it to the
+            uninstaller list in the capsule config.
+            Set it to NO_UNINSTALLER if the dependency cannot be uninstalled.
+            """
+            uninstaller = manifest.get("Uninstallers", manifest.get("Uninstaller"))
+
+        if not Uninstaller.get_names(uninstaller):
+            uninstaller = "NO_UNINSTALLER"
+        self.__manager.update_config(
+            config, dependency[0], uninstaller, "Uninstallers"
+        )
+
+        # Remove entry from task manager
+        TaskManager.remove(task_id)
+
+        # Hide installation button and show remove button
+        logging.info(f"Dependency installed: {dependency[0]} in {config.Name}", jn=True)
+
+        if installed_new:
+            RegistryRuleManager.apply_rules(config, trigger="dependencies")
+        self.__notify_progress_fraction(progress_progress_cb, None)
+        self.__notify_progress(progress_cb, _("Finalizing installation..."), task=task)
+        return Result(
+            status=True,
+            data={"uninstaller": uninstaller != "NO_UNINSTALLER"},
+        )
+
+    def __perform_steps(
+        self,
+        config: CapsuleConfig,
+        step: dict,
+        task: Optional[Task] = None,
+        progress_cb: Optional[Callable[[str], None]] = None,
+        progress_progress_cb: Optional[Callable[[Optional[float]], None]] = None,
+    ) -> Result:
+        """
+        This method execute a step in the capsule (e.g. changing the Windows
+        version, installing fonts, etc.)
+        ---
+        Returns True if the dependency cannot be uninstalled.
+        """
+        uninstaller = True
+
+        if step["action"] == "delete_dlls":
+            self.__step_delete_dlls(config, step)
+
+        if step["action"] == "download_archive":
+            if not self.__step_download_archive(
+                step, task=task, progress_progress_cb=progress_progress_cb
+            ):
+                return Result(status=False)
+
+        if step["action"] in ["install_exe", "install_msi"]:
+            result = self.__step_install_exe_msi(
+                config=config,
+                step=step,
+                task=task,
+                progress_cb=progress_cb,
+                progress_progress_cb=progress_progress_cb,
+            )
+            if not result.ok:
+                return result
+
+        if step["action"] == "uninstall":
+            result = self.__step_uninstall(
+                config, step["file_name"], task=task, progress_cb=progress_cb
+            )
+            if not result.ok:
+                return result
+
+        if step["action"] == "cab_extract":
+            uninstaller = False
+            if not self.__step_cab_extract(
+                step=step, task=task, progress_progress_cb=progress_progress_cb
+            ):
+                return Result(status=False)
+
+        if step["action"] == "get_from_cab":
+            uninstaller = False
+            if not self.__step_get_from_cab(config=config, step=step):
+                return Result(status=False)
+
+        if step["action"] == "archive_extract":
+            uninstaller = False
+            if not self.__step_archive_extract(
+                step, task=task, progress_progress_cb=progress_progress_cb
+            ):
+                return Result(status=False)
+
+        if step["action"] in ["install_cab_fonts", "install_fonts"]:
+            uninstaller = False
+            if not self.__step_install_fonts(config=config, step=step):
+                return Result(status=False)
+
+        if step["action"] in ["copy_dll", "copy_file"]:
+            uninstaller = False
+            if not self.__step_copy_dll(config=config, step=step):
+                return Result(status=False)
+
+        if step["action"] == "register_dll":
+            self.__step_register_dll(config=config, step=step)
+
+        if step["action"] == "override_dll":
+            self.__step_override_dll(config=config, step=step)
+
+        if step["action"] == "set_register_key":
+            self.__step_set_register_key(config=config, step=step)
+
+        if step["action"] == "register_font":
+            self.__step_register_font(config=config, step=step)
+
+        if step["action"] == "replace_font":
+            self.__step_replace_font(config=config, step=step)
+
+        if step["action"] == "set_windows":
+            if not self.__step_set_windows(config=config, step=step):
+                return Result(False, message="Failed to change Windows version.")
+
+        if step["action"] == "use_windows":
+            self.__step_use_windows(config=config, step=step)
+
+        return Result(status=True, data={"uninstaller": uninstaller})
+
+    @staticmethod
+    def __get_real_dest(config: CapsuleConfig, dest: str) -> str | bool:
+        """This function return the real destination path."""
+        capsule = ManagerUtils.get_capsule_path(config)
+        _dest = dest
+
+        if dest.startswith("temp/"):
+            dest = dest.replace("temp/", f"{Paths.temp}/")
+        elif dest.startswith("windows/"):
+            dest = f"{capsule}/drive_c/{dest}"
+        elif dest.startswith("win32"):
+            dest = f"{capsule}/drive_c/windows/system32/"
+            if config.Arch == Arch.WIN64:
+                dest = f"{capsule}/drive_c/windows/syswow64/"
+            dest = _dest.replace("win32", dest)
+        elif dest.startswith("win64"):
+            if config.Arch == Arch.WIN64:
+                dest = f"{capsule}/drive_c/windows/system32/"
+                dest = _dest.replace("win64", dest)
+            else:
+                return True
+        else:
+            logging.error("Destination path not supported!")
+            return False
+
+        return dest
+
+    def __step_download_archive(
+        self,
+        step: dict,
+        task: Optional[Task] = None,
+        progress_progress_cb: Optional[Callable[[Optional[float]], None]] = None,
+    ):
+        """
+        This function download an archive from the given step.
+        Can be used for any file type (cab, zip, ...). Please don't
+        use this method for exe/msi files as the install_exe already
+        download the exe/msi file before installation.
+        """
+        progress_handler = self.__build_progress_handler(task, progress_progress_cb)
+        download = self.__manager.component_manager.download(
+            download_url=step.get("url"),
+            file=step.get("file_name"),
+            rename=step.get("rename"),
+            checksum=step.get("file_checksum"),
+            func=progress_handler,
+            task=task,
+        )
+
+        return download.ok
+
+    def __step_install_exe_msi(
+        self,
+        config: CapsuleConfig,
+        step: dict,
+        task: Optional[Task] = None,
+        progress_cb: Optional[Callable[[str], None]] = None,
+        progress_progress_cb: Optional[Callable[[Optional[float]], None]] = None,
+    ) -> Result:
+        """
+        Download and install the .exe or .msi file
+        declared in the step, in a capsule. The step fails when the
+        installer exits with a status that is not a success code.
+        """
+        winedbg = WineDbg(config)
+        progress_handler = self.__build_progress_handler(task, progress_progress_cb)
+        download = self.__manager.component_manager.download(
+            download_url=step.get("url"),
+            file=step.get("file_name"),
+            rename=step.get("rename"),
+            checksum=step.get("file_checksum"),
+            func=progress_handler,
+            task=task,
+        )
+        file = step.get("file_name")
+        if step.get("rename"):
+            file = step.get("rename")
+
+        if download.ok:
+            if step.get("url").startswith("temp/"):
+                _file = step.get("url").replace("temp/", f"{Paths.temp}/")
+                file = f"{_file}/{file}"
+            else:
+                file = f"{Paths.temp}/{file}"
+            extra_codes = step.get("success_codes")
+            success_codes = list(INSTALLER_SUCCESS_CODES)
+            if isinstance(extra_codes, list):
+                success_codes += [c for c in extra_codes if type(c) is int]
+            staged = None
+            cwd = None
+            try:
+                prefix = ManagerUtils.get_capsule_path(config)
+                if not os.path.exists(os.path.join(prefix, "dosdevices", "z:")):
+                    temp_dir = os.path.join(prefix, "drive_c", "windows", "temp")
+                    os.makedirs(temp_dir, exist_ok=True)
+                    staged = tempfile.TemporaryDirectory(prefix="runexe-installer-", dir=temp_dir)
+                    cwd = staged.name
+                    destination = os.path.join(cwd, os.path.basename(file))
+                    if step.get("url").startswith("temp/"):
+                        shutil.copytree(os.path.dirname(file), cwd, dirs_exist_ok=True)
+                    else:
+                        shutil.copy2(file, destination)
+                    file = WinePath(config).to_windows(destination, native=True)
+
+                executor = WineExecutor(
+                    config,
+                    exec_path=file,
+                    args=step.get("arguments"),
+                    environment=step.get("environment"),
+                    success_codes=success_codes,
+                    cwd=cwd,
+                )
+                result = executor.run()
+                winedbg.wait_for_process(os.path.basename(file.replace("\\", "/")))
+            except OSError as error:
+                return Result(False, message=f"Could not prepare installer: {error}")
+            finally:
+                if staged:
+                    staged.cleanup()
+
+            if not result.ok:
+                message = result.message or f"Failed to run {step.get('file_name')}."
+                logging.error(message)
+                return Result(status=False, message=message)
+
+            if progress_progress_cb:
+                progress_progress_cb(None)
+
+            if progress_cb:
+                progress_cb(_("Installer completed."))
+            return Result(status=True)
+
+        return Result(
+            status=False,
+            message=f"Failed to download {step.get('file_name')}, or checksum failed.",
+        )
+
+    def __step_uninstall(
+        self, config: CapsuleConfig, file_name: str,
+        task: Optional[Task] = None, progress_cb=None,
+    ) -> Result:
+        uninstaller = Uninstaller(config)
+        installed = uninstaller.get_uuid(file_name)
+        if not installed.ok:
+            return installed
+        if not installed.has_data:
+            self.__notify_progress(
+                progress_cb, _("Skipping {0}: not installed.").format(file_name),
+                task=task,
+            )
+            return Result(True)
+
+        self.__notify_progress(
+            progress_cb,
+            self.__describe_step({"action": "uninstall", "file_name": file_name}),
+            task=task,
+        )
+        for identifier in installed.data.splitlines():
+            result = uninstaller.from_uuid(identifier.strip())
+            if not result.ok:
+                return result
+        return Result(True)
+
+    def __step_cab_extract(
+        self,
+        step: dict,
+        task: Optional[Task] = None,
+        progress_progress_cb: Optional[Callable[[Optional[float]], None]] = None,
+    ):
+        """
+        This function download and extract a Windows Cabinet to the
+        temp folder.
+        """
+        dest = step.get("dest")
+        if dest.startswith("temp/"):
+            dest = dest.replace("temp/", f"{Paths.temp}/")
+        else:
+            logging.error("Destination path not supported!")
+            return False
+
+        if validate_url(step["url"]):
+            progress_handler = self.__build_progress_handler(task, progress_progress_cb)
+            download = self.__manager.component_manager.download(
+                download_url=step.get("url"),
+                file=step.get("file_name"),
+                rename=step.get("rename"),
+                checksum=step.get("file_checksum"),
+                func=progress_handler,
+                task=task,
+            )
+
+            if download.ok:
+                if step.get("rename"):
+                    file = step.get("rename")
+                else:
+                    file = step.get("file_name")
+
+                if not CabExtract().run(
+                    path=os.path.join(Paths.temp, file), name=file, destination=dest
+                ):
+                    return False
+            else:
+                return False
+
+        elif step["url"].startswith("temp/"):
+            path = step["url"]
+            path = path.replace("temp/", f"{Paths.temp}/")
+
+            if step.get("rename"):
+                file_path = os.path.splitext(f"{step.get('rename')}")[0]
+            else:
+                file_path = os.path.splitext(f"{step.get('file_name')}")[0]
+
+            if not CabExtract().run(
+                f"{path}/{step.get('file_name')}", file_path, destination=dest
+            ):
+                return False
+
+        return True
+
+    def __step_delete_dlls(self, config: CapsuleConfig, step: dict):
+        """Deletes the given dlls from the system32 or syswow64 paths"""
+        dest = self.__get_real_dest(config, step.get("dest"))
+
+        for d in step.get("dlls", []):
+            _d = os.path.join(dest, d)
+            if os.path.exists(_d):
+                os.remove(_d)
+
+        return True
+
+    def __step_get_from_cab(self, config: CapsuleConfig, step: dict):
+        """Take a file from a cabiner and extract to a path."""
+        source = step.get("source")
+        file_name = step.get("file_name")
+        rename = step.get("rename")
+        dest = self.__get_real_dest(config, step.get("dest"))
+
+        if isinstance(dest, bool):
+            return dest
+
+        res = CabExtract().run(
+            path=os.path.join(Paths.temp, source), files=[file_name], destination=dest
+        )
+
+        if rename:
+            _file_name = file_name.split("/")[-1]
+            _file_name_path = os.path.join(dest, _file_name)
+
+            if not os.path.exists(_file_name_path):
+                files = os.listdir(dest)
+                for f in files:
+                    if f.lower() == _file_name.lower():
+                        _file_name = f
+                        _file_name_path = os.path.join(dest, _file_name)
+                        break
+
+            if not os.path.exists(_file_name_path):
+                logging.error(f"Cannot find extracted file: {_file_name_path}")
+                return False
+
+            rename_path = os.path.join(dest, rename)
+            if os.path.normpath(_file_name_path) != os.path.normpath(rename_path):
+                if os.path.exists(rename_path):
+                    os.remove(rename_path)
+
+                shutil.move(_file_name_path, rename_path)
+
+        if not res:
+            return False
+        return True
+
+    def __step_archive_extract(
+        self,
+        step: dict,
+        task: Optional[Task] = None,
+        progress_progress_cb: Optional[Callable[[Optional[float]], None]] = None,
+    ):
+        """Download and extract an archive to the temp folder."""
+        progress_handler = self.__build_progress_handler(task, progress_progress_cb)
+        download = self.__manager.component_manager.download(
+            download_url=step.get("url"),
+            file=step.get("file_name"),
+            rename=step.get("rename"),
+            checksum=step.get("file_checksum"),
+            func=progress_handler,
+            task=task,
+        )
+
+        if not download.ok:
+            return False
+
+        if step.get("rename"):
+            file = step.get("rename")
+        else:
+            file = step.get("file_name")
+
+        archive_path = os.path.join(Paths.temp, os.path.splitext(file)[0])
+
+        if os.path.exists(archive_path):
+            shutil.rmtree(archive_path)
+
+        os.makedirs(archive_path)
+        try:
+            patoolib.extract_archive(
+                os.path.join(Paths.temp, file), outdir=archive_path
+            )
+            if archive_path.endswith(".tar") and os.path.isfile(
+                os.path.join(archive_path, os.path.basename(archive_path))
+            ):
+                tar_path = os.path.join(archive_path, os.path.basename(archive_path))
+                patoolib.extract_archive(tar_path, outdir=archive_path)
+        except Exception as e:
+            logging.error("Something wrong happened during extraction.")
+            logging.error(f"{e}")
+            logging.error(f"{traceback.format_exc()}")
+            return False
+        return True
+
+    @staticmethod
+    def __step_install_fonts(config: CapsuleConfig, step: dict):
+        """Move fonts to the drive_c/windows/Fonts path."""
+        path = step["url"]
+        path = path.replace("temp/", f"{Paths.temp}/")
+        capsule_path = ManagerUtils.get_capsule_path(config)
+
+        for font in step.get("fonts"):
+            font_path = f"{capsule_path}/drive_c/windows/Fonts/"
+            if not os.path.exists(font_path):
+                os.makedirs(font_path)
+
+            temporary = None
+            try:
+                with tempfile.NamedTemporaryFile(dir=font_path, delete=False) as target:
+                    temporary = target.name
+                shutil.copyfile(f"{path}/{font}", temporary)
+                os.replace(temporary, f"{font_path}/{font}")
+            except OSError as error:
+                logging.warning(f"Could not install font {font}: {error}")
+                return False
+            finally:
+                if temporary and os.path.exists(temporary):
+                    os.unlink(temporary)
+
+            # print(f"Copying {font} to {capsule_path}/drive_c/windows/Fonts/")
+
+        return True
+
+    # noinspection PyTypeChecker
+    def __step_copy_dll(self, config: CapsuleConfig, step: dict):
+        """
+        This function copy dlls from temp folder to a directory
+        declared in the step. The capsule drive_c path will be used as
+        root path.
+        """
+        path = step["url"]
+        path = path.replace("temp/", f"{Paths.temp}/")
+        dest = self.__get_real_dest(config, step.get("dest"))
+
+        if isinstance(dest, bool):
+            return dest
+
+        if not os.path.exists(dest):
+            os.makedirs(dest)
+
+        try:
+            if "*" in step.get("file_name"):
+                files = glob(f"{path}/{step.get('file_name')}")
+                if not files:
+                    logging.info(f"File(s) not found in {path}")
+                    return False
+                for fg in files:
+                    _name = fg.split("/")[-1]
+                    _path = os.path.join(path, _name)
+                    _dest = os.path.join(dest, _name)
+                    logging.info(f"Copying {_name} to {_dest}")
+
+                    if os.path.exists(_dest) and os.path.islink(_dest):
+                        os.unlink(_dest)
+
+                    try:
+                        shutil.copyfile(_path, _dest)
+                    except shutil.SameFileError:
+                        logging.info(
+                            f"{_name} already exists at the same version, skipping."
+                        )
+            else:
+                _name = step.get("file_name")
+                _dest = os.path.join(dest, _name)
+                logging.info(f"Copying {_name} to {_dest}")
+
+                if os.path.exists(_dest) and os.path.islink(_dest):
+                    os.unlink(_dest)
+
+                try:
+                    shutil.copyfile(os.path.join(path, _name), _dest)
+                except shutil.SameFileError:
+                    logging.info(
+                        f"{_name} already exists at the same version, skipping."
+                    )
+
+        except Exception as e:
+            print(e)
+            logging.warning("An error occurred while copying dlls.")
+            return False
+
+        return True
+
+    @staticmethod
+    def __step_register_dll(config: CapsuleConfig, step: dict):
+        """Register one or more dll and ActiveX control"""
+        regsvr32 = Regsvr32(config)
+
+        for dll in step.get("dlls", []):
+            regsvr32.register(dll)
+
+        return True
+
+    @staticmethod
+    def __step_override_dll(config: CapsuleConfig, step: dict):
+        """Register a new override for each dll."""
+        reg = Reg(config)
+
+        if step.get("url") and step.get("url").startswith("temp/"):
+            path = step["url"].replace("temp/", f"{Paths.temp}/")
+            dlls = glob(os.path.join(path, step.get("dll")))
+
+            bundle = {"HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides": []}
+
+            for dll in dlls:
+                dll_name = os.path.splitext(os.path.basename(dll))[0]
+                bundle["HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides"].append(
+                    {"value": dll_name, "data": step.get("type")}
+                )
+
+            reg.import_bundle(bundle)
+            return True
+
+        if step.get("bundle"):
+            _bundle = {
+                "HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides": step.get("bundle")
+            }
+            reg.import_bundle(_bundle)
+            return True
+
+        reg.add(
+            key="HKEY_CURRENT_USER\\Software\\Wine\\DllOverrides",
+            value=step.get("dll"),
+            data=step.get("type"),
+        )
+        return True
+
+    @staticmethod
+    def __step_set_register_key(config: CapsuleConfig, step: dict):
+        """Set a registry key."""
+        reg = Reg(config)
+        reg.add(
+            key=step.get("key"),
+            value=step.get("value"),
+            data=step.get("data"),
+            value_type=step.get("type"),
+        )
+        return True
+
+    @staticmethod
+    def __step_register_font(config: CapsuleConfig, step: dict):
+        """Register a font in the registry."""
+        reg = Reg(config)
+        reg.add(
+            key="HKEY_LOCAL_MACHINE\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Fonts",
+            value=step.get("name"),
+            data=step.get("file"),
+        )
+        return True
+
+    @staticmethod
+    def __step_replace_font(config: CapsuleConfig, step: dict):
+        """Register a font replacement in the registry."""
+        reg = Reg(config)
+        target_font = step.get("font")
+        replaces = step.get("replace")
+
+        if not isinstance(replaces, list):
+            logging.warning("Invalid replace_font, 'replace' field should be list.")
+            return False
+
+        regs = [
+            RegItem(
+                key="HKEY_CURRENT_USER\\Software\\Wine\\Fonts\\Replacements",
+                value=r,
+                value_type="",
+                data=target_font,
+            )
+            for r in replaces
+        ]
+        reg.bulk_add(regs)
+        return True
+
+    @staticmethod
+    def __step_set_windows(config: CapsuleConfig, step: dict):
+        """Set the Windows version."""
+        rk = RegKeys(config)
+        try:
+            rk.lg_set_windows(step.get("version"))
+        except ValueError as e:
+            logging.warning(str(e))
+            return False
+        return True
+
+    @staticmethod
+    def __step_use_windows(config: CapsuleConfig, step: dict):
+        """Set a Windows version per program."""
+        rk = RegKeys(config)
+        rk.set_app_default(step.get("version"), step.get("executable"))
+        return True

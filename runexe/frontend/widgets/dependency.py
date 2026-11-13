@@ -1,0 +1,276 @@
+# dependency.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import contextlib
+import webbrowser
+from gettext import gettext as _
+from urllib.parse import urlencode
+
+from gi.repository import Adw, Gtk
+
+from runexe.backend.models.config import CapsuleConfig
+from runexe.backend.models.result import Result
+from runexe.backend.wine.uninstaller import Uninstaller
+from runexe.backend.utils.threading import RunAsync
+from runexe.frontend.utils.gtk import GtkUtils
+from runexe.frontend.windows.dependency_install import DependencyInstallDialog
+from runexe.frontend.windows.generic import SourceDialog
+
+
+@Gtk.Template(resource_path="/io/github/runexe/RunExe/dependency-entry.ui")
+class DependencyEntry(Adw.ActionRow):
+    __gtype_name__ = "DependencyEntry"
+
+    # region Widgets
+    label_category = Gtk.Template.Child()
+    check_select = Gtk.Template.Child()
+    btn_install = Gtk.Template.Child()
+    btn_reinstall = Gtk.Template.Child()
+    btn_remove = Gtk.Template.Child()
+    btn_manifest = Gtk.Template.Child()
+    btn_license = Gtk.Template.Child()
+    btn_report = Gtk.Template.Child()
+    btn_err = Gtk.Template.Child()
+    box_actions = Gtk.Template.Child()
+    spinner = Gtk.Template.Child()
+
+    # endregion
+
+    def __init__(self, window, config: CapsuleConfig, dependency, plain=False, **kwargs):
+        super().__init__(**kwargs)
+
+        # common variables and references
+        self.window = window
+        self.manager = window.manager
+        self.config = config
+        self.dependency = dependency
+        self.queue = window.page_details.queue
+        self.install_dialog: DependencyInstallDialog | None = None
+
+        if plain:
+            """
+            If the dependency is plain, treat it as a placeholder, it
+            can be used to display "fake" elements on the list
+            """
+            self.set_title(dependency[0])
+            self.set_subtitle("")
+            self.btn_install.set_visible(False)
+            self.btn_remove.set_visible(False)
+            self.btn_reinstall.set_visible(True)
+            return
+
+        if self.config.Arch not in dependency[1].get("Arch", "win64_win32"):
+            self.btn_install.set_visible(False)
+            self.btn_remove.set_visible(False)
+            self.btn_reinstall.set_visible(False)
+            self.btn_err.set_visible(True)
+            self.btn_err.set_tooltip_text(
+                _("This dependency is not compatible with this capsule architecture.")
+            )
+
+        # populate widgets
+        self.set_title(dependency[0])
+        self.set_subtitle(dependency[1].get("Description"))
+        self.label_category.set_text(dependency[1].get("Category"))
+
+        # connect signals
+        self.btn_install.connect("clicked", self.install_dependency)
+        self.btn_reinstall.connect("clicked", self.install_dependency)
+        self.btn_remove.connect("clicked", self.remove_dependency)
+        self.btn_manifest.connect("clicked", self.open_manifest)
+        self.btn_license.connect("clicked", self.open_license)
+        self.btn_report.connect("clicked", self.open_bug_report)
+
+        if dependency[0] in self.config.Installed_Dependencies:
+            """
+            If the dependency is installed, hide the btn_install
+            button and show the btn_remove button
+            """
+            self.btn_install.set_visible(False)
+            self.btn_reinstall.set_visible(True)
+            uninstaller = self.config.Uninstallers.get(dependency[0])
+            self.btn_remove.set_visible(
+                bool(Uninstaller.get_names(uninstaller))
+            )
+
+        cached_by_arch = dependency[1].get("Cached", {})
+        cached = (
+            cached_by_arch.get(self.config.Arch, False)
+            if isinstance(cached_by_arch, dict)
+            else False
+        )
+        needs_offline_check = (
+            not self.manager.utils_conn.status
+            and dependency[0] not in self.config.Installed_Dependencies
+        )
+        if needs_offline_check and not cached and self.config.Installed_Dependencies:
+            cached = self.manager.dependency_manager.is_dependency_cached(
+                dependency[0],
+                arch=self.config.Arch,
+                installed=self.config.Installed_Dependencies,
+            )
+
+        if needs_offline_check and not cached:
+            self.btn_install.set_visible(False)
+            self.btn_err.set_visible(True)
+            self.btn_err.set_tooltip_text(
+                _(
+                    "This dependency is not installable offline because its files are not cached."
+                )
+            )
+            self.btn_manifest.set_sensitive(False)
+            self.btn_license.set_sensitive(False)
+
+        self.check_select.set_visible(self.btn_install.get_visible())
+
+    def open_manifest(self, _widget):
+        """
+        This function pop up a dialog with the manifest
+        of the dependency
+        """
+        SourceDialog(
+            parent=self.window,
+            title=_("Manifest for {0}").format(self.dependency[0]),
+            message=self.manager.dependency_manager.get_dependency(
+                name=self.dependency[0], plain=True
+            ),
+        ).present()
+
+    def open_license(self, _widget):
+        """
+        This function pop up a dialog with the license
+        of the dependency
+        """
+        manifest = self.manager.dependency_manager.get_dependency(
+            name=self.dependency[0]
+        )
+        webbrowser.open(manifest["License_url"])
+
+    def open_bug_report(self, _widget):
+        query = urlencode({"title": f"{self.dependency[0]}: "})
+        webbrowser.open(f"https://github.com/hazem-hamsho/runexe-dependencies/issues/new?{query}")
+
+    def install_dependency(self, _widget):
+        """
+        This function install the dependency in the capsule, it
+        will also prevent user from installing other dependencies
+        during the installation process, will show a spinner
+        and set the dependency as installed in the capsule
+        configuration
+        """
+        self.queue.add_task()
+        self.get_parent().set_sensitive(False)
+        self.btn_install.set_visible(False)
+        self.check_select.set_active(False)
+        self.check_select.set_visible(False)
+        self.spinner.show()
+        self.spinner.start()
+
+        self.install_dialog = DependencyInstallDialog(self.window, self.dependency[0])
+        self.install_dialog.present()
+
+        RunAsync(
+            task_func=self.manager.dependency_manager.install,
+            callback=self.set_install_status,
+            config=self.config,
+            dependency=self.dependency,
+            progress_cb=self.install_dialog.add_step,
+            progress_progress_cb=self.install_dialog.update_progress,
+        )
+
+    def remove_dependency(self, _widget):
+        """
+        This function remove the dependency from the capsule
+        configuration
+        """
+        _widget.set_sensitive(False)
+        RunAsync(
+            task_func=self.manager.remove_dependency,
+            callback=self.set_install_status,
+            config=self.config,
+            dependency=self.dependency,
+        )
+
+    @GtkUtils.run_in_main_loop
+    def set_install_status(self, result: Result, error=None):
+        """
+        This function set the dependency as installed
+        if the installation is successful, or uninstalled
+        if the uninstallation is successful.
+        """
+        success = result is not None and result.status
+        if self.install_dialog:
+            self.install_dialog.finish(success)
+            self.install_dialog = None
+
+        self.queue.end_task()
+        if success:
+            if self.config.Parameters.versioning_automatic:
+                self.window.page_details.view_versioning.update()
+            uninstaller = result.data.get("uninstaller")
+            removed = result.data.get("removed") or False
+            if removed:
+                self.window.show_toast(
+                    _('"{0}" uninstalled').format(self.dependency[0])
+                )
+            else:
+                self.window.show_toast(_('"{0}" installed').format(self.dependency[0]))
+            self.set_installed(uninstaller, removed)
+        else:
+            self.set_err()
+        if self.window.page_details.config is self.config:
+            self.window.page_details.view_dependencies.update(config=self.config)
+
+    def set_err(self):
+        """
+        This function set the dependency as not installed
+        if errors occur during installation
+        """
+        self.spinner.stop()
+        self.btn_install.set_visible(False)
+        self.check_select.set_active(False)
+        self.check_select.set_visible(False)
+        self.btn_remove.set_visible(False)
+        self.btn_err.set_visible(True)
+        with contextlib.suppress(AttributeError):
+            self.get_parent().set_sensitive(True)
+        self.window.show_toast(_('"{0}" failed to install').format(self.dependency[0]))
+
+    def set_installed(self, installer=True, removed=False):
+        """
+        This function set the dependency as installed
+        """
+        self.spinner.stop()
+        if not removed:
+            self.btn_install.set_visible(False)
+            self.btn_reinstall.set_visible(True)
+            if installer:
+                self.btn_remove.set_visible(True)
+                self.btn_remove.set_sensitive(True)
+            else:
+                self.btn_remove.set_visible(False)
+        else:
+            self.btn_remove.set_visible(False)
+            self.btn_install.set_visible(True)
+            self.btn_reinstall.set_visible(False)
+
+        self.check_select.set_active(False)
+        self.check_select.set_visible(self.btn_install.get_visible())
+        self.btn_reinstall.set_sensitive(True)
+
+        with contextlib.suppress(AttributeError):
+            self.get_parent().set_sensitive(True)

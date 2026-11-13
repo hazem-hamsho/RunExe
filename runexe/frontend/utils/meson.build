@@ -1,0 +1,18 @@
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+utilsdir = join_paths(pkgdatadir, 'runexe/frontend/utils')
+
+runexe_sources = [
+  '__init__.py',
+  'autostart.py',
+  'gtk.py',
+  'localization.py',
+  'common.py',
+  'filters.py',
+  'flatpak.py',
+  'playtime.py',
+  'program.py',
+  'sh.py',
+  'sandbox_guard.py',
+]
+
+install_data(runexe_sources, install_dir: utilsdir)

@@ -1,0 +1,786 @@
+# component.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import contextlib
+import os
+import re
+import sys
+import shutil
+import stat
+import tarfile
+import tempfile
+import zipfile
+from threading import Event
+from typing import Optional
+
+from runexe.backend.downloader import Downloader
+from runexe.backend.globals import Paths
+from runexe.backend.logger import Logger
+from runexe.backend.models.result import Result
+from runexe.backend.state import (
+    LockManager,
+    Locks,
+    Status,
+    Task,
+    TaskManager,
+    TaskStreamUpdateHandler,
+)
+from runexe.backend.utils.file import FileUtils
+from runexe.backend.utils.generic import (
+    get_host_architecture,
+    is_glibc_min_available,
+)
+from runexe.backend.utils.manager import ManagerUtils
+
+logging = Logger()
+
+_PROTON_SERIAL_LINK = re.compile(
+    r"^[^/]+/files/share/default_pfx/dosdevices/com([1-9]|[12][0-9]|3[0-2])$"
+)
+_PROTON_SERIAL_TARGET = re.compile(r"^/dev/ttyS([0-9]|[12][0-9]|3[01])$")
+
+
+def _component_tar_filter(member: tarfile.TarInfo, destination: str):
+    if member.issym() and os.path.isabs(member.linkname):
+        link = _PROTON_SERIAL_LINK.fullmatch(member.name)
+        target = _PROTON_SERIAL_TARGET.fullmatch(member.linkname)
+        if not link or not target or int(link.group(1)) - 1 != int(target.group(1)):
+            raise ValueError("Archive contains an invalid absolute link")
+        filtered = tarfile.data_filter(
+            member.replace(linkname=target.group(0).lstrip("/"), deep=False),
+            destination,
+        )
+        return filtered.replace(linkname=member.linkname, deep=False)
+    return tarfile.data_filter(member, destination)
+
+
+def _select_component_file(manifest: dict) -> Optional[dict]:
+    files = manifest.get("File")
+    if not isinstance(files, list):
+        return None
+
+    architecture = get_host_architecture()
+    host_platform = sys.platform
+    selected = None
+    selected_score = -1
+    for file in files:
+        if not isinstance(file, dict):
+            continue
+        file_architecture = file.get("architecture")
+        file_platform = file.get("platform")
+        if file_architecture is not None and (
+            not isinstance(file_architecture, str)
+            or file_architecture.lower() != architecture
+        ):
+            continue
+        if file_platform is not None and (
+            not isinstance(file_platform, str)
+            or file_platform.lower() != host_platform
+        ):
+            continue
+
+        score = int(file_architecture is not None) * 2 + int(
+            file_platform is not None
+        )
+        if score > selected_score:
+            selected = file
+            selected_score = score
+    return selected
+
+
+def _component_matches_host(component: dict) -> bool:
+    architectures = component.get("Architectures")
+    platforms = component.get("Platforms")
+    if architectures is not None and (
+        not isinstance(architectures, list)
+        or get_host_architecture()
+        not in {
+            value.lower() for value in architectures if isinstance(value, str)
+        }
+    ):
+        return False
+    if platforms is not None and (
+        not isinstance(platforms, list)
+        or sys.platform
+        not in {value.lower() for value in platforms if isinstance(value, str)}
+    ):
+        return False
+    return True
+
+
+def find_cached_file(
+    name: str, checksum: str = "", checksum_cache: dict | None = None
+) -> Optional[str]:
+    exact_path = os.path.join(Paths.temp, name)
+    paths = [exact_path] if os.path.isfile(exact_path) else []
+    try:
+        paths.extend(
+            os.path.join(Paths.temp, entry)
+            for entry in os.listdir(Paths.temp)
+            if entry.lower() == name.lower()
+            and os.path.join(Paths.temp, entry) != exact_path
+        )
+    except FileNotFoundError:
+        return None
+
+    if checksum is None:
+        checksum = ""
+    if not isinstance(checksum, str):
+        return None
+    checksum = checksum.lower()
+    for path in paths:
+        try:
+            stat = os.stat(path)
+        except OSError:
+            continue
+        if stat.st_size == 0:
+            continue
+        if not checksum or os.environ.get("RUNEXE_SKIP_CHECKSUM"):
+            return path
+
+        cache_key = (path, stat.st_size, stat.st_mtime_ns, checksum)
+        if checksum_cache is not None and cache_key in checksum_cache:
+            if checksum_cache[cache_key]:
+                return path
+            continue
+
+        valid = FileUtils().get_checksum(path) == checksum
+        if checksum_cache is not None:
+            checksum_cache[cache_key] = valid
+        if valid:
+            return path
+    return None
+
+
+def is_cached_file(
+    name: str, checksum: str = "", checksum_cache: dict | None = None
+) -> bool:
+    return find_cached_file(name, checksum, checksum_cache) is not None
+
+
+# noinspection PyTypeChecker
+class ComponentManager:
+    def __init__(self, manager, offline: bool = False):
+        self.__manager = manager
+        self.__repo = manager.repository_manager.get_repo(
+            "components",
+            offline,
+            callback_in_main_loop=not manager.is_cli,
+        )
+        self.__offline = offline
+        self.__checksum_cache = {}
+        self.__manifests = {}
+
+    def get_component(self, name: str, plain: bool = False) -> str | dict | bool:
+        key = (name, plain)
+        if key not in self.__manifests:
+            manifest = self.__repo.get(name, plain)
+            if manifest:
+                self.__manifests[key] = manifest
+            return manifest
+        return self.__manifests[key]
+
+    def fetch_catalog(self) -> dict:
+        """
+        Fetch all components from the RunExe repository, mark the installed
+        ones and return a dict with the catalog.
+        """
+        catalog = {
+            "runtimes": {},
+            "wine": {},
+            "proton": {},
+            "dxvk": {},
+            "vkd3d": {},
+            "winebridge": {},
+        }
+        components_available = {
+            "runtimes": self.__manager.runtimes_available,
+            "wine": self.__manager.runners_available,
+            "proton": self.__manager.runners_available,
+            "dxvk": self.__manager.dxvk_available,
+            "vkd3d": self.__manager.vkd3d_available,
+            "winebridge": self.__manager.winebridge_available,
+        }
+
+        index = self.__repo.catalog
+        if not isinstance(index, dict):
+            return catalog
+
+        for component in index.items():
+            """
+            For each component, append it to the corresponding
+            catalog and mark it as installed if it is.
+            """
+
+            if (
+                not isinstance(component[0], str)
+                or not component[0]
+                or not isinstance(component[1], dict)
+                or not isinstance(component[1].get("Category"), str)
+                or not isinstance(component[1].get("Channel"), str)
+            ):
+                continue
+            if not _component_matches_host(component[1]):
+                continue
+
+            if component[1].get("Category") == "runners":
+                if "soda" in component[0].lower() or "caffe" in component[0].lower():
+                    # Mitigation to avoid mcsoda from appearing on non MacOS systems
+                    if "mcsoda" in component[0].lower() and sys.platform != "darwin":
+                        continue
+                    if not is_glibc_min_available():
+                        logging.warning(
+                            f"{component[0]} was found but it requires "
+                            "glibc >= 2.32 and your system is running an older "
+                            "version. Use the Flatpak instead if you can't "
+                            "upgrade your system. This runner will be ignored, "
+                            "please keep in mind that RunExe and all our "
+                            "installers are only tested with Soda and Caffe runners."
+                        )
+                        continue
+
+                sub_category = component[1].get("Sub-category")
+                if sub_category not in ("wine", "proton"):
+                    continue
+                catalog[sub_category][component[0]] = component[1]
+                if component[0] in components_available[sub_category]:
+                    catalog[sub_category][component[0]]["Installed"] = True
+                else:
+                    catalog[sub_category][component[0]].pop("Installed", None)
+                    if getattr(self, "_ComponentManager__offline", False):
+                        catalog[sub_category][component[0]]["Cached"] = (
+                            self.is_component_cached(component[0])
+                        )
+
+                continue
+
+            category = component[1].get("Category")
+            if category not in catalog:
+                continue
+
+            catalog[category][component[0]] = component[1]
+            if component[0] in components_available[category]:
+                catalog[category][component[0]]["Installed"] = True
+            else:
+                catalog[category][component[0]].pop("Installed", None)
+                if getattr(self, "_ComponentManager__offline", False):
+                    catalog[category][component[0]]["Cached"] = (
+                        self.is_component_cached(component[0])
+                    )
+
+        return catalog
+
+    def is_component_cached(self, name: str) -> bool:
+        manifest = self.get_component(name)
+        if not isinstance(manifest, dict):
+            return False
+
+        file = _select_component_file(manifest)
+        if file is None:
+            return False
+        name = file.get("rename") or file.get("file_name")
+        return bool(
+            name
+            and is_cached_file(
+                name,
+                file.get("file_checksum", ""),
+                getattr(self, "_ComponentManager__checksum_cache", None),
+            )
+        )
+
+    def download(
+        self,
+        download_url: str,
+        file: str,
+        rename: str = "",
+        checksum: str = "",
+        func: Optional[TaskStreamUpdateHandler] = None,
+        cancel_event: Optional[Event] = None,
+        task: Optional[Task] = None,
+    ) -> Result:
+        """Download a component from the RunExe repository."""
+
+        # Check for missing RunExe paths before download
+        self.__manager.check_app_dirs()
+
+        # Register this file download task to TaskManager unless an existing task
+        # is provided by the caller.
+        external_task = task is not None and task.task_id is not None
+        if task is None:
+            task = Task(title=file, cancel_event=cancel_event)
+
+        if task.task_id is None:
+            task_id = TaskManager.add(task)
+        else:
+            task_id = task.task_id
+
+        update_func = task.stream_update if not func else func
+
+        if download_url.startswith("temp/"):
+            """
+            The caller is explicitly requesting a component from
+            the /temp directory. Nothing should be downloaded.
+            """
+            if not external_task:
+                TaskManager.remove(task_id)
+            return Result(True)
+
+        existing_file = rename if rename else file
+        temp_dest = os.path.join(Paths.temp, file)
+        just_downloaded = False
+
+        file_path = os.path.join(Paths.temp, existing_file)
+        if os.path.isfile(file_path):
+            """
+            Check if the file already exists in the /temp directory.
+            If it's a 0-byte empty file, remove it to allow a fresh download.
+            Otherwise, skip the download.
+            """
+            if os.path.getsize(file_path) == 0:
+                logging.warning(
+                    f"File [{existing_file}] is a 0-byte empty file. Removing to force re-download."
+                )
+                os.remove(file_path)
+            elif (
+                not checksum
+                or os.environ.get("RUNEXE_SKIP_CHECKSUM")
+                or FileUtils().get_checksum(file_path) == checksum.lower()
+            ):
+                logging.warning(
+                    f"File [{existing_file}] already exists in temp, skipping."
+                )
+                if not external_task:
+                    TaskManager.remove(task_id)
+                return Result(True)
+            else:
+                logging.warning(f"File [{existing_file}] is corrupted. Removing it.")
+                os.remove(file_path)
+
+        if not os.path.isfile(file_path):
+            """
+            The same file may already be in temp under a different case, since
+            dependencies reference it inconsistently (e.g. W2KSP4_EN.EXE vs
+            w2ksp4_en.exe). Reuse it instead of downloading it again, verifying
+            the checksum first when one is provided.
+            """
+            reuse = find_cached_file(
+                existing_file,
+                checksum,
+                getattr(self, "_ComponentManager__checksum_cache", None),
+            )
+            if reuse:
+                logging.info(
+                    f"Reusing already downloaded file for [{existing_file}] "
+                    f"from [{os.path.basename(reuse)}]."
+                )
+                shutil.copy(reuse, file_path)
+                if not external_task:
+                    TaskManager.remove(task_id)
+                return Result(True)
+
+        if getattr(self, "_ComponentManager__offline", False):
+            if not external_task:
+                TaskManager.remove(task_id)
+            return Result(False, message="File is not available in offline mode.")
+
+        if not os.path.isfile(file_path):
+            res = Downloader(
+                url=download_url,
+                file=temp_dest,
+                update_func=update_func,
+                cancel_event=cancel_event,
+            ).download()
+
+            if not res.ok:
+                if not external_task:
+                    TaskManager.remove(task_id)
+                return res
+
+            if not os.path.isfile(temp_dest):
+                if not external_task:
+                    TaskManager.remove(task_id)
+                return Result(False)
+
+            just_downloaded = True
+
+        file_path = os.path.join(Paths.temp, existing_file)
+        if rename and just_downloaded:
+            """Renaming the downloaded file if requested."""
+            logging.info(f"Renaming [{file}] to [{rename}].")
+            file_path = os.path.join(Paths.temp, rename)
+            os.rename(temp_dest, file_path)
+
+        if checksum and not os.environ.get("RUNEXE_SKIP_CHECKSUM"):
+            """
+            Compare the checksum of the downloaded file with the one
+            provided by the caller. If they don't match, remove the
+            file from the /temp directory, remove the entry from the
+            task manager and return False.
+            """
+            checksum = checksum.lower()
+            local_checksum = FileUtils().get_checksum(file_path)
+
+            if local_checksum and local_checksum != checksum:
+                logging.error(f"Downloaded file [{file}] looks corrupted.")
+                logging.error(
+                    f"Source cksum: [{checksum}] downloaded: [{local_checksum}]"
+                )
+                logging.error(f"Removing corrupted file [{file}].")
+                os.remove(file_path)
+                if not external_task:
+                    TaskManager.remove(task_id)
+                return Result(False)
+
+        if not external_task:
+            TaskManager.remove(task_id)
+        return Result(True)
+
+    @staticmethod
+    def extract(name: str, component: str, archive: str) -> bool:
+        """Extract a component from an archive."""
+
+        if component in ["runner", "runner:proton"]:
+            path = Paths.runners
+        elif component == "dxvk":
+            path = Paths.dxvk
+        elif component == "vkd3d":
+            path = Paths.vkd3d
+        elif component == "runtime":
+            path = Paths.runtimes
+        elif component == "winebridge":
+            path = Paths.winebridge
+        else:
+            logging.error(f"Unknown component [{component}].")
+            return False
+
+        root_dir = name
+        staging_path = None
+
+        try:
+            """
+            Try to extract the archive in the /temp directory.
+            If the extraction fails, remove the archive from the /temp
+            directory and return False. The common cause of a failed
+            extraction is that the archive is corrupted.
+            """
+            archive_path = os.path.join(Paths.temp, archive)
+            is_zip = zipfile.is_zipfile(archive_path)
+            if is_zip:
+                if not name or os.path.basename(name) != name:
+                    raise zipfile.BadZipFile("Invalid component name")
+                staging_path = tempfile.mkdtemp(prefix=f".{name}-", dir=path)
+                with zipfile.ZipFile(archive_path) as zipped:
+                    members = zipped.infolist()
+                    if not members:
+                        raise zipfile.BadZipFile("Archive is empty")
+                    extraction_path = os.path.abspath(staging_path)
+                    for member in members:
+                        member_path = member.filename
+                        parts = member_path.split("/")
+                        destination = os.path.abspath(
+                            os.path.join(staging_path, member_path)
+                        )
+                        if (
+                            not member_path
+                            or member_path.startswith("/")
+                            or ".." in parts
+                            or parts[0] != name
+                            or os.path.commonpath((extraction_path, destination))
+                            != extraction_path
+                            or stat.S_ISLNK(member.external_attr >> 16)
+                        ):
+                            raise zipfile.BadZipFile("Archive contains an invalid path")
+                    zipped.extractall(staging_path)
+
+                staged_root = os.path.join(staging_path, name)
+                if not os.path.isdir(staged_root):
+                    raise zipfile.BadZipFile("Archive root is not a directory")
+
+                destination = os.path.join(path, name)
+                if os.path.exists(destination):
+                    raise FileExistsError("Component already exists")
+                os.replace(staged_root, destination)
+                shutil.rmtree(staging_path, ignore_errors=True)
+                staging_path = None
+            else:
+                with tarfile.open(archive_path) as tar:
+                    root_dir = tar.getnames()[0]
+                    tar.extractall(path, filter=_component_tar_filter)
+        except (
+            OSError,
+            ValueError,
+            tarfile.TarError,
+            zipfile.BadZipFile,
+            EOFError,
+            IndexError,
+        ):
+            with contextlib.suppress(FileNotFoundError):
+                os.remove(os.path.join(Paths.temp, archive))
+            if staging_path:
+                with contextlib.suppress(FileNotFoundError):
+                    shutil.rmtree(staging_path)
+            else:
+                cleanup_path = os.path.abspath(os.path.join(path, root_dir))
+                extraction_path = os.path.abspath(path)
+                if (
+                    cleanup_path != extraction_path
+                    and os.path.commonpath((extraction_path, cleanup_path))
+                    == extraction_path
+                    and os.path.isdir(cleanup_path)
+                ):
+                    with contextlib.suppress(FileNotFoundError):
+                        shutil.rmtree(cleanup_path)
+
+            logging.error("Extraction failed! Archive ends earlier than expected.")
+            return False
+
+        archive_suffix = next(
+            (
+                suffix
+                for suffix in ("-x86_64", "_x86_64", "-aarch64", "_aarch64")
+                if root_dir.endswith(suffix)
+            ),
+            None,
+        )
+        if archive_suffix and root_dir != name:
+            try:
+                """
+                Remove an archive-only architecture suffix from the folder name.
+                Return False if a folder with the same name already exists.
+                """
+                root_dir = os.path.join(path, root_dir)
+                shutil.move(src=root_dir, dst=root_dir[: -len(archive_suffix)])
+            except (FileExistsError, shutil.Error):
+                logging.error("Extraction failed! Component already exists.")
+                return False
+        return True
+
+    @LockManager.lock(Locks.ComponentsInstall)  # avoid high resource usage
+    def install(
+        self,
+        component_type: str,
+        component_name: str,
+        func: Optional[TaskStreamUpdateHandler] = None,
+        cancel_event: Optional[Event] = None,
+    ):
+        """
+        This function is used to install a component. It automatically
+        gets the manifest from the given component and then calls the
+        download and extract functions.
+        """
+        manifest = self.get_component(component_name)
+
+        if not isinstance(manifest, dict):
+            return Result(False)
+
+        files = manifest.get("File")
+        if not isinstance(files, list) or not files:
+            return Result(False, message=f"Invalid manifest for {component_name}.")
+
+        logging.info(f"Installing component: [{component_name}].")
+        file = _select_component_file(manifest)
+        if file is None:
+            return Result(
+                False,
+                message=(
+                    f"Component {component_name} is not available for "
+                    f"{sys.platform}/{get_host_architecture()}."
+                ),
+            )
+        if (
+            not isinstance(file.get("url"), str)
+            or not isinstance(file.get("file_name"), str)
+            or not isinstance(file.get("rename", ""), str)
+            or not isinstance(file.get("file_checksum", ""), str)
+        ):
+            return Result(False, message=f"Invalid manifest for {component_name}.")
+
+        res = self.download(
+            download_url=file["url"],
+            file=file["file_name"],
+            rename=file.get("rename", ""),
+            checksum=file.get("file_checksum", ""),
+            func=func,
+            cancel_event=cancel_event,
+        )
+
+        if not res.ok:
+            """
+            If the download fails, execute the given func passing
+            failed=True as a parameter.
+            """
+            if func:
+                if res.message == "cancelled":
+                    func(status=Status.CANCELLED)
+                else:
+                    func(status=Status.FAILED)
+            return Result(False, message=res.message)
+
+        archive = file["file_name"]
+
+        if file.get("rename"):
+            """
+            If the component has a rename, rename the downloaded file
+            to the required name.
+            """
+            archive = file["rename"]
+
+        if not self.extract(component_name, component_type, archive):
+            if func:
+                func(status=Status.FAILED)
+            return Result(False, message="Component extraction failed.")
+
+        """
+        Execute Post Install if the component has it defined
+        in the manifest.
+        """
+        if "Post" in manifest:
+            print(f"Executing post install for [{component_name}].")
+
+            for post in manifest.get("Post", []):
+                if post["action"] == "rename":
+                    self.__post_rename(component_type, post)
+
+        """
+        Ask the manager to re-organize its components.
+        Note: I know that this is not the most efficient way to do this,
+        please give feedback if you know a better way to avoid this.
+        """
+        if component_type in ["runtime", "winebridge"]:
+            with contextlib.suppress(FileNotFoundError):
+                os.remove(os.path.join(Paths.temp, archive))
+
+        if component_type in ["runner", "runner:proton"]:
+            self.__manager.check_runners()
+
+        elif component_type == "dxvk":
+            self.__manager.check_dxvk()
+
+        elif component_type == "vkd3d":
+            self.__manager.check_vkd3d()
+
+        elif component_type == "runtime":
+            self.__manager.check_runtimes()
+
+        elif component_type == "winebridge":
+            self.__manager.check_winebridge()
+
+        self.__manager.organize_components()
+        logging.info(f"Component installed: {component_type} {component_name}", jn=True)
+
+        return Result(True)
+
+    @staticmethod
+    def __post_rename(component_type: str, post: dict):
+        source = post.get("source")
+        dest = post.get("dest")
+
+        if component_type in ["runner", "runner:proton"]:
+            path = Paths.runners
+        elif component_type == "dxvk":
+            path = Paths.dxvk
+        elif component_type == "vkd3d":
+            path = Paths.vkd3d
+        else:
+            logging.error(f"Unknown component type: {component_type}")
+            return
+
+        if (
+            source is not None
+            and dest is not None
+            and not os.path.isdir(os.path.join(path, dest))
+        ):
+            shutil.move(src=os.path.join(path, source), dst=os.path.join(path, dest))
+
+    def is_in_use(self, component_type: str, component_name: str):
+        capsules = self.__manager.local_capsules
+
+        if component_type in ["runner", "runner:proton"]:
+            return component_name in [b["Runner"] for _, b in capsules.items()]
+        if component_type == "dxvk":
+            return component_name in [b["DXVK"] for _, b in capsules.items()]
+        if component_type == "vkd3d":
+            return component_name in [b["VKD3D"] for _, b in capsules.items()]
+        if component_type in ["runtime", "winebridge"]:
+            return True
+        return False
+
+    def uninstall(self, component_type: str, component_name: str):
+        if self.is_in_use(component_type, component_name):
+            return Result(
+                False,
+                data={
+                    "message": f"Component in use and cannot be removed: {component_name}"
+                },
+            )
+
+        if (
+            component_type in ["runner", "runner:proton"]
+            and component_name in self.__manager.external_runners
+        ):
+            return Result(
+                False,
+                data={"message": "External runners cannot be removed from RunExe."},
+            )
+
+        if component_type in ["runner", "runner:proton"]:
+            path = ManagerUtils.get_runner_path(component_name)
+
+        elif component_type == "dxvk":
+            path = ManagerUtils.get_dxvk_path(component_name)
+
+        elif component_type == "vkd3d":
+            path = ManagerUtils.get_vkd3d_path(component_name)
+
+
+        else:
+            logging.error(f"Unknown component type: {component_type}")
+            return Result(False, data={"message": "Unknown component type."})
+
+        if not os.path.isdir(path):
+            return Result(False, data={"message": "Component not installed."})
+
+        try:
+            shutil.rmtree(path)
+        except Exception as e:
+            logging.error(f"Failed to uninstall component: {component_name}, {e}")
+            return Result(False, data={"message": "Failed to uninstall component."})
+
+        """
+        Ask the manager to re-organize its components.
+        Note: I know that this is not the most efficient way to do this,
+        please give feedback if you know a better way to avoid this.
+        """
+        if component_type in ["runner", "runner:proton"]:
+            self.__manager.check_runners()
+
+        elif component_type == "dxvk":
+            self.__manager.check_dxvk()
+
+        elif component_type == "vkd3d":
+            self.__manager.check_vkd3d()
+
+        elif component_type == "runtime":
+            self.__manager.check_runtimes()
+
+        elif component_type == "winebridge":
+            self.__manager.check_winebridge()
+
+        self.__manager.organize_components()
+        logging.info(f"Component uninstalled: {component_type} {component_name}")
+
+        return Result(True)

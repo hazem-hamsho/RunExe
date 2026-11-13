@@ -1,0 +1,39 @@
+pkgdatadir = join_paths(get_option('prefix'), get_option('datadir'), meson.project_name())
+frontenddir = join_paths(pkgdatadir, 'runexe/frontend')
+
+subdir('ui')
+subdir('utils')
+subdir('views')
+subdir('widgets')
+subdir('windows')
+subdir('cli')
+
+configure_file(
+  input: 'runexe.py',
+  output: 'runexe',
+  configuration: conf,
+  install: true,
+  install_dir: get_option('bindir'),
+  install_mode: ['rwxr-xr-x']
+)
+
+params_file = configure_file(
+    input:  'params.py',
+    output:  'params.py',
+    configuration: conf
+)
+
+fs = import('fs')
+
+if not fs.is_file('/' + '.flatpak-info')
+  error('file does not exist')
+endif
+
+runexe_sources = [
+  '__init__.py',
+  'main.py',
+  'operation.py',
+  params_file,
+]
+
+install_data(runexe_sources, install_dir: frontenddir)

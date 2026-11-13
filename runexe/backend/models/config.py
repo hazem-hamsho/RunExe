@@ -1,0 +1,321 @@
+import contextlib
+import inspect
+import logging
+import os
+import tempfile
+from dataclasses import asdict, dataclass, field, is_dataclass, replace
+from io import IOBase
+from typing import IO, Container, Dict, ItemsView, List, Optional
+
+from runexe.backend.models.result import Result
+from runexe.backend.utils import yaml
+
+_LEGACY_DEFAULT_INHERITED_ENVIRONMENT = [
+    "DBUS_SESSION_BUS_ADDRESS",
+    "DISPLAY",
+    "HOME",
+    "LANG",
+    "LC_ALL",
+    "LC_CTYPE",
+    "LC_MESSAGES",
+    "MANGOHUD_CONFIG",
+    "PATH",
+    "PULSE_SERVER",
+    "TERM",
+    "TZ",
+    "USER",
+    "WAYLAND_DISPLAY",
+    "XAUTHORITY",
+    "XDG_RUNTIME_DIR",
+]
+_LEGACY_DEFAULT_INHERITED_ENVIRONMENTS = [
+    [
+        name
+        for name in _LEGACY_DEFAULT_INHERITED_ENVIRONMENT
+        if name != "MANGOHUD_CONFIG"
+    ],
+    _LEGACY_DEFAULT_INHERITED_ENVIRONMENT,
+]
+_LEGACY_DEFAULT_INHERITED_ENVIRONMENTS += [
+    [*environment, *extra]
+    for environment in tuple(_LEGACY_DEFAULT_INHERITED_ENVIRONMENTS)
+    for extra in (["XMODIFIERS"], ["XMODIFIERS", "XCURSOR_SIZE"])
+]
+
+# class name prefix "Capsule" is a workaround for:
+# https://github.com/python/cpython/issues/90104
+
+
+# noinspection PyDataclass
+class DictCompatMixIn:
+    @staticmethod
+    def yaml_serialize_handler(dumper, data):
+        dict_repr = data.to_dict()
+        return dumper.represent_dict(dict_repr)
+
+    @staticmethod
+    def json_serialize_handler(data):
+        return data.to_dict()
+
+    def keys(self):
+        return self.__dict__.keys()
+
+    def get(self, key, __default=None):
+        return getattr(self, key, __default)
+
+    def copy(self):
+        return replace(self)
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+    def items(self) -> ItemsView[str, Container]:
+        return self.to_dict().items()
+
+    def __iter__(self):
+        """handle `for x in obj` syntax"""
+        return iter(self.__dict__)
+
+    def __getitem__(self, item):
+        """handle `obj[x]` syntax"""
+        return getattr(self, item)
+
+    def __delitem__(self, key):
+        """handle `del obj[x]` syntax"""
+        return delattr(self, key)
+
+    def __setitem__(self, key, value):
+        """handle `obj[x] = y` syntax"""
+        return setattr(self, key, value)
+
+
+@dataclass
+class CapsuleSandboxParams(DictCompatMixIn):
+    share_net: bool = False
+    share_sound: bool = False
+    share_input: bool = False
+    share_usb: bool = False
+    # share_host_ro: bool = True  # TODO: implement, requires the RunExe runtime (next) for a minimal sandbox
+    # share_gpu: bool = True  # TODO: implement
+    # share_paths_ro: List[str] = field(default_factory=lambda: [])  # TODO: implement
+    # share_paths_rw: List[str] = field(default_factory=lambda: [])  # TODO: implement
+
+
+@dataclass
+class CapsuleParams(DictCompatMixIn):
+    dxvk: bool = False
+    vkd3d: bool = False
+    sync: str = "wine"
+    hidraw_devices: list[str] = field(default_factory=list)
+    custom_dpi: int = 96
+    dpi_scaling: str = "default"
+    renderer: str = "gl"
+    discrete_gpu: bool = False
+    virtual_desktop: bool = False
+    virtual_desktop_res: str = "1280x720"
+    wayland: bool = False
+    pulseaudio_latency: bool = False
+    fullscreen_capture: bool = False
+    take_focus: bool = False
+    mouse_warp: bool = True
+    decorated: bool = True
+    fixme_logs: bool = False
+    use_runtime: bool = False
+    winebridge: bool = False
+    sandbox: bool = False
+    versioning_compression: bool = False
+    versioning_automatic: bool = False
+    versioning_exclusion_patterns: bool = False
+    adaptive_launch: bool = False
+    eagle_tracing: bool = False
+
+
+@dataclass
+class CapsuleConfig(DictCompatMixIn):
+    Name: str = ""
+    Notes: str = ""
+    Arch: str = "win64"  # Enum, Use runexe.backend.models.enum.Arch
+    Windows: str = "win10"
+    Runner: str = ""  # runner name, "sys-*", or any installed runner name
+    WorkingDir: str = ""
+    DXVK: str = ""
+    VKD3D: str = ""
+    Path: str = ""
+    Custom_Path: str = ""
+    Environment: str = ""  # Enum: "Application", "Custom"
+    Creation_Date: str = ""
+    Update_Date: str = ""
+    Versioning: bool = False
+    Versioning_Exclusion_Patterns: list = field(default_factory=list)
+    State: int = 0
+    Parameters: CapsuleParams = field(default_factory=CapsuleParams)
+    Sandbox: CapsuleSandboxParams = field(default_factory=CapsuleSandboxParams)
+    Limit_System_Environment: bool = False
+    Environment_Variables: dict = field(default_factory=dict)
+    Inherited_Environment_Variables: List[str] = field(default_factory=list)
+    Installed_Dependencies: List[str] = field(default_factory=list)
+    DLL_Overrides: dict = field(default_factory=dict)
+    External_Programs: Dict[str, dict] = field(default_factory=dict)
+    Uninstallers: dict = field(default_factory=dict)
+    Registry_Rules: list = field(default_factory=list)
+    session_arguments: str = ""
+    run_in_terminal: bool = False
+    Language: str = "sys"  # "sys", "any valid language code"
+    Winebridge: bool = False
+
+    # Section - Not Existed in Sample Config but used in code
+    data: dict = field(default_factory=dict)  # possible keys: "config", ...
+
+    def dump(self, file: str | IO, mode="w", encoding=None, indent=4) -> Result:
+        """
+        Dump config to file
+
+        :param file: filepath str or IO-like object.
+        :param mode: when param 'file' is filepath, use this mode to open file, otherwise ignored.
+               default is 'w'
+        :param encoding: file content encoding, default is None(Decide by Python IO)
+        :param indent: file indent width, default is 4
+        """
+        try:
+            if isinstance(file, IOBase):
+                yaml.dump(self.to_dict(), file, indent=indent, encoding=encoding)
+            else:
+                directory = os.path.dirname(os.path.abspath(file))
+                fd, tmp_path = tempfile.mkstemp(
+                    dir=directory, prefix=".capsule-", suffix=".tmp"
+                )
+                try:
+                    with os.fdopen(fd, mode=mode) as f:
+                        yaml.dump(
+                            self.to_dict(), f, indent=indent, encoding=encoding
+                        )
+                        f.flush()
+                        os.fsync(f.fileno())
+                    os.replace(tmp_path, file)
+                except BaseException:
+                    with contextlib.suppress(OSError):
+                        os.remove(tmp_path)
+                    raise
+            return Result(True)
+        except Exception as e:
+            logging.exception(e)
+            return Result(False, message=str(e))
+
+    @classmethod
+    def load(cls, file: str | IO, mode="r") -> Result[Optional["CapsuleConfig"]]:
+        """
+        Load config from file
+
+        :param file: filepath str or IO-like object.
+        :param mode: when param 'file' is filepath, use this mode to open file, otherwise ignored.
+               default is 'r'
+        """
+        try:
+            if isinstance(file, IOBase):
+                data = yaml.load(file)
+            else:
+                if not os.path.exists(file):
+                    logging.info("Config file %s not found, skipping load", file)
+                    return Result(False, message="Config file not exists")
+
+                with open(file, mode=mode) as f:
+                    data = yaml.load(f)
+            if not isinstance(data, dict):
+                raise TypeError(
+                    "Config data should be dict type, but it was %s" % type(data)
+                )
+
+            filled = cls._fill_with(data)
+            if not filled.status:
+                raise ValueError("Invalid Config data (%s)" % filled.message)
+
+            return Result(True, data=filled.data)
+        except Exception as e:
+            logging.exception(e)
+            return Result(False, message=str(e))
+
+    @classmethod
+    def _fill_with(cls, data: dict) -> Result[Optional["CapsuleConfig"]]:
+        """fill with dict"""
+        try:
+            data = data.copy()
+            data = cls._fix(data)
+
+            params = CapsuleParams(**data.pop("Parameters", {}))
+            sandbox_param = CapsuleSandboxParams(**data.pop("Sandbox", {}))
+
+            return Result(
+                True,
+                data=CapsuleConfig(Parameters=params, Sandbox=sandbox_param, **data),
+            )
+        except Exception as e:
+            logging.exception(e)
+            return Result(False, message=repr(e))
+
+    @classmethod
+    def _fix(cls, data: dict) -> dict:
+        """fix config data and return"""
+        data = data.copy()
+
+        # ensure Parameters field
+        if "Parameters" not in data:
+            data["Parameters"] = {}
+        if "Sandbox" not in data:
+            data["Sandbox"] = {}
+
+        inherited_environment = data.get("Inherited_Environment_Variables")
+        if (
+            data.get("Limit_System_Environment")
+            and inherited_environment in _LEGACY_DEFAULT_INHERITED_ENVIRONMENTS
+        ):
+            missing_defaults = [
+                name
+                for name in ("XMODIFIERS", "XDG_CONFIG_HOME")
+                if name not in inherited_environment
+            ]
+            if missing_defaults:
+                logging.warning(
+                    "Adding inherited environment defaults: %s",
+                    ", ".join(missing_defaults),
+                )
+                data["Inherited_Environment_Variables"] = [
+                    *inherited_environment,
+                    *missing_defaults,
+                ]
+
+        data["Parameters"].pop("show_component_updates", None)
+
+        # migrate typo fields
+
+        # cleanup unexpected fields
+        data = cls._filter(data)
+
+        return data
+
+    @classmethod
+    def _filter(cls, data: dict, clazz: object = None) -> dict:
+        """filter unexpected dict fields recursively for dataclasses and return"""
+        if not isinstance(data, dict):
+            return {}
+        if not clazz:
+            clazz = cls
+
+        new_data = {}
+        expected_fields = inspect.signature(clazz).parameters
+
+        for k, v in data.items():
+            if k in expected_fields:
+                field_type = expected_fields[k].annotation
+                if is_dataclass(field_type):
+                    v = cls._filter(v, field_type)
+                new_data[k] = v
+            else:
+                logging.warning(
+                    "Skipping unexpected config '%s' in %s" % (k, clazz.__name__)
+                )
+
+        return new_data
+
+
+# Register custom YAML serializer for CapsuleConfig
+yaml.register_serializer(CapsuleConfig)

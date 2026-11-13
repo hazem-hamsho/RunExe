@@ -1,0 +1,28 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DependenciesCheckDialog: Adw.Window {
+  modal: true;
+  deletable: true;
+  resizable: false;
+  default-width: 550;
+  default-height: 500;
+
+  Adw.Clamp {
+    Adw.StatusPage {
+      icon-name: "dialog-warning-symbolic";
+      title: _("Incomplete package");
+      description: _("This version of RunExe does not seem to provide all the necessary core dependencies, please contact the package maintainer or use an official version.");
+
+      Button btn_quit {
+        halign: center;
+        label: _("Quit");
+
+        styles [
+          "pill",
+          "suggested-action",
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,598 @@
+using Gtk 4.0;
+using Adw 1;
+
+Popover pop_context {
+  styles [
+    "menu",
+  ]
+
+  Box {
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+    orientation: vertical;
+
+    $GtkModelButton btn_flatpak_doc {
+      text: _("Troubleshooting");
+      tooltip-text: "https://github.com/hazem-hamsho/RunExe/blob/main/docs/flatpak/black-screen-or-silent-crash.md";
+    }
+
+    Separator {}
+
+    $GtkModelButton btn_duplicate {
+      text: _("Duplicate Capsule…");
+    }
+
+    $GtkModelButton btn_move {
+      text: _("Move Capsule...");
+    }
+
+    $GtkModelButton btn_backup_full {
+      tooltip-text: _("This is the complete archive of your capsule, including personal files.");
+      text: _("Full Backup…");
+    }
+
+    $GtkModelButton btn_backup_config {
+      tooltip-text: _("This is just the capsule configuration, it\'s perfect if you want to create a new one but without personal files.");
+      text: _("Export Configuration…");
+    }
+
+    Separator {}
+
+    $GtkModelButton btn_toggle_removed {
+      text: _("Show Hidden Programs");
+    }
+
+    $GtkModelButton btn_update {
+      text: _("Search for new programs");
+    }
+
+    Separator {}
+
+    $GtkModelButton btn_delete {
+      text: _("Delete Capsule…");
+    }
+  }
+}
+
+Box actions {
+  spacing: 6;
+
+  Box box_backup_progress {
+    visible: false;
+    spacing: 4;
+    tooltip-text: _("Backup in progress…");
+
+    Spinner spinner_backup {}
+
+    Label label_backup_progress {
+      styles ["dim-label", "caption"]
+    }
+  }
+
+  MenuButton {
+    always-show-arrow: true;
+    popover: pop_power;
+    icon-name: "system-shutdown-symbolic";
+  }
+
+  MenuButton {
+    popover: pop_context;
+    icon-name: "view-more-symbolic";
+    tooltip-text: _("Secondary Menu");
+  }
+}
+
+Popover pop_power {
+  styles [
+    "menu",
+  ]
+
+  Box {
+    orientation: vertical;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+
+    $GtkModelButton btn_forcestop {
+      text: _("Force Stop all Processes");
+    }
+
+    $GtkModelButton btn_nv_forcestop {
+      text: _("Force Stop all Processes (Native method)");
+    }
+
+    $GtkModelButton btn_shutdown {
+      text: _("Shutdown");
+      tooltip-text: _("Simulate a Windows system shutdown");
+    }
+
+    $GtkModelButton btn_reboot {
+      text: _("Reboot");
+      tooltip-text: _("Simulate a Windows system reboot");
+    }
+  }
+}
+
+Popover popover_exec_settings {
+  width-request: 300;
+
+  Box {
+    orientation: vertical;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+
+    Label {
+      halign: start;
+      margin-bottom: 12;
+      label: _("Launch Options");
+
+      styles [
+        "heading"
+      ]
+    }
+
+    Entry exec_arguments {}
+
+    Separator {
+      margin-top: 12;
+      margin-bottom: 12;
+    }
+
+    CheckButton exec_terminal {
+      Label {
+        label: _("Run in Terminal");
+        margin-start: 6;
+      }
+    }
+
+    CheckButton exec_winebridge {
+      Label {
+        label: _("Run using Winebridge");
+        margin-start: 6;
+      }
+    }
+  }
+}
+
+template $DetailsCapsule: Adw.PreferencesPage {
+  Overlay drop_overlay {
+    visible: false;
+
+    [overlay]
+    Adw.StatusPage {
+      icon-name: "system-run-symbolic";
+      title: _("Drop files to execute them");
+
+      styles [
+        "dragndrop_overlay",
+      ]
+    }
+  }
+
+  Adw.PreferencesGroup {
+    Adw.Clamp {
+      maximum-size: 720;
+
+      Box {
+        orientation: vertical;
+        spacing: 12;
+
+        Label label_name {
+          halign: center;
+          justify: center;
+          wrap: true;
+          max-width-chars: 30;
+          label: _("My capsule");
+          wrap-mode: word_char;
+          use-markup: false;
+
+          styles [
+            "title-1",
+          ]
+        }
+
+        Box {
+          spacing: 6;
+          halign: center;
+
+          Box {
+            spacing: 6;
+
+            styles [
+              "tag",
+            ]
+
+            Label label_arch {
+              label: _("Win64");
+
+              styles [
+                "heading",
+              ]
+            }
+          }
+
+          Box {
+            spacing: 6;
+
+            styles [
+              "tag",
+            ]
+
+            Label label_environment {
+              label: _("Environment");
+
+              styles [
+                "heading",
+              ]
+            }
+          }
+
+          Box {
+            spacing: 6;
+
+            styles [
+              "tag",
+            ]
+
+            Image img_runner {
+              visible: false;
+              pixel-size: 18;
+            }
+
+            Label label_runner {
+              label: _("Runner");
+
+              styles [
+                "heading",
+              ]
+            }
+          }
+
+          Label dot_versioning {
+            label: "·";
+          }
+
+          Button btn_versioning_badge {
+            tooltip-text: _("View snapshots");
+            halign: center;
+            valign: center;
+
+            styles [
+              "tag",
+              "tag-versioning",
+              "flat",
+            ]
+
+            Box {
+              spacing: 6;
+
+              Image {
+                icon-name: "view-wrapped-symbolic";
+              }
+
+              Label label_state {
+                label: "main";
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  Adw.PreferencesGroup {
+    title: _("Quick actions");
+
+    Adw.ActionRow {
+      activatable: false;
+      focusable: false;
+      title: _("Launch executable");
+      subtitle: _("Run a program now or adjust its launch options.");
+
+      [suffix]
+      MenuButton btn_exec_settings {
+        valign: center;
+        icon-name: "applications-system-symbolic";
+        popover: popover_exec_settings;
+
+        styles [
+          "flat",
+        ]
+      }
+
+      [suffix]
+      Button btn_execute {
+        valign: center;
+
+        Box {
+          spacing: 6;
+
+          Image {
+            icon-name: "media-playback-start-symbolic";
+          }
+
+          Label {
+            label: _("Run Executable…");
+          }
+        }
+      }
+    }
+
+    Adw.ActionRow {
+      activatable: false;
+      focusable: false;
+      title: _("Analyze with Eagle (Beta)");
+      subtitle: _("Eagle will extract and analyze as much details as possible of an executable to provide you with a compatibility report.");
+
+      [suffix]
+      Button btn_eagle {
+        valign: center;
+
+        Box {
+          spacing: 6;
+
+          Image {
+            icon-name: "io.github.runexe.eagle-symbolic";
+          }
+
+          Label {
+            label: _("Analyse…");
+          }
+        }
+      }
+    }
+
+    Adw.ActionRow {
+      activatable: false;
+      focusable: false;
+      title: _("Browse C:/ drive");
+      subtitle: _("Browse the files of this capsule.");
+
+      [suffix]
+      Button btn_browse {
+        valign: center;
+
+        Box {
+          spacing: 6;
+
+          Image {
+            icon-name: "document-open-symbolic";
+          }
+
+          Label {
+            label: _("Browse");
+          }
+        }
+      }
+    }
+  }
+
+  Adw.PreferencesGroup group_programs {
+    title: _("Programs");
+
+    Adw.ActionRow row_no_programs {
+      subtitle: _("Click \"Run Executable…\" to run an executable, \"Add Shortcuts…\" to add an executable to the Programs list, or \"Install Programs…\" to install programs curated by the community.");
+    }
+
+    Adw.PreferencesRow bottom_bar {
+      activatable: false;
+      focusable: false;
+
+      Box {
+        Button add_shortcuts {
+          hexpand: true;
+
+          Box {
+            halign: center;
+
+            Image {
+              icon-name: "list-add-symbolic";
+            }
+
+            Separator {
+              styles [
+                "spacer"
+              ]
+            }
+
+            Label {
+              label: _("Add Shortcuts…");
+            }
+          }
+
+          styles [
+            "flat"
+          ]
+        }
+
+        Separator {}
+
+        Button install_programs {
+          hexpand: true;
+
+          Box {
+            halign: center;
+
+            Image {
+              icon-name: "folder-download-symbolic";
+            }
+
+            Separator {
+              styles [
+                "spacer"
+              ]
+            }
+
+            Label {
+              label: _("Install Programs…");
+            }
+          }
+
+          styles [
+            "flat"
+          ]
+        }
+
+        styles [
+          "linked"
+        ]
+      }
+
+      styles [
+        "bottom-bar"
+      ]
+    }
+  }
+
+  Adw.PreferencesGroup group_updates {
+    title: _("Updates");
+  }
+
+  Adw.PreferencesGroup group_options {
+    title: _("Options");
+
+    Adw.ActionRow row_preferences {
+      activatable: true;
+      title: _("Settings");
+      subtitle: _("Configure capsule settings.");
+
+      Image {
+        icon-name: "go-next-symbolic";
+      }
+    }
+
+    Adw.ActionRow row_dependencies {
+      activatable: true;
+      title: _("Dependencies");
+      subtitle: _("Install dependencies for programs.");
+
+      Image {
+        icon-name: "go-next-symbolic";
+      }
+    }
+
+    Adw.ActionRow row_registry_rules {
+      activatable: true;
+      title: _("Registry Rules");
+      subtitle: _("Manage reusable registry tweaks.");
+
+      Image {
+        icon-name: "go-next-symbolic";
+      }
+    }
+
+    Adw.ActionRow row_snapshots {
+      activatable: true;
+      title: _("Snapshots");
+      subtitle: _("Create and manage capsule states.");
+
+      [suffix]
+      Button btn_snapshots_settings {
+        valign: center;
+        icon-name: "emblem-system-symbolic";
+        styles [ "flat" ]
+      }
+
+      Image {
+        icon-name: "go-next-symbolic";
+      }
+    }
+
+    Adw.ActionRow row_taskmanager {
+      activatable: true;
+      title: _("Task Manager");
+      subtitle: _("Manage running programs.");
+
+      Image {
+        icon-name: "go-next-symbolic";
+      }
+    }
+  }
+
+  Adw.PreferencesGroup group_utilities {
+    title: _("Tools");
+
+    Adw.ActionRow row_cmd {
+      activatable: true;
+      title: _("Command Line");
+      subtitle: _("Run commands inside the Capsule.");
+
+      Image {
+        icon-name: "external-link-symbolic";
+      }
+    }
+
+    Adw.ActionRow row_regedit {
+      activatable: true;
+      title: _("Registry Editor");
+      subtitle: _("Edit the internal registry.");
+
+      Image {
+        icon-name: "external-link-symbolic";
+      }
+    }
+
+    Adw.ExpanderRow {
+      title: _("Legacy Wine Tools");
+
+      Adw.ActionRow row_explorer {
+        activatable: true;
+        title: _("Explorer");
+
+        Image {
+          icon-name: "external-link-symbolic";
+        }
+      }
+
+      Adw.ActionRow row_taskmanager_legacy {
+        activatable: true;
+        title: _("Task Manager");
+
+        Image {
+          icon-name: "external-link-symbolic";
+        }
+      }
+
+      Adw.ActionRow row_debug {
+        activatable: true;
+        title: _("Debugger");
+
+        Image {
+          icon-name: "external-link-symbolic";
+        }
+      }
+
+      Adw.ActionRow row_winecfg {
+        activatable: true;
+        title: _("Configuration");
+
+        Image {
+          icon-name: "external-link-symbolic";
+        }
+      }
+
+      Adw.ActionRow row_uninstaller {
+        activatable: true;
+        title: _("Uninstaller");
+
+        Image {
+          icon-name: "external-link-symbolic";
+        }
+      }
+
+      Adw.ActionRow row_controlpanel {
+        activatable: true;
+        title: _("Control Panel");
+
+        Image {
+          icon-name: "external-link-symbolic";
+        }
+      }
+    }
+  }
+}

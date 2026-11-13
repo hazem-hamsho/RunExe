@@ -1,0 +1,71 @@
+using Gtk 4.0;
+using Adw 1;
+
+Popover pop_order {
+  styles [
+    "menu",
+  ]
+
+  Box {
+    orientation: vertical;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+
+    $GtkModelButton button_move_top {
+      text: _("Move to Top");
+    }
+
+    $GtkModelButton button_move_up {
+      text: _("Move Up");
+    }
+
+    $GtkModelButton button_move_down {
+      text: _("Move Down");
+    }
+
+    $GtkModelButton button_move_bottom {
+      text: _("Move to Bottom");
+    }
+  }
+}
+
+template $RunExeCapsuleRow: Adw.ActionRow {
+  activatable: true;
+  use-markup: false;
+
+  Adw.WrapBox wrap_box {
+    valign: center;
+
+    styles [
+      "tag",
+      "caption",
+    ]
+  }
+
+  Button button_run {
+    halign: center;
+    valign: center;
+    icon-name: "system-run-symbolic";
+
+    styles [
+      "flat",
+    ]
+  }
+
+  MenuButton button_order {
+    valign: center;
+    popover: pop_order;
+    icon-name: "view-more-symbolic";
+    tooltip-text: _("Change Capsule Order");
+
+    styles [
+      "flat",
+    ]
+  }
+
+  Image {
+    icon-name: "go-next-symbolic";
+  }
+}

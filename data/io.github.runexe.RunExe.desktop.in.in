@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=@APP_NAME@
+Comment=Run Windows software
+Icon=@APP_ID@
+Exec=capsules %u
+TryExec=capsules
+Terminal=false
+Type=Application
+Categories=Utility;Game;Graphics;3DGraphics;Emulator;GNOME;GTK;
+StartupNotify=true
+StartupWMClass=capsules
+MimeType=x-scheme-handler/capsules;x-scheme-handler/ms-appx-web;application/x-ms-dos-executable;application/x-msi;application/x-ms-shortcut;application/x-wine-extension-msp;
+Keywords=wine;windows;exe;emulate;emulator;
+X-GNOME-UsesNotifications=true

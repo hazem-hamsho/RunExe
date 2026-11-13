@@ -1,0 +1,39 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $RenameDialog: Adw.Window {
+  modal: true;
+  deletable: false;
+  default-width: 550;
+  title: _("Rename");
+
+  Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      [start]
+      Button btn_cancel {
+        label: _("Cancel");
+      }
+
+      [end]
+      Button btn_save {
+        label: _("Save");
+
+        styles [
+          "suggested-action",
+        ]
+      }
+    }
+
+    Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        description: _("Choose a new name for the selected program.");
+
+        Adw.EntryRow entry_name {
+          title: _("New Name");
+        }
+      }
+    }
+  }
+}

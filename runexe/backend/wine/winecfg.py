@@ -1,0 +1,51 @@
+import os
+
+from runexe.backend.logger import Logger
+from runexe.backend.models.result import Result
+from runexe.backend.wine.catalogs import win_versions
+from runexe.backend.wine.wineprogram import WineProgram
+from runexe.backend.wine.winedbg import WineDbg
+from runexe.backend.wine.wineboot import WineBoot
+
+logging = Logger()
+
+
+class WineCfg(WineProgram):
+    program = "Wine Configuration"
+    command = "winecfg"
+
+    def get_windows_version(self):
+        result = self.launch(
+            args="-v", communicate=True, capture_stderr=True, action_name="get_windows_version"
+        )
+        if not result.ok:
+            return result
+        lines = result.data.splitlines() if isinstance(result.data, str) else ()
+        versions = {line.strip() for line in lines if line.strip() in win_versions}
+        if len(versions) != 1:
+            return Result(False, message="Cannot determine the current Windows version.")
+        result.data = versions.pop()
+        return result
+
+    def set_windows_version(self, version):
+        logging.info(f"Setting Windows version to {version}")
+
+        winedbg = WineDbg(self.config)
+        wineboot = WineBoot(self.config)
+
+        wineboot.kill()
+
+        res = self.launch(
+            args=f"-v {version}",
+            communicate=True,
+            environment={
+                "DISPLAY": os.environ.get("DISPLAY", ":0"),
+                "WAYLAND_DISPLAY": os.environ.get("WAYLAND_DISPLAY", ""),
+            },
+            action_name="set_windows_version",
+        )
+
+        winedbg.wait_for_process("winecfg")
+        wineboot.restart()
+
+        return res

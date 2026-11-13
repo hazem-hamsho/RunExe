@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <id>@APP_ID@</id>
+  <launchable type="desktop-id">@APP_ID@.desktop</launchable>
+  <name>RunExe</name>
+  <summary>Run Windows software</summary>
+  <developer id="@DEVELOPER_ID@">
+    <name translate="no">hazem-hamsho</name>
+  </developer>
+  <categories>
+    <category>Utility</category>
+    <category>Game</category>
+    <category>Graphics</category>
+    <category>3DGraphics</category>
+    <category>Emulator</category>
+    <category>GNOME</category>
+    <category>GTK</category>
+  </categories>
+  <branding>
+    <color type="primary" scheme_preference="light">#f4c8cb</color>
+    <color type="primary" scheme_preference="dark">#892119</color>
+  </branding>
+  <description>
+    <p>RunExe lets you run Windows software on Linux, such as applications and tools. It introduces a workflow that helps you organize by categorizing each software to your liking. RunExe provides several tools and integrations to help you manage and optimize your applications.</p>
+    <p>Features:</p>
+    <ul>
+      <li>Use pre-configured environments as a base</li>
+      <li>Change runners for any capsule</li>
+      <li>Repair in case software or capsule is broken</li>
+      <li>Install various known dependencies</li>
+      <li>Integrated task manager to manage and monitor processes</li>
+      <li>Backup and restore</li>
+    </ul>
+  </description>
+  <provides>
+    <mediatype>application/x-ms-dos-executable</mediatype>
+    <mediatype>application/x-msi</mediatype>
+    <mediatype>application/x-ms-shortcut</mediatype>
+    <mediatype>application/x-wine-extension-msp</mediatype>
+  </provides>
+  <translation type="gettext">io.github.runexe.RunExe</translation>
+  <content_rating type="oars-1.1"/>
+  <url type="homepage">https://github.com/hazem-hamsho/RunExe</url>
+  <url type="bugtracker">https://github.com/hazem-hamsho/RunExe/issues</url>
+  <url type="help">https://github.com/hazem-hamsho/RunExe/tree/main/docs</url>
+  <url type="vcs-browser">https://github.com/hazem-hamsho/RunExe</url>
+  <url type="contribute">https://github.com/hazem-hamsho/RunExe/blob/main/CONTRIBUTING.md</url>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+    <control>touch</control>
+  </recommends>
+  <requires>
+    <display_length compare="ge">768</display_length>
+  </requires>
+  <releases>
+    <release version="1.0" date="2026-11-13">
+      <description translate="no">
+        <p>First release of RunExe.</p>
+      </description>
+    </release>
+  </releases>
+</component>

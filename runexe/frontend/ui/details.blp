@@ -1,0 +1,103 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $Details: Adw.Bin {
+  Adw.Leaflet leaflet {
+    can-navigate-back: true;
+    can-unfold: false;
+    hexpand: true;
+
+    Box {
+      orientation: vertical;
+
+      Adw.HeaderBar sidebar_headerbar {
+        show-end-title-buttons: false;
+
+        title-widget: Adw.WindowTitle sidebar_title {
+          title: _("Details");
+        };
+
+        [start]
+        Button btn_back {
+          icon-name: "go-previous-symbolic";
+          tooltip-text: _("Go Back");
+        }
+
+        [end]
+        Box default_actions {}
+      }
+
+      Box default_view {}
+    }
+
+    Adw.LeafletPage {
+      navigatable: false;
+
+      child: Separator panel_separator {
+        orientation: vertical;
+
+        styles [
+          "sidebar",
+        ]
+      };
+    }
+
+    Box content {
+      orientation: vertical;
+
+      Adw.HeaderBar content_headerbar {
+        show-start-title-buttons: false;
+
+        title-widget: Adw.WindowTitle content_title {};
+
+        [start]
+        Button btn_back_sidebar {
+          icon-name: "go-previous-symbolic";
+          tooltip-text: _("Go Back");
+          visible: false;
+        }
+
+        [end]
+        Box box_actions {}
+
+        [end]
+        MenuButton btn_operations {
+          visible: false;
+          tooltip-text: _("Operations");
+          popover: pop_tasks;
+
+          Spinner spinner_tasks {}
+
+          styles [
+            "flat",
+          ]
+        }
+      }
+
+      Stack stack_capsule {
+        transition-type: crossfade;
+        hexpand: true;
+        vexpand: true;
+      }
+    }
+  }
+}
+
+Popover pop_tasks {
+  Box {
+    orientation: vertical;
+    spacing: 3;
+
+    Box {
+      orientation: vertical;
+
+      ListBox list_tasks {
+        selection-mode: none;
+
+        styles [
+          "content",
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $TaskEntry: Adw.ActionRow {
+  Box {
+    spacing: 10;
+
+    Spinner spinner_task {
+      halign: center;
+      valign: center;
+    }
+
+    Label label_task_status {
+      visible: false;
+      label: "n/a";
+      width-chars: 5;
+    }
+
+    Button btn_cancel {
+      tooltip-text: _("Cancel task");
+      halign: center;
+      valign: center;
+
+      Image {
+        icon-name: "process-stop-symbolic";
+      }
+
+      styles [
+        "circular",
+        "image-button",
+      ]
+    }
+  }
+
+  styles [
+    "message-entry",
+  ]
+}

@@ -1,0 +1,173 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $OnboardDialog: Adw.Dialog {
+  content-width: 550;
+  content-height: 550;
+  can-close: false;
+
+  Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {
+      show-start-title-buttons: false;
+      show-end-title-buttons: false;
+
+      title-widget: Adw.CarouselIndicatorDots {
+        carousel: carousel;
+        orientation: horizontal;
+      };
+
+      styles [
+        "flat",
+      ]
+    }
+
+    Overlay {
+      [overlay]
+      Button btn_back {
+        margin-start: 12;
+        icon-name: "go-previous-symbolic";
+        halign: start;
+        valign: center;
+        visible: false;
+        tooltip-text: _("Previous");
+
+        styles [
+          "circular",
+        ]
+      }
+
+      Adw.Carousel carousel {
+        vexpand: true;
+        hexpand: true;
+        allow-scroll-wheel: true;
+        allow-mouse-drag: true;
+        allow-long-swipes: true;
+
+        Box {
+          orientation: vertical;
+          vexpand: true;
+          hexpand: true;
+
+          Image img_welcome {
+            resource: "/io/github/runexe/RunExe/images/images/runexe-welcome.svg";
+            pixel-size: 320;
+          }
+
+          Adw.StatusPage page_welcome {
+            title: _("Welcome to RunExe");
+            description: _("Run Windows Software on Linux.");
+          }
+        }
+
+        Adw.StatusPage page_capsules {
+          title: _("Windows in RunExe");
+          description: _("RunExe uses compatibility runners to provide isolated containerized Windows-like environments where programs run.");
+          vexpand: true;
+          hexpand: true;
+        }
+
+        Adw.StatusPage page_download {
+          title: _("Almost Done");
+          description: _("We need a few more minutes to set everything up…");
+          vexpand: true;
+          hexpand: true;
+
+          child: Box {
+            orientation: vertical;
+            halign: center;
+            spacing: 6;
+
+            Button btn_install {
+              label: _("Continue");
+              use-underline: true;
+              halign: center;
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            }
+
+            Button btn_cancel {
+              label: _("Skip Setup");
+              use-underline: true;
+              halign: center;
+              visible: false;
+
+              styles [
+                "pill",
+              ]
+            }
+
+            Label label_progress {
+              visible: false;
+              halign: center;
+            }
+
+            Label label_status {
+              visible: false;
+              halign: center;
+              wrap: true;
+              justify: center;
+              margin-start: 24;
+              margin-end: 24;
+            }
+
+            ProgressBar progressbar {
+              width-request: 300;
+              halign: center;
+              visible: false;
+              margin-top: 24;
+              margin-bottom: 12;
+            }
+          };
+        }
+
+        Adw.StatusPage page_finish {
+          icon-name: "selection-mode-symbolic";
+          title: _("All Ready!");
+          vexpand: true;
+          hexpand: true;
+          valign: center;
+
+          child: Box {
+            orientation: vertical;
+
+            Label label_skip {
+              label: _("Please Finish the setup first");
+              visible: true;
+              margin-bottom: 5;
+            }
+
+            Button btn_close {
+              label: _("Start using RunExe");
+              use-underline: true;
+              halign: center;
+
+              styles [
+                "suggested-action",
+                "pill",
+              ]
+            }
+          };
+        }
+      }
+
+      [overlay]
+      Button btn_next {
+        margin-end: 12;
+        icon-name: "go-next-symbolic";
+        halign: end;
+        valign: center;
+        tooltip-text: _("Next");
+
+        styles [
+          "circular",
+          "suggested-action",
+        ]
+      }
+    }
+  }
+}

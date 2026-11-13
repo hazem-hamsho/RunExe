@@ -1,0 +1,89 @@
+on:
+  push:
+    branches: [main]
+  pull_request:
+name: Build Flatpak
+jobs:
+  flatpak:
+    name: "build-packages"
+    runs-on: ubuntu-24.04
+    container:
+      image: bilelmoussaoui/flatpak-github-actions:gnome-47
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v7.0.1
+    - name: Free space for the Wine SDK
+      run: |
+        rm -rf /__t/CodeQL /__t/Python /__t/PyPy
+        df -h "$GITHUB_WORKSPACE"
+    - uses: bilelmoussaoui/flatpak-github-actions/flatpak-builder@v6
+      with:
+        bundle: runexe.flatpak
+        manifest-path: build-aux/io.github.runexe.RunExe.Devel.json
+        cache-key: flatpak-builder-x86_64-${{ github.sha }}
+    - name: Test multiarch runtime
+      run: |
+        curl -fL https://deb.debian.org/debian/pool/main/g/gstreamer1.0/gstreamer1.0-tools_1.26.2-2_i386.deb -o /tmp/gstreamer-tools-i386.deb
+        echo 'cca853f66856ec889891e3d509786c3fd7169469a5c92c7751851e53b2b9fa3c  /tmp/gstreamer-tools-i386.deb' | sha256sum -c -
+        mkdir /tmp/gstreamer-tools-i386
+        cd /tmp/gstreamer-tools-i386
+        ar x /tmp/gstreamer-tools-i386.deb data.tar.xz
+        tar -xf data.tar.xz
+        curl -fL https://github.com/hazem-hamsho/runexe-components/releases/download/caffe-10.0/caffe-10.0-x86_64.tar.xz -o /tmp/soda.tar.xz
+        echo 'cfe9642fc4dbfbbdfa2b0efc393fb1d23d916aad1535c104fdf43bd956ad6636  /tmp/soda.tar.xz' | sha256sum -c -
+        mkdir /tmp/soda
+        tar -xJf /tmp/soda.tar.xz -C /tmp/soda
+        flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        install_ref() {
+          attempts=0
+          until flatpak install --user --noninteractive flathub "$1"; do
+            attempts=$((attempts + 1))
+            test "$attempts" -lt 5 || return 1
+            sleep $((attempts * 5))
+          done
+        }
+        install_ref org.freedesktop.Platform.Compat.i386//25.08
+        install_ref org.freedesktop.Platform.codecs_extra.i386//25.08-extra
+        flatpak install --user --noninteractive "$GITHUB_WORKSPACE/runexe.flatpak"
+        xvfb-run -a flatpak run --user --command=runexe io.github.runexe.RunExe.Devel --help
+        flatpak run --user --command=sh io.github.runexe.RunExe.Devel -ec '
+          grep -Fx /app/lib32 /app/etc/ld.so.conf
+          grep -Fx /app/lib/i386-linux-gnu/codecs-extra/lib /app/etc/ld.so.conf
+          grep -Fx /app/lib/i386-linux-gnu /app/etc/ld.so.conf
+          test -r /app/lib/i386-linux-gnu/libc.so.6
+          test -d /app/lib/i386-linux-gnu/dri/intel-vaapi-driver
+          test -d /app/i386/nvidia-vaapi-driver
+          test -r /app/share/runexe/runexe/backend/managers/eagletracing.py
+          test -r /app/share/runexe/runexe/backend/identity.py
+          python3 -c "from gi.repository import Gio; resource = Gio.Resource.load(\"/app/share/runexe/runexe.gresource\"); ui = resource.lookup_data(\"/io/github/runexe/RunExe/details-preferences.ui\", Gio.ResourceLookupFlags.NONE).get_data(); assert b\"switch_eagle_tracing\" in ui"
+          gst-inspect-1.0 avdec_wmv3
+        '
+        if flatpak info --user io.github.runexe.RunExe.Devel.Debug; then
+          flatpak uninstall --user --noninteractive io.github.runexe.RunExe.Devel.Debug
+        fi
+        install_ref org.freedesktop.Platform.GL32.Debug.default//25.08
+        flatpak run --user --command=sh io.github.runexe.RunExe.Devel -ec '
+          test -d /app/lib/GL32.Debug/default
+          test -n "$(find /app/lib/GL32.Debug/default -type f -print -quit)"
+        '
+        flatpak run --user \
+          --filesystem=/tmp/soda:ro \
+          --command=sh \
+          io.github.runexe.RunExe.Devel -ec '
+            export WINEDEBUG=-all
+            export WINEPREFIX=/tmp/soda-prefix
+            runner=/tmp/soda/caffe-10.0-x86_64/bin/wine
+            wineserver=/tmp/soda/caffe-10.0-x86_64/bin/wineserver
+            timeout 120 "$runner" wineboot -u
+            timeout 30 "$runner" "$WINEPREFIX/drive_c/windows/system32/cmd.exe" /c exit
+            timeout 30 "$runner" "$WINEPREFIX/drive_c/windows/syswow64/cmd.exe" /c exit
+            "$wineserver" -k
+          '
+        flatpak run --user \
+          --filesystem=/tmp/gstreamer-tools-i386:ro \
+          --command=/tmp/gstreamer-tools-i386/usr/bin/gst-inspect-1.0 \
+          io.github.runexe.RunExe.Devel avdec_wmv3
+        flatpak run --user \
+          --filesystem=/tmp/gstreamer-tools-i386:ro \
+          --command=/tmp/gstreamer-tools-i386/usr/bin/gst-inspect-1.0 \
+          io.github.runexe.RunExe.Devel avdec_wmapro

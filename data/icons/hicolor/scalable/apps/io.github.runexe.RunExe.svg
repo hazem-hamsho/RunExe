@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="blue" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#62a0ea"/><stop offset="1" stop-color="#1c71d8"/></linearGradient>
+    <linearGradient id="white" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#deddda"/></linearGradient>
+    <clipPath id="left"><rect x="0" y="0" width="64" height="128"/></clipPath>
+    <clipPath id="right"><rect x="64" y="0" width="64" height="128"/></clipPath>
+  </defs>
+  <ellipse cx="64" cy="114" rx="40" ry="6" fill="#000000" opacity="0.12"/>
+  <g transform="translate(0 6) rotate(-35 64 64)">
+    <rect x="10" y="38" width="108" height="52" rx="26" fill="#1a5fb4" clip-path="url(#left)"/>
+    <rect x="10" y="38" width="108" height="52" rx="26" fill="#9a9996" clip-path="url(#right)"/>
+  </g>
+  <g transform="rotate(-35 64 64)">
+    <rect x="10" y="38" width="108" height="52" rx="26" fill="url(#blue)" clip-path="url(#left)"/>
+    <rect x="10" y="38" width="108" height="52" rx="26" fill="url(#white)" clip-path="url(#right)"/>
+    <rect x="62.5" y="38" width="3" height="52" fill="#000000" opacity="0.10"/>
+    <path d="M 34 49 L 34 79 L 56 64 Z" fill="#ffffff" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="72" y="44" width="34" height="7" rx="3.5" fill="#ffffff" opacity="0.9"/>
+  </g>
+</svg>

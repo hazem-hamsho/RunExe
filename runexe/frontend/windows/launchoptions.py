@@ -1,0 +1,443 @@
+# launchoptions.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+from gettext import gettext as _, ngettext
+
+from gi.repository import Adw, GLib, GObject, Gtk
+
+from runexe.backend.logger import Logger
+from runexe.backend.utils.manager import ManagerUtils
+from runexe.backend.utils.vulkan import VulkanUtils
+from runexe.frontend.utils.autostart import set_autostart_enabled
+
+logging = Logger()
+
+
+@Gtk.Template(resource_path="/io/github/runexe/RunExe/dialog-launch-options.ui")
+class LaunchOptionsDialog(Adw.Window):
+    __gtype_name__ = "LaunchOptionsDialog"
+    __gsignals__ = {
+        "options-saved": (GObject.SIGNAL_RUN_FIRST, None, (object,)),
+    }
+
+    # region Widgets
+    entry_arguments = Gtk.Template.Child()
+    switch_arguments = Gtk.Template.Child()
+    switch_hide_console = Gtk.Template.Child()
+    switch_autostart = Gtk.Template.Child()
+    btn_save = Gtk.Template.Child()
+    btn_pre_script = Gtk.Template.Child()
+    btn_pre_script_reset = Gtk.Template.Child()
+    entry_pre_script_args = Gtk.Template.Child()
+    btn_post_script = Gtk.Template.Child()
+    btn_post_script_reset = Gtk.Template.Child()
+    entry_post_script_args = Gtk.Template.Child()
+    btn_cwd = Gtk.Template.Child()
+    btn_cwd_reset = Gtk.Template.Child()
+    btn_reset_defaults = Gtk.Template.Child()
+    action_pre_script = Gtk.Template.Child()
+    action_post_script = Gtk.Template.Child()
+    switch_dxvk = Gtk.Template.Child()
+    switch_vkd3d = Gtk.Template.Child()
+    switch_winebridge = Gtk.Template.Child()
+    switch_virt_desktop = Gtk.Template.Child()
+    action_dxvk = Gtk.Template.Child()
+    action_vkd3d = Gtk.Template.Child()
+    action_winebridge = Gtk.Template.Child()
+    action_cwd = Gtk.Template.Child()
+    action_virt_desktop = Gtk.Template.Child()
+    action_automatic_backup = Gtk.Template.Child()
+    btn_automatic_backup = Gtk.Template.Child()
+    # endregion
+
+    __default_pre_script_msg = _("Choose a script which should be executed before run.")
+    __default_post_script_msg = _("Choose a script which should be executed after run.")
+    __default_cwd_msg = _("Choose from where start the program.")
+    __msg_disabled = _("{0} is disabled globally for this capsule.")
+    __msg_override = _("This setting overrides the capsule's global setting.")
+
+    def __set_disabled_switches(self):
+        vulkan_ok = VulkanUtils.check_support()
+        msg_no_vulkan = _("Vulkan is not available on this system.")
+
+        if not vulkan_ok or not self.global_dxvk:
+            self.action_dxvk.set_subtitle(msg_no_vulkan if not vulkan_ok else self.__msg_disabled.format("DXVK"))
+            self.switch_dxvk.set_sensitive(False)
+        if not vulkan_ok or not self.global_vkd3d:
+            self.action_vkd3d.set_subtitle(msg_no_vulkan if not vulkan_ok else self.__msg_disabled.format("VKD3D"))
+            self.switch_vkd3d.set_sensitive(False)
+        if not self.global_winebridge:
+            self.action_winebridge.set_subtitle(
+                self.__msg_disabled.format("WineBridge")
+            )
+            self.switch_winebridge.set_sensitive(False)
+
+    def __init__(self, parent, config, program, **kwargs):
+        super().__init__(**kwargs)
+
+        # common variables and references
+        self.parent = parent
+        self.window = parent.window
+        self.manager = parent.window.manager
+        self.config = config
+        self.program = program
+
+        self.set_transient_for(self.window)
+
+        # set widget defaults
+        if program.get("arguments") not in ["", None]:
+            self.entry_arguments.set_text(program.get("arguments"))
+
+        arguments_enabled = program.get("arguments_enabled", True)
+        self.switch_arguments.set_active(arguments_enabled)
+        self.entry_arguments.set_editable(arguments_enabled)
+        self.switch_hide_console.set_active(program.get("hide_console") is True)
+        self.switch_autostart.set_active(program.get("autostart", False))
+
+        # keeps track of toggled switches
+        self.toggled = {}
+        self.toggled["dxvk"] = False
+        self.toggled["vkd3d"] = False
+        self.toggled["virtual_desktop"] = False
+        self.toggled["winebridge"] = False
+
+        # connect signals
+        self.btn_save.connect("clicked", self.__save)
+        self.btn_pre_script.connect("clicked", self.__choose_pre_script)
+        self.btn_pre_script_reset.connect("clicked", self.__reset_pre_script)
+        self.btn_post_script.connect("clicked", self.__choose_post_script)
+        self.btn_post_script_reset.connect("clicked", self.__reset_post_script)
+        self.btn_cwd.connect("clicked", self.__choose_cwd)
+        self.btn_cwd_reset.connect("clicked", self.__reset_cwd)
+        self.btn_automatic_backup.connect("clicked", self.__show_automatic_backup)
+        self.btn_reset_defaults.connect("clicked", self.__reset_defaults)
+        self.entry_arguments.connect("activate", self.__save)
+        self.switch_arguments.connect("notify::active", self.__toggle_arguments)
+
+        # set overrides status
+        self.global_dxvk = program_dxvk = config.Parameters.dxvk
+        self.global_vkd3d = program_vkd3d = config.Parameters.vkd3d
+        self.global_virt_desktop = program_virt_desktop = (
+            config.Parameters.virtual_desktop
+        )
+        self.global_winebridge = program_winebridge = getattr(
+            config.Parameters, "winebridge", True
+        )
+
+        if self.program.get("dxvk") is not None:
+            program_dxvk = self.program.get("dxvk")
+            self.action_dxvk.set_subtitle(self.__msg_override)
+        if self.program.get("vkd3d") is not None:
+            program_vkd3d = self.program.get("vkd3d")
+            self.action_vkd3d.set_subtitle(self.__msg_override)
+        if self.program.get("virtual_desktop") is not None:
+            program_virt_desktop = self.program.get("virtual_desktop")
+            self.action_virt_desktop.set_subtitle(self.__msg_override)
+        if self.program.get("winebridge") is not None:
+            program_winebridge = self.program.get("winebridge")
+            self.action_winebridge.set_subtitle(self.__msg_override)
+
+        self.switch_dxvk.set_active(program_dxvk)
+        self.switch_vkd3d.set_active(program_vkd3d)
+        self.switch_virt_desktop.set_active(program_virt_desktop)
+        self.switch_winebridge.set_active(program_winebridge)
+
+        self.switch_dxvk.connect(
+            "state-set", self.__check_override, self.action_dxvk, "dxvk"
+        )
+        self.switch_vkd3d.connect(
+            "state-set", self.__check_override, self.action_vkd3d, "vkd3d"
+        )
+        self.switch_virt_desktop.connect(
+            "state-set",
+            self.__check_override,
+            self.action_virt_desktop,
+            "virtual_desktop",
+        )
+        self.switch_winebridge.connect(
+            "state-set", self.__check_override, self.action_winebridge, "winebridge"
+        )
+
+        if program.get("pre_script") not in ("", None):
+            self.action_pre_script.set_subtitle(program["pre_script"])
+            self.btn_pre_script_reset.set_visible(True)
+            self.entry_pre_script_args.set_visible(True)
+            if program.get("pre_script_args") not in ("", None):
+                self.entry_pre_script_args.set_text(program["pre_script_args"])
+
+        if program.get("post_script") not in ("", None):
+            self.action_post_script.set_subtitle(program["post_script"])
+            self.btn_post_script_reset.set_visible(True)
+            self.entry_post_script_args.set_visible(True)
+            if program.get("post_script_args") not in ("", None):
+                self.entry_post_script_args.set_text(program["post_script_args"])
+
+        if program.get("folder") not in (
+            "",
+            None,
+            ManagerUtils.get_exe_parent_dir(self.config, self.program["path"]),
+        ):
+            self.action_cwd.set_subtitle(program["folder"])
+            self.btn_cwd_reset.set_visible(True)
+
+        self.__update_automatic_backup()
+
+        self.__set_disabled_switches()
+
+    def __check_override(self, widget, state, action, name):
+        self.toggled[name] = True
+        action.set_subtitle(self.__msg_override)
+
+    def get_config(self):
+        return self.config
+
+    def __set_override(self, name, program_value, global_value):
+        # Special reset value
+        if self.toggled[name] is None and name in self.program:
+            del self.program[name]
+        if self.toggled[name]:
+            self.program[name] = program_value
+
+    def __idle_save(self, *_args):
+        program_dxvk = self.switch_dxvk.get_state()
+        program_vkd3d = self.switch_vkd3d.get_state()
+        program_virt_desktop = self.switch_virt_desktop.get_state()
+        program_winebridge = self.switch_winebridge.get_state()
+
+        self.__set_override("dxvk", program_dxvk, self.global_dxvk)
+        self.__set_override("vkd3d", program_vkd3d, self.global_vkd3d)
+        self.__set_override(
+            "virtual_desktop", program_virt_desktop, self.global_virt_desktop
+        )
+        self.__set_override("winebridge", program_winebridge, self.global_winebridge)
+        self.program["arguments"] = self.entry_arguments.get_text()
+        self.program["arguments_enabled"] = self.switch_arguments.get_active()
+        if self.switch_hide_console.get_active():
+            self.program["hide_console"] = True
+        else:
+            self.program.pop("hide_console", None)
+        self.program["autostart"] = self.switch_autostart.get_active()
+
+        pre_args = self.entry_pre_script_args.get_text()
+        post_args = self.entry_post_script_args.get_text()
+        self.program["pre_script_args"] = pre_args if pre_args else None
+        self.program["post_script_args"] = post_args if post_args else None
+
+        self.config = self.manager.update_config(
+            config=self.config,
+            key=self.program["id"],
+            value=self.program,
+            scope="External_Programs",
+        ).data["config"]
+
+        self.emit("options-saved", self.config)
+        self.close()
+        return
+
+    def __save(self, *_args):
+        if not self.btn_save.get_sensitive():
+            return
+
+        current_id = self.program.get("id")
+        other_autostart = any(
+            config.Name != self.config.Name or program.get("id") != current_id
+            for config, program in ManagerUtils.get_autostart_programs(
+                self.manager.local_capsules.values()
+            )
+        )
+        before = bool(self.program.get("autostart")) or other_autostart
+        after = self.switch_autostart.get_active() or other_autostart
+        if before == after:
+            GLib.idle_add(self.__idle_save)
+            return
+
+        self.btn_save.set_sensitive(False)
+
+        def sync_finished(success):
+            self.btn_save.set_sensitive(True)
+            if success:
+                GLib.idle_add(self.__idle_save)
+                return
+            self.window.show_toast(
+                _("RunExe could not update the login startup setting.")
+            )
+
+        set_autostart_enabled(self.window, after, sync_finished)
+
+    def __toggle_arguments(self, *_args):
+        self.entry_arguments.set_editable(self.switch_arguments.get_active())
+
+    def __choose_pre_script(self, *_args):
+        def set_path(dialog, result):
+            try:
+                file = dialog.open_finish(result)
+
+                if file is None:
+                    self.action_pre_script.set_subtitle(self.__default_pre_script_msg)
+                    return
+
+                file_path = file.get_path()
+
+                self.program["pre_script"] = file_path
+                self.action_pre_script.set_subtitle(file_path)
+                self.btn_pre_script_reset.set_visible(True)
+                self.entry_pre_script_args.set_visible(True)
+
+            except GLib.Error as error:
+                # also thrown when dialog has been cancelled
+                if error.code == 2:
+                    # error 2 seems to be 'dismiss' or 'cancel'
+                    if self.program.get("pre_script") in (None, ""):
+                        self.action_pre_script.set_subtitle(
+                            self.__default_pre_script_msg
+                        )
+                else:
+                    # something else happened...
+                    logging.warning("Error selecting pre-run script: %s" % error)
+
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title("Select Pre-run Script")
+        dialog.set_modal(True)
+        dialog.open(parent=self.window, callback=set_path)
+
+    def __choose_post_script(self, *_args):
+        def set_path(dialog, result):
+            try:
+                file = dialog.open_finish(result)
+
+                if file is None:
+                    self.action_post_script.set_subtitle(self.__default_post_script_msg)
+                    return
+
+                file_path = file.get_path()
+                self.program["post_script"] = file_path
+                self.action_post_script.set_subtitle(file_path)
+                self.btn_post_script_reset.set_visible(True)
+                self.entry_post_script_args.set_visible(True)
+            except GLib.Error as error:
+                # also thrown when dialog has been cancelled
+                if error.code == 2:
+                    # error 2 seems to be 'dismiss' or 'cancel'
+                    if self.program.get("post_script") in (None, ""):
+                        self.action_pre_script.set_subtitle(
+                            self.__default_pre_script_msg
+                        )
+                else:
+                    # something else happened...
+                    logging.warning("Error selecting post-run script: %s" % error)
+
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title("Select Post-run Script")
+        dialog.set_modal(True)
+        dialog.open(parent=self.window, callback=set_path)
+
+    def __reset_pre_script(self, *_args):
+        self.program["pre_script"] = None
+        self.program["pre_script_args"] = None
+        self.action_pre_script.set_subtitle(self.__default_pre_script_msg)
+        self.btn_pre_script_reset.set_visible(False)
+        self.entry_pre_script_args.set_visible(False)
+        self.entry_pre_script_args.set_text("")
+
+    def __reset_post_script(self, *_args):
+        self.program["post_script"] = None
+        self.program["post_script_args"] = None
+        self.action_post_script.set_subtitle(self.__default_post_script_msg)
+        self.btn_post_script_reset.set_visible(False)
+        self.entry_post_script_args.set_visible(False)
+        self.entry_post_script_args.set_text("")
+
+    def __choose_cwd(self, *_args):
+        def set_path(dialog, result):
+            try:
+                directory = dialog.select_folder_finish(result)
+
+                if directory is None:
+                    self.action_cwd.set_subtitle(self.__default_cwd_msg)
+                    return
+
+                directory_path = directory.get_path()
+                self.program["folder"] = directory_path
+                self.action_cwd.set_subtitle(directory_path)
+                self.btn_cwd_reset.set_visible(True)
+            except GLib.Error as error:
+                # also thrown when dialog has been cancelled
+                if error.code == 2:
+                    # error 2 seems to be 'dismiss' or 'cancel'
+                    if self.program.get("folder") in (None, ""):
+                        self.action_cwd.set_subtitle(self.__default_cwd_msg)
+                else:
+                    # something else happened...
+                    logging.warning("Error selecting folder: %s" % error)
+                    raise
+
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title(_("Select Working Directory"))
+        dialog.set_modal(True)
+        dialog.select_folder(parent=self.window, callback=set_path)
+
+    def __reset_cwd(self, *_args):
+        """
+        This function reset the script path.
+        """
+        self.program["folder"] = ManagerUtils.get_exe_parent_dir(
+            self.config, self.program["path"]
+        )
+        self.action_cwd.set_subtitle(self.__default_cwd_msg)
+        self.btn_cwd_reset.set_visible(False)
+
+    def __update_automatic_backup(self):
+        settings = self.program.get("automatic_backup")
+        if not isinstance(settings, dict) or not settings.get("enabled"):
+            self.action_automatic_backup.set_subtitle(_("Disabled"))
+            return
+        paths = settings.get("paths")
+        count = len(paths) if isinstance(paths, list) else 0
+        self.action_automatic_backup.set_subtitle(
+            ngettext(
+                "{0} selected path",
+                "{0} selected paths",
+                count,
+            ).format(count)
+        )
+
+    def __show_automatic_backup(self, *_args):
+        from runexe.frontend.windows.programbackups import ProgramBackupsDialog
+
+        def save(settings):
+            self.program["automatic_backup"] = settings
+            self.__update_automatic_backup()
+
+        ProgramBackupsDialog(
+            self,
+            self.config,
+            self.program,
+            save,
+        ).present()
+
+    def __reset_defaults(self, *_args):
+        self.switch_dxvk.set_active(self.global_dxvk)
+        self.switch_vkd3d.set_active(self.global_vkd3d)
+        self.switch_virt_desktop.set_active(self.global_virt_desktop)
+        self.switch_winebridge.set_active(self.global_winebridge)
+        self.action_dxvk.set_subtitle("")
+        self.action_vkd3d.set_subtitle("")
+        self.action_virt_desktop.set_subtitle("")
+        self.action_winebridge.set_subtitle("")
+        self.__set_disabled_switches()
+        for name in self.toggled:
+            self.toggled[name] = None

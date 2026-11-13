@@ -1,0 +1,172 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        # 🛑 STOP! READ THIS OR YOUR ISSUE WILL BE CLOSED! 🛑
+
+        ## USE A CLEAR, SPECIFIC TITLE
+        **Use at least 10 characters. Issues with shorter titles are closed automatically.**
+
+        ## 🙅 NO ISSUES FOR WINDOWS PROGRAMS NOT WORKING
+        **RunExe is a manager. If a program doesn't work, it's a Wine/Proton issue, NOT a RunExe bug.**
+        Please visit [WineHQ](https://www.winehq.org) and [ProtonDB](https://www.protondb.com).
+
+        ## 🙅 NO ISSUES FOR UNOFFICIAL PACKAGES
+        **We support RunExe built from [this repository](https://github.com/hazem-hamsho/RunExe).**
+
+        ```text
+        *******************************************************************************
+        *                                                                             *
+        *   ⚠️  STOP! READ THIS BEFORE OPENING AN ISSUE OR IT WILL BE CLOSED!  ⚠️   *
+        *                                                                             *
+        *******************************************************************************
+        *                                                                             *
+        *  1. DO NOT OPEN ISSUES FOR WINDOWS PROGRAMS NOT WORKING IN RUNEXE!         *
+        *     (This is usually a Wine/Proton problem, NOT a RunExe bug)              *
+        *                                                                             *
+        *  2. USE THE LATEST RunExe BUILD!                                           *
+        *     (Distribution packages are not supported)                              *
+        *                                                                             *
+        *  3. USE A CLEAR, SPECIFIC TITLE WITH AT LEAST 10 CHARACTERS!                *
+        *                                                                             *
+        *******************************************************************************
+        ```
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Describe the bug
+      description: Also tell us, what did you expect to happen?
+      placeholder: A clear and concise description of what the bug is.
+    validations:
+      required: true
+
+  - type: textarea
+    id: to-reproduce
+    attributes:
+      label: To Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. Scroll down to '...'
+        4. See error
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        ## System information
+
+  - type: dropdown
+    id: package
+    attributes:
+      label: Package
+      description: |
+        How did you install RunExe?
+
+        If you use RunExe from your distribution package manager, build RunExe from [this repository](https://github.com/hazem-hamsho/RunExe) and try to reproduce the bug there.
+      options:
+        - Flatpak built from this repository
+        - Flatpak from GitHub Artifacts
+    validations:
+      required: true
+
+  - type: input
+    id: distro
+    attributes:
+      label: Distribution
+      description: In which Linux distribution did you encounter the bug?
+      placeholder: Fedora 35, Arch Linux, Ubuntu 21.10..
+    validations:
+      required: true
+
+  - type: textarea
+    id: health-check
+    attributes:
+      label: Debugging Information
+      description: |
+        In RunExe, press the hamburger menu (`☰`) at the top right. Then press "About RunExe". Select "Troubleshooting", then "Debugging Information". Lastly, copy text and paste here.
+
+        If you are unable to run RunExe, retrieve this information with one of these commands:
+
+        Flatpak: `flatpak run --command=runexe-cli io.github.runexe.RunExe info health-check`
+
+      render: shell
+      placeholder: |
+        Display:
+            X.org: true
+            X.org (port): :99.0
+            Wayland: false
+        Graphics:
+            vendors:
+                nvidia:
+                    vendor: nvidia
+                    envs:
+                        __NV_PRIME_RENDER_OFFLOAD: '1'
+                        __GLX_VENDOR_LIBRARY_NAME: nvidia
+                        __VK_LAYER_NV_optimus: NVIDIA_only
+                    icd: /usr/lib/x86_64-linux-gnu/GL/vulkan/icd.d/nvidia_icd.json:/usr/lib/i386-linux-gnu/GL/vulkan/icd.d/nvidia_icd.json
+                amd:
+                    vendor: amd
+                    envs:
+                        DRI_PRIME: '1'
+                    icd: /usr/lib/x86_64-linux-gnu/GL/vulkan/icd.d/radeon_icd.x86_64.json:/usr/lib/i386-linux-gnu/GL/vulkan/icd.d/radeon_icd.i686.json
+            prime:
+                integrated: *id001
+                discrete: *id002
+        Kernel:
+            Type: Linux
+            Version: 5.16.9-200.fc35.x86_64
+        Distro:
+            Name: GNOME
+            Version: '"41 (Flatpak runtime)"'
+        Tools:
+            cabextract: true
+            p7zip: true
+            patool: true
+            glibc_min: '2.33'
+        RunExe_envs: null
+    validations:
+      required: true
+
+  - type: textarea
+    id: log
+    attributes:
+      label: Troubleshooting Logs
+      description: If applicable, run `flatpak run io.github.runexe.RunExe`, reproduce the issue and paste the logs here.
+      render: shell
+      placeholder: |
+        [Errno 2] No such file or directory: '/home/USER/.var/app/io.github.runexe.RunExe/data/runexe/runexe/Opera-GX__185/capsule.yml'  File "/app/share/runexe/runexe/frontend/utils/threading.py", line 61, in __target
+            result = self.task_func(*args, **kwargs)
+
+          File "/app/share/runexe/runexe/frontend/windows/main_window.py", line 194, in get_manager
+            mng = Manager(window=window, repo_fn_update=repo_fn_update)
+
+          File "/app/share/runexe/runexe/backend/managers/manager.py", line 135, in __init__
+            times.update(self.checks(install_latest=False, first_run=True).data)
+
+          File "/app/share/runexe/runexe/backend/managers/manager.py", line 189, in checks
+            self.check_runexe()
+
+          File "/app/share/runexe/runexe/backend/managers/manager.py", line 804, in check_runexe
+            process_capsule(b)
+
+          File "/app/share/runexe/runexe/backend/managers/manager.py", line 758, in process_capsule
+            self.update_config(
+
+          File "/app/share/runexe/runexe/backend/managers/manager.py", line 874, in update_config
+            with open(os.path.join(capsule_path, "capsule.yml"), "w") as conf_file
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.
+    validations:
+      required: false

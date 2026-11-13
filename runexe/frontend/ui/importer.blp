@@ -1,0 +1,94 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $ImporterView: Adw.Bin {
+  Box {
+    orientation: vertical;
+
+    HeaderBar headerbar {
+      title-widget: Adw.WindowTitle window_title {};
+
+      [start]
+      Button btn_back {
+        tooltip-text: _("Go Back");
+        icon-name: "go-previous-symbolic";
+      }
+
+      [end]
+      Box box_actions {
+        spacing: 6;
+
+        Box box_import_progress {
+          visible: false;
+          spacing: 4;
+          tooltip-text: _("Import in progress…");
+
+          Spinner spinner_import {}
+
+          Label label_import_progress {
+            styles ["dim-label", "caption"]
+          }
+        }
+
+        Button btn_select_prefixes {
+          tooltip-text: _("Select a Wine prefix folder");
+          icon-name: "folder-open-symbolic";
+        }
+
+        MenuButton btn_import_backup {
+          tooltip-text: _("Import a Capsule backup");
+          popover: pop_backup;
+          icon-name: "document-send-symbolic";
+        }
+
+        Button btn_find_prefixes {
+          tooltip-text: _("Search again for prefixes");
+          icon-name: "view-refresh-symbolic";
+        }
+      }
+    }
+
+    Adw.PreferencesPage {
+      Adw.StatusPage status_page {
+        vexpand: true;
+        icon-name: "document-save-symbolic";
+        title: _("No Prefixes Found");
+        description: _("No external prefixes were found. Select their folder to grant RunExe access, or import a capsule backup.");
+      }
+
+      Adw.PreferencesGroup group_prefixes {
+        visible: false;
+
+        ListBox list_prefixes {
+          styles [
+            "boxed-list",
+          ]
+        }
+      }
+    }
+  }
+}
+
+Popover pop_backup {
+  styles [
+    "menu",
+  ]
+
+  Box {
+    orientation: vertical;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+
+    $GtkModelButton btn_import_config {
+      tooltip-text: _("This is just the capsule configuration, it\'s perfect if you want to create a new one but without personal files.");
+      text: _("Configuration");
+    }
+
+    $GtkModelButton btn_import_full {
+      tooltip-text: _("This is the complete archive of your capsule, including personal files.");
+      text: _("Full Archive");
+    }
+  }
+}

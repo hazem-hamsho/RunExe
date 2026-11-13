@@ -1,0 +1,127 @@
+using Gtk 4.0;
+using Adw 1;
+
+Popover pop_actions {
+  styles [
+    "menu",
+  ]
+
+  Box {
+    orientation: vertical;
+    margin-top: 6;
+    margin-bottom: 6;
+    margin-start: 6;
+    margin-end: 6;
+
+    Box {
+      homogeneous: true;
+
+      Button btn_launch_terminal {
+        tooltip-text: _("Launch with Terminal");
+        icon-name: "utilities-terminal-symbolic";
+        valign: center;
+      }
+
+      Button btn_playtime_stats {
+        tooltip-text: _("View Playtime Statistics");
+        icon-name: "preferences-system-time-symbolic";
+        valign: center;
+      }
+
+      Button btn_browse {
+        tooltip-text: _("Browse Path");
+        icon-name: "document-open-symbolic";
+        valign: center;
+      }
+
+      styles [
+        "linked",
+      ]
+    }
+
+    Separator {}
+
+    $GtkModelButton btn_launch_options {
+      text: _("Change Launch Options…");
+    }
+
+    $GtkModelButton btn_file_associations {
+      text: _("Manage File Associations...");
+    }
+
+    $GtkModelButton btn_add_library {
+      text: _("Add to Library");
+    }
+
+    $GtkModelButton btn_add_entry {
+      text: _("Add Desktop Entry");
+    }
+
+    $GtkModelButton btn_rename {
+      text: _("Rename…");
+    }
+
+    Separator {}
+
+    $GtkModelButton btn_hide {
+      text: _("Hide Program");
+    }
+
+    $GtkModelButton btn_unhide {
+      text: _("Show Program");
+    }
+
+    $GtkModelButton btn_remove {
+      text: _("Remove from List");
+    }
+
+    Separator {}
+
+    $GtkModelButton btn_uninstall {
+      text: _("Uninstall");
+    }
+  }
+}
+
+template $ProgramEntry: Adw.ActionRow {
+  title: _("Program name");
+
+  Box {
+    spacing: 6;
+
+    Image img_missing {
+      visible: false;
+      icon-name: "dialog-warning-symbolic";
+      tooltip-text: _("The program file could not be found. Check its path and any external drives.");
+    }
+
+    Button btn_run {
+      valign: center;
+      icon-name: "media-playback-start-symbolic";
+
+      styles [
+        "flat",
+      ]
+    }
+
+    Button btn_stop {
+      valign: center;
+      visible: false;
+      icon-name: "media-playback-stop-symbolic";
+
+      styles [
+        "flat",
+      ]
+    }
+
+    MenuButton btn_menu {
+      valign: center;
+      popover: pop_actions;
+      icon-name: "view-more-symbolic";
+
+      styles [
+        "flat",
+      ]
+    }
+  }
+}

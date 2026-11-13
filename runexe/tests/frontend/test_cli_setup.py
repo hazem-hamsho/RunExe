@@ -1,0 +1,176 @@
+# ruff: noqa: E402
+from types import SimpleNamespace
+from unittest.mock import patch
+
+import pytest
+from gi.repository import Gio
+
+from runexe.backend.models.result import Result
+from runexe.backend.state import Events
+
+with patch.object(Gio.Settings, "new", return_value=object()):
+    from runexe.frontend.cli import cli
+
+
+class FakeManager:
+    def __init__(self, create_result=Result(True)):
+        self.create_result = create_result
+        self.calls = []
+        self.runners_available = []
+        self.dxvk_available = []
+        self.vkd3d_available = []
+
+    def checks(self, **kwargs):
+        self.calls.append(("checks", kwargs))
+        return Result(True)
+
+    def check_app_dirs(self):
+        self.calls.append(("check_app_dirs", {}))
+
+    def organize_components(self):
+        self.calls.append(("organize_components", {}))
+
+    def check_runners(self, _install_latest):
+        self.calls.append(("check_runners", {}))
+
+    def check_dxvk(self, _install_latest):
+        self.calls.append(("check_dxvk", {}))
+
+    def check_vkd3d(self, _install_latest):
+        self.calls.append(("check_vkd3d", {}))
+
+    def create_capsule(self, **kwargs):
+        self.calls.append(("create_capsule", kwargs))
+        return self.create_result
+
+
+def _new_cli():
+    instance = object.__new__(cli.CLI)
+    instance.settings = object()
+    instance.args = SimpleNamespace(
+        capsule_name="Test",
+        environment="application",
+        custom_environment=None,
+        arch="win64",
+        runner=None,
+        dxvk=None,
+        vkd3d=None,
+    )
+    return instance
+
+
+def _edit_cli(params):
+    instance = object.__new__(cli.CLI)
+    instance.settings = object()
+    instance.args = SimpleNamespace(
+        capsule="Test",
+        params=params,
+        env_var=None,
+        win=None,
+        runner=None,
+        dxvk=None,
+        vkd3d=None,
+    )
+    return instance
+
+
+def test_new_capsule_waits_for_catalogs_before_installing(monkeypatch):
+    manager = FakeManager()
+    waits = []
+    monkeypatch.setattr(cli, "Manager", lambda **_kwargs: manager)
+    monkeypatch.setattr(cli.EventManager, "wait", waits.append)
+
+    _new_cli().new_capsule()
+
+    assert manager.calls[0] == (
+        "checks",
+        {"install_latest": False, "first_run": True},
+    )
+    assert waits == [
+        Events.ComponentsOrganizing,
+        Events.DependenciesOrganizing,
+        Events.InstallersOrganizing,
+    ]
+    assert manager.calls[1] == (
+        "checks",
+        {"install_latest": True, "first_run": False},
+    )
+    assert manager.calls[2][0] == "create_capsule"
+
+
+def test_new_capsule_reports_creation_failure(monkeypatch, capsys):
+    manager = FakeManager(Result(False, message="Prefix initialization failed"))
+    monkeypatch.setattr(cli, "Manager", lambda **_kwargs: manager)
+    monkeypatch.setattr(cli.EventManager, "wait", lambda _event: None)
+
+    with pytest.raises(SystemExit) as error:
+        _new_cli().new_capsule()
+
+    assert error.value.code == 1
+    assert capsys.readouterr().err == "Prefix initialization failed\n"
+
+
+def test_list_components_prepares_directories(monkeypatch, capsys):
+    manager = FakeManager()
+    instance = object.__new__(cli.CLI)
+    instance.settings = object()
+    instance.args = SimpleNamespace(json=False)
+    monkeypatch.setattr(cli, "Manager", lambda **_kwargs: manager)
+
+    instance.list_components()
+
+    assert manager.calls[0][0] == "check_app_dirs"
+    assert "Found 0 runners" in capsys.readouterr().out
+
+
+def test_edit_renderer_applies_registry_before_config(monkeypatch):
+    config = SimpleNamespace()
+    calls = []
+    manager = SimpleNamespace(
+        local_capsules={"Test": config},
+        check_capsules=lambda: None,
+        update_config=lambda capsule, key, value, scope: calls.append(
+            ("config", capsule, key, value, scope)
+        ),
+    )
+    monkeypatch.setattr(cli, "Manager", lambda **_kwargs: manager)
+    monkeypatch.setattr(
+        cli,
+        "RegKeys",
+        lambda capsule: SimpleNamespace(
+            set_renderer=lambda value: calls.append(("registry", capsule, value))
+        ),
+    )
+
+    _edit_cli("renderer:gdi").edit_capsule()
+
+    assert calls == [
+        ("registry", config, "gdi"),
+        ("config", config, "renderer", "gdi", "Parameters"),
+    ]
+
+
+def test_edit_invalid_renderer_keeps_config(monkeypatch, capsys):
+    config = SimpleNamespace()
+    updates = []
+    manager = SimpleNamespace(
+        local_capsules={"Test": config},
+        check_capsules=lambda: None,
+        update_config=lambda *args, **kwargs: updates.append((args, kwargs)),
+    )
+    monkeypatch.setattr(cli, "Manager", lambda **_kwargs: manager)
+    class InvalidRegKeys:
+        def __init__(self, _capsule):
+            pass
+
+        def set_renderer(self, _value):
+            raise ValueError("invalid renderer")
+
+    monkeypatch.setattr(cli, "RegKeys", InvalidRegKeys)
+
+    with pytest.raises(SystemExit) as error:
+        _edit_cli("renderer:invalid").edit_capsule()
+
+    assert error.value.code == 1
+    assert capsys.readouterr().err == "invalid renderer\n"
+    assert updates == []

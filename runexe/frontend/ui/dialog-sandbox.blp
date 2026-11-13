@@ -1,0 +1,69 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $SandboxDialog: Adw.Window {
+  modal: true;
+  deletable: true;
+  default-width: 550;
+  title: _("Sandbox Settings");
+
+  ShortcutController {
+    Shortcut {
+      trigger: "Escape";
+      action: "action(window.close)";
+    }
+  }
+
+  Box {
+    orientation: vertical;
+
+    Adw.HeaderBar {}
+
+    Adw.PreferencesPage {
+      Adw.PreferencesGroup {
+        Adw.ActionRow {
+          title: _("Share Network");
+          activatable-widget: switch_net;
+
+          Switch switch_net {
+            valign: center;
+          }
+        }
+
+        Adw.ActionRow {
+          title: _("Share Sound");
+          activatable-widget: switch_sound;
+
+          Switch switch_sound {
+            valign: center;
+          }
+        }
+
+        Adw.ActionRow row_input {
+          title: _("Share Input Devices");
+          subtitle: _("Programs in this capsule can read controllers and global keystrokes while enabled.");
+          activatable-widget: switch_input;
+
+          Switch switch_input {
+            valign: center;
+          }
+        }
+
+        Adw.ActionRow row_usb {
+          title: _("Share USB Devices");
+          subtitle: _("Programs in this capsule can access raw USB devices permitted by the host while enabled.");
+          activatable-widget: switch_usb;
+
+          Switch switch_usb {
+            valign: center;
+          }
+        }
+      }
+
+      Adw.PreferencesGroup group_hidraw {
+        title: _("Flight Controllers (HIDRAW)");
+        description: _("Use raw HID access only for the selected vendor and product IDs.");
+      }
+    }
+  }
+}

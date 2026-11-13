@@ -1,0 +1,41 @@
+using Gtk 4.0;
+using Adw 1;
+
+template $DriveEntry: Adw.EntryRow {
+  title: "C:";
+  show-apply-button: true;
+
+  Box {
+    spacing: 6;
+
+    Button btn_eject {
+      valign: center;
+      tooltip-text: _("Eject");
+      icon-name: "media-eject-symbolic";
+
+      styles [
+        "flat",
+      ]
+    }
+
+    Button btn_remove {
+      valign: center;
+      tooltip-text: _("Remove");
+      icon-name: "user-trash-symbolic";
+
+      styles [
+        "flat",
+      ]
+    }
+
+    Button btn_path {
+      valign: center;
+      tooltip-text: _("Choose a Directory");
+      icon-name: "document-open-symbolic";
+
+      styles [
+        "flat",
+      ]
+    }
+  }
+}

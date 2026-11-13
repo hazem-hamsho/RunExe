@@ -1,0 +1,166 @@
+# file.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+import fcntl
+import hashlib
+import os
+import shutil
+import time
+from array import array
+from concurrent.futures import CancelledError
+from pathlib import Path
+from threading import Event
+from typing import Optional
+
+
+class FileUtils:
+    """
+    This class provide some useful methods to work with files.
+    Like get checksum, human size, etc.
+    """
+
+    @staticmethod
+    def get_checksum(file):
+        """
+        This function returns the MD5 checksum of the given file.
+        """
+        checksum = hashlib.md5()
+
+        try:
+            with open(file, "rb") as f:
+                for chunk in iter(lambda: f.read(4096), b""):
+                    checksum.update(chunk)
+            return checksum.hexdigest().lower()
+        except FileNotFoundError:
+            return None
+
+    @staticmethod
+    def use_insensitive_ext(string):
+        """Converts a glob pattern into a case-insensitive glob pattern"""
+        ext = string.split(".")[1]
+        globlist = ["[%s%s]" % (c.lower(), c.upper()) for c in ext]
+        return "*.%s" % "".join(globlist)
+
+    @staticmethod
+    def get_human_size(size: float) -> str:
+        """Returns a human readable size from a given float size"""
+        for unit in ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"]:
+            if abs(size) < 1024.0:
+                return f"{size:3.1f}{unit}B"
+            size /= 1024.0
+        return f"{size:.1f}YiB"
+
+    @staticmethod
+    def get_human_size_legacy(size: float) -> str:
+        """Returns a human readable size from a given float size"""
+        for unit in ["", "Ki", "Mi", "Gi", "Ti", "Pi", "Ei", "Zi"]:
+            if abs(size) < 1024.0:
+                return "%3.1f%s%s" % (size, unit, "B")
+            size /= 1024.0
+
+        return "%.1f%s%s" % (size, "Yi", "B")
+
+    def get_path_size(
+        self,
+        path: str,
+        human: bool = True,
+        cancel_event: Optional[Event] = None,
+    ) -> str | float:
+        """
+        Returns the size of a given path. If human is True, returns as a
+        human-readable size.
+        """
+        p = Path(path)
+        size = 0
+        for file in p.glob("**/*"):
+            if cancel_event and cancel_event.is_set():
+                raise CancelledError
+            if file.is_file():
+                size += file.stat().st_size
+
+        if human:
+            return self.get_human_size(size)
+
+        return size
+
+    def get_disk_size(self, path: str = "/", human: bool = True) -> dict:
+        """
+        Returns the size of the disk. If human is True, returns as a
+        human-readable size.
+        """
+        disk_total, disk_used, disk_free = shutil.disk_usage(path)
+
+        if human:
+            disk_total = self.get_human_size(disk_total)
+            disk_used = self.get_human_size(disk_used)
+            disk_free = self.get_human_size(disk_free)
+
+        return {
+            "total": disk_total,
+            "used": disk_used,
+            "free": disk_free,
+        }
+
+    @staticmethod
+    def wait_for_files(files: list, timeout: float = 0.5) -> bool:
+        """Wait for all files to exist."""
+        deadline = time.monotonic() + max(timeout, 0)
+
+        while not all(os.path.isfile(file) for file in files):
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return False
+            time.sleep(min(0.1, remaining))
+
+        return True
+
+    @staticmethod
+    def remove_path(path: str) -> bool:
+        """Remove a file or directory at the given path."""
+        try:
+            if os.path.isdir(path):
+                shutil.rmtree(path)
+            else:
+                os.remove(path)
+        except FileNotFoundError:
+            return False
+        except OSError:
+            return False
+
+        return True
+
+    @staticmethod
+    def chattr_f(directory: str) -> bool:
+        FS_IOC_GETFLAGS = 0x80086601
+        FS_IOC_SETFLAGS = 0x40086602
+        FS_CASEFOLD_FL = 0x40000000
+
+        success = True
+        if os.path.isdir(directory) and len(os.listdir(directory)) == 0:
+            fd = os.open(directory, os.O_RDONLY)
+            try:
+                arg = array("L", [0])
+                fcntl.ioctl(fd, FS_IOC_GETFLAGS, arg, True)
+                arg[0] |= FS_CASEFOLD_FL
+                fcntl.ioctl(fd, FS_IOC_SETFLAGS, arg, True)
+            except OSError:
+                success = False
+            os.close(fd)
+        else:
+            success = False
+
+        return success

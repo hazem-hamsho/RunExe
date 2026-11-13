@@ -1,0 +1,257 @@
+# importer.py
+#
+# Copyright 2025 mirkobrombin <brombin94@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, in version 3 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+from gettext import gettext as _
+
+from gi.repository import Adw, GLib, Gtk
+
+from runexe.backend.managers.backup import BackupManager
+from runexe.backend.state import SignalManager, Signals, TaskManager
+from runexe.backend.utils.threading import RunAsync
+from runexe.frontend.utils.filters import add_all_filters, add_yaml_filters
+from runexe.frontend.utils.gtk import GtkUtils
+from runexe.frontend.widgets.importer import ImporterEntry
+
+
+@Gtk.Template(resource_path="/io/github/runexe/RunExe/importer.ui")
+class ImporterView(Adw.Bin):
+    __gtype_name__ = "ImporterView"
+
+    # region Widgets
+    list_prefixes = Gtk.Template.Child()
+    btn_find_prefixes = Gtk.Template.Child()
+    btn_select_prefixes = Gtk.Template.Child()
+    btn_import_config = Gtk.Template.Child()
+    btn_import_full = Gtk.Template.Child()
+    btn_back = Gtk.Template.Child()
+    group_prefixes = Gtk.Template.Child()
+    status_page = Gtk.Template.Child()
+    box_import_progress = Gtk.Template.Child()
+    spinner_import = Gtk.Template.Child()
+    label_import_progress = Gtk.Template.Child()
+
+    # endregion
+
+    def __init__(self, window, **kwargs):
+        super().__init__(**kwargs)
+
+        # common variables and references
+        self.window = window
+        self.manager = window.manager
+        self.import_manager = window.manager.import_manager
+
+        # connect signals
+        self.btn_back.connect("clicked", self.go_back)
+        self.btn_find_prefixes.connect("clicked", self.__find_prefixes)
+        self.btn_select_prefixes.connect("clicked", self.__select_prefixes)
+        self.btn_import_full.connect("clicked", self.__import_full_bck)
+        self.btn_import_config.connect("clicked", self.__import_config_bck)
+
+        # Import progress tracking
+        self._import_task_id = None
+        SignalManager.connect(Signals.TaskAdded, self._on_task_added)
+        SignalManager.connect(Signals.TaskRemoved, self._on_task_removed)
+        SignalManager.connect(Signals.TaskUpdated, self._on_task_updated)
+
+    def __find_prefixes(self, widget):
+        """
+        This function remove all entries from the list_prefixes, ask the
+        manager to find all prefixes in the system and add them to the list
+        """
+        self.__search_prefixes(widget)
+
+    def __search_prefixes(self, widget, selected_paths=None):
+        @GtkUtils.run_in_main_loop
+        def update(result, error=False):
+            widget.set_sensitive(True)
+            if not error and result.ok:
+                wineprefixes = result.data.get("wineprefixes")
+                if len(wineprefixes) == 0:
+                    if selected_paths:
+                        self.window.show_toast(
+                            _("No Wine prefixes found in the selected folder")
+                        )
+                    return
+
+                self.status_page.set_visible(False)
+                self.group_prefixes.set_visible(True)
+
+                while self.list_prefixes.get_first_child():
+                    _w = self.list_prefixes.get_first_child()
+                    self.list_prefixes.remove(_w)
+
+                for prefix in result.data.get("wineprefixes"):
+                    self.list_prefixes.append(ImporterEntry(self, prefix))
+
+        widget.set_sensitive(False)
+
+        RunAsync(
+            self.import_manager.search_wineprefixes,
+            callback=update,
+            selected_paths=selected_paths,
+        )
+
+    def __select_prefixes(self, _widget):
+        dialog = Gtk.FileDialog.new()
+        dialog.set_title(_("Select a Wine Prefix Folder"))
+        dialog.set_modal(True)
+        dialog.select_folder(self.window, None, self.__folder_selected)
+
+    def __folder_selected(self, dialog, result):
+        try:
+            folder = dialog.select_folder_finish(result)
+        except GLib.Error:
+            return
+        if folder and folder.get_path():
+            self.__search_prefixes(
+                self.btn_select_prefixes,
+                [folder.get_path()],
+            )
+
+    @GtkUtils.run_in_main_loop
+    def __finish(self, result, error=False):
+        if result.ok:
+            self.window.show_toast(_("Backup imported successfully"))
+        else:
+            self.window.show_toast(_("Import failed"))
+
+    def __import_full_bck(self, *_args):
+        """
+        This function shows a dialog to the user, from which it can choose an
+        archive backup to import into RunExe. It supports only .tar.gz files
+        as RunExe export capsules in this format. Once selected, it will
+        be imported.
+        """
+
+        def set_path(_dialog, response):
+            if response != Gtk.ResponseType.ACCEPT:
+                return
+
+            self.window.show_toast(_("Importing backup…"))
+            RunAsync(
+                task_func=BackupManager.import_backup,
+                callback=self.__finish,
+                scope="full",
+                path=dialog.get_file().get_path(),
+            )
+
+        dialog = Gtk.FileChooserNative.new(
+            title=_("Select a Backup Archive"),
+            action=Gtk.FileChooserAction.OPEN,
+            parent=self.window,
+            accept_label=_("Import"),
+        )
+
+        filter = Gtk.FileFilter()
+        filter.set_name("GNU Gzip Archive")
+        # TODO: Investigate why `filter.add_mime_type(...)` does not show filter in all distributions.
+        # Intended MIME types are:
+        #   - `application/gzip`
+        filter.add_pattern("*.gz")
+
+        dialog.add_filter(filter)
+        add_all_filters(dialog)
+        dialog.set_modal(True)
+        dialog.connect("response", set_path)
+        dialog.show()
+
+    def __import_config_bck(self, *_args):
+        """
+        This function shows a dialog to the user, from which it can choose an
+        archive backup to import into RunExe. It supports only .yml files
+        which are the RunExe' configuration file. Once selected, it will
+        be imported.
+        """
+
+        def set_path(_dialog, response):
+            if response != Gtk.ResponseType.ACCEPT:
+                return
+
+            self.window.show_toast(_("Importing backup…"))
+            RunAsync(
+                task_func=BackupManager.import_backup,
+                callback=self.__finish,
+                scope="config",
+                path=dialog.get_file().get_path(),
+            )
+
+        dialog = Gtk.FileChooserNative.new(
+            title=_("Select a Configuration File"),
+            action=Gtk.FileChooserAction.OPEN,
+            parent=self.window,
+            accept_label=_("Import"),
+        )
+
+        add_yaml_filters(dialog)
+        add_all_filters(dialog)
+        dialog.set_modal(True)
+        dialog.connect("response", set_path)
+        dialog.show()
+
+    def _on_task_added(self, data=None):
+        """Signal handler for TaskAdded events. Shows progress if import task."""
+        if not data or not data.data:
+            return
+
+        task_id = data.data
+        task = TaskManager.get(task_id)
+        if not task:
+            return
+
+        # Check if this is an import task
+        if task.title == _("Importing full backup"):
+            self._import_task_id = task_id
+            GLib.idle_add(self._show_import_progress)
+
+    def _on_task_removed(self, data=None):
+        """Signal handler for TaskRemoved events. Hides progress if import task."""
+        if not data or not data.data:
+            return
+
+        task_id = data.data
+        if task_id == self._import_task_id:
+            self._import_task_id = None
+            GLib.idle_add(self._hide_import_progress)
+
+    def _on_task_updated(self, data=None):
+        """Signal handler for TaskUpdated events. Updates progress label."""
+        if not data or not data.data:
+            return
+
+        task_id = data.data
+        if task_id == self._import_task_id:
+            task = TaskManager.get(task_id)
+            if task and task.subtitle:
+                GLib.idle_add(self._update_import_progress, task.subtitle)
+
+    def _show_import_progress(self):
+        """Show the import progress indicator."""
+        self.label_import_progress.set_text("")
+        self.box_import_progress.set_visible(True)
+        self.spinner_import.start()
+
+    def _hide_import_progress(self):
+        """Hide the import progress indicator."""
+        self.spinner_import.stop()
+        self.box_import_progress.set_visible(False)
+
+    def _update_import_progress(self, text: str):
+        """Update the import progress label."""
+        self.label_import_progress.set_text(text)
+
+    def go_back(self, *_args):
+        self.window.main_leaf.navigate(Adw.NavigationDirection.BACK)
